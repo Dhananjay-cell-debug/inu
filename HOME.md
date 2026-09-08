@@ -46,4 +46,8 @@ Vercel project: `inuxsynapsis` in the user's existing account. `vercel.json` bui
 
 Commit the intended current source, push to `origin/main` first, then deploy the pushed source with Vercel and verify Ready status. The project is linked to the specified GitHub repo. Do not overwrite the separate `inumedia` deployment. `.openai/hosting.json` refers to the earlier private Sites preview; the user's explicit Vercel request is the current publishing destination.
 
+The Let’s talk page is the second real page; see `LETS-TALK.md`. The home page’s “Let’s talk”
+navigation item, header button and closing button now link to `/lets-talk` instead of the old
+Instagram link and `#contact` anchor.
+
 Read `NEXT-ASTRA-PROMPT.md` before building another page.

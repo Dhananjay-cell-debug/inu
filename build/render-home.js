@@ -19,7 +19,7 @@ const render={
   title:escape(data.brand.title), description:escape(data.brand.description),
   brand:escape(data.brand.name), suffix:escape(data.brand.suffix), talkLabel:escape(data.talk.label),
   nav:data.navigation.map((n,i)=>`<a href="${escape(n.href)}" ${i===0?'aria-current="page"':''}>${escape(n.label)}</a>`).join(''),
-  mobileNav:[...data.navigation,{label:data.talk.label,href:'#contact'}].map(n=>`<a href="${escape(n.href)}">${escape(n.label)}<span aria-hidden="true">↗</span></a>`).join(''),
+  mobileNav:[...data.navigation,{label:data.talk.label,href:data.talk.href}].map(n=>`<a href="${escape(n.href)}">${escape(n.label)}<span aria-hidden="true">↗</span></a>`).join(''),
   heroBackground:image('hero-room','hero-room layer-image','100vw',true),
   heroPerson:image('hero-person','hero-person layer-image','(max-width:700px) 70vw, 42vw',true),
   heroDesk:image('hero-desk','hero-desk layer-image','100vw',true),

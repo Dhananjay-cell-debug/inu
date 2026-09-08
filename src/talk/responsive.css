@@ -1,0 +1,191 @@
+/* The phone layout is a separate composition, not a shrunk desktop screenshot:
+   the hero stacks copy over art, contact routes become hairline rows instead of
+   cards, and the wall signage turns into a single horizontal strip. */
+
+.sign-word{display:block}
+
+@media(min-width:1800px){
+  .talk-hero{height:min(66vw,1010px)}
+  .hero-copy{left:max(var(--page),calc((100vw - 1620px)/2));width:40%}
+  .hero-sign{right:max(5%,calc((100vw - 1740px)/2))}
+  .message,.reach{padding-inline:max(var(--page),calc((100vw - 1620px)/2))}
+  .next-copy{left:max(var(--page),calc((100vw - 1620px)/2))}
+  .footer{padding-inline:max(var(--page),calc((100vw - 1620px)/2))}
+  .reach-list{margin-left:6%;width:60%}
+}
+
+@media(max-width:1100px) and (min-width:701px){
+  .header{gap:26px}.desktop-nav{gap:20px}
+  .talk-hero{height:660px}
+  .hero-copy{top:20%;width:54%}
+  .hero-copy .display{font-size:33px}
+  .hero-copy .rule{margin:26px 0 22px}
+  .hero-tagline{font-size:11px;letter-spacing:.18em}
+  .hero-seat{left:46%;width:44%;height:62%}
+  .hero-tree{width:15%;height:36%;right:0}
+  .hero-sign{font-size:21px;right:3.5%;top:19%}
+  .table-note{font-size:9px;bottom:8%}
+  .message{min-height:0;padding:78px var(--page) 86px}
+  .wall-figure{left:4%;top:20%;width:34%}
+  .perspective-note{top:auto;bottom:12%;font-size:11px;letter-spacing:.17em}
+  .message-panel{width:54%}
+  .message-panel .display{font-size:25px}
+  .reach{min-height:0;padding:78px var(--page) 320px}
+  .reach-list{width:84%;margin-left:2%;gap:22px}
+  .reach-item strong{font-size:11px;letter-spacing:.15em}
+  .reach-item span{font-size:10px}
+  .floor-note{position:relative;left:0;top:0;margin-top:52px;width:60%}
+  .reach-sign{font-size:20px;right:3%;top:6%}
+  .prop-chair{width:16%;bottom:12%;right:5%}
+  .prop-chair-far{width:12%;bottom:14.5%;right:31%}
+  .prop-table{width:13%;bottom:13%;right:22%}
+  .prop-tree{width:15%;bottom:17%;right:-1%}
+  .next{height:600px}
+  .next-copy{width:46%;top:20%}
+  .next-copy .display{font-size:34px}
+  .figure-left{left:44%;width:13%}
+  .figure-centre{left:56%;width:17.5%}
+  .figure-right{left:75%;width:14%}
+}
+
+@media(max-width:700px){
+  :root{--page:22px}
+  html{scroll-padding-top:84px}
+  .header,.header.is-sticky{height:72px;padding:0 22px;gap:16px}
+  .wordmark{font-size:24px}.wordmark span{font-size:8px;letter-spacing:.5em;margin-top:8px}
+  .desktop-nav{display:none}
+  .menu-toggle{margin-left:auto;width:28px;height:40px;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:2px;background:none}
+  .menu-toggle span{width:24px;height:1px;background:#eee;transition:transform .3s}
+  .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+  .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+  .mobile-nav:not([hidden]){position:absolute;top:72px;left:0;right:0;display:flex;flex-direction:column;padding:13px 22px 24px;background:#0b0e08f5;backdrop-filter:blur(16px);border-bottom:1px solid #514220}
+  .mobile-nav a{font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid #ffffff0e;display:flex;justify-content:space-between}
+  .mobile-nav a span{color:var(--orange)}
+  .mobile-nav a[aria-current]{color:var(--orange)}
+
+  /* Hero: copy over the dark window wall, the seated man owning the lower half. */
+  .talk-hero{height:625px}
+  .hero-plate{inset:0 -14% 0 -2%}
+  .hero-plate img{object-position:64% 26%}
+  .hero-veil{background:linear-gradient(#04050af0 0,#04050ac4 16%,#0405083d 44%,#05060575 72%,#060706 97%),linear-gradient(90deg,#04050ab8,#04050a3d 62%,transparent)}
+  .hero-copy{top:88px;left:22px;right:22px;width:auto;max-width:330px}
+  .hero-copy .mark{font-size:9.5px;letter-spacing:.26em}
+  .hero-copy .display{font-size:26px;line-height:1.34;letter-spacing:.1em;margin-top:16px}
+  .hero-copy .rule{width:38px;margin:22px 0 18px}
+  .hero-tagline{font-size:9.5px;letter-spacing:.18em;line-height:1.6}
+  .hero-seat{left:auto;right:-4%;bottom:46px;width:76%;height:292px}
+  .hero-tree{display:none}
+  .table-note{display:none}
+  .hero-sign{position:absolute;left:22px;right:22px;top:auto;bottom:15px;display:flex;align-items:center;gap:9px;font-size:14px;color:#ff9438;transform:none;white-space:nowrap;text-shadow:0 0 16px #ff6a0066}
+  .hero-sign .sign-word{display:inline}
+  .hero-sign i{margin:0;flex:1;min-width:14px;height:1px}
+  .hero-floor{height:88px}
+  .embers{height:420px}
+  .film-grain{opacity:.055}
+
+  /* Message: a short art band, then the form at full width with hairline fields. */
+  .message{min-height:0;padding:212px 22px 60px}
+  .wall-plate{inset:0 -18% 0 -4%}
+  .wall-plate img{object-position:30% 40%}
+  .wall-veil{background:linear-gradient(#060706 0,#060706a6 9%,#06070626 30%,#060706c9 62%,#060706),linear-gradient(90deg,#060706b3,transparent 55%)}
+  .wall-figure{left:auto;right:-6%;top:18px;width:54%;-webkit-mask-image:linear-gradient(#000 40%,#000b 62%,#0005 81%,transparent 100%);mask-image:linear-gradient(#000 40%,#000b 62%,#0005 81%,transparent 100%)}
+  .perspective-note{left:22px;top:66px;font-size:10.5px;letter-spacing:.17em;line-height:1.95}
+  .perspective-note i{width:24px;margin-top:14px}
+  .message-panel{width:100%;max-width:none;margin:0}
+  .message-panel .display{font-size:22px;letter-spacing:.115em}
+  .message-lead{font-size:9.5px;letter-spacing:.1em;line-height:1.8;margin:13px 0 28px;max-width:300px}
+  .message-form{gap:13px}
+  /* 16px keeps iOS from zooming the page when a field takes focus. */
+  .field input,.field textarea{font-size:16px;padding:15px 17px;border-radius:4px}
+  .field input{height:50px}
+  .field textarea{min-height:112px}
+  .field label{left:18px;top:16px;font-size:10px;letter-spacing:.16em}
+  .field-error{font-size:9px}
+  .form-foot{margin-top:8px;gap:15px}
+  .cta{min-height:46px;padding:12px 20px;gap:20px;font-size:10px;letter-spacing:.14em}
+  .cta-arrow{font-size:15px}
+  .form-status{font-size:10px;max-width:none;flex:1;min-width:150px}
+
+  /* Reach: three hairline rows, not three cards. */
+  .reach{min-height:0;padding:58px 22px 250px}
+  .lounge-plate{inset:0 -16% 0 -6%}
+  .lounge-plate img{object-position:38% 42%}
+  .lounge-veil{background:linear-gradient(#060706 0,#060706b8 10%,#0607063d 34%,#06070699 68%,#060706),linear-gradient(90deg,#060706b3,transparent 60%)}
+  .reach-head .display{font-size:22px;letter-spacing:.115em;max-width:210px}
+  .reach-head .rule{width:38px;margin-top:20px}
+  .reach-list{display:block;width:100%;max-width:none;margin:28px 0 0}
+  .reach-item{display:block}
+  .reach-item .reach-body{display:grid;grid-template-columns:24px 1fr;column-gap:15px;row-gap:4px;align-items:center;text-align:left;padding:16px 0;border-top:1px solid #ffffff14;gap:0 15px}
+  .reach-item:last-child .reach-body{border-bottom:1px solid #ffffff14}
+  .reach-item svg{width:21px;height:21px;grid-row:1 / span 2;align-self:center}
+  .reach-item strong{font-size:10.5px;letter-spacing:.17em}
+  .reach-item span{font-size:9.5px;letter-spacing:.11em;line-height:1.7}
+  .reach-sign{right:20px;top:56px;font-size:15px}
+  .reach-sign i{width:24px;margin-top:11px}
+  .floor-note{position:absolute;left:22px;top:auto;bottom:24px;font-size:9.5px;letter-spacing:.16em;line-height:1.9}
+  .prop-table,.prop-chair-far{display:none}
+  .prop-chair{right:24%;bottom:9%;width:34%}
+  .prop-tree{right:-2%;bottom:14%;width:31%}
+
+  /* What's next: copy first, the trio walking out along the bottom. */
+  .next{height:645px}
+  .sunset-plate{inset:0 -10% -8% 0}
+  .sunset-plate img{object-position:64% top}
+  .sunset-veil{background:linear-gradient(104deg,#050604f0 0,#050604db 40%,#05060480 62%,#05060426 82%,transparent),linear-gradient(#05060466 0,transparent 26%,transparent 62%,#060706)}
+  .next-copy{top:52px;left:22px;right:22px;width:auto;max-width:290px}
+  .next-copy .mark{font-size:9.5px;letter-spacing:.26em}
+  .next-copy .display{font-size:26px;letter-spacing:.11em;margin-top:15px}
+  .next-copy .rule{width:38px;margin:20px 0 18px}
+  .next-lines{font-size:9.5px;letter-spacing:.16em;line-height:1.95;margin-bottom:26px}
+  .figure-left{left:10%;height:42%;bottom:5%}
+  .figure-centre{left:32%;height:46%;bottom:1%}
+  .figure-right{left:58%;height:42%;bottom:3%}
+  .next-floor{height:70px}
+
+  .footer{padding:26px 22px 78px;gap:14px;align-items:flex-start}
+  .footer-brand>a{font-size:12px}
+  .footer-brand>p{font-size:7px;gap:11px;margin-top:11px}
+  .socials{gap:4px}
+  .socials a{width:27px;height:32px}
+  .socials svg{width:17px;height:17px}
+  .footer-note{display:none}
+  .sound-toggle{bottom:15px;right:15px;padding:10px 12px;font-size:8px;gap:9px;min-height:36px}
+  .motion-ready .reveal{transform:translate3d(0,15px,0);transition-duration:.7s}
+}
+
+@media(max-width:390px){
+  .hero-copy .display{font-size:24px;letter-spacing:.085em}
+  .hero-sign{font-size:13px;gap:7px}
+}
+
+@media(max-width:360px){
+  :root{--page:17px}
+  .header,.header.is-sticky{padding-inline:17px}
+  .talk-hero{height:600px}
+  .hero-copy{left:17px;right:17px;top:82px;max-width:290px}
+  .hero-copy .display{font-size:22px;letter-spacing:.07em}
+  .hero-seat{width:82%;height:275px;bottom:40px}
+  .hero-sign{left:17px;right:17px;font-size:12px;gap:6px}
+  .message{padding:200px 17px 54px}
+  .reach{padding:52px 17px 232px}
+  .reach-head .display{font-size:20px}
+  .reach-sign{font-size:13px;right:15px}
+  .next{height:625px}
+  .next-copy{left:17px;right:17px;max-width:255px}
+  .next-copy .display{font-size:23px}
+  .figure-left{left:8%;height:40%}
+  .figure-centre{left:31%;height:44%}
+  .figure-right{left:57%;height:40%}
+  .footer{padding-inline:17px}
+  .footer-brand>p{gap:7px}
+  .socials{gap:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .parallax{transform:none!important}
+  .motion-ready .reveal,.motion-ready .field,.motion-ready .reach-item,.motion-ready .figure{opacity:1;transform:none}
+  .seat-reveal{transform:none}
+  .film-burn,.film-grain,.embers{display:none}
+}

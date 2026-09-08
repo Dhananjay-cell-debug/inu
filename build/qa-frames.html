@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><title>QA frames</title>
+<style>
+ html,body{margin:0;background:#111;color:#888;font:12px/1.4 system-ui}
+ .row{display:flex;gap:14px;padding:12px;align-items:flex-start}
+ figure{margin:0}
+ figcaption{padding:4px 2px;letter-spacing:.08em;text-transform:uppercase}
+ iframe{border:1px solid #333;background:#000;display:block}
+</style></head><body>
+<div class="row" id="row"></div>
+<script>
+ const sizes = new URLSearchParams(location.search).get('sizes') || '390x812,360x780';
+ const src = new URLSearchParams(location.search).get('src') || '/lets-talk';
+ document.querySelector('#row').innerHTML = sizes.split(',').map((s, i) => {
+   const [w, h] = s.split('x');
+   return `<figure><figcaption>${s}</figcaption><iframe id="f${i}" src="${src}" width="${w}" height="${h}" scrolling="no"></iframe></figure>`;
+ }).join('');
+ window.qa = {
+   frames: () => [...document.querySelectorAll('iframe')],
+   scroll(y) { for (const f of window.qa.frames()) f.contentWindow.scrollTo(0, y); return y; },
+   ready() {
+     for (const f of window.qa.frames()) {
+       const d = f.contentDocument;
+       d.querySelectorAll('.reveal,.message-panel,.reach-list,.trio').forEach(e => e.classList.add('is-visible'));
+       const s = d.createElement('style');
+       s.textContent = '*{animation-duration:.001s!important;animation-delay:0s!important;transition:none!important}';
+       d.head.appendChild(s);
+       // Keep the harness light: the live canvas/video loops choke several frames at once.
+       d.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.remove(); });
+       d.querySelectorAll('.embers').forEach(c => c.remove());
+     }
+     const d = window.qa.frames()[0].contentDocument;
+     return { doc: d.documentElement.scrollHeight, scrollW: d.documentElement.scrollWidth, vw: window.qa.frames()[0].contentWindow.innerWidth };
+   }
+ };
+</script>
+</body></html>

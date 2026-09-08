@@ -23,7 +23,8 @@
   let soundEnabled = false, audioPending = false, volumeTimer = 0;
   let lenis = null;
   const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const talk = () => `<a class="pill" href="${escape(content.talk.href)}" target="_blank" rel="noopener noreferrer">${escape(content.talk.label)}<span class="button-arrow" aria-hidden="true">↗</span></a>`;
+  const external = href => /^https?:/.test(href);
+  const talk = () => `<a class="pill" href="${escape(content.talk.href)}"${external(content.talk.href) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(content.talk.label)}<span class="button-arrow" aria-hidden="true">↗</span></a>`;
 
   function closeMenu(){menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu');mobileNav.hidden=true;}
   menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');mobileNav.hidden=!open;});

@@ -1,0 +1,61 @@
+{
+  "brand": {"name":"INU","suffix":"MEDIA","title":"Let’s talk — INU Media","description":"Great ideas deserve a conversation. Tell INU Media about your idea and we’ll get back to you soon. Brands, people, stories, beyond."},
+  "navigation":[
+    {"label":"Home","href":"/"},
+    {"label":"About","href":"/#about"},
+    {"label":"Services","href":"/#services"},
+    {"label":"Portfolio","href":"/#portfolio"},
+    {"label":"Let’s talk","href":"/lets-talk","current":true}
+  ],
+  "hero":{
+    "eyebrow":"Let’s talk",
+    "heading":["Great ideas","deserve","a conversation"],
+    "tagline":"Brands. People. Stories. Beyond.",
+    "sign":["Ideas","People","Brands","Real","Impact"],
+    "tableNote":"A brighter tomorrow"
+  },
+  "message":{
+    "note":["Same","humans","different","perspective"],
+    "heading":"Send a message",
+    "description":"Tell us about your idea. We’ll get back to you soon.",
+    "fields":[
+      {"name":"name","label":"Your name","type":"text","autocomplete":"name","required":true},
+      {"name":"email","label":"Your email","type":"email","autocomplete":"email","required":true},
+      {"name":"subject","label":"Subject","type":"text","autocomplete":"off","required":false},
+      {"name":"message","label":"Your message","type":"textarea","autocomplete":"off","required":true}
+    ],
+    "button":"Send message",
+    "sending":"Sending",
+    "success":"Thank you — your message is on its way. We’ll reply soon.",
+    "failure":"That didn’t send. Write to us directly at"
+  },
+  "reach":{
+    "heading":["Other ways","to reach us"],
+    "sign":["Good","Ideas","Better","Brands"],
+    "floorNote":["Different","perspective","A brighter","tomorrow"],
+    "items":[
+      {"icon":"pin","title":"Our location","lines":["Singapore","Creative studio"],"href":""},
+      {"icon":"mail","title":"Email us","lines":["hello@inumedia.com"],"href":"mailto:hello@inumedia.com"},
+      {"icon":"chat","title":"Say hello","lines":["Let’s discuss","your next project"],"href":"https://www.instagram.com/inumedia.agency/"}
+    ]
+  },
+  "next":{
+    "eyebrow":"Let’s build",
+    "heading":"What’s next",
+    "lines":["New ideas.","Bolder stories.","Real people.","Together."],
+    "button":"Get in touch"
+  },
+  "footer":{
+    "brand":"INU Media",
+    "words":["Brands","People","Stories","Beyond"],
+    "note":["Different perspective","A brighter tomorrow"],
+    "socials":[
+      {"label":"INU Media on Instagram","href":"https://www.instagram.com/inumedia.agency/","icon":"instagram"},
+      {"label":"Connect with INU Media’s founder on LinkedIn","href":"https://www.linkedin.com/in/sahil-kohli-0276a636/","icon":"linkedin"},
+      {"label":"Explore our film and video work","href":"/#portfolio","icon":"youtube"}
+    ]
+  },
+  "music":{"volume":0.32},
+  "endpoint":"/api/contact",
+  "fallbackEmail":"hello@inumedia.com"
+}

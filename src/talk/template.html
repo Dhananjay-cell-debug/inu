@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060706">
+<title>{{title}}</title><meta name="description" content="{{description}}"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg"><link rel="preload" href="home-assets/display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="vendor/lenis.css"><link rel="stylesheet" href="talk.css"><script src="vendor/lenis.min.js" defer></script><script src="talk.js" defer></script>
+</head><body class="talk-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 22c5-6.2 7.5-10 7.5-13A7.5 7.5 0 0 0 4.5 9c0 3 2.5 6.8 7.5 13Z"/><circle cx="12" cy="9" r="2.7"/></symbol>
+<symbol id="icon-mail" viewBox="0 0 24 24"><rect x="2.2" y="4.8" width="19.6" height="14.4" rx="1.6"/><path d="m2.8 6 9.2 7.4L21.2 6"/></symbol>
+<symbol id="icon-chat" viewBox="0 0 24 24"><path d="M2.4 4.6h19.2v12.2H9.9L5.4 20.6v-3.8H2.4Z"/><circle cx="8" cy="10.7" r=".95" fill="currentColor" stroke="none"/><circle cx="12" cy="10.7" r=".95" fill="currentColor" stroke="none"/><circle cx="16" cy="10.7" r=".95" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M4 9h4v12H4ZM6 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm5 6h4v2c1-3 7-3 7 3v7h-4v-6c0-3-3-3-3 0v6h-4Z"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor" stroke="none"/><path d="m10 9 6 3-6 3Z" fill="#060706" stroke="none"/></symbol>
+</defs></svg>
+<div class="site-shell" id="top">
+<header class="header"><a href="/" class="wordmark" aria-label="INU Media home">{{brand}}<span>{{suffix}}</span></a><nav class="desktop-nav" aria-label="Main navigation">{{nav}}</nav><button class="menu-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>{{mobileNav}}</nav></header>
+<main id="main">
+
+<section class="talk-hero" aria-labelledby="talk-title" data-scene>
+  <div class="plate hero-plate parallax" data-depth="0.1">{{heroRoom}}</div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-tree parallax" data-depth="0.05">{{heroTree}}</div>
+  <div class="hero-seat parallax" data-depth="0.03"><div class="seat-reveal">{{heroSeated}}</div></div>
+  <canvas class="embers" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <p class="mark">{{heroEyebrow}}</p>
+    <h1 id="talk-title" class="display">{{heroHeading}}</h1>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="hero-tagline">{{heroTagline}}</p>
+  </div>
+  <p class="table-note" aria-hidden="true">{{tableNote}}</p>
+  <p class="wall-sign hero-sign parallax" data-depth="0.02">{{heroSign}}<i></i></p>
+  <div class="hero-floor" aria-hidden="true"></div>
+</section>
+
+<section class="message" id="message" aria-labelledby="message-title" data-scene>
+  <div class="plate wall-plate parallax" data-depth="0.07">{{wallPlate}}</div>
+  <div class="wall-veil" aria-hidden="true"></div>
+  <div class="wall-figure parallax" data-depth="-0.03">{{wallFigure}}</div>
+  <p class="perspective-note reveal">{{messageNote}}<i></i></p>
+  <div class="message-panel reveal">
+    <h2 id="message-title" class="display">{{messageHeading}}</h2>
+    <p class="message-lead">{{messageDescription}}</p>
+    <form class="message-form" id="message-form" novalidate>{{fields}}
+      <p class="honeypot" aria-hidden="true"><label for="field-company">Company</label><input id="field-company" name="company" type="text" tabindex="-1" autocomplete="off"></p>
+      <div class="form-foot">
+        <button class="cta" type="submit"><span class="cta-label">{{messageButton}}</span><span class="cta-arrow" aria-hidden="true">→</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="reach" id="reach" aria-labelledby="reach-title" data-scene>
+  <div class="plate lounge-plate parallax" data-depth="0.08">{{loungePlate}}</div>
+  <div class="lounge-veil" aria-hidden="true"></div>
+  <div class="lounge-props" aria-hidden="true"><span class="prop prop-tree parallax" data-depth="0.015">{{loungeTree}}</span><span class="prop prop-chair-far parallax" data-depth="0.022">{{loungeChairFar}}</span><span class="prop prop-table parallax" data-depth="0.03">{{loungeTable}}</span><span class="prop prop-chair parallax" data-depth="0.02">{{loungeChair}}</span></div>
+  <div class="reach-head reveal"><h2 id="reach-title" class="display">{{reachHeading}}</h2><span class="rule" aria-hidden="true"></span></div>
+  <ul class="reach-list">{{reachItems}}</ul>
+  <p class="floor-note reveal">{{floorNote}}</p>
+  <p class="wall-sign reach-sign parallax" data-depth="0.02">{{reachSign}}<i></i></p>
+</section>
+
+<section class="next" id="next" aria-labelledby="next-title" data-scene>
+  <div class="plate sunset-plate parallax" data-depth="0.055">{{sunsetPlate}}</div>
+  <div class="sunset-veil" aria-hidden="true"></div>
+  <div class="trio" aria-hidden="true"><span class="figure figure-left parallax" data-depth="0.02">{{trioLeft}}</span><span class="figure figure-centre parallax" data-depth="0.012">{{trioCentre}}</span><span class="figure figure-right parallax" data-depth="0.026">{{trioRight}}</span></div>
+  <div class="next-copy reveal">
+    <p class="mark">{{nextEyebrow}}</p>
+    <h2 id="next-title" class="display">{{nextHeading}}</h2>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="next-lines">{{nextLines}}</p>
+    <a class="cta" href="#message"><span class="cta-label">{{nextButton}}</span><span class="cta-arrow" aria-hidden="true">→</span></a>
+  </div>
+  <div class="next-floor" aria-hidden="true"></div>
+</section>
+
+</main>
+<footer class="footer"><div class="footer-brand"><a href="/">{{footerBrand}}</a><p>{{footerWords}}</p></div><div class="socials">{{socials}}</div><p class="footer-note">{{footerNote}}</p></footer>
+</div>
+<video id="film-grain" class="film-grain" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="media/grain.webm"></video><video id="film-burn" class="film-burn" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="media/burn-talk.webm"></video>
+<audio id="soundtrack" loop preload="none" data-src="media/score.mp3"></audio><button id="sound-toggle" class="sound-toggle" aria-label="Enable cinematic soundtrack" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">Sound off</span></button><p id="sound-status" class="sr-only" aria-live="polite"></p>
+<script type="application/json" id="page-content">{{content}}</script>
+</body></html>
