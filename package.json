@@ -1,0 +1,14 @@
+{
+  "name": "inu-cinematic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "INU Media — cinematic site built from the 4K page designs",
+  "scripts": {
+    "build": "node build/home.js",
+    "build:legacy": "node build/pages.js",
+    "dev": "node build/home.js && node server.js",
+    "start": "node server.js",
+    "images": "python build/images.py && python build/plates.py",
+    "video": "sh build/video.sh"
+  }
+}

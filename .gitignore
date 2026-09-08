@@ -1,0 +1,8 @@
+node_modules/
+dist/
+site/
+qa/
+archive-before-rebuild/
+rebuild/
+*.tar.gz
+.env*
