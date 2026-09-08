@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060706">
+<title>{{title}}</title><meta name="description" content="{{description}}"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg"><link rel="preload" href="home-assets/brush.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="home-assets/display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="vendor/lenis.css"><link rel="stylesheet" href="home.css"><script src="vendor/lenis.min.js" defer></script><script src="home.js" defer></script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="icon-globe" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><ellipse cx="16" cy="16" rx="6" ry="13"/><path d="M3 16h26M6 8c6 4 14 4 20 0M6 24c6-4 14-4 20 0"/></symbol>
+<symbol id="icon-people" viewBox="0 0 36 32"><circle cx="18" cy="9" r="6"/><path d="M8 28v-4c0-10 20-10 20 0v4ZM9 4C0 5 1 16 8 16M28 4c9 1 8 12 1 12M5 18c-5 2-4 6-4 10h4M31 18c5 2 4 6 4 10h-4"/></symbol>
+<symbol id="icon-play" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="m13 10 9 6-9 6Z"/></symbol>
+<symbol id="icon-growth" viewBox="0 0 34 32"><rect x="2" y="20" width="6" height="10" rx="1"/><rect x="14" y="12" width="6" height="18" rx="1"/><rect x="26" y="3" width="6" height="27" rx="1"/></symbol>
+<symbol id="icon-infinity" viewBox="0 0 48 32"><path d="M24 16C13-6 1 3 1 16s12 22 23 0S47-6 47 16 35 38 24 16Z"/></symbol>
+<symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M4 9h4v12H4ZM6 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm5 6h4v2c1-3 7-3 7 3v7h-4v-6c0-3-3-3-3 0v6h-4Z"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor" stroke="none"/><path d="m10 9 6 3-6 3Z" fill="#060706" stroke="none"/></symbol>
+</defs></svg>
+<div class="site-shell" id="home">
+<header class="header"><a href="#home" class="wordmark" aria-label="INU Media home">{{brand}}<span>{{suffix}}</span></a><nav class="desktop-nav" aria-label="Main navigation">{{nav}}</nav><a class="pill header-cta" href="#contact">{{talkLabel}} <span class="button-arrow" aria-hidden="true">↗</span></a><button class="menu-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>{{mobileNav}}</nav><span class="reading-progress" aria-hidden="true"></span></header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title" data-scene>
+<div class="hero-background parallax" data-depth="0.13">{{heroBackground}}</div><div class="hero-atmosphere" aria-hidden="true"></div>
+<p class="hero-rail">{{heroRail}}<i></i></p><div class="hero-title-wrap parallax" data-depth="-0.055"><h1 id="hero-title" class="hero-title">{{heroWords}}</h1></div>
+<div class="hero-aura" aria-hidden="true"></div><div class="hero-character parallax" data-depth="0.045"><div class="character-reveal">{{heroPerson}}</div></div><canvas class="embers" aria-hidden="true"></canvas>
+<div class="belief" id="about">{{belief}}</div><div class="hero-foreground parallax" data-depth="-0.025">{{heroDesk}}</div><div class="hero-bottom-shade" aria-hidden="true"></div><a href="#services" class="scroll-cue"><span aria-hidden="true"><i></i></span>{{scrollLabel}}</a>
+</section>
+<section class="clients" aria-label="Trusted by brands and creators"><p>{{clientLabel}}</p><div class="client-logos" data-lenis-prevent>{{clientLogos}}</div><p class="many-more">{{clientMore}}</p></section>
+<section class="services section-pad" id="services" aria-labelledby="services-title"><div class="section-heading"><div class="reveal"><p class="eyebrow">{{serviceEyebrow}}</p><h2 id="services-title">{{serviceHeading}}</h2></div><div class="heading-aside reveal"><p>{{serviceDescription}}</p><button class="pill" id="explore-services">{{serviceButton}}<span class="button-arrow" aria-hidden="true">↗</span></button></div></div><div class="service-grid">{{serviceCards}}</div></section>
+<section class="portfolio section-pad" id="portfolio" aria-labelledby="portfolio-title" data-scene><div class="portfolio-scenery parallax" data-depth="0.09">{{portfolioArt}}</div><div class="portfolio-shade" aria-hidden="true"></div><div class="section-heading"><div class="reveal"><p class="eyebrow">{{portfolioEyebrow}}</p><h2 id="portfolio-title">{{portfolioHeading}}</h2></div><div class="heading-aside reveal"><p>{{portfolioDescription}}</p><div class="portfolio-actions"><button class="pill" id="view-portfolio">{{portfolioButton}}<span class="button-arrow" aria-hidden="true">↗</span></button><div class="carousel-controls"><button id="previous-work" aria-label="Previous projects">←</button><button id="next-work" aria-label="Next projects">→</button></div></div></div></div><div class="work-track reveal" id="work-track" tabindex="0" aria-label="Featured projects. Scroll to explore." data-lenis-prevent>{{workCards}}</div><p class="sr-only" id="carousel-status" aria-live="polite"></p></section>
+<section class="stats" aria-label="INU Media in numbers">{{stats}}</section>
+<section class="contact" id="contact" aria-labelledby="contact-title" data-scene><div class="contact-background parallax" data-depth="0.08">{{contactArt}}</div><div class="contact-shade" aria-hidden="true"></div><div class="contact-copy reveal"><p class="eyebrow">{{contactEyebrow}}</p><h2 id="contact-title">{{contactHeading}}</h2><p>{{contactDescription}}</p><a class="pill" href="{{contactHref}}" target="_blank" rel="noopener noreferrer">{{talkLabel}}<span class="button-arrow" aria-hidden="true">↗</span></a></div><div class="contact-character parallax" data-depth="-0.035">{{contactPerson}}</div><p class="wall-note parallax" data-depth="0.025">{{contactNote}}</p></section>
+</main>
+<footer class="footer"><div class="footer-brand"><a href="#home">{{footerBrand}}</a><p>{{footerWords}}</p></div><div class="socials">{{socials}}</div><p class="footer-note">{{footerNote}}</p></footer>
+</div>
+<video id="film-grain" class="film-grain" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="media/grain.webm"></video><video id="film-burn" class="film-burn" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="media/burn-entry.webm"></video><div class="section-flare" aria-hidden="true"></div>
+<audio id="soundtrack" loop preload="none" data-src="media/score.mp3"></audio><button id="sound-toggle" class="sound-toggle" aria-label="Enable cinematic soundtrack" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">Sound off</span></button><p id="sound-status" class="sr-only" aria-live="polite"></p>
+<dialog id="detail-dialog" aria-labelledby="dialog-title" data-lenis-prevent><button class="dialog-close" aria-label="Close details">×</button><div id="dialog-content"></div></dialog><script type="application/json" id="site-content">{{content}}</script>
+</body></html>

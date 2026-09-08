@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "description": "INU Media — cinematic site built from the 4K page designs",
   "scripts": {
-    "build": "node build/home.js",
-    "build:legacy": "node build/pages.js",
-    "dev": "node build/home.js && node server.js",
+    "build": "node build/render-home.js",
+    "check": "node --check src/home/experience.js && node build/verify-home.js",
+    "dev": "node build/render-home.js && node server.js",
     "start": "node server.js",
-    "images": "python build/images.py && python build/plates.py",
-    "video": "sh build/video.sh"
+    "images": "python build/prepare-hq-assets.py",
+    "media": "python build/prepare-cinematic-media.py"
+  },
+  "dependencies": {
+    "lenis": "1.3.26"
   }
 }

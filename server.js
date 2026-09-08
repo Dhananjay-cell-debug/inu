@@ -18,6 +18,7 @@ const TYPES = {
   '.woff2': 'font/woff2',
   '.mp4': 'video/mp4',
   '.webm': 'video/webm',
+  '.mp3': 'audio/mpeg',
   '.json': 'application/json',
   '.txt': 'text/plain; charset=utf-8'
 };

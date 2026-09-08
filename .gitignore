@@ -6,3 +6,7 @@ archive-before-rebuild/
 rebuild/
 *.tar.gz
 .env*
+.vercel/
+*.log
+
+.vercel

@@ -1,0 +1,242 @@
+{
+  "hero-room": [
+    {
+      "src": "home-assets/hero-room-960.webp",
+      "width": 960,
+      "height": 453,
+      "bytes": 92882
+    },
+    {
+      "src": "home-assets/hero-room-1600.webp",
+      "width": 1600,
+      "height": 756,
+      "bytes": 181258
+    },
+    {
+      "src": "home-assets/hero-room-2160.webp",
+      "width": 2160,
+      "height": 1020,
+      "bytes": 257272
+    }
+  ],
+  "film-scene": [
+    {
+      "src": "home-assets/film-scene-960.webp",
+      "width": 960,
+      "height": 493,
+      "bytes": 54152
+    },
+    {
+      "src": "home-assets/film-scene-1600.webp",
+      "width": 1600,
+      "height": 822,
+      "bytes": 104822
+    },
+    {
+      "src": "home-assets/film-scene-2160.webp",
+      "width": 2160,
+      "height": 1110,
+      "bytes": 144332
+    }
+  ],
+  "sunset-room": [
+    {
+      "src": "home-assets/sunset-room-960.webp",
+      "width": 960,
+      "height": 582,
+      "bytes": 141068
+    },
+    {
+      "src": "home-assets/sunset-room-1600.webp",
+      "width": 1600,
+      "height": 970,
+      "bytes": 262420
+    },
+    {
+      "src": "home-assets/sunset-room-2160.webp",
+      "width": 2160,
+      "height": 1310,
+      "bytes": 371396
+    }
+  ],
+  "hero-person": [
+    {
+      "src": "home-assets/hero-person-480.webp",
+      "width": 480,
+      "height": 600,
+      "bytes": 68000
+    },
+    {
+      "src": "home-assets/hero-person-800.webp",
+      "width": 800,
+      "height": 1000,
+      "bytes": 164546
+    },
+    {
+      "src": "home-assets/hero-person-1200.webp",
+      "width": 1200,
+      "height": 1500,
+      "bytes": 307962
+    }
+  ],
+  "hero-desk": [
+    {
+      "src": "home-assets/hero-desk-960.webp",
+      "width": 960,
+      "height": 350,
+      "bytes": 52172
+    },
+    {
+      "src": "home-assets/hero-desk-1600.webp",
+      "width": 1600,
+      "height": 583,
+      "bytes": 107968
+    },
+    {
+      "src": "home-assets/hero-desk-2160.webp",
+      "width": 2160,
+      "height": 788,
+      "bytes": 158680
+    }
+  ],
+  "closing-person": [
+    {
+      "src": "home-assets/closing-person-400.webp",
+      "width": 400,
+      "height": 500,
+      "bytes": 25514
+    },
+    {
+      "src": "home-assets/closing-person-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 56254
+    },
+    {
+      "src": "home-assets/closing-person-1000.webp",
+      "width": 1000,
+      "height": 1250,
+      "bytes": 89700
+    }
+  ],
+  "service-strategy": [
+    {
+      "src": "home-assets/service-strategy-180.webp",
+      "width": 180,
+      "height": 195,
+      "bytes": 10094
+    },
+    {
+      "src": "home-assets/service-strategy-400.webp",
+      "width": 400,
+      "height": 432,
+      "bytes": 30084
+    },
+    {
+      "src": "home-assets/service-strategy-640.webp",
+      "width": 640,
+      "height": 692,
+      "bytes": 61226
+    }
+  ],
+  "service-production": [
+    {
+      "src": "home-assets/service-production-180.webp",
+      "width": 180,
+      "height": 180,
+      "bytes": 16278
+    },
+    {
+      "src": "home-assets/service-production-400.webp",
+      "width": 400,
+      "height": 401,
+      "bytes": 52960
+    },
+    {
+      "src": "home-assets/service-production-640.webp",
+      "width": 640,
+      "height": 641,
+      "bytes": 105508
+    }
+  ],
+  "service-design": [
+    {
+      "src": "home-assets/service-design-180.webp",
+      "width": 180,
+      "height": 176,
+      "bytes": 12732
+    },
+    {
+      "src": "home-assets/service-design-400.webp",
+      "width": 400,
+      "height": 390,
+      "bytes": 36836
+    },
+    {
+      "src": "home-assets/service-design-640.webp",
+      "width": 640,
+      "height": 625,
+      "bytes": 71326
+    }
+  ],
+  "service-digital": [
+    {
+      "src": "home-assets/service-digital-180.webp",
+      "width": 180,
+      "height": 162,
+      "bytes": 8688
+    },
+    {
+      "src": "home-assets/service-digital-400.webp",
+      "width": 400,
+      "height": 361,
+      "bytes": 24748
+    },
+    {
+      "src": "home-assets/service-digital-640.webp",
+      "width": 640,
+      "height": 577,
+      "bytes": 48240
+    }
+  ],
+  "service-pr": [
+    {
+      "src": "home-assets/service-pr-180.webp",
+      "width": 180,
+      "height": 200,
+      "bytes": 14834
+    },
+    {
+      "src": "home-assets/service-pr-400.webp",
+      "width": 400,
+      "height": 445,
+      "bytes": 50356
+    },
+    {
+      "src": "home-assets/service-pr-640.webp",
+      "width": 640,
+      "height": 712,
+      "bytes": 111140
+    }
+  ],
+  "service-web": [
+    {
+      "src": "home-assets/service-web-180.webp",
+      "width": 180,
+      "height": 178,
+      "bytes": 13528
+    },
+    {
+      "src": "home-assets/service-web-400.webp",
+      "width": 400,
+      "height": 395,
+      "bytes": 43844
+    },
+    {
+      "src": "home-assets/service-web-640.webp",
+      "width": 640,
+      "height": 632,
+      "bytes": 88392
+    }
+  ]
+}
