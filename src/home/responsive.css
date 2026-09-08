@@ -11,10 +11,6 @@
 
 /* Mobile is deliberately re-composed rather than squeezed into the desktop grid. */
 @media(max-width:700px){
-  .header:before{inset:7px 11px;border-radius:18px;background:linear-gradient(108deg,#17150dde,#0a0d09e8 52%,#070906d9);border-color:#ffe7bd25;box-shadow:0 12px 34px #0009,inset 0 1px #fff4;backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%)}
-  .header:after{inset:8px 12px auto;height:25px;border-radius:18px 18px 42% 42%}
-  .header.is-sticky:before{inset:7px 11px}.header.is-sticky:after{inset:8px 12px auto}.reading-progress{left:24px;right:24px;bottom:7px}
-  .mobile-nav:not([hidden]){left:11px;right:11px;padding:13px 19px 22px;background:#0b0e08e8;backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);border:1px solid #ffe7bd1c;border-radius:0 0 18px 18px;box-shadow:0 20px 38px #0009}
   .belief{margin-inline:22px;padding:27px 0 37px;display:block}.belief .eyebrow{margin-bottom:16px}.belief h2{font-size:35px;line-height:1.01;max-width:320px}.belief h2 em{font-size:1.32em}.belief-copy{font-size:12.5px;line-height:1.68;margin:18px 0 0;max-width:350px}.belief blockquote{max-width:330px;margin-top:24px;padding-left:12px;font-size:12px;line-height:1.55}
   .work-track{cursor:grab}.work-track:active{cursor:grabbing}
   .contact{height:clamp(630px,171vw,700px);min-height:630px}.contact-background{inset:68px -86px -15px -78px}.contact-shade{background:linear-gradient(#060706 0,#060706f2 20%,#06070648 49%,#06070600 78%,#060706c2),linear-gradient(90deg,#0507048c,transparent)}.contact-copy{padding-top:51px;width:72%}.contact h2{font-size:53px}.contact-copy>p:not(.eyebrow){max-width:215px;margin:20px 0 24px}.contact-character{width:44%;left:52%;height:61%}.wall-note{font-size:21px;right:6%;top:56%}
