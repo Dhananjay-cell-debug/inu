@@ -1,7 +1,7 @@
 {
   "brand": {"name":"INU", "suffix":"MEDIA", "title":"INU Media — Ideas into Impact", "description":"Full-service creative media for bolder brands. Strategy, content, design, digital, PR and technology. INU Media — brands, people, stories, beyond."},
   "music":{"title":"Cinematic Action Trailer Background Music — 1 Minute Hero Entry Bgm","source":"","credit":"","volume":0.32},
-  "navigation":[{"label":"Home","href":"#home"},{"label":"About","href":"#about"},{"label":"Services","href":"#services"},{"label":"Portfolio","href":"#portfolio"}],
+  "navigation":[{"label":"Home","href":"#home"},{"label":"About","href":"#about"},{"label":"Services","href":"/services"},{"label":"Portfolio","href":"#portfolio"}],
   "talk":{"label":"Let’s talk","href":"/lets-talk"},
   "hero":{"words":["Beauty","is","Inside"],"rail":["Ideas","People","Stories","Beyond"],"scrollLabel":"Scroll to discover"},
   "belief":{"eyebrow":"Our belief","heading":"We believe","prefix":"in","accent":"design","description":"Ideas that go beyond ordinary. Restless minds redefining the beauty of digital experiences. Courage to create so brands live.","quote":"Design adds value faster than it adds cost."},

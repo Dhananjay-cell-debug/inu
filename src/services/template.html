@@ -1,0 +1,41 @@
+<main id="main">
+  <section class="hero services-hero" aria-labelledby="services-hero-title" data-scene>
+    <div class="services-room parallax" data-depth="0.07">{{heroRoom}}</div>
+    <div class="services-hero-shade" aria-hidden="true"></div>
+    <div class="services-plant parallax" data-depth="0.035">{{heroPlant}}</div>
+    <div class="services-chair">{{heroChair}}</div>
+    <div class="services-mask parallax" data-depth="0.025"><div class="character-reveal">{{heroPerson}}</div></div>
+    <div class="hero-aura services-aura" aria-hidden="true"></div>
+    <canvas class="embers" aria-hidden="true"></canvas>
+    <div class="services-desk parallax" data-depth="-0.018">{{heroDesk}}</div>
+    <div class="services-lamp">{{heroLamp}}</div>
+    <div class="services-tabletop" aria-hidden="true">{{heroTabletop}}</div>
+    <p class="services-wall">{{heroWall}}</p>
+    <div class="services-hero-copy">
+      <p class="eyebrow">{{heroEyebrow}}</p>
+      <h1 id="services-hero-title"><span>{{heroHeading}}</span><span>{{heroSecond}} <em>{{heroAccent}}</em></span></h1>
+      <p class="services-intro">{{heroDescription}}</p>
+      <span class="orange-dash" aria-hidden="true"></span>
+      <p class="services-principles">{{heroPrinciples}}</p>
+    </div>
+    <svg class="services-edge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 1 Q650 57 1440 79 L1440 80 L0 80Z" fill="#080909"/><path d="M0 1 Q650 57 1440 79" fill="none" stroke="#d97721" stroke-width="1"/></svg>
+  </section>
+  <section class="services-offer" id="services" aria-labelledby="offer-title">
+    <div class="offer-heading"><div class="reveal"><p class="eyebrow">{{offerEyebrow}}</p><h2 id="offer-title">{{offerHeading}}<br>{{offerPrefix}} <span>{{offerAccent}}</span></h2><span class="orange-dash" aria-hidden="true"></span></div><div class="offer-intro reveal"><p>{{offerDescription}}</p><span class="orange-dash" aria-hidden="true"></span></div></div>
+    <div class="offer-grid">{{cards}}</div>
+  </section>
+  <section class="services-approach" aria-labelledby="approach-title">
+    <div class="approach-heading reveal"><p class="eyebrow">{{approachEyebrow}}</p><h2 id="approach-title">{{approachHeading}}<br>{{approachPrefix}} <em>{{approachAccent}}</em></h2></div>
+    <div class="approach-diagram reveal">
+      <svg viewBox="0 0 300 260" role="img" aria-label="Brand, ideas and people meet to create growth"><defs><clipPath id="brand-circle"><circle cx="100" cy="92" r="77"/></clipPath><clipPath id="ideas-circle"><circle cx="199" cy="92" r="77"/></clipPath></defs><g clip-path="url(#brand-circle)"><g clip-path="url(#ideas-circle)"><circle cx="150" cy="170" r="77" fill="#ff790a"/></g></g><g fill="none" stroke="#d5d5cf" stroke-width="1.5"><circle cx="100" cy="92" r="77"/><circle cx="199" cy="92" r="77"/><circle cx="150" cy="170" r="77"/></g><g class="diagram-labels" fill="#f3f1eb" text-anchor="middle">{{circleLabels}}</g></svg>
+      <p class="growth-note">{{growthNote}}<svg viewBox="0 0 64 30" aria-hidden="true"><path d="M61 8Q28 32 6 7m0 0 2 16M6 7l16 3" fill="none" stroke="currentColor" stroke-width="2"/></svg></p>
+    </div>
+    <div class="approach-copy reveal"><p>{{approachDescription}}</p><span class="orange-dash" aria-hidden="true"></span></div>
+  </section>
+  <section class="services-process" aria-labelledby="process-title"><div class="process-heading reveal"><p class="eyebrow">{{processEyebrow}}</p><h2 id="process-title">{{processHeading}}<br><em>{{processAccent}}</em></h2></div><ol class="process-steps">{{processSteps}}</ol></section>
+  <section class="services-closing" id="contact" aria-labelledby="closing-title" data-scene>
+    <div class="services-closing-room parallax" data-depth="0.05">{{closingRoom}}</div><div class="services-closing-shade" aria-hidden="true"></div>
+    <div class="services-closing-copy reveal"><p class="eyebrow">{{closingEyebrow}}</p><h2 id="closing-title">{{closingHeading}}<br><em>{{closingAccent}}</em></h2><a class="pill" href="{{contactHref}}">{{closingButton}}<span class="button-arrow" aria-hidden="true">→</span></a></div>
+    <div class="services-closing-desk parallax" data-depth="-0.012">{{closingDesk}}</div><div class="services-closing-person parallax" data-depth="-0.02">{{closingPerson}}</div><p class="services-closing-note">{{closingNote}}</p>
+  </section>
+</main>

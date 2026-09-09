@@ -1,0 +1,253 @@
+{
+  "hero-room": [
+    {
+      "src": "services-assets/hero-room-800.webp",
+      "width": 800,
+      "height": 334
+    },
+    {
+      "src": "services-assets/hero-room-1440.webp",
+      "width": 1440,
+      "height": 601
+    },
+    {
+      "src": "services-assets/hero-room-2161.webp",
+      "width": 2161,
+      "height": 902
+    }
+  ],
+  "closing-room": [
+    {
+      "src": "services-assets/closing-room-640.webp",
+      "width": 640,
+      "height": 174
+    },
+    {
+      "src": "services-assets/closing-room-1200.webp",
+      "width": 1200,
+      "height": 327
+    },
+    {
+      "src": "services-assets/closing-room-1920.webp",
+      "width": 1920,
+      "height": 523
+    }
+  ],
+  "hero-person": [
+    {
+      "src": "services-assets/hero-person-400.webp",
+      "width": 400,
+      "height": 588
+    },
+    {
+      "src": "services-assets/hero-person-720.webp",
+      "width": 720,
+      "height": 1058
+    },
+    {
+      "src": "services-assets/hero-person-1100.webp",
+      "width": 1100,
+      "height": 1616
+    }
+  ],
+  "hero-desk": [
+    {
+      "src": "services-assets/hero-desk-640.webp",
+      "width": 640,
+      "height": 352
+    },
+    {
+      "src": "services-assets/hero-desk-1200.webp",
+      "width": 1200,
+      "height": 660
+    },
+    {
+      "src": "services-assets/hero-desk-1800.webp",
+      "width": 1800,
+      "height": 990
+    }
+  ],
+  "closing-desk": [
+    {
+      "src": "services-assets/closing-desk-640.webp",
+      "width": 640,
+      "height": 353
+    },
+    {
+      "src": "services-assets/closing-desk-1200.webp",
+      "width": 1200,
+      "height": 662
+    },
+    {
+      "src": "services-assets/closing-desk-1800.webp",
+      "width": 1800,
+      "height": 993
+    }
+  ],
+  "closing-person": [
+    {
+      "src": "services-assets/closing-person-320.webp",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "src": "services-assets/closing-person-600.webp",
+      "width": 600,
+      "height": 900
+    },
+    {
+      "src": "services-assets/closing-person-900.webp",
+      "width": 900,
+      "height": 1350
+    }
+  ],
+  "chair": [
+    {
+      "src": "services-assets/chair-320.webp",
+      "width": 320,
+      "height": 414
+    },
+    {
+      "src": "services-assets/chair-640.webp",
+      "width": 640,
+      "height": 829
+    }
+  ],
+  "plant": [
+    {
+      "src": "services-assets/plant-240.webp",
+      "width": 240,
+      "height": 320
+    },
+    {
+      "src": "services-assets/plant-480.webp",
+      "width": 480,
+      "height": 640
+    }
+  ],
+  "lamp": [
+    {
+      "src": "services-assets/lamp-200.webp",
+      "width": 200,
+      "height": 304
+    },
+    {
+      "src": "services-assets/lamp-400.webp",
+      "width": 400,
+      "height": 609
+    }
+  ],
+  "card-digital": [
+    {
+      "src": "services-assets/card-digital-180.webp",
+      "width": 180,
+      "height": 147
+    },
+    {
+      "src": "services-assets/card-digital-352.webp",
+      "width": 352,
+      "height": 288
+    }
+  ],
+  "card-design": [
+    {
+      "src": "services-assets/card-design-180.webp",
+      "width": 180,
+      "height": 147
+    },
+    {
+      "src": "services-assets/card-design-353.webp",
+      "width": 353,
+      "height": 288
+    }
+  ],
+  "card-video": [
+    {
+      "src": "services-assets/card-video-180.webp",
+      "width": 180,
+      "height": 147
+    },
+    {
+      "src": "services-assets/card-video-352.webp",
+      "width": 352,
+      "height": 288
+    }
+  ],
+  "card-performance": [
+    {
+      "src": "services-assets/card-performance-180.webp",
+      "width": 180,
+      "height": 147
+    },
+    {
+      "src": "services-assets/card-performance-352.webp",
+      "width": 352,
+      "height": 288
+    }
+  ],
+  "card-social": [
+    {
+      "src": "services-assets/card-social-180.webp",
+      "width": 180,
+      "height": 148
+    },
+    {
+      "src": "services-assets/card-social-352.webp",
+      "width": 352,
+      "height": 289
+    }
+  ],
+  "card-pr": [
+    {
+      "src": "services-assets/card-pr-180.webp",
+      "width": 180,
+      "height": 147
+    },
+    {
+      "src": "services-assets/card-pr-353.webp",
+      "width": 353,
+      "height": 289
+    }
+  ],
+  "card-web": [
+    {
+      "src": "services-assets/card-web-180.webp",
+      "width": 180,
+      "height": 148
+    },
+    {
+      "src": "services-assets/card-web-352.webp",
+      "width": 352,
+      "height": 289
+    }
+  ],
+  "card-strategy": [
+    {
+      "src": "services-assets/card-strategy-180.webp",
+      "width": 180,
+      "height": 148
+    },
+    {
+      "src": "services-assets/card-strategy-352.webp",
+      "width": 352,
+      "height": 289
+    }
+  ],
+  "foreground-table": [
+    {
+      "src": "services-assets/foreground-table-800.webp",
+      "width": 800,
+      "height": 38
+    },
+    {
+      "src": "services-assets/foreground-table-1440.webp",
+      "width": 1440,
+      "height": 68
+    },
+    {
+      "src": "services-assets/foreground-table-2160.webp",
+      "width": 2160,
+      "height": 102
+    }
+  ]
+}

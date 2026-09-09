@@ -1,0 +1,18 @@
+{
+  "brand": {"title":"Services — INU Media | Ideas into Impact","description":"A full suite of creative and digital services: marketing, design, video, performance, social media, PR, web and strategy. Ideas into impact, with INU Media."},
+  "hero":{"eyebrow":"Services","heading":"Ideas","secondLine":"into","accent":"Impact","description":"A 360° creative & digital agency built to grow brands.","principles":["Strategy","Creativity","Execution","Results"],"wallWords":["Brands","Stories","People","Impact"]},
+  "services":{"eyebrow":"What we offer","heading":"A full suite","prefix":"of","accent":"services","description":"From strategy to execution, we help brands show up sharper, louder and better — across every platform. Here’s how we make it happen.","items":[
+    {"id":"digital-marketing","title":"Digital marketing","image":"digital","tagline":"Strategy-driven marketing to grow your brand online.","offerings":["Social Media Marketing","Performance Marketing","SEO / SEM","Online Reputation Management"]},
+    {"id":"design-creative","title":"Design & creative","image":"design","tagline":"Designs that don’t just look good, but make an impact.","offerings":["Graphic Design","Brand Identity","Creatives & A+ Content","Print Design"]},
+    {"id":"video-production","title":"Video production & VFX","image":"video","tagline":"From ideas to scroll-stopping visuals.","offerings":["Video Ads","VFX & CGI","Brand Films","Reels & Short Content"]},
+    {"id":"performance-marketing","title":"Performance marketing","image":"performance","tagline":"Data-backed campaigns for real business results.","offerings":["Paid Ads (Meta, Google, YouTube)","Campaign Strategy","Lead Generation","Conversion Optimization"]},
+    {"id":"social-media","title":"Social media management","image":"social","tagline":"Complete handling of your brand’s social presence.","offerings":["Content Planning","Post Creation & Scheduling","Community Management","Influencer Collaboration"]},
+    {"id":"pr-branding","title":"PR & branding","image":"pr","tagline":"Building credibility and long-term value.","offerings":["Media Outreach","Brand Positioning","Celebrity & Influencer PR","Event Promotion"]},
+    {"id":"web-tech","title":"Web & tech solutions","image":"web","tagline":"Digital experiences that convert.","offerings":["Website Design & Development","Landing Pages","UI/UX Design","Web Maintenance"]},
+    {"id":"strategy-consulting","title":"Strategy & consulting","image":"strategy","tagline":"The roadmap behind every successful brand.","offerings":["Brand Strategy","Content Strategy","Market Research","360° Campaign Planning"]}
+  ]},
+  "approach":{"eyebrow":"Our approach","heading":["More than","services,"],"prefix":"a","accent":"partnership.","circles":["Brand","Ideas","People"],"note":["Real","growth","happens","here"],"description":"We don’t just deliver services, we become an extension of your team — working together to turn ideas into measurable impact."},
+  "process":{"eyebrow":"Our process","heading":["Simple.","Collaborative."],"accent":"Effective.","steps":[{"title":"Discover","description":"Understand your brand & goals"},{"title":"Strategize","description":"Build a tailored plan"},{"title":"Create","description":"Bring ideas to life"},{"title":"Execute","description":"Launch with precision"},{"title":"Grow","description":"Measure, optimize & scale"}]},
+  "closing":{"eyebrow":["Ready to build","something great?"],"heading":"Let’s create","accent":"Together.","button":"Get in touch","wallNote":["Different","perspective","a brighter","tomorrow"]},
+  "footerNote":["Different perspective","a brighter tomorrow"]
+}

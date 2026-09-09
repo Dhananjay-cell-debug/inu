@@ -37,14 +37,15 @@
     dialogContent.innerHTML=markup;
     if(!dialog.open){dialog.showModal();document.body.classList.add('dialog-open');lenis?.stop();}
   }
-  function showService(index){const s=content.services.items[index];openDetails(`<p class="eyebrow">${escape(content.services.eyebrow)} / 0${index+1}</p><h2 id="dialog-title">${escape(s.title)}</h2><p>${escape(s.tagline)}</p><ul>${s.offerings.map(t=>`<li>${escape(t)}</li>`).join('')}</ul>${talk()}`);}
+  function showService(index){const s=content.services.items[index];openDetails(`${s.art?`<img class="dialog-service-art" src="${escape(s.art)}" alt="">`:''}<p class="eyebrow">${escape(content.services.eyebrow)} / 0${index+1}</p><h2 id="dialog-title">${escape(s.title)}</h2><p>${escape(s.tagline)}</p><ul>${s.offerings.map(t=>`<li>${escape(t)}</li>`).join('')}</ul>${talk()}`);}
   function showWork(index){const p=content.portfolio.items[index];openDetails(`<img class="dialog-project-image" src="home-assets/${escape(p.image)}" alt="${escape(p.title)}"><p class="eyebrow">${escape(p.category)}</p><h2 id="dialog-title">${escape(p.title)}</h2>${talk()}`);}
-  document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>showService(Number(b.dataset.service))));
+  document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showService(Number(b.dataset.service));}));
+  if(content.page==='services')document.documentElement.classList.add('services-enhanced');
   document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>showWork(Number(b.dataset.work))));
-  document.querySelector('#explore-services').addEventListener('click',()=>{
+  document.querySelector('#explore-services')?.addEventListener('click',()=>{
     openDetails(`<p class="eyebrow">${escape(content.services.eyebrow)}</p><h2 id="dialog-title">Full-service<br><em>creative media</em></h2><div class="dialog-service-list">${content.services.items.map((s,i)=>`<button data-detail="${i}">${escape(s.title)}<span>↗</span></button>`).join('')}</div>`);
   });
-  document.querySelector('#view-portfolio').addEventListener('click',()=>{
+  document.querySelector('#view-portfolio')?.addEventListener('click',()=>{
     openDetails(`<p class="eyebrow">${escape(content.portfolio.eyebrow)}</p><h2 id="dialog-title">Real brands.<br><em>Real results.</em></h2><div class="dialog-service-list">${content.portfolio.items.map((p,i)=>`<button data-project="${i}">${escape(p.title)}<span>↗</span></button>`).join('')}</div>`);
   });
   dialogContent.addEventListener('click',e=>{const s=e.target.closest('[data-detail]'),p=e.target.closest('[data-project]');if(s)showService(Number(s.dataset.detail));if(p)showWork(Number(p.dataset.project));});
@@ -82,13 +83,13 @@
     }
     document.querySelector('#carousel-status').textContent=`Browsing ${content.portfolio.items.length} featured projects.`;
   }
-  document.querySelector('#previous-work').addEventListener('click',()=>moveProjects(-1));
-  document.querySelector('#next-work').addEventListener('click',()=>moveProjects(1));
-  track.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveProjects(e.key==='ArrowRight'?1:-1);}});
-  track.addEventListener('scroll',()=>{if(!trackFrame)trackTarget=track.scrollLeft;},{passive:true});
+  document.querySelector('#previous-work')?.addEventListener('click',()=>moveProjects(-1));
+  document.querySelector('#next-work')?.addEventListener('click',()=>moveProjects(1));
+  track?.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveProjects(e.key==='ArrowRight'?1:-1);}});
+  track?.addEventListener('scroll',()=>{if(!trackFrame)trackTarget=track.scrollLeft;},{passive:true});
   // On a mouse/trackpad, the rail borrows the wheel only while it can move.
   // At either end the same wheel gesture continues the document immediately.
-  track.addEventListener('wheel',e=>{
+  track?.addEventListener('wheel',e=>{
     if(reduce.matches||!finePointer.matches||trackMax()<4)return;
     const delta=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;
     if(!delta)return;
@@ -142,7 +143,7 @@
   const sceneObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting&&!revealedSections.has(entry.target)&&!reduce.matches){revealedSections.add(entry.target);flare.classList.remove('is-active');requestAnimationFrame(()=>flare.classList.add('is-active'));}}},{threshold:.24});
   document.querySelectorAll('.portfolio,.contact').forEach(el=>sceneObserver.observe(el));
   const navObserver=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){const id=scrollY<80?'home':entry.target.id||'home';document.querySelectorAll('.desktop-nav a').forEach(a=>{if(a.hash==='#'+id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}},{rootMargin:'-15% 0px -65% 0px'});
-  document.querySelectorAll('#home,#about,#services,#portfolio,#contact').forEach(el=>navObserver.observe(el));
+  if(content.page!=='services')document.querySelectorAll('#home,#about,#services,#portfolio,#contact').forEach(el=>navObserver.observe(el));
 
   // Tiny abstract embers, capped at 24 fps and paused outside the hero.
   const canvas=document.querySelector('.embers'),ctx=canvas.getContext('2d',{alpha:true});
@@ -158,9 +159,9 @@
   let burnTimeout=0;
   function endBurn(){burn.classList.remove('is-playing');burn.pause();clearTimeout(burnTimeout);}
   function playBurn(withSound=false){
-    if(reduce.matches)return;
+    if(reduce.matches||navigator.connection?.saveData)return;
     mediaSource(burn);burn.currentTime=0;burn.muted=true;
-    burn.play().then(()=>{burn.classList.add('is-playing');if(withSound&&soundEnabled){if(!burnSound.src)burnSound.src='media/burn-sound.mp3';burnSound.currentTime=0;burnSound.play().catch(()=>{});}}).catch(endBurn);
+    burn.play().then(()=>{burn.classList.add('is-playing');if(withSound&&soundEnabled){if(!burnSound.src)burnSound.src=burn.dataset.soundSrc||'media/burn-sound.mp3';burnSound.currentTime=0;burnSound.play().catch(()=>{});}}).catch(endBurn);
     clearTimeout(burnTimeout);burnTimeout=setTimeout(endBurn,2200);
   }
   burn.addEventListener('ended',endBurn);burn.addEventListener('error',endBurn);
