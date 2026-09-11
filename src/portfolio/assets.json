@@ -1,0 +1,439 @@
+{
+  "director": [
+    {
+      "src": "portfolio-assets/director-420.webp",
+      "width": 420,
+      "height": 645
+    },
+    {
+      "src": "portfolio-assets/director-800.webp",
+      "width": 800,
+      "height": 1228
+    },
+    {
+      "src": "portfolio-assets/director-1300.webp",
+      "width": 1300,
+      "height": 1995
+    }
+  ],
+  "workstation": [
+    {
+      "src": "portfolio-assets/workstation-800.webp",
+      "width": 800,
+      "height": 600
+    },
+    {
+      "src": "portfolio-assets/workstation-1500.webp",
+      "width": 1500,
+      "height": 1125
+    },
+    {
+      "src": "portfolio-assets/workstation-2300.webp",
+      "width": 2300,
+      "height": 1725
+    }
+  ],
+  "filmstrip": [
+    {
+      "src": "portfolio-assets/filmstrip-300.webp",
+      "width": 300,
+      "height": 464
+    },
+    {
+      "src": "portfolio-assets/filmstrip-600.webp",
+      "width": 600,
+      "height": 927
+    },
+    {
+      "src": "portfolio-assets/filmstrip-900.webp",
+      "width": 900,
+      "height": 1391
+    }
+  ],
+  "studio": [
+    {
+      "src": "portfolio-assets/studio-480.webp",
+      "width": 480,
+      "height": 599
+    },
+    {
+      "src": "portfolio-assets/studio-900.webp",
+      "width": 900,
+      "height": 1124
+    },
+    {
+      "src": "portfolio-assets/studio-1300.webp",
+      "width": 1300,
+      "height": 1623
+    }
+  ],
+  "hero-room": [
+    {
+      "src": "portfolio-assets/hero-room-800.webp",
+      "width": 800,
+      "height": 329
+    },
+    {
+      "src": "portfolio-assets/hero-room-1440.webp",
+      "width": 1440,
+      "height": 593
+    },
+    {
+      "src": "portfolio-assets/hero-room-2161.webp",
+      "width": 2161,
+      "height": 890
+    }
+  ],
+  "texture": [
+    {
+      "src": "portfolio-assets/texture-800.webp",
+      "width": 800,
+      "height": 548
+    },
+    {
+      "src": "portfolio-assets/texture-1440.webp",
+      "width": 1440,
+      "height": 986
+    },
+    {
+      "src": "portfolio-assets/texture-2161.webp",
+      "width": 2161,
+      "height": 1480
+    }
+  ],
+  "closing-room": [
+    {
+      "src": "portfolio-assets/closing-room-800.webp",
+      "width": 800,
+      "height": 315
+    },
+    {
+      "src": "portfolio-assets/closing-room-1440.webp",
+      "width": 1440,
+      "height": 566
+    },
+    {
+      "src": "portfolio-assets/closing-room-2161.webp",
+      "width": 2161,
+      "height": 850
+    }
+  ],
+  "curtain": [
+    {
+      "src": "portfolio-assets/curtain-200.webp",
+      "width": 200,
+      "height": 1004
+    },
+    {
+      "src": "portfolio-assets/curtain-400.webp",
+      "width": 400,
+      "height": 2008
+    },
+    {
+      "src": "portfolio-assets/curtain-530.webp",
+      "width": 530,
+      "height": 2660
+    }
+  ],
+  "project-maarrich": [
+    {
+      "src": "portfolio-assets/project-maarrich-320.webp",
+      "width": 320,
+      "height": 146
+    },
+    {
+      "src": "portfolio-assets/project-maarrich-640.webp",
+      "width": 640,
+      "height": 292
+    },
+    {
+      "src": "portfolio-assets/project-maarrich-691.webp",
+      "width": 691,
+      "height": 315
+    }
+  ],
+  "project-lavaste": [
+    {
+      "src": "portfolio-assets/project-lavaste-320.webp",
+      "width": 320,
+      "height": 167
+    },
+    {
+      "src": "portfolio-assets/project-lavaste-625.webp",
+      "width": 625,
+      "height": 327
+    }
+  ],
+  "project-jay": [
+    {
+      "src": "portfolio-assets/project-jay-320.webp",
+      "width": 320,
+      "height": 157
+    },
+    {
+      "src": "portfolio-assets/project-jay-640.webp",
+      "width": 640,
+      "height": 314
+    },
+    {
+      "src": "portfolio-assets/project-jay-694.webp",
+      "width": 694,
+      "height": 340
+    }
+  ],
+  "project-lodha": [
+    {
+      "src": "portfolio-assets/project-lodha-320.webp",
+      "width": 320,
+      "height": 148
+    },
+    {
+      "src": "portfolio-assets/project-lodha-551.webp",
+      "width": 551,
+      "height": 254
+    }
+  ],
+  "project-aerobott": [
+    {
+      "src": "portfolio-assets/project-aerobott-320.webp",
+      "width": 320,
+      "height": 178
+    },
+    {
+      "src": "portfolio-assets/project-aerobott-487.webp",
+      "width": 487,
+      "height": 271
+    }
+  ],
+  "project-bliss": [
+    {
+      "src": "portfolio-assets/project-bliss-320.webp",
+      "width": 320,
+      "height": 198
+    },
+    {
+      "src": "portfolio-assets/project-bliss-465.webp",
+      "width": 465,
+      "height": 288
+    }
+  ],
+  "project-zouq": [
+    {
+      "src": "portfolio-assets/project-zouq-320.webp",
+      "width": 320,
+      "height": 191
+    },
+    {
+      "src": "portfolio-assets/project-zouq-458.webp",
+      "width": 458,
+      "height": 274
+    }
+  ],
+  "project-dom": [
+    {
+      "src": "portfolio-assets/project-dom-320.webp",
+      "width": 320,
+      "height": 129
+    },
+    {
+      "src": "portfolio-assets/project-dom-640.webp",
+      "width": 640,
+      "height": 258
+    },
+    {
+      "src": "portfolio-assets/project-dom-647.webp",
+      "width": 647,
+      "height": 261
+    }
+  ],
+  "project-online": [
+    {
+      "src": "portfolio-assets/project-online-320.webp",
+      "width": 320,
+      "height": 115
+    },
+    {
+      "src": "portfolio-assets/project-online-640.webp",
+      "width": 640,
+      "height": 230
+    },
+    {
+      "src": "portfolio-assets/project-online-665.webp",
+      "width": 665,
+      "height": 239
+    }
+  ],
+  "project-mini": [
+    {
+      "src": "portfolio-assets/project-mini-320.webp",
+      "width": 320,
+      "height": 113
+    },
+    {
+      "src": "portfolio-assets/project-mini-640.webp",
+      "width": 640,
+      "height": 227
+    },
+    {
+      "src": "portfolio-assets/project-mini-689.webp",
+      "width": 689,
+      "height": 244
+    }
+  ],
+  "logo-lodha": [
+    {
+      "src": "portfolio-assets/logo-lodha-240.webp",
+      "width": 240,
+      "height": 95
+    },
+    {
+      "src": "portfolio-assets/logo-lodha-261.webp",
+      "width": 261,
+      "height": 103
+    }
+  ],
+  "logo-aerobott": [
+    {
+      "src": "portfolio-assets/logo-aerobott-240.webp",
+      "width": 240,
+      "height": 90
+    },
+    {
+      "src": "portfolio-assets/logo-aerobott-276.webp",
+      "width": 276,
+      "height": 103
+    }
+  ],
+  "logo-sunblond": [
+    {
+      "src": "portfolio-assets/logo-sunblond-240.webp",
+      "width": 240,
+      "height": 84
+    },
+    {
+      "src": "portfolio-assets/logo-sunblond-295.webp",
+      "width": 295,
+      "height": 103
+    }
+  ],
+  "logo-home-mentors": [
+    {
+      "src": "portfolio-assets/logo-home-mentors-240.webp",
+      "width": 240,
+      "height": 84
+    },
+    {
+      "src": "portfolio-assets/logo-home-mentors-295.webp",
+      "width": 295,
+      "height": 103
+    }
+  ],
+  "logo-chemist-king": [
+    {
+      "src": "portfolio-assets/logo-chemist-king-240.webp",
+      "width": 240,
+      "height": 90
+    },
+    {
+      "src": "portfolio-assets/logo-chemist-king-275.webp",
+      "width": 275,
+      "height": 103
+    }
+  ],
+  "logo-bliss": [
+    {
+      "src": "portfolio-assets/logo-bliss-240.webp",
+      "width": 240,
+      "height": 98
+    },
+    {
+      "src": "portfolio-assets/logo-bliss-251.webp",
+      "width": 251,
+      "height": 103
+    }
+  ],
+  "logo-maarrich": [
+    {
+      "src": "portfolio-assets/logo-maarrich-240.webp",
+      "width": 240,
+      "height": 96
+    },
+    {
+      "src": "portfolio-assets/logo-maarrich-261.webp",
+      "width": 261,
+      "height": 104
+    }
+  ],
+  "logo-lavaste": [
+    {
+      "src": "portfolio-assets/logo-lavaste-240.webp",
+      "width": 240,
+      "height": 90
+    },
+    {
+      "src": "portfolio-assets/logo-lavaste-276.webp",
+      "width": 276,
+      "height": 104
+    }
+  ],
+  "logo-jay": [
+    {
+      "src": "portfolio-assets/logo-jay-240.webp",
+      "width": 240,
+      "height": 85
+    },
+    {
+      "src": "portfolio-assets/logo-jay-295.webp",
+      "width": 295,
+      "height": 104
+    }
+  ],
+  "logo-mini": [
+    {
+      "src": "portfolio-assets/logo-mini-240.webp",
+      "width": 240,
+      "height": 85
+    },
+    {
+      "src": "portfolio-assets/logo-mini-295.webp",
+      "width": 295,
+      "height": 104
+    }
+  ],
+  "logo-zouq": [
+    {
+      "src": "portfolio-assets/logo-zouq-240.webp",
+      "width": 240,
+      "height": 91
+    },
+    {
+      "src": "portfolio-assets/logo-zouq-275.webp",
+      "width": 275,
+      "height": 104
+    }
+  ],
+  "logo-dom": [
+    {
+      "src": "portfolio-assets/logo-dom-240.webp",
+      "width": 240,
+      "height": 99
+    },
+    {
+      "src": "portfolio-assets/logo-dom-251.webp",
+      "width": 251,
+      "height": 104
+    }
+  ],
+  "story-collage": [
+    {
+      "src": "portfolio-assets/story-collage-300.webp",
+      "width": 300,
+      "height": 336
+    },
+    {
+      "src": "portfolio-assets/story-collage-420.webp",
+      "width": 420,
+      "height": 470
+    }
+  ]
+}

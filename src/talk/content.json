@@ -4,7 +4,7 @@
     {"label":"Home","href":"/"},
     {"label":"About","href":"/#about"},
     {"label":"Services","href":"/services"},
-    {"label":"Portfolio","href":"/#portfolio"},
+    {"label":"Portfolio","href":"/portfolio"},
     {"label":"Let’s talk","href":"/lets-talk","current":true}
   ],
   "hero":{

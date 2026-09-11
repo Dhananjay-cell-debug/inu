@@ -1,0 +1,21 @@
+{
+  "brand":{"title":"Portfolio — INU Media | Ideas That Deliver","description":"From brands to films, startups to global businesses. Explore the stories INU Media has helped build, grow and make unforgettable."},
+  "hero":{"eyebrow":"Our work","heading":["Ideas","that"],"accent":"Deliver","description":"From brands to films, startups to global businesses — here’s a look at the stories we’ve helped build, grow and make unforgettable.","principles":["Different brands","Same obsession","Real impact"],"wallWords":["Brands","Films","People","Culture","& beyond"],"chairWords":["Good","stories","build","brands"]},
+  "filters":[{"id":"all","label":"All"},{"id":"brand","label":"Brand"},{"id":"film","label":"Film / Music"},{"id":"campaign","label":"Campaign"},{"id":"content","label":"Content"},{"id":"digital","label":"Digital ads"},{"id":"vfx","label":"VFX / CGI"},{"id":"social","label":"Social media"}],
+  "projects":[
+    {"id":"maarrich","title":"Maarrich","subtitle":"Movie","category":"Digital promotion · Content · Campaign","tags":["film","digital","content","campaign"],"position":"50% 40%"},
+    {"id":"lavaste","title":"Lavaste","subtitle":"Film","category":"Campaign · Content · Social media","tags":["film","campaign","content","social"]},
+    {"id":"jay","title":"Jay Bhattacharya","subtitle":"Sunzara (Song)","category":"Music promotion · Digital campaign","tags":["film","campaign","digital"],"position":"50% 20%"},
+    {"id":"lodha","title":"Lodha","subtitle":"Building a better life","category":"Performance marketing · Digital ads","tags":["brand","digital"]},
+    {"id":"aerobott","title":"Aerobott","subtitle":"Drone tech","category":"Brand identity · Website · Content","tags":["brand","content"]},
+    {"id":"bliss","title":"Bliss Salon","subtitle":"","category":"Brand strategy · Social media","tags":["brand","social"]},
+    {"id":"zouq","title":"Zouq","subtitle":"Masala brand","category":"Brand identity · Content · Packaging","tags":["brand","content"]},
+    {"id":"dom","title":"DOM Productions","subtitle":"","category":"Video production · Branding","tags":["brand","film","content"]},
+    {"id":"online","title":"Online 24/7","subtitle":"VFX work","category":"VFX · CGI · Post production","tags":["vfx","film","content"]},
+    {"id":"mini","title":"Mini Films","subtitle":"Profile management (Mansi Bangla)","category":"Social media · Digital strategy","tags":["social","digital"],"position":"50% 20%"}
+  ],
+  "story":{"heading":["More than","just","projects"],"description":"Every project is a new story, a new challenge, and a new opportunity to create something meaningful.","principles":["Strategy","Creativity","Execution","Results"],"note":["Good","stories","build","brands."],"stats":[{"value":"25+","label":["Brands","& clients"]},{"value":"50+","label":["Campaigns","delivered"]},{"value":"5M+","label":["People","reached"]}]},
+  "clients":{"heading":["Some of our","clients"],"note":["Trusted by","visionaries"],"more":"And many more","items":[{"id":"lodha","name":"Lodha"},{"id":"aerobott","name":"Aerobott"},{"id":"sunblond","name":"Sunblond"},{"id":"home-mentors","name":"Home Mentors"},{"id":"chemist-king","name":"Chemist King Pharma"},{"id":"bliss","name":"Bliss Salon"},{"id":"maarrich","name":"Maarrich"},{"id":"lavaste","name":"Lavaste"},{"id":"jay","name":"Jay Bhattacharya"},{"id":"mini","name":"Mini Films"},{"id":"zouq","name":"Zouq"},{"id":"dom","name":"DOM Productions"}]},
+  "closing":{"heading":["Let’s create","the next success story"],"description":"Have a project in mind? Let’s turn your ideas into impactful results.","button":"Start a project","note":["Same","team","bigger","stories"]},
+  "footerNote":["Different perspective","a brighter tomorrow"]
+}

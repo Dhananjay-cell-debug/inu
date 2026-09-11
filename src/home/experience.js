@@ -38,10 +38,10 @@
     if(!dialog.open){dialog.showModal();document.body.classList.add('dialog-open');lenis?.stop();}
   }
   function showService(index){const s=content.services.items[index];openDetails(`${s.art?`<img class="dialog-service-art" src="${escape(s.art)}" alt="">`:''}<p class="eyebrow">${escape(content.services.eyebrow)} / 0${index+1}</p><h2 id="dialog-title">${escape(s.title)}</h2><p>${escape(s.tagline)}</p><ul>${s.offerings.map(t=>`<li>${escape(t)}</li>`).join('')}</ul>${talk()}`);}
-  function showWork(index){const p=content.portfolio.items[index];openDetails(`<img class="dialog-project-image" src="home-assets/${escape(p.image)}" alt="${escape(p.title)}"><p class="eyebrow">${escape(p.category)}</p><h2 id="dialog-title">${escape(p.title)}</h2>${talk()}`);}
+  function showWork(index){const p=content.portfolio.items[index];openDetails(`<img class="dialog-project-image" src="${escape(p.art || `home-assets/${p.image}`)}" alt="${escape(p.title)}"><p class="eyebrow">${escape(p.category)}</p><h2 id="dialog-title">${escape(p.title)}</h2>${talk()}`);}
   document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showService(Number(b.dataset.service));}));
   if(content.page==='services')document.documentElement.classList.add('services-enhanced');
-  document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>showWork(Number(b.dataset.work))));
+  document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showWork(Number(b.dataset.work));}));
   document.querySelector('#explore-services')?.addEventListener('click',()=>{
     openDetails(`<p class="eyebrow">${escape(content.services.eyebrow)}</p><h2 id="dialog-title">Full-service<br><em>creative media</em></h2><div class="dialog-service-list">${content.services.items.map((s,i)=>`<button data-detail="${i}">${escape(s.title)}<span>↗</span></button>`).join('')}</div>`);
   });
@@ -101,7 +101,7 @@
     document.querySelector('#carousel-status').textContent='Scrolling through featured projects.';
   },{passive:false});
 
-  function configureScrolling(){lenis?.destroy();lenis=null;if(!reduce.matches&&finePointer.matches&&window.Lenis){lenis=new Lenis({autoRaf:true,lerp:0.085,smoothWheel:true,syncTouch:false,anchors:{offset:-90},prevent:node=>node.hasAttribute('data-lenis-prevent')});}}
+  function configureScrolling(){lenis?.destroy();lenis=null;if(!reduce.matches&&finePointer.matches&&window.Lenis){lenis=new Lenis({autoRaf:true,lerp:0.085,smoothWheel:true,syncTouch:false,anchors:content.page==='portfolio'?false:{offset:-90},prevent:node=>node.hasAttribute('data-lenis-prevent')});}}
   configureScrolling();
   finePointer.addEventListener('change',configureScrolling);
   document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
@@ -143,14 +143,14 @@
   const sceneObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting&&!revealedSections.has(entry.target)&&!reduce.matches){revealedSections.add(entry.target);flare.classList.remove('is-active');requestAnimationFrame(()=>flare.classList.add('is-active'));}}},{threshold:.24});
   document.querySelectorAll('.portfolio,.contact').forEach(el=>sceneObserver.observe(el));
   const navObserver=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){const id=scrollY<80?'home':entry.target.id||'home';document.querySelectorAll('.desktop-nav a').forEach(a=>{if(a.hash==='#'+id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}},{rootMargin:'-15% 0px -65% 0px'});
-  if(content.page!=='services')document.querySelectorAll('#home,#about,#services,#portfolio,#contact').forEach(el=>navObserver.observe(el));
+  if(!content.page)document.querySelectorAll('#home,#about,#services,#portfolio,#contact').forEach(el=>navObserver.observe(el));
 
   // Tiny abstract embers, capped at 24 fps and paused outside the hero.
   const canvas=document.querySelector('.embers'),ctx=canvas.getContext('2d',{alpha:true});
   let emberFrame=0,heroVisible=true,lastParticleTime=0,canvasW=1,canvasH=1;
-  const particles=Array.from({length:24},(_,i)=>({x:(Math.sin(i*23.1)+1)/2,y:(i*.137)%1,speed:.014+(i%4)*.004,radius:.5+(i%3)*.3,phase:i*1.7}));
+  const particles=Array.from({length:content.page==='portfolio'?40:24},(_,i)=>({x:(Math.sin(i*23.1)+1)/2,y:(i*.137)%1,speed:.014+(i%4)*.004,radius:.5+(i%3)*.3,phase:i*1.7}));
   function sizeCanvas(){const r=canvas.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);canvasW=r.width;canvasH=r.height;canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
-  function renderEmbers(now){emberFrame=0;if(!heroVisible||document.hidden||reduce.matches)return;emberFrame=requestAnimationFrame(renderEmbers);if(now-lastParticleTime<1000/24)return;const dt=Math.min((now-lastParticleTime)/1000,.05);lastParticleTime=now;ctx.clearRect(0,0,canvasW,canvasH);const count=innerWidth<700?12:24;for(let i=0;i<count;i++){const p=particles[i];p.y=(p.y-p.speed*dt+1)%1;const opacity=Math.sin(p.y*Math.PI)*(.25+.25*Math.sin(now*.0005+p.phase));ctx.fillStyle=`rgba(255,${125+i%3*24},35,${Math.max(0,opacity)})`;ctx.beginPath();ctx.ellipse(canvasW*(.32+p.x*.38)+Math.sin(now*.0002+p.phase)*9,canvasH*(.12+p.y*.72),p.radius,p.radius*1.8,0,0,Math.PI*2);ctx.fill();}}
+  function renderEmbers(now){emberFrame=0;if(!heroVisible||document.hidden||reduce.matches)return;emberFrame=requestAnimationFrame(renderEmbers);if(now-lastParticleTime<1000/24)return;const dt=Math.min((now-lastParticleTime)/1000,.05);lastParticleTime=now;ctx.clearRect(0,0,canvasW,canvasH);const count=content.page==='portfolio'?(innerWidth<700?20:40):(innerWidth<700?12:24);for(let i=0;i<count;i++){const p=particles[i];p.y=(p.y-p.speed*dt+1)%1;const opacity=Math.sin(p.y*Math.PI)*(.25+.25*Math.sin(now*.0005+p.phase));ctx.fillStyle=`rgba(255,${125+i%3*24},35,${Math.max(0,opacity)})`;ctx.shadowBlur=content.page==='portfolio'?6:0;ctx.shadowColor='#ff7519';ctx.beginPath();ctx.ellipse(canvasW*(.32+p.x*.38)+Math.sin(now*.0002+p.phase)*9,canvasH*(.12+p.y*.72),p.radius,p.radius*1.8,0,0,Math.PI*2);ctx.fill();}}
   function startEmbers(){if(!emberFrame&&!reduce.matches&&!document.hidden&&heroVisible)emberFrame=requestAnimationFrame(renderEmbers);}
   new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;if(heroVisible)startEmbers();else{cancelAnimationFrame(emberFrame);emberFrame=0;}},{threshold:0}).observe(hero);
   sizeCanvas();addEventListener('resize',sizeCanvas,{passive:true});startEmbers();

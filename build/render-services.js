@@ -12,7 +12,7 @@ const image=(key,cls='',sizes='100vw',priority=false)=>{
 };
 let html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
 const shared=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);
-const navigation=[{label:'Home',href:'/'},{label:'About',href:'/#about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/#portfolio'}];
+const navigation=[{label:'Home',href:'/'},{label:'About',href:'/#about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
 const data={...shared,services:page.services,navigation,page:'services'};
 data.services.items=data.services.items.map(s=>({...s,art:assets['card-'+s.image].at(-1).src}));
 const p=page;
