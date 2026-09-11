@@ -15,7 +15,10 @@ const image = (key, cls='', sizes='100vw', priority=false) => {
 const icon=(name,cls='')=>`<svg class="${cls}" aria-hidden="true"><use href="#icon-${escape(name)}"></use></svg>`;
 const arrow='<span class="button-arrow" aria-hidden="true">↗</span>';
 const heading=lines=>lines.map(l=>`<span class="heading-line">${l.accent?`<em>${escape(l.text)}</em>`:escape(l.text)}${l.inlineAccent?`<em>${escape(l.inlineAccent)}</em>`:''}</span>`).join('');
+const partial=name=>fs.readFileSync(path.join(src,'partials',name+'.html'),'utf8').trim();
+const atmosphere={atmosphere:partial('field'),consent:partial('consent'),footerLegal:partial('footer-legal')};
 const render={
+  ...atmosphere,
   title:escape(data.brand.title), description:escape(data.brand.description),
   brand:escape(data.brand.name), suffix:escape(data.brand.suffix), talkLabel:escape(data.talk.label),
   nav:data.navigation.map((n,i)=>`<a href="${escape(n.href)}" ${i===0?'aria-current="page"':''}>${escape(n.label)}</a>`).join(''),
@@ -38,7 +41,7 @@ const render={
   contactArt:image('sunset-room','sunset-room layer-image','100vw'),contactPerson:image('closing-person','closing-person layer-image','(max-width:700px) 50vw, 25vw'),
   contactEyebrow:escape(data.contact.eyebrow),contactHeading:heading(data.contact.heading),contactDescription:escape(data.contact.description),contactNote:data.contact.wallNote.map(escape).join('<br>'),
   contactHref:escape(data.talk.href),footerBrand:escape(data.footer.brand),footerWords:data.footer.words.map(w=>`<span>${escape(w)}</span>`).join(''),footerNote:data.footer.note.map(escape).join('<br>'),
-  socials:data.footer.socials.map(s=>`<a href="${escape(s.href)}" aria-label="${escape(s.label)}" ${s.href.startsWith('https')?'target="_blank" rel="noopener noreferrer"':''}>${icon(s.icon)}</a>`).join(''),
+  socials:data.footer.socials.map(s=>`<a href="${escape(s.href)}" data-social="${escape(s.icon)}" aria-label="${escape(s.label)}" ${s.href.startsWith('https')?'target="_blank" rel="noopener noreferrer"':''}>${icon(s.icon)}</a>`).join(''),
   musicCreditHref:escape(data.music.source),musicCredit:escape(data.music.credit),
   content:JSON.stringify(data).replace(/</g,'\\u003c')
 };
@@ -49,10 +52,10 @@ let html=fs.readFileSync(path.join(src,'template.html'),'utf8').replace(/\{\{(\w
 const usedFiles=new Set();
 for(const match of html.matchAll(/home-assets\/([\w.-]+)/g)) usedFiles.add(match[1]);
 for(const p of data.portfolio.items)usedFiles.add(p.image);
-let css=fs.readFileSync(path.join(src,'cinematic.css'),'utf8')+'\n'+fs.readFileSync(path.join(src,'responsive.css'),'utf8');
+let css=fs.readFileSync(path.join(src,'cinematic.css'),'utf8')+'\n'+fs.readFileSync(path.join(src,'responsive.css'),'utf8')+'\n'+fs.readFileSync(path.join(src,'atmosphere.css'),'utf8');
 for(const match of css.matchAll(/home-assets\/([\w.-]+)/g))usedFiles.add(match[1]);
 for(const name of usedFiles)if(!fs.existsSync(path.join(src,'assets',name)))throw new Error(`Missing image or font ${name}`);
-let script=fs.readFileSync(path.join(src,'experience.js'),'utf8');
+let script=fs.readFileSync(path.join(src,'experience.js'),'utf8')+'\n'+fs.readFileSync(path.join(src,'atmosphere.js'),'utf8');
 const fingerprints=new Map();
 for(const name of usedFiles){
  const digest=crypto.createHash('sha256').update(fs.readFileSync(path.join(src,'assets',name))).digest('hex').slice(0,10);

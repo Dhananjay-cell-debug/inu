@@ -10,17 +10,17 @@
     <div class="folio-hero-copy"><p class="eyebrow">{{heroEyebrow}}</p><h1 id="folio-title">{{heroHeading}}<em>{{heroAccent}}</em></h1><p class="folio-intro">{{heroDescription}}</p><span class="folio-dash" aria-hidden="true"></span><p class="folio-principles">{{heroPrinciples}}</p></div>
     <a class="folio-discover" href="#projects" aria-label="Explore projects"><span aria-hidden="true">↓</span></a>
   </section>
-  <section class="folio-projects" id="projects" aria-label="Our projects">
-    <div class="filter-wrap"><div class="folio-filters" role="group" aria-label="Filter projects" data-lenis-prevent>{{filters}}</div></div>
-    <div class="folio-grid" id="project-grid" tabindex="0" aria-label="Portfolio projects. Use arrow keys to browse on mobile." data-lenis-prevent>{{projects}}</div>
-    <div class="folio-rail-controls"><p id="project-count" role="status">10 projects</p><div><button id="folio-prev" aria-label="Previous projects">←</button><button id="folio-next" aria-label="Next projects">→</button></div></div>
+  <section class="folio-projects fluid-section" id="projects" aria-label="Our projects"><span class="fluid-grid" aria-hidden="true"></span><span class="fluid-orbit" aria-hidden="true"><span></span><span></span><span></span></span>
+    <div class="folio-work-intro reveal"><p class="eyebrow">{{workEyebrow}}</p><h2>{{workHeading}}<em>{{workAccent}}</em></h2><p class="folio-work-note">{{workDescription}}</p></div>
+    <nav class="content-index" aria-label="Jump to a chapter of work">{{chapterIndex}}</nav>
+    {{chapters}}
   </section>
   <section class="folio-story" aria-labelledby="story-title" data-scene>
     <div class="folio-story-texture">{{texture}}</div><div class="folio-story-collage parallax" data-depth="0.028">{{storyCollage}}</div><div class="folio-story-strip parallax" data-depth="-0.03">{{filmstrip}}</div>
     <div class="folio-story-copy reveal"><h2 id="story-title">{{storyHeading}}</h2><p>{{storyDescription}}</p></div><p class="folio-story-principles reveal">{{storyPrinciples}}</p><p class="folio-story-note">{{storyNote}}</p>
     <div class="folio-stats" aria-label="Our impact">{{stats}}</div>
   </section>
-  <section class="folio-clients" aria-labelledby="clients-title"><div class="folio-clients-heading reveal"><h2 id="clients-title">{{clientHeading}}</h2><p>{{clientNote}}</p></div><div class="folio-logo-grid">{{logos}}</div><p class="folio-more">{{clientMore}} <span aria-hidden="true">→</span></p></section>
+  <section class="folio-clients fluid-section" aria-labelledby="clients-title"><div class="folio-clients-heading reveal"><h2 id="clients-title">{{clientHeading}}</h2><p>{{clientNote}}</p></div><div class="folio-logo-grid">{{logos}}</div><p class="folio-more">{{clientMore}} <span aria-hidden="true">→</span></p></section>
   <section class="folio-closing" id="contact" aria-labelledby="closing-title" data-scene>
     <div class="folio-closing-room parallax" data-depth="0.035">{{closingRoom}}</div><div class="folio-closing-shade" aria-hidden="true"></div><div class="folio-studio parallax" data-depth="-0.018">{{studio}}</div><div class="folio-curtain">{{curtain}}<p>{{closingNote}}</p><span class="wordmark" aria-hidden="true">INU<span>MEDIA</span></span></div>
     <div class="folio-closing-copy reveal"><h2 id="closing-title">{{closingHeading}}</h2><p>{{closingDescription}}</p><a class="pill" href="{{contactHref}}">{{closingButton}}<span class="button-arrow" aria-hidden="true">→</span></a></div>

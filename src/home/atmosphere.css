@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Atmosphere layer.
+
+   Every mechanism below was lifted from the live reference sites rather than
+   re-invented, then retinted from their red/paper palettes to INU's orange on
+   near-black. Sources:
+
+   - paparazzientertainment.in (app.css)  → .noise grain, the drifting radial
+     field, the vertical grid shimmer, the orbit rings, the card light sweep.
+   - paparazzi.krildigital.com (paparazzi-navbar.css) → the social discs whose
+     platform colour blooms out of the centre on hover.
+   - welcome-woods.vercel.app (index css bundle) → the consent bar, the
+     preferences dialog and the switch geometry.
+   ========================================================================== */
+
+/* --- Film grain, verbatim from paparazzientertainment.in -----------------
+   One addition: translateZ(0)/will-change give the overlay its own compositor
+   layer. Without it this full-viewport fixed pane forces the hero's own
+   negative-z art layers out of the initial paint and the hero renders black. */
+.noise{position:fixed;inset:0;z-index:9997;opacity:.055;pointer-events:none;transform:translateZ(0);will-change:opacity;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")}
+
+/* --- The fluid black field ----------------------------------------------
+   Exactly as they build it: the field belongs to a section, not to the page.
+   `isolation:isolate` keeps the negative-z layers inside their own section —
+   a single fixed pane behind the whole document looks equivalent but makes
+   the compositor drop the hero's own negative-z art layers, blacking it out.
+   --section-x/-y/-grid come from atmosphere.js using their scroll maths. */
+.fluid-section{position:relative;isolation:isolate}
+.fluid-section:before{content:"";position:absolute;z-index:-2;inset:0;pointer-events:none;background:radial-gradient(circle at calc(80% + var(--section-x,0px)) calc(18% + var(--section-y,0px)),rgba(255,121,10,.075),transparent 28%),radial-gradient(circle at 12% 74%,rgba(255,255,255,.025),transparent 32%)}
+.fluid-section:after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.2;background:linear-gradient(90deg,transparent 0 49.9%,rgba(255,255,255,.045) 50%,transparent 50.1%);background-size:18vw 100%;transform:translate3d(var(--section-grid,0),0,0)}
+.fluid-grid{position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:68px 68px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 76%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 76%,transparent)}
+.fluid-orbit{position:absolute;z-index:-1;width:min(50vw,760px);aspect-ratio:1;right:-20vw;top:7%;pointer-events:none;opacity:.18;animation:orbitDrift 18s ease-in-out infinite alternate}
+.fluid-orbit span{position:absolute;inset:0;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.fluid-orbit span:nth-child(2){inset:16%;border-color:rgba(255,121,10,.45);animation:orbitSpin 20s linear infinite}
+.fluid-orbit span:nth-child(3){inset:34%;border-style:dashed;animation:orbitSpin 13s linear infinite reverse}
+@keyframes orbitDrift{to{transform:translate3d(-5vw,6vh,0) scale(1.05)}}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+/* The footer was solid #050704 and sealed the field off; let it read through. */
+.footer{background:linear-gradient(180deg,rgba(5,7,4,.82),rgba(5,7,4,.97))}
+
+/* --- Horizontal rails must never trap the page ---------------------------
+   While a rail is a native scroll box, Chrome latches the whole wheel gesture
+   to it, so the page stopped dead the moment the cursor crossed a thumbnail —
+   overscroll-behavior does not help, because the gesture never chains out in
+   the first place. On a mouse the rail therefore stops being a scroll box at
+   all: `overflow:hidden` still accepts scrollLeft, which is all the drag and
+   the arrows use. Touch keeps the real scroll box so swiping still works. */
+[data-drag-rail]{overscroll-behavior-x:contain;overscroll-behavior-y:auto}
+@media (pointer:fine){[data-drag-rail]{overflow:hidden}}
+
+/* --- The light sweep across a card, from their `.media-card:after` ------- */
+.lightning{position:relative;overflow:hidden}
+.lightning:after{content:"";position:absolute;z-index:2;top:-30%;left:-85%;width:55%;height:170%;transform:rotate(16deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .9s var(--ease);pointer-events:none}
+.lightning:hover:after,.lightning:focus-visible:after{left:135%}
+
+/* --- Social discs, from paparazzi.krildigital.com ------------------------ */
+.socials{margin-left:auto;display:flex;gap:1.5rem;align-items:center}
+.socials a{--social-fill:#ff790a;--social-glow:255,121,10;position:relative;overflow:hidden;width:2.75rem;height:2.75rem;padding:.72rem;display:grid;place-items:center;color:rgba(243,241,235,.68);border:1px solid rgba(243,241,235,.16);background-color:rgba(255,255,255,.022);border-radius:50%;isolation:isolate;transition:color .28s ease,border-color .32s ease,transform .38s cubic-bezier(.22,.61,.36,1),box-shadow .38s ease}
+.socials a[data-social=linkedin]{--social-fill:#0a66c2;--social-glow:10,102,194}
+.socials a[data-social=twitter]{--social-fill:#1d9bf0;--social-glow:29,155,240}
+.socials a[data-social=instagram]{--social-fill:linear-gradient(135deg,#833ab4 0%,#e1306c 48%,#f77737 100%);--social-glow:225,48,108}
+.socials a[data-social=facebook]{--social-fill:#1877f2;--social-glow:24,119,242}
+.socials a[data-social=youtube]{--social-fill:#f00;--social-glow:255,0,0}
+/* platform colour blooms from the centre of the disc on hover */
+.socials a:after{content:"";position:absolute;inset:0;z-index:0;border-radius:50%;background:var(--social-fill);opacity:0;transform:scale(.22);transition:transform .42s cubic-bezier(.19,1,.22,1),opacity .24s ease}
+.socials a svg{position:relative;z-index:1;width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .38s cubic-bezier(.19,1,.22,1)}
+.socials a:hover,.socials a:focus-visible{color:#fff;border-color:rgba(var(--social-glow),.9);transform:translateY(-4px) scale(1.04);box-shadow:0 0 0 1px rgba(var(--social-glow),.16),0 10px 28px -6px rgba(var(--social-glow),.62)}
+.socials a:hover:after,.socials a:focus-visible:after{opacity:1;transform:scale(1)}
+.socials a:hover svg,.socials a:focus-visible svg{transform:scale(1.08)}
+.socials a:focus-visible{outline:2px solid rgba(var(--social-glow),.9);outline-offset:3px}
+
+/* --- Consent, ported from welcome-woods.vercel.app ----------------------- */
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;opacity:0;visibility:hidden;transform:translateY(101%);transition:transform .65s var(--ease),opacity .4s,visibility .4s;background:rgba(6,7,6,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -18px 50px rgba(0,0,0,.55)}
+.cookie-bar.is-visible{opacity:1;visibility:visible;transform:none}
+.cookie-bar-inner{display:flex;align-items:center;gap:44px;width:calc(100% - 2 * var(--page));max-width:1400px;margin-inline:auto;padding:19px 0;position:relative}
+.cookie-bar p{margin:0;max-width:78ch;color:var(--muted);font-size:14px;line-height:1.7}
+.cookie-bar a{color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+.cookie-bar a:hover{color:var(--orange);border-color:var(--orange)}
+.cookie-actions{flex-shrink:0;display:flex;align-items:center;gap:11px;margin-left:auto}
+.cookie-ghost,.cookie-accept{padding:14px 20px;font:400 11px/1 Archivo,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;border:1px solid var(--line);cursor:pointer;transition:color .3s,background .3s,border-color .3s}
+.cookie-ghost{color:var(--ink);background:0 0}
+.cookie-ghost:hover{border-color:var(--orange);color:var(--orange)}
+.cookie-accept{background:var(--orange);border-color:var(--orange);color:#140a02}
+.cookie-accept:hover{background:#ff9034;border-color:#ff9034}
+.cookie-dismiss{padding:9px;color:var(--muted);background:0 0;border:0;cursor:pointer;transition:color .3s;font-size:18px;line-height:1}
+.cookie-dismiss:hover{color:var(--ink)}
+.cookie-panel{width:min(580px,100vw - 36px);max-width:none;max-height:min(86dvh,780px);padding:0;overflow:hidden;border:1px solid var(--line);background:#0b0d0a;color:var(--ink);z-index:10000;box-shadow:0 40px 90px rgba(0,0,0,.66)}
+.cookie-panel::backdrop{background:rgba(4,5,4,.74)}
+.cookie-panel-inner{max-height:min(86dvh,780px);padding:34px 38px 30px;overflow-y:auto;overscroll-behavior:contain}
+.cookie-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.cookie-panel-head .eyebrow{margin-bottom:12px}
+.cookie-panel-head h2{margin:0;font:600 34px/1.05 INUDisplay,Archivo,Arial,sans-serif;letter-spacing:-.02em}
+.cookie-panel-close{padding:4px;color:var(--muted);background:0 0;border:0;font-size:22px;line-height:1;cursor:pointer;transition:color .3s}
+.cookie-panel-close:hover{color:var(--ink)}
+.cookie-panel-intro{margin:20px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.cookie-list{margin:26px 0 28px;padding:0;list-style:none}
+.cookie-list li{border-top:1px solid var(--line);padding:18px 0}
+.cookie-row{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.cookie-row h3{margin:0;font:400 16px/1.2 Archivo,Arial,sans-serif;letter-spacing:.02em}
+.cookie-list p{margin:10px 0 0;max-width:46ch;color:var(--muted);font-size:13.5px;line-height:1.72}
+.cookie-switch{position:relative;flex-shrink:0;width:46px;height:25px;border:1px solid var(--line);border-radius:999px;background:rgba(255,121,10,.16);cursor:pointer;transition:background .35s var(--ease),border-color .35s}
+.cookie-switch>span{position:absolute;top:2px;left:2px;width:19px;height:19px;border-radius:50%;background:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.5);transition:transform .35s var(--ease)}
+.cookie-switch.is-on{background:var(--orange);border-color:var(--orange)}
+.cookie-switch.is-on>span{transform:translate(21px)}
+.cookie-switch.is-locked{opacity:.5;cursor:not-allowed}
+.cookie-panel-actions{display:flex;flex-wrap:wrap;gap:11px}
+.cookie-panel-actions>button{flex:auto;text-align:center}
+.cookie-foot{margin:20px 0 0;color:var(--muted);font-size:12px;line-height:1.7}
+.cookie-foot a{color:var(--ink);border-bottom:1px solid var(--line)}
+.footer-legal{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.footer-legal a,.footer-legal button{color:var(--muted);background:0 0;border:0;padding:0;font:400 12px/1 Archivo,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:color .3s}
+.footer-legal a:hover,.footer-legal button:hover{color:var(--orange)}
+
+@media (max-width:860px){
+  .cookie-bar-inner{flex-direction:column;align-items:flex-start;gap:16px;padding:18px 0}
+  .cookie-actions{margin-left:0;flex-wrap:wrap}
+  .cookie-panel-inner{padding:26px 22px 24px}
+  .socials{gap:.85rem}
+  .socials a{width:2.5rem;height:2.5rem}
+  .fluid-orbit{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .fluid-orbit,.fluid-orbit span{animation:none}
+  .lightning:after{transition:none}
+  .socials a,.socials a:after,.socials a svg{transition:none}
+  .socials a:hover,.socials a:focus-visible{transform:none}
+  .cookie-bar{transition:opacity .2s}
+}

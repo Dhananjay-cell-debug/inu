@@ -1,36 +1,82 @@
 (() => {
  'use strict';
- const grid=document.querySelector('#project-grid');
- const cards=[...grid.querySelectorAll('.folio-card')];
- const filters=[...document.querySelectorAll('[data-filter]')];
- const count=document.querySelector('#project-count');
- const previous=document.querySelector('#folio-prev'),next=document.querySelector('#folio-next');
+ const index=[...document.querySelectorAll('[data-chapter-link]')];
+ const chapters=[...document.querySelectorAll('[data-chapter]')];
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
- let active='all',frame=0;
  document.documentElement.classList.add('portfolio-enhanced');
- const visible=()=>cards.filter(card=>!card.hidden);
- function updateRail(){frame=0;previous.disabled=grid.scrollLeft<2;next.disabled=grid.scrollLeft>=grid.scrollWidth-grid.clientWidth-2;}
- function filterProjects(button){
-   if(button.dataset.filter===active)return;
-   active=button.dataset.filter;
-   filters.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-   grid.classList.toggle('is-filtered',active!=='all');
-   cards.forEach(card=>{card.hidden=active!=='all'&&!card.dataset.tags.split(' ').includes(active);});
-   const shown=visible();
-   shown.forEach((card,i)=>{card.classList.add('is-visible');if(!reduce.matches)card.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,delay:Math.min(i,5)*45,easing:'cubic-bezier(.22,1,.36,1)'});});
-   grid.scrollTo({left:0,behavior:'instant'});
-   count.textContent=`${shown.length} ${shown.length===1?'project':'projects'}${active==='all'?'':' · '+button.textContent}`;
-   // The shared parallax engine caches section geometry. Filtering changes height.
-   dispatchEvent(new Event('resize'));
-   updateRail();
+
+ /* Both sticky bars stack under the fixed header, so their real heights drive
+    the offsets rather than guessed constants. */
+ const header=document.querySelector('.header'),bar=document.querySelector('.content-index');
+ const measure=()=>{
+   const root=document.documentElement.style;
+   if(header)root.setProperty('--header-h',`${Math.round(header.offsetHeight)}px`);
+   if(bar)root.setProperty('--index-h',`${Math.round(bar.offsetHeight)}px`);
+ };
+ measure();addEventListener('resize',measure,{passive:true});
+ const offset=()=>(header?.offsetHeight||0)+(bar?.offsetHeight||0);
+
+ /* The index follows whichever chapter the reader is actually inside: the
+    last one whose top has passed just under the sticky bars. */
+ if(index.length&&chapters.length){
+  const mark=id=>index.forEach(link=>link.classList.toggle('is-active',link.dataset.chapterLink===id));
+  let frame=0;
+  const sync=()=>{
+    frame=0;
+    const line=offset()+24;
+    let current=chapters[0];
+    for(const chapter of chapters)if(chapter.getBoundingClientRect().top<=line)current=chapter;
+    mark(current.dataset.chapter);
+  };
+  addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync);},{passive:true});
+  addEventListener('resize',sync,{passive:true});
+  sync();
+  // Anchor jumps have to clear both sticky bars, which Lenis is not managing here.
+  index.forEach(link=>link.addEventListener('click',event=>{
+    const target=document.querySelector(link.getAttribute('href'));
+    if(!target)return;
+    event.preventDefault();
+    scrollTo({top:target.getBoundingClientRect().top+scrollY-offset()-18,behavior:reduce.matches?'instant':'smooth'});
+  }));
  }
- filters.forEach(button=>button.addEventListener('click',()=>filterProjects(button)));
- function move(direction){const card=visible()[0];if(!card)return;const distance=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(grid).columnGap)||10);grid.scrollBy({left:distance*direction,behavior:reduce.matches?'instant':'smooth'});}
- previous.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
- grid.addEventListener('keydown',e=>{if(innerWidth>700||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();move(e.key==='ArrowRight'?1:-1);});
- grid.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(updateRail);},{passive:true});
- addEventListener('resize',updateRail,{passive:true});updateRail();
- // Pause finite scene animations when they are no longer visible.
- new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{target.querySelectorAll('.hero-person,.folio-workstation img,.folio-aura').forEach(el=>el.style.animationPlayState=isIntersecting&&!document.hidden?'running':'paused');})).observe(document.querySelector('.folio-hero'));
- document.addEventListener('visibilitychange',()=>{document.querySelectorAll('.hero-person,.folio-workstation img,.folio-aura').forEach(el=>el.style.animationPlayState=document.hidden?'paused':'running');});
+
+ /* Arrow buttons and keyboard paging for each rail; dragging is handled by
+    the shared atmosphere layer. */
+ chapters.forEach(chapter=>{
+  const rail=chapter.querySelector('.content-rail');
+  const previous=chapter.querySelector('[data-rail-prev]'),next=chapter.querySelector('[data-rail-next]');
+  if(!rail)return;
+  const step=()=>{
+    const card=rail.querySelector('.folio-card');
+    const gap=parseFloat(getComputedStyle(rail.querySelector('.content-rail__track')).columnGap)||14;
+    return (card?card.getBoundingClientRect().width:260)+gap;
+  };
+  const sync=()=>{
+    if(!previous||!next)return;
+    const max=rail.scrollWidth-rail.clientWidth;
+    previous.disabled=rail.scrollLeft<2;
+    next.disabled=rail.scrollLeft>=max-2;
+  };
+  const move=direction=>rail.scrollBy({left:step()*direction,behavior:reduce.matches?'instant':'smooth'});
+  previous?.addEventListener('click',()=>move(-1));
+  next?.addEventListener('click',()=>move(1));
+  rail.addEventListener('keydown',event=>{
+    if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
+    event.preventDefault();move(event.key==='ArrowRight'?1:-1);
+  });
+  let frame=0;
+  rail.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;sync();});},{passive:true});
+  addEventListener('resize',sync,{passive:true});
+  sync();
+ });
+
+ /* Pause finite scene animations when they are no longer visible. */
+ const hero=document.querySelector('.folio-hero');
+ const scenery=()=>document.querySelectorAll('.hero-person,.folio-workstation img,.folio-aura');
+ if(hero)new IntersectionObserver(entries=>entries.forEach(({isIntersecting})=>{
+   scenery().forEach(el=>el.style.animationPlayState=isIntersecting&&!document.hidden?'running':'paused');
+ })).observe(hero);
+ document.addEventListener('visibilitychange',()=>{
+   scenery().forEach(el=>el.style.animationPlayState=document.hidden?'paused':'running');
+ });
 })();

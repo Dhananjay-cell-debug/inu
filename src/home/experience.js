@@ -87,18 +87,14 @@
   document.querySelector('#next-work')?.addEventListener('click',()=>moveProjects(1));
   track?.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveProjects(e.key==='ArrowRight'?1:-1);}});
   track?.addEventListener('scroll',()=>{if(!trackFrame)trackTarget=track.scrollLeft;},{passive:true});
-  // On a mouse/trackpad, the rail borrows the wheel only while it can move.
-  // At either end the same wheel gesture continues the document immediately.
+  // The rail used to borrow the vertical wheel and turn it into sideways
+  // movement, which pinned the reader to this section for the length of the
+  // rail whenever the cursor crossed a thumbnail. The wheel now always belongs
+  // to the page; the rail moves by drag, by its arrows and by the keyboard.
   track?.addEventListener('wheel',e=>{
-    if(reduce.matches||!finePointer.matches||trackMax()<4)return;
-    const delta=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;
-    if(!delta)return;
-    const current=Math.round(trackTarget||track.scrollLeft),max=trackMax();
-    const canMove=delta>0?current<max-1:current>1;
-    if(!canMove)return;
+    if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||trackMax()<4)return;
     e.preventDefault();
-    nudgeTrack(delta*.9);
-    document.querySelector('#carousel-status').textContent='Scrolling through featured projects.';
+    nudgeTrack(e.deltaX*.9);
   },{passive:false});
 
   function configureScrolling(){lenis?.destroy();lenis=null;if(!reduce.matches&&finePointer.matches&&window.Lenis){lenis=new Lenis({autoRaf:true,lerp:0.085,smoothWheel:true,syncTouch:false,anchors:content.page==='portfolio'?false:{offset:-90},prevent:node=>node.hasAttribute('data-lenis-prevent')});}}

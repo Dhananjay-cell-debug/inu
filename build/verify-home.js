@@ -11,7 +11,10 @@ for(const m of html.matchAll(/(?:src|href|data-src)="([^"#]+)"/g)){
 }
 for(const m of html.matchAll(/srcset="([^"]+)"/g))for(const candidate of m[1].split(','))required.add(candidate.trim().split(' ')[0]);
 const css=fs.readFileSync(path.join(root,'home.css'),'utf8');
-for(const m of css.matchAll(/url\(['"]?([^)'" ]+)/g))required.add(m[1]);
+// Inline data: URIs (the grain texture, the social masks) have no file on disk,
+// and their own payload contains url(#id) references, so drop them wholesale.
+const fileCss=css.replace(/url\(["']?data:[^)]*\)/g,'url()');
+for(const m of fileCss.matchAll(/url\(['"]?([^)'" ]+)/g))required.add(m[1]);
 for(const file of required)assert(fs.existsSync(path.join(root,file)),`Missing asset: ${file}`);
 for(const route of routes){const page=route==='/'?'index.html':route.replace(/^\//,'')+'.html';assert(fs.existsSync(path.join(root,page)),`Broken route ${route} (expected ${page})`);}
 const json=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);

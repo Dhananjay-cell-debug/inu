@@ -1,18 +1,48 @@
 {
   "brand":{"title":"Portfolio — INU Media | Ideas That Deliver","description":"From brands to films, startups to global businesses. Explore the stories INU Media has helped build, grow and make unforgettable."},
   "hero":{"eyebrow":"Our work","heading":["Ideas","that"],"accent":"Deliver","description":"From brands to films, startups to global businesses — here’s a look at the stories we’ve helped build, grow and make unforgettable.","principles":["Different brands","Same obsession","Real impact"],"wallWords":["Brands","Films","People","Culture","& beyond"],"chairWords":["Good","stories","build","brands"]},
-  "filters":[{"id":"all","label":"All"},{"id":"brand","label":"Brand"},{"id":"film","label":"Film / Music"},{"id":"campaign","label":"Campaign"},{"id":"content","label":"Content"},{"id":"digital","label":"Digital ads"},{"id":"vfx","label":"VFX / CGI"},{"id":"social","label":"Social media"}],
+  "work":{"eyebrow":"The work, chapter by chapter","heading":["Work made for"],"accent":"every screen.","description":"Six disciplines, one studio. Scroll through design, web and tech, film and VFX, performance, social and PR — and drag any row sideways to keep going."},
+  "chapters":[
+    {"id":"brand","label":"Brand & Graphic Design","short":"Brand & Design","title":["Brand &","Graphic Design"],"tags":["brand"],"description":"Logos, packaging, print and motion — the visual system that makes a business recognisable everywhere it lands.","meta":"IDENTITY · PACKAGING · PRINT · MOTION"},
+    {"id":"web","label":"Web Design & Tech","short":"Web & Tech","title":["Web Design","& Tech"],"tags":["web"],"description":"From a single landing page to a complex multi-page build — designed to look sharp and built to convert.","meta":"WEB DESIGN · ECOMMERCE · SEO · A+ CONTENT"},
+    {"id":"film","label":"Film, Music & VFX","short":"Film & VFX","title":["Film, Music","& VFX"],"tags":["film","vfx"],"description":"Movie and song promotions, production and post — including VFX and CGI finished in house.","meta":"PROMOTIONS · PRODUCTION · VFX · CGI"},
+    {"id":"performance","label":"Performance & Digital Ads","short":"Performance","title":["Performance","& Digital Ads"],"tags":["performance"],"description":"Google, Meta and LinkedIn campaigns planned around a number — leads, sales and a return on ad spend worth reporting.","meta":"GOOGLE · META · LINKEDIN · LEAD GEN"},
+    {"id":"social","label":"Social Media & Content","short":"Social & Content","title":["Social Media","& Content"],"tags":["social"],"description":"Strategy before posting: audit, audience, calendar, ORM and the content that keeps a brand in front of people every week.","meta":"STRATEGY · CONTENT · ORM · COMMUNITY"},
+    {"id":"pr","label":"PR & Influencer","short":"PR & Influencer","title":["PR &","Influencer"],"tags":["pr"],"description":"Press releases, media outreach and a pan-India creator network — coverage that puts the work in front of the right rooms.","meta":"ePR · MEDIA OUTREACH · INFLUENCERS"}
+  ],
   "projects":[
-    {"id":"maarrich","title":"Maarrich","subtitle":"Movie","category":"Digital promotion · Content · Campaign","tags":["film","digital","content","campaign"],"position":"50% 40%"},
-    {"id":"lavaste","title":"Lavaste","subtitle":"Film","category":"Campaign · Content · Social media","tags":["film","campaign","content","social"]},
-    {"id":"jay","title":"Jay Bhattacharya","subtitle":"Sunzara (Song)","category":"Music promotion · Digital campaign","tags":["film","campaign","digital"],"position":"50% 20%"},
-    {"id":"lodha","title":"Lodha","subtitle":"Building a better life","category":"Performance marketing · Digital ads","tags":["brand","digital"]},
-    {"id":"aerobott","title":"Aerobott","subtitle":"Drone tech","category":"Brand identity · Website · Content","tags":["brand","content"]},
+    {"id":"zouq","title":"Zouq","subtitle":"Masala brand","category":"Brand identity · Packaging · Content","tags":["brand"]},
+    {"id":"aerobott","title":"Aerobott","subtitle":"Drone tech","category":"Brand identity · Website · Content","tags":["brand","web"]},
     {"id":"bliss","title":"Bliss Salon","subtitle":"","category":"Brand strategy · Social media","tags":["brand","social"]},
-    {"id":"zouq","title":"Zouq","subtitle":"Masala brand","category":"Brand identity · Content · Packaging","tags":["brand","content"]},
-    {"id":"dom","title":"DOM Productions","subtitle":"","category":"Video production · Branding","tags":["brand","film","content"]},
-    {"id":"online","title":"Online 24/7","subtitle":"VFX work","category":"VFX · CGI · Post production","tags":["vfx","film","content"]},
-    {"id":"mini","title":"Mini Films","subtitle":"Profile management (Mansi Bangla)","category":"Social media · Digital strategy","tags":["social","digital"],"position":"50% 20%"}
+    {"id":"chemist-king","title":"Chemist King","subtitle":"Pharma retail","category":"Branding · Store content · ORM","tags":["brand","social"]},
+    {"id":"hexagon","title":"Hexagon Advisory","subtitle":"UAE","category":"Brand identity · Website","tags":["brand","web"]},
+
+    {"id":"sonali-jain","title":"Sonali Jain","subtitle":"Fashion label","category":"Shopify build · Ecommerce design","tags":["web"]},
+    {"id":"ditas","title":"Ditas Delhi","subtitle":"Hospitality","category":"Website · Menu content · Listings","tags":["web"]},
+    {"id":"rosa","title":"Rosa Builders","subtitle":"Real estate","category":"Website · Project microsites","tags":["web"]},
+
+    {"id":"maarrich","title":"Maarrich","subtitle":"Movie","category":"Digital promotion · Content · PR","tags":["film","pr"]},
+    {"id":"lavaste","title":"Lavaste","subtitle":"Film","category":"Campaign · Content · Social media","tags":["film","social"]},
+    {"id":"martin","title":"Martin","subtitle":"Movie","category":"Movie marketing · Trailer campaign","tags":["film","pr"]},
+    {"id":"jay","title":"Jay Bhattacharya","subtitle":"Sunzara (Song)","category":"Music promotion · Digital campaign","tags":["film","performance"]},
+    {"id":"vrindavan","title":"Vrindavan Anthem","subtitle":"Song · Ganesh Acharya","category":"Music campaign · PR · Creator push","tags":["film","pr"]},
+    {"id":"maa-thi","title":"Maa Thi Toh Baat Thi","subtitle":"Song","category":"Song promotion · Reels · Seeding","tags":["film","social"]},
+    {"id":"online-247","title":"Online 24/7","subtitle":"VFX work","category":"VFX · CGI · Post production","tags":["film"]},
+    {"id":"onyx","title":"Onyx Solar","subtitle":"CGI work","category":"CGI · Product visualisation","tags":["film"]},
+    {"id":"dom","title":"DOM Productions","subtitle":"","category":"Video production · Branding","tags":["film","brand"]},
+
+    {"id":"lodha","title":"Lodha","subtitle":"Building a better life","category":"Performance marketing · Digital ads","tags":["performance"]},
+    {"id":"sunblond","title":"Sunblond","subtitle":"Channel partner, Lodha","category":"Lead generation · Meta & Google ads","tags":["performance"]},
+    {"id":"home-mentors","title":"Home Mentors","subtitle":"Channel partner, DLF","category":"Performance marketing · Lead management","tags":["performance","web"]},
+    {"id":"hdfc-sky","title":"HDFC Sky","subtitle":"Investing app","category":"Digital ads · Acquisition campaigns","tags":["performance"]},
+    {"id":"capswise","title":"Capswise Finance","subtitle":"","category":"Lead generation · Landing pages","tags":["performance"]},
+
+    {"id":"mini","title":"Mini Films","subtitle":"Profile management (Mansi Bangla)","category":"Social media · Digital strategy","tags":["social"]},
+    {"id":"shaz","title":"Shaz Big Wheels","subtitle":"Automotive","category":"Social media · Reels · Community","tags":["social"]},
+    {"id":"manerva","title":"Manerva Eventz","subtitle":"Tampa, Florida",  "category":"Event promotion · Social · Influencers","tags":["social","pr"]},
+
+    {"id":"khoonta","title":"KHOONTA","subtitle":"Film PR campaign","category":"PR strategy · Press outreach · Social","tags":["pr"]},
+    {"id":"namish-taneja","title":"Namish Taneja Productions","subtitle":"","category":"ePR · Media outreach · Interviews","tags":["pr"]}
   ],
   "story":{"heading":["More than","just","projects"],"description":"Every project is a new story, a new challenge, and a new opportunity to create something meaningful.","principles":["Strategy","Creativity","Execution","Results"],"note":["Good","stories","build","brands."],"stats":[{"value":"25+","label":["Brands","& clients"]},{"value":"50+","label":["Campaigns","delivered"]},{"value":"5M+","label":["People","reached"]}]},
   "clients":{"heading":["Some of our","clients"],"note":["Trusted by","visionaries"],"more":"And many more","items":[{"id":"lodha","name":"Lodha"},{"id":"aerobott","name":"Aerobott"},{"id":"sunblond","name":"Sunblond"},{"id":"home-mentors","name":"Home Mentors"},{"id":"chemist-king","name":"Chemist King Pharma"},{"id":"bliss","name":"Bliss Salon"},{"id":"maarrich","name":"Maarrich"},{"id":"lavaste","name":"Lavaste"},{"id":"jay","name":"Jay Bhattacharya"},{"id":"mini","name":"Mini Films"},{"id":"zouq","name":"Zouq"},{"id":"dom","name":"DOM Productions"}]},

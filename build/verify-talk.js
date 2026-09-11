@@ -5,7 +5,9 @@ assert(!/\{\{\w+\}\}/.test(html),'Unresolved content placeholders');
 const required=new Set();
 for(const m of html.matchAll(/(?:src|href|data-src)="([^"#]+)"/g))if(!/^(https?:|mailto:|\/)/.test(m[1]))required.add(m[1].split('?')[0]);
 for(const m of html.matchAll(/srcset="([^"]+)"/g))for(const candidate of m[1].split(','))required.add(candidate.trim().split(' ')[0]);
-const css=fs.readFileSync(path.join(root,'talk.css'),'utf8');
+// Inline data: URIs (the grain texture, the social masks) have no file on disk,
+// and their own payload contains url(#id) references, so drop them wholesale.
+const css=fs.readFileSync(path.join(root,'talk.css'),'utf8').replace(/url\(["']?data:[^)]*\)/g,'url()');
 for(const m of css.matchAll(/url\(['"]?([^)'" ]+)/g))required.add(m[1]);
 for(const file of required)assert(fs.existsSync(path.join(root,file.split('?')[0])),`Missing asset: ${file}`);
 

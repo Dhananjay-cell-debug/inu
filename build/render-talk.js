@@ -47,7 +47,10 @@ const reachItem = (item, index) => {
   return `<li class="reach-item" style="--i:${index}">${inner}</li>`;
 };
 
+const partial=name=>fs.readFileSync(path.join(path.join(root,'src/home'),'partials',name+'.html'),'utf8').trim();
+const atmosphere={atmosphere:partial('field'),consent:partial('consent'),footerLegal:partial('footer-legal')};
 const render = {
+  ...atmosphere,
   title: escape(data.brand.title), description: escape(data.brand.description),
   brand: escape(data.brand.name), suffix: escape(data.brand.suffix),
   nav: data.navigation.map(n => `<a href="${escape(n.href)}"${n.current ? ' aria-current="page"' : ''}>${escape(n.label)}</a>`).join(''),
@@ -87,7 +90,7 @@ const render = {
   footerBrand: escape(data.footer.brand),
   footerWords: data.footer.words.map(w => `<span>${escape(w)}</span>`).join(''),
   footerNote: data.footer.note.map(escape).join('<br>'),
-  socials: data.footer.socials.map(s => `<a href="${escape(s.href)}" aria-label="${escape(s.label)}"${s.href.startsWith('https') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${icon(s.icon)}</a>`).join(''),
+  socials: data.footer.socials.map(s => `<a href="${escape(s.href)}" data-social="${escape(s.icon)}" aria-label="${escape(s.label)}"${s.href.startsWith('https') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${icon(s.icon)}</a>`).join(''),
   content: JSON.stringify(data).replace(/</g, '\\u003c')
 };
 
@@ -95,8 +98,8 @@ let html = fs.readFileSync(path.join(src, 'template.html'), 'utf8').replace(/\{\
   if (!(key in render)) throw new Error(`Unresolved template field ${key}`);
   return render[key];
 });
-let css = fs.readFileSync(path.join(src, 'talk.css'), 'utf8') + '\n' + fs.readFileSync(path.join(src, 'responsive.css'), 'utf8');
-const script = fs.readFileSync(path.join(src, 'experience.js'), 'utf8');
+let css = fs.readFileSync(path.join(src, 'talk.css'), 'utf8') + '\n' + fs.readFileSync(path.join(src, 'responsive.css'), 'utf8') + '\n' + fs.readFileSync(path.join(root, 'src/home/atmosphere.css'), 'utf8');
+const script = fs.readFileSync(path.join(src, 'experience.js'), 'utf8') + '\n' + fs.readFileSync(path.join(root, 'src/home/atmosphere.js'), 'utf8');
 
 const usedFiles = new Set();
 for (const match of html.matchAll(/home-assets\/([\w.-]+)/g)) usedFiles.add(match[1]);
