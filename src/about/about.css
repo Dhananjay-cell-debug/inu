@@ -1,0 +1,208 @@
+/* About — the studio page.
+   Two type families live only here, and both are demanded by the supplied
+   artwork: Playfair Display is the serif the 4K comp is set in, and Architects
+   Daughter is the thin marker hand already chalked onto the road case and the
+   clapperboard. Caveat Brush would fight that chalk on sight. */
+@font-face{font-family:INUSerif;src:url('about-assets/playfair.woff2') format('woff2');font-weight:400 900;font-display:swap}
+@font-face{font-family:INUHand;src:url('about-assets/hand.woff2') format('woff2');font-weight:400;font-display:swap}
+
+.about-page{--prose:#cec9be}
+.about-page .layer-image{width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+
+/* ---------- shared marks ---------- */
+.orange-rule{display:block;width:clamp(30px,2.4vw,40px);height:2px;background:var(--orange);margin:clamp(18px,1.8vw,28px) 0}
+.orange-rule--centred{margin-inline:auto}
+.eyebrow--centred{justify-content:center}
+.eyebrow--centred:after{content:'';width:21px;height:1px;background:var(--orange);flex:none}
+.about-page .eyebrow{color:var(--orange);font-weight:500}
+.about-page .eyebrow:before{background:currentColor}
+
+/* The notes are written, not faded: each line wipes in left to right, in the
+   order a hand would put it down, and the rule is drawn last. */
+.hand{font-family:INUHand,'Comic Sans MS',cursive;text-transform:uppercase;font-size:clamp(13px,1.62vw,25px);line-height:1.34;letter-spacing:.015em;z-index:6}
+.hand span{display:block;transform-origin:left center}
+.hand i{display:block;width:2.1em;height:2px;background:var(--orange);margin-top:.55em;border-radius:2px;transform-origin:left center;rotate:-4deg}
+.motion-ready .hand.reveal{opacity:1;transform:none;transition:none}
+.motion-ready .hand span,.motion-ready .hand i{opacity:0;clip-path:inset(0 102% 0 -4%);transition:clip-path .5s var(--ease),opacity .18s linear;transition-delay:calc(var(--i,0)*115ms)}
+.motion-ready .hand.is-visible span,.motion-ready .hand.is-visible i{opacity:1;clip-path:inset(0 -4% 0 -4%)}
+
+/* ---------- hero ---------- */
+.about-hero{position:relative;height:clamp(640px,53.5vw,900px);background:#080706;isolation:isolate;overflow:hidden}
+.about-room{position:absolute;inset:-5% -3% -2%;z-index:-4}
+/* The supplied plate already contains the real beam falling from the upper
+   right onto the floor, so the lamp is placed on that beam rather than a CSS
+   cone being drawn over it. Framing puts the wall/floor horizon just under
+   the headline and keeps the reflected floor in shot. */
+.about-page .about-room img{object-fit:cover;object-position:50% 31%}
+.about-hero-shade{position:absolute;inset:0;z-index:-3;background:radial-gradient(96% 70% at 74% 12%,#ff95371c 0,transparent 58%),linear-gradient(90deg,#050403cc 0,#0504035e 26%,#0504031a 48%,#05040366 100%),linear-gradient(#0a0908d9 0,transparent 20%,transparent 62%,#070706 100%)}
+.about-aura{position:absolute;left:48%;top:10%;width:36%;height:60%;z-index:-2;background:radial-gradient(ellipse,#ff7a1422 0,#e54c000e 38%,transparent 68%)}
+
+.about-spotlight{position:absolute;left:72.5%;top:3%;width:17.5%;height:60%;z-index:1}
+/* The lamp's own hot bulb, ticking like a practical rather than pulsing on a
+   tidy loop, bridges the head to the beam already lit into the plate. */
+.about-spotlight:after{content:'';position:absolute;left:22%;top:8%;width:40%;aspect-ratio:1;border-radius:50%;background:radial-gradient(#ffd79c8c,#ff8a1e3d 38%,transparent 70%);filter:blur(9px);mix-blend-mode:screen;animation:about-lamp 9s ease-in-out infinite}
+@keyframes about-lamp{0%,100%{opacity:.72;scale:1}18%{opacity:1;scale:1.06}20%{opacity:.66;scale:1}57%{opacity:1;scale:1.04}}
+.about-chair{position:absolute;left:56.5%;bottom:5.5%;width:20.5%;height:55%;z-index:0}
+.about-chair .character-reveal{width:100%;height:100%;transform:scale(var(--character-scale,1));transform-origin:50% 88%}
+.about-roadcase{position:absolute;right:-6%;bottom:11%;width:19%;height:31%;z-index:2;filter:brightness(.88)}
+.about-camera{position:absolute;left:-5.5%;bottom:-1%;width:25.5%;height:60%;z-index:4;filter:blur(3px) saturate(.92) brightness(1.12)}
+.about-hero-floor{position:absolute;inset:auto 0 0;height:120px;z-index:5;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.about-hero .embers{z-index:3;opacity:.5}
+
+.about-hero-copy{position:absolute;left:18.5%;top:20.5%;width:46%;z-index:6}
+.about-title{margin:0;font-weight:400;line-height:.9}
+.about-wordmark{position:relative;display:block;font-family:INUSerif,Georgia,serif;font-weight:500;font-size:clamp(88px,14.6vw,236px);line-height:.82;letter-spacing:.035em;color:#f7f3ec;text-shadow:0 12px 60px #000000a6}
+.about-wordmark>span{display:block}
+/* A second copy of the word, filled with the studio plate, smudges the marble
+   out of the flat white letterforms. Where background-clip:text is missing it
+   simply never paints and the solid word underneath is untouched. */
+.about-wordmark-smoke{position:absolute;inset:0;color:transparent;pointer-events:none}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .about-wordmark-smoke{background-image:url('about-assets/hero-room-900.webp');background-size:190% auto;background-position:50% 30%;-webkit-background-clip:text;background-clip:text;mix-blend-mode:overlay;opacity:.85;animation:about-smoke 30s ease-in-out infinite alternate}
+}
+@keyframes about-smoke{from{background-position:44% 26%}to{background-position:58% 38%}}
+.about-suffix{display:block;font-size:clamp(15px,2.2vw,36px);letter-spacing:1.9em;color:var(--orange);font-weight:500;margin-top:clamp(8px,1vw,17px);text-indent:.16em}
+.about-tagline{margin-top:clamp(20px,2.4vw,40px);font-size:clamp(11px,1.14vw,18px);letter-spacing:.25em;text-transform:uppercase;font-weight:500;color:#f4f1ea}
+.about-subtitle{margin-top:clamp(7px,.75vw,12px);font-size:clamp(8.5px,.82vw,13px);letter-spacing:.21em;text-transform:uppercase;color:#a9a79f}
+.about-play{display:inline-flex;align-items:center;gap:clamp(13px,1.3vw,22px);margin-top:clamp(24px,3vw,50px)}
+.about-play-disc{width:clamp(34px,2.85vw,46px);aspect-ratio:1;border:1.5px solid var(--orange);border-radius:50%;display:grid;place-items:center;flex:none;position:relative;transition:background .35s var(--ease),transform .35s var(--ease)}
+.about-play-disc:before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid #ff790a4d;animation:about-ping 3.4s var(--ease) infinite}
+@keyframes about-ping{0%{opacity:.7;scale:.9}70%,100%{opacity:0;scale:1.22}}
+.about-play-disc i{width:0;height:0;border-left:.62em solid var(--orange);border-block:.4em solid transparent;margin-left:.18em;font-size:clamp(13px,1.05vw,17px);transition:border-color .3s}
+.about-play-label{font-size:clamp(9px,.88vw,14px);letter-spacing:.26em;text-transform:uppercase;padding-bottom:9px;border-bottom:2px solid var(--orange);transition:letter-spacing .4s var(--ease)}
+.about-play:hover .about-play-disc{background:var(--orange);transform:scale(1.06)}
+.about-play:hover .about-play-disc i{border-left-color:#0b0a09}
+.about-play:hover .about-play-label{letter-spacing:.31em}
+
+.hand--hero-left{position:absolute;left:5%;top:16.5%;z-index:6;rotate:-4deg}
+.hand--hero-left span{margin-left:calc(var(--i)*.28em);rotate:calc(var(--i)*.55deg)}
+.hand--hero-left span:nth-child(1),.hand--hero-left span:nth-child(2){color:#ff7a12}
+.hand--hero-left span:nth-child(3){color:#ff8d38}
+.hand--hero-left span:nth-child(4){color:#eb9256}
+.hand--hero-left span:nth-child(5){color:#d6d3cb}
+.hand--hero-left i{margin-left:.9em}
+.hand--hero-right{position:absolute;right:4.2%;top:25%;z-index:6;rotate:2.5deg;color:#ded8ce}
+.hand--hero-right span{rotate:calc(var(--i)*-.4deg)}
+
+/* ---------- story ---------- */
+.about-story,.about-founder{position:relative;padding:clamp(56px,5.9vw,104px) var(--page) clamp(40px,3.9vw,66px);display:grid;align-items:center;column-gap:clamp(18px,2.4vw,42px);row-gap:clamp(30px,3.2vw,52px)}
+.about-story{grid-template-columns:minmax(0,clamp(300px,41vw,600px)) minmax(0,1fr) minmax(0,clamp(118px,11.4vw,178px));background:radial-gradient(120% 80% at 12% 0,#12100e 0,transparent 62%),#070706}
+.about-page h2{font-family:INUSerif,Georgia,serif;font-weight:500;text-transform:uppercase;letter-spacing:.004em;line-height:1.11}
+.about-story h2{font-size:clamp(24px,2.92vw,47px)}
+.about-story h2 span,.about-philosophy h2 span{display:block}
+.about-prose{font-family:INUSerif,Georgia,serif;font-size:clamp(13.5px,1.32vw,21px);line-height:1.66;color:var(--prose);max-width:33ch}
+
+.about-plates{position:relative;aspect-ratio:1.13}
+.about-plate{margin:0;position:absolute;filter:drop-shadow(0 26px 44px #000000b0);transition:transform .7s var(--ease),filter .7s var(--ease),rotate .7s var(--ease)}
+.about-plate img{width:100%;height:auto}
+.about-plate--set{left:0;top:0;width:88%;rotate:-1.4deg;z-index:2}
+.about-plate--strip{right:-1%;bottom:-15%;width:25%;rotate:7deg;z-index:3;filter:brightness(.95) drop-shadow(0 20px 34px #000000c0)}
+.about-plate--strip .about-tape{position:absolute;left:50%;top:-5%;width:58%;height:9%;translate:-50% 0;rotate:-8deg;background:linear-gradient(#e6dac285,#c9b99a70);box-shadow:0 2px 7px #0007;z-index:2}
+/* Prints on a wall: touching one straightens it and lifts it off the surface. */
+.about-plate:hover{rotate:0deg;transform:translateY(-6px) scale(1.015);filter:drop-shadow(0 34px 54px #000000c4)}
+.motion-ready .about-plate.reveal{transform:translate3d(0,32px,0) scale(.975)}
+.motion-ready .about-plate.reveal.is-visible{transform:translate3d(0,0,0) scale(1)}
+
+.hand--story{justify-self:start;align-self:center;rotate:-3deg;color:#dfd9cf}
+.hand--story span{margin-left:calc(var(--i)*.2em);rotate:calc(var(--i)*.5deg)}
+
+.about-chain{grid-column:1/-1;margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,1.9vw,34px);font-family:INUHand,'Comic Sans MS',cursive;text-transform:uppercase;font-size:clamp(11px,1.12vw,17px);letter-spacing:.2em;color:#e6e2d8}
+.about-chain li{display:flex;align-items:center;gap:clamp(10px,1.9vw,34px)}
+.about-chain li:after{content:'\2192';color:var(--orange);font-family:Archivo,sans-serif;font-size:1.25em;letter-spacing:0;translate:0 -.04em;opacity:.45;transition:opacity .3s}
+.about-chain li:last-child:after{content:none}
+.motion-ready .about-chain.is-visible li:after{animation:about-chain-pulse 2.6s var(--ease) infinite;animation-delay:calc(var(--i)*190ms)}
+@keyframes about-chain-pulse{0%,62%,100%{opacity:.42;translate:0 -.04em}20%{opacity:1;translate:5px -.04em}}
+
+/* ---------- founder ---------- */
+.about-founder{padding-top:clamp(42px,4.3vw,74px);grid-template-columns:minmax(0,clamp(300px,39vw,560px)) minmax(0,1fr) minmax(0,clamp(118px,11.4vw,178px));background:linear-gradient(#070706,#0a0807 55%,#070706)}
+.about-founder h2{font-size:clamp(32px,4.35vw,72px);margin-top:2px}
+.about-founder-role{margin-top:clamp(12px,1.15vw,18px);font-size:clamp(9px,.86vw,13px);letter-spacing:.2em;text-transform:uppercase;color:#e8e4da}
+.about-quote{margin:clamp(26px,2.9vw,48px) 0 0;font-family:INUSerif,Georgia,serif;font-size:clamp(14px,1.46vw,23px);line-height:1.58;color:#e0dbd0;max-width:31ch;text-indent:-.42em}
+.about-plate--frame{position:relative;width:84%;margin-inline:auto;rotate:1.1deg}
+.hand--founder{justify-self:start;rotate:-3.5deg;color:#ded8ce}
+.hand--founder span{margin-left:calc(var(--i)*.22em);rotate:calc(var(--i)*.5deg)}
+
+/* ---------- philosophy ---------- */
+.about-philosophy{position:relative;isolation:isolate;overflow:hidden;background:#060605;padding:clamp(62px,6.4vw,112px) var(--page) clamp(64px,6.6vw,116px)}
+.about-clapper{position:absolute;left:-5%;bottom:-7%;width:30%;z-index:-2;filter:blur(2.4px) brightness(.82)}
+.about-clapper img{width:100%;height:auto}
+.about-philosophy-shade{position:absolute;inset:0;z-index:-1;background:radial-gradient(72% 58% at 50% 42%,#1a140f 0,transparent 72%),radial-gradient(38% 44% at 6% 78%,#ff6a0a26 0,transparent 70%),linear-gradient(#070706,transparent 24%,transparent 72%,#060605)}
+.about-philosophy-copy{max-width:min(880px,70vw);margin-inline:auto;text-align:center;position:relative;z-index:1}
+.about-philosophy h2{font-size:clamp(28px,3.9vw,62px)}
+.about-prose--centred{margin-inline:auto;max-width:none;text-align:center}
+.about-prose--centred span{display:block}
+.about-cta{display:inline-flex;align-items:center;gap:clamp(16px,1.6vw,26px);margin-top:clamp(34px,4vw,68px);font-family:INUSerif,Georgia,serif;font-size:clamp(16px,1.72vw,28px);color:#f1ede4}
+.about-cta-disc{width:clamp(36px,3vw,48px);aspect-ratio:1;border:1.5px solid var(--orange);border-radius:50%;display:grid;place-items:center;flex:none;color:var(--orange);font-family:Archivo,sans-serif;font-size:.72em;transition:background .35s var(--ease),color .35s,transform .45s var(--ease)}
+.about-cta:hover .about-cta-disc{background:var(--orange);color:#0b0a09;transform:translateX(5px)}
+
+/* ---------- 1100 and under ---------- */
+@media(max-width:1100px) and (min-width:701px){
+  .about-hero{height:clamp(560px,62vw,700px)}
+  .about-hero-copy{left:15.5%;top:22%;width:54%}
+  .about-wordmark{font-size:clamp(72px,13.8vw,142px)}
+  .hand--hero-left{left:2.6%;top:14%;font-size:12px}
+  .hand--hero-right{right:2.2%;top:24%;font-size:12px}
+  .about-chair{left:56%;width:25%;height:54%}
+  .about-spotlight{left:68%;width:19%;height:54%}
+  .about-roadcase{width:19%;bottom:12%}
+  .about-camera{width:24%;height:46%}
+  .about-story{grid-template-columns:minmax(0,40%) minmax(0,42%) minmax(0,18%)}
+  .about-founder{grid-template-columns:minmax(0,42%) minmax(0,40%) minmax(0,18%)}
+  .hand{font-size:13px}
+  .about-philosophy-copy{max-width:78vw}
+  .about-clapper{width:34%;left:-8%}
+}
+
+/* ---------- phone: the scene is recomposed, not squeezed ---------- */
+@media(max-width:700px){
+  .about-hero{height:auto;padding:clamp(300px,84vw,400px) 0 0}
+  .about-room{inset:-2% -18% auto;height:min(560px,128vw)}
+  .about-page .about-room img{object-position:58% 32%}
+  .about-hero-shade{background:radial-gradient(90% 46% at 62% 12%,#ff95371f 0,transparent 62%),linear-gradient(#0a0908b8,transparent 26%,#07070666 56%,#070706 84%)}
+  .about-aura{left:26%;top:4%;width:62%;height:38%}
+  .about-spotlight{left:63%;top:7%;width:24%;height:32%}
+  .about-chair{left:44%;bottom:auto;top:17%;width:37%;height:32%}
+  .about-roadcase{right:-9%;top:40%;bottom:auto;width:27%;height:16%}
+  .about-camera{left:-13%;top:26%;bottom:auto;width:35%;height:27%;filter:blur(2.5px) brightness(1.05)}
+  .about-hero .embers{height:min(560px,128vw)}
+  .about-hero-floor{display:none}
+  .about-hero-copy{position:relative;inset:auto;width:auto;margin:0 var(--page);padding-bottom:clamp(26px,7vw,38px)}
+  .about-wordmark{font-size:clamp(74px,23vw,112px);letter-spacing:.03em}
+  .about-suffix{font-size:clamp(12px,3.4vw,17px);letter-spacing:1.05em}
+  .about-tagline{margin-top:18px;font-size:11px;letter-spacing:.2em}
+  .about-subtitle{font-size:8.5px;letter-spacing:.17em}
+  .about-play{margin-top:24px}
+  .hand{font-size:13px}
+  .hand--hero-left{position:absolute;left:var(--page);top:92px;rotate:-4deg}
+  .hand--hero-right{position:absolute;right:var(--page);top:92px;rotate:3deg;text-align:right}
+  .hand--hero-right span{transform-origin:right center}
+  .about-story,.about-founder{display:block;padding:clamp(48px,12vw,66px) var(--page)}
+  .about-story h2{font-size:clamp(29px,8.4vw,38px)}
+  .about-prose{font-size:14px;max-width:none}
+  .about-plates{margin:clamp(30px,8vw,44px) 0 0;aspect-ratio:1.2}
+  .about-plate--set{width:88%;left:0}
+  .about-plate--strip{width:21%;right:0;bottom:-6%}
+  .hand--story,.hand--founder{margin-top:clamp(26px,7vw,36px)}
+  .about-chain{margin-top:clamp(30px,8vw,42px);font-size:11px;letter-spacing:.14em;gap:9px}
+  .about-chain li{gap:9px}
+  .about-founder h2{font-size:clamp(33px,9.6vw,44px)}
+  .about-plate--frame{width:88%;margin:clamp(32px,8vw,44px) auto 0}
+  .about-quote{font-size:14.5px;max-width:none;margin-top:24px}
+  .about-philosophy{padding:clamp(58px,14vw,78px) var(--page) clamp(64px,16vw,86px)}
+  .about-philosophy-copy{max-width:none}
+  .about-philosophy h2{font-size:clamp(30px,8.6vw,40px)}
+  .about-prose--centred{font-size:13.5px}
+  .about-clapper{width:62%;left:-19%;bottom:0;filter:blur(1.8px) brightness(.95)}
+  .about-cta{font-size:16px;gap:14px;margin-top:30px}
+}
+@media(max-width:360px){
+  .about-wordmark{font-size:70px}
+  .about-story h2,.about-philosophy h2{font-size:27px}
+  .about-founder h2{font-size:31px}
+  .hand{font-size:12px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .about-spotlight:after,.about-play-disc:before,.about-wordmark-smoke{animation:none}
+  .about-plate{transition:none}
+}

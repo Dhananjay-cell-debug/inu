@@ -17,7 +17,7 @@ assert.equal((html.match(/data-consent-accept/g)||[]).length,2);
 assert.equal((html.match(/data-consent-reject/g)||[]).length,3);
 assert(html.includes('data-consent-save'),'Panel needs a save action');
 /* Every page must carry the consent layer and offer a way back to it. */
-for(const name of ['index.html','services.html','portfolio.html','lets-talk.html','privacy.html']){
+for(const name of ['index.html','about.html','services.html','portfolio.html','lets-talk.html','privacy.html']){
  const page=fs.readFileSync(path.join(root,name),'utf8');
  assert(page.includes('class="cookie-bar"'),`${name} is missing the consent bar`);
  assert(page.includes('data-consent-open'),`${name} is missing the cookie settings link`);
@@ -32,4 +32,4 @@ for(const m of html.matchAll(/(?:src|href|data-src|data-sound-src)="([^"#]+)"/g)
  const url=m[1].split(/[?#]/)[0];files.add(url.startsWith('/')?(url==='/'?'index.html':url.slice(1)+'.html'):url);
 }
 for(const f of files)assert(fs.existsSync(path.join(root,f)),`Missing privacy asset or route: ${f}`);
-console.log(`Verified privacy: ${content.sections.length} sections, 4 consent categories, consent layer present on 5 pages, ${files.size} assets/routes.`);
+console.log(`Verified privacy: ${content.sections.length} sections, 4 consent categories, consent layer present on 6 pages, ${files.size} assets/routes.`);

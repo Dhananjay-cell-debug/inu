@@ -12,7 +12,7 @@ const image=(key,cls='',sizes='100vw',priority=false,alt='')=>{
 };
 let html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
 const shared=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);
-const navigation=[{label:'Home',href:'/'},{label:'About',href:'/#about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
+const navigation=[{label:'Home',href:'/'},{label:'About',href:'/about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
 const data={...shared,page:'portfolio',navigation,portfolio:{eyebrow:'Our work',items:p.projects.map(s=>({...s,art:assets['project-'+s.id].at(-1).src}))}};
 const fields={
  heroRoom:image('hero-room','layer-image','100vw',true),workstation:image('workstation','layer-image','(max-width:700px) 106vw, 76vw',true),director:image('director','hero-person layer-image','(max-width:700px) 64vw, 39vw',true),

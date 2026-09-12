@@ -11,7 +11,7 @@ const allowed=/^(?:[^<>]|<\/?strong>|<a href="(?:mailto:|\/)[^"]*">|<\/a>)*$/;
 const rich=v=>{if(!allowed.test(v))throw Error(`Unsafe markup in privacy copy: ${v.slice(0,60)}`);return v;};
 let html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
 const shared=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);
-const navigation=[{label:'Home',href:'/'},{label:'About',href:'/#about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
+const navigation=[{label:'Home',href:'/'},{label:'About',href:'/about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
 const data={...shared,page:'privacy',navigation};
 const fields={
  heroEyebrow:esc(p.hero.eyebrow),heroHeading:p.hero.heading.map(s=>`<span>${esc(s)}</span>`).join(''),heroAccent:esc(p.hero.accent),heroDescription:esc(p.hero.description),heroUpdated:esc(p.hero.updated),

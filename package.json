@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "INU Media — cinematic site built from the 4K page designs",
   "scripts": {
-    "build": "node build/render-home.js && node build/render-contact.js && node build/render-services.js && node build/render-portfolio.js && node build/render-privacy.js && node build/render-endings.js",
-    "check": "node --check src/home/experience.js && node --check src/home/atmosphere.js && node --check src/talk/experience.js && node --check src/talk/contact.js && node build/verify-home.js && node build/verify-talk.js && node build/verify-contact-api.js && node build/verify-services.js && node --check src/portfolio/experience.js && node build/verify-portfolio.js && node --check src/privacy/experience.js && node build/verify-privacy.js",
+    "build": "node build/render-home.js && node build/render-contact.js && node build/render-about.js && node build/render-services.js && node build/render-portfolio.js && node build/render-privacy.js && node build/render-endings.js",
+    "check": "node --check src/home/experience.js && node --check src/home/atmosphere.js && node --check src/talk/experience.js && node --check src/talk/contact.js && node build/verify-home.js && node --check src/about/experience.js && node build/verify-about.js && node build/verify-talk.js && node build/verify-contact-api.js && node build/verify-services.js && node --check src/portfolio/experience.js && node build/verify-portfolio.js && node --check src/privacy/experience.js && node build/verify-privacy.js",
     "dev": "npm run build && node server.js",
     "start": "node server.js",
     "images": "python build/prepare-hq-assets.py",
@@ -13,7 +13,9 @@
     "media": "python build/prepare-cinematic-media.py",
     "talk-media": "python build/prepare-talk-media.py",
     "portfolio-images": "python build/prepare-portfolio-assets.py",
-    "portfolio-media": "python build/prepare-portfolio-media.py"
+    "portfolio-media": "python build/prepare-portfolio-media.py",
+    "about-images": "python build/prepare-about-assets.py",
+    "about-media": "python build/prepare-about-media.py"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

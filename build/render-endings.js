@@ -2,8 +2,8 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const root=path.join(__dirname,'..'),assets=JSON.parse(fs.readFileSync(path.join(root,'src/contact-assets.json'),'utf8'));
 const css=fs.readFileSync(path.join(root,'src/talk/end-reveal.css'),'utf8');
 const cssHash=crypto.createHash('sha256').update(css).digest('hex').slice(0,10);
-const pages={'index':'home','services':'services','portfolio':'portfolio','lets-talk':'contact','contact':'contact','privacy':'home'};
-const alt={home:'INU Media — stories worth falling for.',services:'INU Media — same scroll, different stories.',portfolio:'INU Media — ideas in motion.',contact:'INU Media — turning ideas into movement.'};
+const pages={'index':'home','about':'about','services':'services','portfolio':'portfolio','lets-talk':'contact','contact':'contact','privacy':'home'};
+const alt={home:'INU Media — stories worth falling for.',about:'INU Media — same people, different stories.',services:'INU Media — same scroll, different stories.',portfolio:'INU Media — ideas in motion.',contact:'INU Media — turning ideas into movement.'};
 for(const dir of ['dist','site']){
  const dest=path.join(root,dir);fs.writeFileSync(path.join(dest,'end-reveal.css'),css);fs.mkdirSync(path.join(dest,'contact-assets'),{recursive:true});
  for(const [page,key] of Object.entries(pages)){
@@ -18,4 +18,4 @@ for(const dir of ['dist','site']){
    fs.writeFileSync(file,html);
  }
 }
-console.log('Added post-footer reveals to every current route; About artwork reserved.');
+console.log(`Added post-footer reveals to every current route (${Object.keys(pages).length} files).`);

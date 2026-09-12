@@ -8,4 +8,13 @@ The silent grain and opening burn come from the two user-supplied overlay clips.
 
 The previously researched Scott Buckley track is **not used or shipped**.
 
+The About page's nine plates are the user's supplied `inu_media_assets_4k` PNGs. They are trimmed to their own
+alpha bounding box and scaled down only; the film strip additionally ships a two-frame crop. Nothing is upscaled,
+recoloured or retouched. Its opening burn is the 6.35s light leak from the same user-supplied burn compilation,
+prepared by `build/prepare-about-media.py`, with its audio exported separately and gated by the sound choice.
+
+About adds two SIL OFL typefaces used only on that route: Playfair Display (the serif the 4K comp is set in) and
+Architects Daughter (the marker hand already chalked onto the supplied road case and clapperboard). Both are the
+Google Fonts latin subsets, shipped self-hosted and fingerprinted.
+
 Font licenses are included alongside this document. Lenis is distributed under its included MIT license.

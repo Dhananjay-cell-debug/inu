@@ -177,3 +177,52 @@ present, socials never overlap the note, curtain gone.
 - 26: studio map on mobile (Google chrome showing, card over the pin, too dim).
 - 27: client list needs correcting against the brand summary - "Mini Films" is
   not in the verified roster and "Lavaste" should be "La Vaste" (a film).
+
+---
+
+## Batch 8 — 2026-09-13 (the About page)
+
+- [x] **28. Build `/about` from the 4K comp and its nine supplied plates.**
+      `chatgpt inu design/INU_Media_6_Pages_4K/about/about page.png` plus
+      `inu_media_assets_4k/`. Same background, grain, film burn, atmosphere and
+      sound behaviour as Home / Services / Portfolio / Let's-talk, and the
+      reserved `end-about` plate revealing after the footer like every other
+      page.
+      -> done, verified at 1440 / 1100 / 1024 / 390 with screenshots and
+         measurements. Every object on the page is one of the nine plates.
+         Sections measure 770 / 628 / 612 / 565 px at 1440 against the comp's
+         772 / 636 / 504 / 646, page total 3560px. No console errors, no failed
+         requests, no horizontal overflow, clean under reduced motion.
+         `build/verify-about.js` added to `npm run check`.
+
+- [x] **29. Point About at its own route everywhere.**
+      Nav was sending About to the `#about` block on Home.
+      -> done, verified: all six built pages now carry
+         `<a href="/about">About</a>`, and `/about` carries `aria-current="page"`.
+
+### Notes from building it
+- The hero's studio plate already contains the real beam from the upper right.
+  The first pass drew a CSS light cone over it and it looked like a grey bar;
+  the fresnel is now placed *on* the plate's own beam instead.
+- `.about-page .layer-image{object-fit:contain}` was beating `.about-room img
+  {object-fit:cover}` on specificity, so the hero background was letterboxing
+  into a 488px strip down the middle of a 1440px page. Caught by measuring a
+  pixel row, not by looking.
+- About introduces Playfair Display (the serif the comp is set in) and
+  Architects Daughter (the marker hand already chalked onto the supplied road
+  case and clapperboard). Both OFL, self-hosted, page-only. Caveat Brush was
+  tried first and visibly fought the chalk in the artwork.
+
+### Found while working, NOT mine to fix
+- `npm run check` fails at `build/verify-talk.js:21` — it asserts eight
+  `creative-frame` images on Let's-talk, and queue item 6 deleted that gallery.
+  This is already broken at HEAD, before any About work. Whoever finishes the
+  contact page should drop that assertion.
+
+### Not deployed
+Nothing was pushed or deployed. Let's-talk is mid-edit by another session, so
+shipping now would publish its half-finished state.
+
+- [ ] **30. `Watch our story` has no film.** The control is drawn exactly as the
+      comp draws it and currently scrolls to the story band. Give it a real
+      film, or a dialog, when one exists.

@@ -16,6 +16,7 @@ Run `npm run build`, `npm run check`, then `npm start`. Rebuild and reload after
 | Page / behavior | Authored source | Builder |
 | --- | --- | --- |
 | Home and shared shell | src/home/content.json, template.html, cinematic.css, responsive.css, experience.js | build/render-home.js |
+| About | src/about/content.json, template.html, about.css, experience.js | build/render-about.js |
 | Services | src/services/ | build/render-services.js |
 | Portfolio | src/portfolio/ | build/render-portfolio.js |
 | Let's talk / contact | src/talk/contact-content.json, contact-template.html, contact.css, contact.js, experience.js | build/render-contact.js |
@@ -24,11 +25,11 @@ Run `npm run build`, `npm run check`, then `npm start`. Rebuild and reload after
 | Shared atmosphere / consent | src/home/atmosphere.css, atmosphere.js, partials/ | included by page builders |
 | Contact delivery | api/contact.js | Vercel function |
 
-About is deferred. Its named end image is exported and reserved, and the nav links to the existing About content on Home.
+About is built and live at `/about`; see `ABOUT.md`. Its reserved end image is now in use, and every page's navigation points About at that route.
 
 ## Assets
 
-Original references stay in the parent workspace under `chatgpt inu design`. `build/prepare-contact-assets.py` exports responsive WebP variants without recoloring or upscaling. Hero background is available at 3840 pixels; five named end images keep their original resolution. `src/contact-assets/` and its JSON manifest are deployable source. Eight other user-provided creatives are included in the contact gallery.
+Original references stay in the parent workspace under `chatgpt inu design`. About uses the nine supplied 4K plates in `INU_Media_6_Pages_4K/about/inu_media_assets_4k`, exported by `build/prepare-about-assets.py`. `build/prepare-contact-assets.py` exports responsive WebP variants without recoloring or upscaling. Hero background is available at 3840 pixels; five named end images keep their original resolution. `src/contact-assets/` and its JSON manifest are deployable source. Eight other user-provided creatives are included in the contact gallery.
 
 The hero uses the supplied room, listener, speaker, and device. The cans intrinsic to the people are connected with a responsive SVG path. Attachment coordinates live in `src/talk/contact.js`; actors and string share a single scene coordinate system. The wall lettering is intrinsic to the supplied background. All form, section, FAQ and navigation text stays HTML.
 
