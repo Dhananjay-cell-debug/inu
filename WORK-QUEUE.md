@@ -162,3 +162,18 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
 Do not report anything as done from reasoning. Go and LOOK at it — screenshot
 it, measure it, and ask what still feels off or what the intent is missing —
 before saying it is finished. Being slow and correct beats being fast and wrong.
+
+---
+
+## Deployed 2026-09-13
+Batches 1-6 are live at https://inuxsynapsis.vercel.app except the items below.
+Verified on the deployed URL at 1440px and 390px across all four pages:
+reveal crop 0-0.2%, footer padding 48/56px identical everywhere, footer lock-up
+present, socials never overlap the note, curtain gone.
+
+### Still open
+- 16/17/21: real client logos - BLOCKED, waiting on the client's own files.
+  Only Lodha, DLF and HDFC Sky could be sourced publicly and are already in.
+- 26: studio map on mobile (Google chrome showing, card over the pin, too dim).
+- 27: client list needs correcting against the brand summary - "Mini Films" is
+  not in the verified roster and "Lavaste" should be "La Vaste" (a film).
