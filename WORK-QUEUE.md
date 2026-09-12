@@ -219,9 +219,15 @@ present, socials never overlap the note, curtain gone.
   This is already broken at HEAD, before any About work. Whoever finishes the
   contact page should drop that assertion.
 
-### Not deployed
-Nothing was pushed or deployed. Let's-talk is mid-edit by another session, so
-shipping now would publish its half-finished state.
+### Deployed 2026-09-13
+Pushed to GitHub (`b551864`) and then deployed to production, in that order.
+Live: https://inuxsynapsis.vercel.app/about
+Verified on the deployed URL at 1440 and 390: hero, story, founder, philosophy
+and the end reveal all render, fonts load, no console errors, no failed
+requests, no horizontal overflow. All six routes return 200, every one links
+About to `/about`, and every one still carries its post-footer reveal.
+Let's-talk was screenshotted before shipping and is coherent (complete form,
+intact hero); it went out with this deploy.
 
 - [ ] **30. `Watch our story` has no film.** The control is drawn exactly as the
       comp draws it and currently scrolls to the story band. Give it a real
