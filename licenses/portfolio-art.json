@@ -1,191 +1,238 @@
 {
  "maarrich": {
   "project": "maarrich",
-  "title": "Empire Ealing Screen 2",
-  "creator": "markhillary",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/56087830@N00/2477121834"
+  "title": "Camera Red",
+  "creator": "Jakob Owens",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
+  "provider": "stocksnap",
+  "stock": true
  },
  "lavaste": {
   "project": "lavaste",
-  "title": "Film set in the dining room.",
-  "creator": "ricardodiaz11",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/41652235@N00/4065908712"
+  "title": "Camera Red",
+  "creator": "Jakob Owens",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
+  "provider": "stocksnap",
+  "stock": true
  },
  "jay": {
   "project": "jay",
-  "title": "professional-retro-microphone--dj-headphones-",
-  "creator": "www.ilmicrofono.it",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/115089924@N02/12212276953"
+  "title": "Recording Studio",
+  "creator": "Kristin Hardwick",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/recording-studio-1KWAKXJW1J",
+  "provider": "stocksnap",
+  "stock": true
  },
  "vrindavan": {
   "project": "vrindavan",
-  "title": "Indian Classical Dance",
-  "creator": "sheetalsaini",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/85189122@N00/5906220040"
+  "title": "INU plate \u2014 Film, Music & VFX",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "maa-thi": {
   "project": "maa-thi",
-  "title": "Stage lights 3",
-  "creator": "DanBrady",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/11853009@N07/2068433063"
+  "title": "Camera Canon",
+  "creator": "Seth Doyle",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-canon-RDCINEP3BL",
+  "provider": "stocksnap",
+  "stock": true
  },
  "martin": {
   "project": "martin",
-  "title": "Film Noir [Explored]",
-  "creator": "pellesten",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/82976024@N00/6369722431"
+  "title": "Camera Red",
+  "creator": "Jakob Owens",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
+  "provider": "stocksnap",
+  "stock": true
  },
  "online-247": {
   "project": "online-247",
-  "title": "Green Screen Studio",
-  "creator": "northways",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/46174988@N00/25113564876"
+  "title": "Camera Video",
+  "creator": "Jakob Owens",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-video-FH0ORSRVWZ",
+  "provider": "stocksnap",
+  "stock": true
  },
  "onyx": {
   "project": "onyx",
-  "title": "Black Rock Solar educational field trip at Pyramid Lake Museum and Visitor Center",
-  "creator": "Black Rock Solar",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/39145569@N07/8553361852"
+  "title": "Abstract Glowing",
+  "creator": "Travis Soule",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/abstract-glowing-8GKTJXHWF4",
+  "provider": "stocksnap",
+  "stock": true
  },
  "dom": {
   "project": "dom",
-  "title": "Mini studio",
-  "creator": "VSmithUK",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/74733773@N00/3143344844"
+  "title": "INU plate \u2014 Brand & Graphic Design",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "lodha": {
   "project": "lodha",
-  "title": "Hong Kong City",
-  "creator": "abdulrahman.stock",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/67412852@N04/6536097779"
+  "title": "INU plate \u2014 Performance & Digital Ads",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "sunblond": {
   "project": "sunblond",
-  "title": "Apartment Building Balconies",
-  "creator": "Image Catalog",
-  "license": "cc0 1.0",
-  "source": "https://www.flickr.com/photos/132795455@N08/21894316762"
+  "title": "INU plate \u2014 Performance & Digital Ads",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "home-mentors": {
   "project": "home-mentors",
-  "title": "Model",
-  "creator": "Jon Olav",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/51638848@N00/3636434436"
+  "title": "INU plate \u2014 Web Design & Tech",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "hdfc-sky": {
   "project": "hdfc-sky",
-  "title": "Bitcoin on phone trading charts",
-  "creator": "digicloudmedia",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/190906320@N06/53388408984"
+  "title": "Mobile Phone",
+  "creator": "Copper and Wild",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/mobile-phone-FB0FUDL6ZW",
+  "provider": "stocksnap",
+  "stock": true
  },
  "capswise": {
   "project": "capswise",
-  "title": "Calculator",
-  "creator": "Images_of_Money",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/59937401@N07/5856725357"
+  "title": "Money Currency",
+  "creator": "Shopify",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/money-currency-UFZCNZBNFM",
+  "provider": "stocksnap",
+  "stock": true
  },
  "aerobott": {
   "project": "aerobott",
-  "title": "Drone",
-  "creator": "kevin dooley",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/12836528@N00/20155871365"
+  "title": "Notebook Pen",
+  "creator": "STIL",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/notebook-pen-SY6W6335J3",
+  "provider": "stocksnap",
+  "stock": true
  },
  "zouq": {
   "project": "zouq",
-  "title": "Spice",
-  "creator": "geishaboy500",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/49503154413@N01/4304681224"
+  "title": "INU plate \u2014 Brand & Graphic Design",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "bliss": {
   "project": "bliss",
-  "title": "Nu Vu Beauty Salon",
-  "creator": "kevin dooley",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/12836528@N00/8394267869"
+  "title": "Colors Colours",
+  "creator": "Markus Spiske",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/colors-colours-P3GRWHODKN",
+  "provider": "stocksnap",
+  "stock": true
  },
  "chemist-king": {
   "project": "chemist-king",
-  "title": "Druggist's store at Burnaby Village Museum",
-  "creator": "Ruth and Dave",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/95142644@N00/11594773005"
+  "title": "Food Fruits",
+  "creator": "Kristina Paukshtite",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/food-fruits-SFJPODPJY4",
+  "provider": "stocksnap",
+  "stock": true
  },
  "sonali-jain": {
   "project": "sonali-jain",
-  "title": "Closet",
-  "creator": "Sofy Marquez",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/69593795@N06/6334619144"
+  "title": "Dressshirts Fashion",
+  "creator": "Patryk Dziejma",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/dressshirts-fashion-TS7R6391UQ",
+  "provider": "stocksnap",
+  "stock": true
  },
  "hexagon": {
   "project": "hexagon",
-  "title": "Dubai Futurama",
-  "creator": "A.Davey",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/40595948@N00/4718630646"
+  "title": "Sketch Design",
+  "creator": "Jakub Kapusnak",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/sketch-design-3VJLANA7FD",
+  "provider": "stocksnap",
+  "stock": true
  },
  "mini": {
   "project": "mini",
-  "title": "Content creators at the European Parliament",
-  "creator": "European Parliament",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/36612355@N08/53471881775"
+  "title": "Camera Tripod",
+  "creator": "Kristin Hardwick",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-tripod-LAYS8FQZWO",
+  "provider": "stocksnap",
+  "stock": true
  },
  "shaz": {
   "project": "shaz",
-  "title": "AMG Car Alloy Wheel. Location",
-  "creator": "Unknown",
+  "title": "Person Smartphone",
+  "creator": "Matt Bango",
   "license": "cc0 1.0",
-  "source": "https://www.rawpixel.com/image/6113067/photo-image-public-domain-red-free"
+  "source": "https://stocksnap.io/photo/person-smartphone-FXRFRU7UJX",
+  "provider": "stocksnap",
+  "stock": true
  },
  "khoonta": {
   "project": "khoonta",
-  "title": "Newspapers B&W (3)",
-  "creator": "NS Newsflash",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/62693815@N03/6277208708"
+  "title": "Office Work",
+  "creator": "Markus Spiske",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/office-work-C6NQJB3RXD",
+  "provider": "stocksnap",
+  "stock": true
  },
  "namish-taneja": {
   "project": "namish-taneja",
-  "title": "Pentacon Six with MC Biometar 2,8/120 Lens (not mine, just borrowed)",
-  "creator": "Kojotisko",
+  "title": "Microphone Music",
+  "creator": "Studio 7042",
   "license": "cc0 1.0",
-  "source": "https://www.flickr.com/photos/98796230@N03/14374475512"
+  "source": "https://stocksnap.io/photo/microphone-music-8DG6GF0NSI",
+  "provider": "stocksnap",
+  "stock": true
  },
  "ditas": {
   "project": "ditas",
-  "title": "Betsy's Table",
-  "creator": "sebrenner",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/55449327@N00/333292627"
+  "title": "Laptop Desk",
+  "creator": "Kelly Ishmael",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/laptop-desk-5ZWVFTADET",
+  "provider": "stocksnap",
+  "stock": true
  },
  "rosa": {
   "project": "rosa",
-  "title": "2007.08 - 'View over the metro construction site' underground with the rolling work platform including building crane overhead; on the North side of Amsterdam; Dutch city photo + geotag, Fons Heijnsbroek, The Netherlands",
-  "creator": "Amsterdam free photos & pictures of the Dutch city",
-  "license": "cc0 1.0",
-  "source": "https://www.flickr.com/photos/104736837@N03/10574456115"
+  "title": "INU plate \u2014 Web Design & Tech",
+  "creator": "INU Media",
+  "license": "in-house",
+  "source": "build/make-placeholder-art.py",
+  "placeholder": true
  },
  "manerva": {
   "project": "manerva",
-  "title": "Shrikanth Narayanan at USC Creativity & Collaboration",
-  "creator": "Norman Lear Center",
-  "license": "by 2.0",
-  "source": "https://www.flickr.com/photos/83665349@N00/5260971943"
+  "title": "Santas Marionettes",
+  "creator": "Skitter Photo",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/santas-marionettes-A8B11C7989",
+  "provider": "stocksnap",
+  "stock": true
  }
 }

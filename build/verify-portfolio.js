@@ -11,10 +11,15 @@ const art=new Set(data.portfolio.items.map(p=>p.art));
 assert.equal(art.size,content.projects.length,`${content.projects.length-art.size} projects share artwork`);
 const cards=(html.match(/class="folio-card reveal lightning"/g)||[]).length;
 assert.equal((html.match(/class="folio-logo reveal"/g)||[]).length,12);
-assert.equal((html.match(/data-chapter-link=/g)||[]).length,content.chapters.length);
+// Chapters are linked twice on purpose: the sticky index and the ledger panel.
+const indexNav=html.match(/<nav class="content-index"[\s\S]*?<\/nav>/)[0];
+assert.equal((indexNav.match(/data-chapter-link=/g)||[]).length,content.chapters.length);
+for(const chapter of content.chapters)assert(html.includes(`data-chapter-link="${chapter.id}"`),`${chapter.id} is not linked`);
+assert(html.includes('id="project-search"'),'the project search is missing');
 assert.equal((html.match(/class="studio-row content-chapter"/g)||[]).length,content.chapters.length);
-// Every chapter needs a drag rail, and every project needs a chapter to live in.
-assert.equal((html.match(/data-drag-rail/g)||[]).length,content.chapters.length);
+// Every chapter needs a marquee rail, and every project a chapter to live in.
+assert.equal((html.match(/class="content-rail"/g)||[]).length,content.chapters.length);
+assert.equal((html.match(/class="content-rail__track"/g)||[]).length,content.chapters.length);
 const placed=content.chapters.reduce((n,c)=>n+content.projects.filter(p=>p.tags.some(t=>c.tags.includes(t))).length,0);
 assert.equal(cards,placed,`Rendered ${cards} cards but chapters cover ${placed}`);
 for(const project of content.projects)assert(content.chapters.some(c=>project.tags.some(t=>c.tags.includes(t))),`${project.id} belongs to no chapter`);

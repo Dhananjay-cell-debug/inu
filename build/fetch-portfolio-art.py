@@ -8,18 +8,27 @@ licenses/portfolio-art.md so the credits stay with the build.
 
 Run: python build/fetch-portfolio-art.py [project-id ...]
 """
+import hashlib
 import io
 import json
+import time
+import sys as _sys
 import pathlib
 import sys
 import urllib.parse
 import urllib.request
 
+# captions carry emoji and accents; the Windows console default cannot print them
+try:
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src/portfolio"
 ASSETS = SRC / "assets"
-WIDTHS = (320, 640, 900)
-RATIO = 4 / 5  # the rails crop everything to a single portrait shape
+WIDTHS = (480, 800, 1200)
+RATIO = 16 / 9  # the rails crop everything to one cinematic shape
 UA = "INU-Media-Site/1.0 (portfolio artwork build)"
 # A card stands for a client's work, so it must not show a recognisable person
 # who had nothing to do with it.
@@ -28,58 +37,106 @@ BANNED = ("portrait", "celebrity", "actor", "actress", "premiere", "whedon", "ob
 
 # Search terms describe the work, not the client, so the picture reads as the
 # discipline the chapter is about.
+# Terms a curated stock library actually captions its photographs with. The
+# picture has to read as the DISCIPLINE the chapter is about — a masala brand
+# illustrated with a bowl of spices described the spice, not the design work.
+# Curated stock captions things with concrete nouns, so that is what we ask
+# for. Abstract phrases ("brand identity design") return whatever the index
+# feels like — that is how a masala brand ended up as a bowl of spices and a
+# pharma brand as a Funko Pop. Each term below was checked against the library.
 QUERIES = {
-    "maarrich": ["cinema movie theatre screen", "movie theater seats", "cinema"],
-    "lavaste": ["film set shooting crew", "movie camera set", "film camera"],
-    "jay": ["recording studio microphone", "music studio", "microphone"],
-    "vrindavan": ["indian classical dance", "dance performance stage", "dancer"],
-    "maa-thi": ["concert stage lights", "live music concert", "stage lighting"],
-    "martin": ["cinema screen dark auditorium", "film noir shadow light", "movie projector beam"],
-    "online-247": ["green screen studio", "visual effects studio", "film studio lights"],
-    "onyx": ["solar panel array field", "photovoltaic panels closeup", "solar farm"],
-    "dom": ["film crew lighting rig set", "movie production spotlight studio", "studio softbox lighting"],
-    "lodha": ["modern skyscraper apartments", "residential high rise", "skyscraper"],
-    "sunblond": ["apartment building balconies", "housing development construction", "residential building facade"],
-    "home-mentors": ["house model architecture", "property model house", "model house"],
-    "hdfc-sky": ["stock market chart screen", "trading charts", "stock exchange"],
-    "capswise": ["calculator financial documents", "accounting spreadsheet desk", "finance calculator"],
-    "aerobott": ["drone flying sky", "quadcopter drone", "drone"],
-    "zouq": ["spices bowls colourful", "turmeric chilli powder spice", "spice jars"],
-    "bliss": ["hair salon styling", "beauty salon", "hairdresser"],
-    "chemist-king": ["pharmacy shelves medicine", "pharmacy store", "pharmacy"],
-    "sonali-jain": ["boutique clothing rack", "fashion boutique store", "clothing store"],
-    "hexagon": ["dubai skyline towers", "business district skyline", "dubai"],
-    "mini": ["smartphone content creator", "phone social media", "smartphone"],
-    "shaz": ["car alloy wheel", "automotive wheel", "car wheel"],
-    "khoonta": ["press conference microphones empty podium", "newspaper print press", "microphone podium"],
-    "namish-taneja": ["camera lens collection", "dslr camera lenses", "photography equipment"],
-    "ditas": ["restaurant interior table setting", "cafe interior", "restaurant food plating"],
-    "rosa": ["building construction crane site", "architecture construction site", "construction crane"],
-    "manerva": ["event stage conference hall", "conference audience hall", "event venue lights"],
+    # 01 BRAND & GRAPHIC DESIGN
+    "zouq": ["product still", "bottle product", "package box"],
+    "aerobott": ["stationery desk", "notebook pen", "workspace desk"],
+    "bliss": ["color swatches", "color palette", "colors"],
+    "chemist-king": ["magazine print", "printing", "paper print"],
+    "hexagon": ["sketch designer", "designer sketch", "drawing sketch"],
+
+    # 02 WEB DESIGN & TECH
+    "sonali-jain": ["online shopping", "shopping laptop", "ecommerce"],
+    "ditas": ["web design", "website laptop", "laptop screen"],
+    "rosa": ["wireframe sketch", "wireframe", "ux sketch"],
+    "home-mentors": ["coding programming", "code coding", "coding"],
+
+    # 03 FILM, MUSIC & VFX
+    "maarrich": ["film crew", "movie camera", "camera man"],
+    "lavaste": ["camera red", "film camera", "cinema camera"],
+    "martin": ["cinema", "theater seats", "movie screen"],
+    "jay": ["recording studio", "music studio", "sound studio"],
+    "vrindavan": ["music concert", "concert crowd", "concert"],
+    "maa-thi": ["camera flash", "studio light", "spotlight"],
+    "online-247": ["camera video", "video camera", "film studio"],
+    "onyx": ["abstract light", "neon abstract", "abstract"],
+    "dom": ["video editing", "editing screen", "editor computer"],
+
+    # 04 PERFORMANCE & DIGITAL ADS
+    "lodha": ["analytics", "charts data", "data screen"],
+    "sunblond": ["market graph", "graph chart", "statistics chart"],
+    "hdfc-sky": ["mobile phone", "smartphone screen", "phone screen"],
+    "capswise": ["calculator finance", "accounting", "finance"],
+    "mini": ["camera tripod", "photographer camera", "camera"],
+    "shaz": ["social media", "social phone", "instagram phone"],
+    "manerva": ["festival crowd", "audience", "crowd people"],
+
+    # 06 PR & INFLUENCER
+    "khoonta": ["newspaper", "newspapers", "news print"],
+    "namish-taneja": ["microphone music", "microphone", "podcast microphone"],
 }
 
 
-def search(query):
-    url = "https://api.openverse.org/v1/images/?" + urllib.parse.urlencode(
-        {
-            "q": query,
-            # Public domain and plain attribution only: the build crops and
-            # resizes every picture, which NoDerivatives licences forbid, and
-            # ShareAlike would pull the whole page into its terms.
-            "license": "cc0,pdm,by",
-            "page_size": 12,
-            "mature": "false",
-        }
-    )
-    request = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(request, timeout=45) as response:
-        return json.load(response).get("results", [])
+CACHE = ROOT / "build/.art-cache"
+
+
+def _get(url, retries=4):
+    """Openverse and the CDNs both drop connections on a long run, and a DNS
+    blip should not throw away the whole batch."""
+    last = None
+    for attempt in range(retries):
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(request, timeout=45) as response:
+                return response.read()
+        except Exception as error:
+            last = error
+            time.sleep(1.5 * (attempt + 1))
+    raise last
+
+
+def search(query, source=None):
+    params = {
+        "q": query,
+        # Public domain and plain attribution only: the build crops and
+        # resizes every picture, which NoDerivatives licences forbid, and
+        # ShareAlike would pull the whole page into its terms.
+        "license": "cc0,pdm,by",
+        # Photographs only. Without this the pool is mostly clip art and PNG
+        # illustrations, which is where the vector "microphone png" came from.
+        "category": "photograph",
+        "extension": "jpg",
+        "page_size": 20,
+        "mature": "false",
+    }
+    # Rawpixel is Openverse's actual stock-photography source. The general pool
+    # is mostly snapshots, which is how a masala brand ended up illustrated by a
+    # bowl of spices instead of by design work.
+    if source:
+        params["source"] = source
+    url = "https://api.openverse.org/v1/images/?" + urllib.parse.urlencode(params)
+    CACHE.mkdir(exist_ok=True)
+    cached = CACHE / (hashlib.sha256(url.encode()).hexdigest()[:16] + ".json")
+    if cached.exists():
+        return json.loads(cached.read_text("utf8")).get("results", [])
+    try:
+        payload = json.loads(_get(url))
+    except Exception as error:
+        print(f"   search failed ({error}); continuing")
+        return []
+    cached.write_text(json.dumps(payload), "utf8")
+    return payload.get("results", [])
 
 
 def fetch(url):
-    request = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return response.read()
+    return _get(url, retries=2)
 
 
 def crop(image):
@@ -100,7 +157,29 @@ def crop(image):
 def build(project_id, queries):
     from PIL import Image
 
-    for candidate in (c for q in queries for c in search(q)):
+    # Openverse ranks loosely, so "recording studio" can return a barn dance.
+    # Candidates are scored on how much of the query the caption actually uses,
+    # and anything sharing no word with the query is discarded outright.
+    scored = []
+    for rank, source in enumerate(("stocksnap",)):
+        for query in queries[:2]:
+            words = [w for w in query.lower().split() if len(w) > 2]
+            for candidate in search(query, source):
+                title = (candidate.get("title") or "").lower()
+                if any(word in title for word in BANNED):
+                    continue
+                hits = sum(1 for word in words if word in title)
+                if not hits:
+                    continue
+                pixels = (candidate.get("width") or 0) * (candidate.get("height") or 0)
+                scored.append((hits + (1 - rank) * 2 + min(pixels / 40_000_000, 0.4), candidate))
+    scored.sort(key=lambda pair: -pair[0])
+    # A loose pass keeps a project from ending up with no picture at all when
+    # the caption wording simply does not match.
+    loose = [c for q in queries for c in search(q, "stocksnap")
+             if not any(w in (c.get("title") or "").lower() for w in BANNED)]
+
+    for _, candidate in scored + [(0, c) for c in loose]:
         source = candidate.get("url")
         if not source:
             continue
@@ -110,10 +189,8 @@ def build(project_id, queries):
         except Exception as error:                      # unreachable or undecodable
             print(f"   skip {source[:60]}: {error}")
             continue
-        if min(image.size) < 620:                       # too small for the largest width
+        if min(image.size) < 800:                       # too small for the largest width
             continue
-        if any(word in (candidate.get("title") or "").lower() for word in BANNED):
-            continue                                    # keeps named people off the cards
         image = crop(image)
         variants = []
         for width in WIDTHS:
@@ -128,8 +205,10 @@ def build(project_id, queries):
             "creator": candidate.get("creator") or "Unknown",
             "license": f"{candidate.get('license', '')} {candidate.get('license_version', '')}".strip(),
             "source": candidate.get("foreign_landing_url") or source,
+            "provider": candidate.get("source"),
+            "stock": True,
         }
-    raise SystemExit(f"No usable image found for {project_id} ({queries})")
+    return None, None                                # reported by the caller
 
 
 def main():
@@ -138,10 +217,19 @@ def main():
     credits_file = ROOT / "licenses/portfolio-art.json"
     credits = json.loads(credits_file.read_text("utf8")) if credits_file.exists() else {}
 
+    explicit = bool(sys.argv[1:])
+    missing = []
     for project_id in wanted:
+        if not explicit and all((ASSETS / f"project-{project_id}-{w}.webp").exists() for w in WIDTHS)                 and credits.get(project_id, {}).get("stock"):
+            print(f"-- {project_id}: already illustrated")
+            continue
         queries = QUERIES[project_id]
         print(f"-> {project_id}: {queries[0]}")
         variants, credit = build(project_id, queries)
+        if not variants:
+            print("   !! nothing usable found — left as is")
+            missing.append(project_id)
+            continue
         assets[f"project-{project_id}"] = variants
         credits[project_id] = credit
         print(f"   {credit['title'][:48]} — {credit['license']}")

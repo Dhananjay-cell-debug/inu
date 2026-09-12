@@ -33,40 +33,152 @@
     updateFields();
   }
 
-  /* --- Click-and-drag scrubbing on horizontal rails ----------------------
-     Verbatim from paparazzi.krildigital.com/movies/movies.js: mouse only, so
-     touch keeps native momentum, and a real drag swallows the click so a card
-     doesn't navigate when you were only pushing the rail along. */
-  function enableDragScroll(el) {
-    if (!el) return;
-    let down = false, startX = 0, startLeft = 0, moved = false;
-    el.addEventListener('mousedown', e => {
-      if (e.button !== 0) return;
-      down = true; moved = false;
-      startX = e.clientX; startLeft = el.scrollLeft;
+  /* --- Rails ------------------------------------------------------------
+     Their marquee (paparazzientertainment.in) keeps the rail out of the
+     browser's scroll machinery, which is what stops a thumbnail trapping the
+     wheel. The CSS animation alone cannot be grabbed though — dragging fought
+     the keyframes and the row appeared to seize — so the same movement is
+     driven from one rAF loop instead. Auto-advance and the drag write to the
+     same offset, so a grab simply takes over and the rail carries on from
+     wherever it is let go. */
+  const rails = [...document.querySelectorAll('.content-rail')];
+  // ?rails=off / ?rails=static isolate this layer when the page is misbehaving.
+  const railMode = new URLSearchParams(location.search).get('rails');
+  const setupRail = (rail, index) => {
+    // Re-entrant on every resize: it must never attach a second set of
+    // listeners or start a second rAF loop, or the loops multiply until the
+    // main thread is spending all its time painting the same rail.
+    if (rail.relayout) { rail.relayout(); return; }
+    const track = rail.querySelector('.content-rail__track');
+    if (!track) return;
+    track.querySelectorAll('[data-marquee-clone]').forEach(clone => clone.remove());
+    const originals = [...track.children];
+    if (!originals.length) return;
+
+    const gapOf = () => parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+    const measureSet = () => originals.reduce((total, item) => total + item.getBoundingClientRect().width, 0) + gapOf() * originals.length;
+    let gap = gapOf();
+    let setWidth = measureSet();
+    if (!setWidth) return;
+
+    // Enough copies to cover the rail plus one set, worked out arithmetically.
+    // Measuring track.scrollWidth inside a grow loop forces a synchronous
+    // layout on an ever-larger flex track once per iteration, per rail — with
+    // six chapters that alone locked the renderer up.
+    const fill = () => {
+      track.querySelectorAll('[data-marquee-clone]').forEach(clone => clone.remove());
+      const copies = Math.min(3, Math.max(1, Math.ceil(rail.clientWidth / setWidth)));
+      const batch = document.createDocumentFragment();
+      for (let copy = 0; copy < copies; copy += 1) {
+        originals.forEach(item => {
+          const clone = item.cloneNode(true);
+          clone.setAttribute('data-marquee-clone', 'true');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.querySelectorAll('a,button').forEach(el => el.setAttribute('tabindex', '-1'));
+          clone.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; img.decoding = 'async'; });
+          batch.appendChild(clone);
+        });
+      }
+      track.appendChild(batch);
+    };
+    fill();
+
+    track.style.animation = 'none';
+    let speed = setWidth / Number(rail.dataset.speed || 50);     // px per second
+    let offset = (index * 140) % setWidth;
+    let hovering = false, dragging = false, held = false;
+    let startX = 0, startOffset = 0, lastMoveX = 0, velocity = 0, lastTime = performance.now();
+
+    const wrap = value => ((value % setWidth) + setWidth) % setWidth;
+    const paint = () => { track.style.transform = `translate3d(${-offset}px,0,0)`; };
+
+    let onScreen = false, frame = 0;
+    const step = (now) => {
+      frame = 0;
+      if (!onScreen || document.hidden || railMode === 'static') return;
+      frame = requestAnimationFrame(step);
+      const dt = Math.min(50, now - lastTime) / 1000;
+      lastTime = now;
+      if (!dragging) {
+        if (Math.abs(velocity) > 4) {            // let a flick run out
+          offset = wrap(offset - velocity * dt);
+          velocity *= 0.94;
+        } else if (!hovering && !rail.classList.contains('is-paused') && !reduceMotion) {
+          offset = wrap(offset + speed * dt);
+        }
+        paint();
+      }
+    };
+    paint();
+    // Six rails animating at once means six very wide composited layers, which
+    // is enough to lock the renderer. Only the rail you can see is running.
+    new IntersectionObserver(entries => {
+      onScreen = entries[0].isIntersecting;
+      lastTime = performance.now();
+      if (onScreen && !frame) frame = requestAnimationFrame(step);
+    }, { rootMargin: '120px 0px' }).observe(rail);
+    rail.addEventListener('pointerdown', () => { if (!frame) frame = requestAnimationFrame(step); });
+
+    rail.addEventListener('pointerenter', () => { hovering = true; });
+    rail.addEventListener('pointerleave', () => { hovering = false; });
+
+    rail.addEventListener('pointerdown', event => {
+      if (event.button !== 0 && event.pointerType === 'mouse') return;
+      held = true; dragging = false; velocity = 0;
+      startX = event.clientX; startOffset = offset; lastMoveX = event.clientX;
+      rail.setPointerCapture?.(event.pointerId);
     });
-    document.addEventListener('mousemove', e => {
-      if (!down) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 6) { moved = true; el.classList.add('dragging'); }
-      if (moved) { el.scrollLeft = startLeft - dx; e.preventDefault(); }
+    rail.addEventListener('pointermove', event => {
+      if (!held) return;
+      const dx = event.clientX - startX;
+      // Six pixels of slop, so a click on a card is still a click.
+      if (!dragging && Math.abs(dx) > 6) { dragging = true; rail.classList.add('is-dragging'); }
+      if (!dragging) return;
+      event.preventDefault();
+      offset = wrap(startOffset - dx);
+      velocity = (event.clientX - lastMoveX) * 30;
+      lastMoveX = event.clientX;
+      paint();
     });
-    document.addEventListener('mouseup', () => {
-      if (!down) return;
-      down = false;
-      setTimeout(() => el.classList.remove('dragging'), 0);
-    });
-    el.addEventListener('click', e => {
-      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    const release = () => {
+      if (!held) return;
+      held = false;
+      // A real drag swallows the click so a card does not navigate.
+      if (dragging) setTimeout(() => { dragging = false; rail.classList.remove('is-dragging'); }, 0);
+    };
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(type => rail.addEventListener(type, release));
+    rail.addEventListener('click', event => {
+      if (dragging) { event.preventDefault(); event.stopPropagation(); }
     }, true);
-    el.addEventListener('dragstart', e => e.preventDefault());
-    /* No wheel handler on purpose. The rails carry data-lenis-prevent, so Lenis
-       leaves their wheel events alone and the browser's own scroll chaining
-       does the right thing: sideways inside the rail, vertical on to the page.
-       Anything that calls preventDefault here traps the reader the moment the
-       cursor crosses a thumbnail. */
-  }
-  document.querySelectorAll('[data-drag-rail]').forEach(enableDragScroll);
+    rail.addEventListener('dragstart', event => event.preventDefault());
+
+    rail.relayout = () => {
+      gap = gapOf();
+      const next = measureSet();
+      if (!next) return;
+      setWidth = next;
+      speed = setWidth / Number(rail.dataset.speed || 50);
+      offset = wrap(offset);
+      fill();
+      paint();
+    };
+
+    rail.jumpTo = card => {                      // used by the project search
+      const home = originals.indexOf(card);
+      if (home < 0) return;
+      const before = originals.slice(0, home).reduce((total, item) => total + item.getBoundingClientRect().width + gap, 0);
+      offset = wrap(before - 24);
+      velocity = 0;
+      paint();
+    };
+  };
+  const setupRails = () => { if (railMode === 'off') return; rails.forEach(setupRail); };
+  setupRails();
+  let railResizeTimer;
+  addEventListener('resize', () => {
+    clearTimeout(railResizeTimer);
+    railResizeTimer = setTimeout(setupRails, 180);
+  }, { passive: true });
 
   /* --- Light 3D response on poster cards, theirs verbatim ---------------- */
   if (!reduceMotion && matchMedia('(pointer:fine)').matches) {

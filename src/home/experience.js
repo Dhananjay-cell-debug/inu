@@ -53,49 +53,12 @@
   dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');lenis?.start();});
   dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 
-  let carouselBusy=false,trackTarget=0,trackFrame=0;
-  const trackMax=()=>Math.max(0,track.scrollWidth-track.clientWidth);
-  function easeTrack(){
-    const next=track.scrollLeft+(trackTarget-track.scrollLeft)*.18;
-    if(Math.abs(trackTarget-next)<.4){trackFrame=0;track.scrollLeft=trackTarget;return;}
-    // Keep a non-zero frame handle while assigning scrollLeft so the scroll
-    // listener knows this is our interpolation rather than a user drag.
-    trackFrame=requestAnimationFrame(easeTrack);
-    track.scrollLeft=next;
-  }
-  function nudgeTrack(amount){
-    trackTarget=clamp(trackTarget+amount,0,trackMax());
-    if(!trackFrame)trackFrame=requestAnimationFrame(easeTrack);
-  }
-  function moveProjects(direction){
-    if(carouselBusy)return;
-    const gap=parseFloat(getComputedStyle(track).columnGap)||0;
-    const amount=track.querySelector('.work-card').getBoundingClientRect().width+gap;
-    const max=trackMax();
-    if(max>4){const target=direction>0&&track.scrollLeft>=max-5?0:direction<0&&track.scrollLeft<=5?max:track.scrollLeft+direction*amount;track.scrollTo({left:target,behavior:reduce.matches?'instant':'smooth'});}
-    else {
-      // FLIP keeps the five-card desktop row continuous instead of snapping.
-      carouselBusy=true;
-      const cards=[...track.children],before=new Map(cards.map(e=>[e,e.getBoundingClientRect().left]));
-      if(direction>0)track.append(track.firstElementChild);else track.prepend(track.lastElementChild);
-      for(const card of cards){const delta=before.get(card)-card.getBoundingClientRect().left;if(!reduce.matches)card.animate([{transform:`translateX(${delta}px)`,opacity:Math.abs(delta)>amount*2?0:1},{transform:'translateX(0)',opacity:1}],{duration:650,easing:'cubic-bezier(.22,1,.36,1)'});}
-      setTimeout(()=>carouselBusy=false,reduce.matches?0:650);
-    }
-    document.querySelector('#carousel-status').textContent=`Browsing ${content.portfolio.items.length} featured projects.`;
-  }
-  document.querySelector('#previous-work')?.addEventListener('click',()=>moveProjects(-1));
-  document.querySelector('#next-work')?.addEventListener('click',()=>moveProjects(1));
-  track?.addEventListener('keydown',e=>{if(e.target!==track)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();moveProjects(e.key==='ArrowRight'?1:-1);}});
-  track?.addEventListener('scroll',()=>{if(!trackFrame)trackTarget=track.scrollLeft;},{passive:true});
-  // The rail used to borrow the vertical wheel and turn it into sideways
-  // movement, which pinned the reader to this section for the length of the
-  // rail whenever the cursor crossed a thumbnail. The wheel now always belongs
-  // to the page; the rail moves by drag, by its arrows and by the keyboard.
-  track?.addEventListener('wheel',e=>{
-    if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||trackMax()<4)return;
-    e.preventDefault();
-    nudgeTrack(e.deltaX*.9);
-  },{passive:false});
+  /* The featured rail is the shared marquee now: it pauses under the cursor
+     in CSS, and keyboard focus pauses it here so a card cannot slide away
+     while it is being read. */
+  const featuredRail=track?.closest('.content-rail');
+  featuredRail?.addEventListener('focusin',()=>featuredRail.classList.add('is-paused'));
+  featuredRail?.addEventListener('focusout',()=>featuredRail.classList.remove('is-paused'));
 
   function configureScrolling(){lenis?.destroy();lenis=null;if(!reduce.matches&&finePointer.matches&&window.Lenis){lenis=new Lenis({autoRaf:true,lerp:0.085,smoothWheel:true,syncTouch:false,anchors:content.page==='portfolio'?false:{offset:-90},prevent:node=>node.hasAttribute('data-lenis-prevent')});}}
   configureScrolling();

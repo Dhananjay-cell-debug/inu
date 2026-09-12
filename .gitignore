@@ -10,3 +10,4 @@ rebuild/
 *.log
 
 .vercel
+build/.art-cache/

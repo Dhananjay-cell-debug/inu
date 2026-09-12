@@ -38,15 +38,38 @@
 /* The footer was solid #050704 and sealed the field off; let it read through. */
 .footer{background:linear-gradient(180deg,rgba(5,7,4,.82),rgba(5,7,4,.97))}
 
-/* --- Horizontal rails must never trap the page ---------------------------
-   While a rail is a native scroll box, Chrome latches the whole wheel gesture
-   to it, so the page stopped dead the moment the cursor crossed a thumbnail —
-   overscroll-behavior does not help, because the gesture never chains out in
-   the first place. On a mouse the rail therefore stops being a scroll box at
-   all: `overflow:hidden` still accepts scrollLeft, which is all the drag and
-   the arrows use. Touch keeps the real scroll box so swiping still works. */
-[data-drag-rail]{overscroll-behavior-x:contain;overscroll-behavior-y:auto}
-@media (pointer:fine){[data-drag-rail]{overflow:hidden}}
+/* --- Rails, lifted from paparazzientertainment.in ------------------------
+   Their rails are `overflow:hidden` with the track marqueeing under a CSS
+   animation, so a rail is never a scroll box and the wheel always belongs to
+   the page — which is exactly why their thumbnails do not trap the reader.
+   Hover (or focus) pauses the track. Touch and reduced-motion fall back to
+   their scrolling variant further down. --rail-distance/--rail-duration are
+   measured in atmosphere.js by their own cloning routine. */
+.content-rail{--rail-gap:clamp(12px,1.1vw,18px);position:relative;min-width:0;overflow:hidden;padding:3px 0 10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.content-rail:before,.content-rail:after{content:"";position:absolute;top:0;bottom:0;width:1px;z-index:5;pointer-events:none;background:linear-gradient(transparent,rgba(255,121,10,.75),transparent);opacity:.5}
+.content-rail:before{left:0}
+.content-rail:after{right:0}
+.content-rail{cursor:grab}
+.content-rail.is-dragging{cursor:grabbing}
+.content-rail.is-dragging .folio-card,.content-rail.is-dragging .work-card{pointer-events:none}
+/* No will-change here: it pins a permanent layer for a track that can be
+   thousands of pixels wide, six times over. translate3d is enough. */
+.content-rail__track{display:flex;align-items:stretch;gap:var(--rail-gap);width:max-content}
+.content-rail__track img{-webkit-user-drag:none;user-select:none}
+.content-rail__track>*{flex:0 0 auto}
+/* The featured track used to be the scroll box itself, so its cards were sized
+   as a percentage of it. Inside a marquee the track is width:max-content, so a
+   percentage basis has nothing to resolve against and the cards came out at
+   uneven widths and heights. Fixed basis, one aspect ratio, one baseline. */
+.content-rail__track#work-track{overflow:visible;scroll-snap-type:none;cursor:default;align-items:flex-start;gap:var(--rail-gap)}
+.content-rail .work-card{flex:0 0 clamp(232px,20vw,300px);scroll-snap-align:none}
+.content-rail .work-image{aspect-ratio:1.5}
+/* Touch: a real scroll box, so a finger swipes it natively and the page still
+   scrolls past it. Pointer events drive the drag on a mouse only. */
+@media (pointer:coarse){
+  .content-rail{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:none;mask-image:none;cursor:auto}
+  .content-rail::-webkit-scrollbar{display:none}
+}
 
 /* --- The light sweep across a card, from their `.media-card:after` ------- */
 .lightning{position:relative;overflow:hidden}
@@ -127,3 +150,10 @@
   .socials a:hover,.socials a:focus-visible{transform:none}
   .cookie-bar{transition:opacity .2s}
 }
+
+/* --- The supplied INU lockup, in place of the typeset wordmark ----------- */
+.wordmark.has-logo{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1}
+.wordmark-logo{width:clamp(84px,7vw,104px);height:auto;display:block}
+.wordmark.has-logo span{margin-top:6px}
+.footer-logo{width:clamp(74px,6vw,86px);height:auto;display:block}
+.footer-brand>a{display:inline-block}

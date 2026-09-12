@@ -53,13 +53,13 @@
    paparazzi.krildigital.com/movies do. Card chrome (the light sweep and the
    slight 3D tilt) comes from their .media-card.
    ========================================================================== */
-.folio-work-intro{padding:clamp(54px,8vw,120px) var(--page) clamp(28px,4vw,54px);max-width:1500px;margin-inline:auto}
+.folio-work-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,clamp(300px,30vw,420px));align-items:end;gap:clamp(28px,5vw,80px);padding:clamp(54px,8vw,120px) var(--page) clamp(28px,4vw,54px);max-width:1500px;margin-inline:auto}
 .folio-work-intro h2{margin:0;font-family:INUDisplay,Archivo,Arial,sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:.92;letter-spacing:-.04em;font-weight:600}
 .folio-work-intro h2 span{display:block}
 .folio-work-intro h2 em{display:block;font-family:INUBrush,cursive;font-style:normal;color:var(--orange);letter-spacing:-.02em}
 .folio-work-note{max-width:58ch;margin:clamp(18px,2.4vw,30px) 0 0;color:var(--muted);font-size:clamp(13px,1.05vw,17px);line-height:1.75}
 
-.content-index{position:sticky;top:var(--header-h,76px);z-index:80;display:flex;justify-content:center;gap:clamp(10px,1.9vw,30px);overflow-x:auto;padding:14px clamp(16px,3vw,40px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(6,7,6,.88);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);scrollbar-width:none}
+.content-index{position:sticky;top:var(--header-h,76px);z-index:80;display:flex;justify-content:center;gap:clamp(10px,1.9vw,30px);overflow-x:auto;padding:14px clamp(16px,3vw,40px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0a0b0a;scrollbar-width:none}
 .content-index::-webkit-scrollbar{display:none}
 .content-index a:first-child{margin-inline-start:auto}
 .content-index a:last-child{margin-inline-end:auto}
@@ -77,19 +77,12 @@
 .studio-row__title p{margin:18px 0 0;max-width:34ch;color:var(--muted);font-size:clamp(12px,.9vw,15px);line-height:1.72}
 .studio-row__title b{display:block;max-width:320px;margin-top:24px;color:#6f726d;font-size:clamp(7px,.62vw,10px);line-height:1.6;letter-spacing:.18em;font-weight:500}
 .studio-row__count{display:block;margin-top:14px;font-style:normal;font-size:clamp(8px,.66vw,11px);letter-spacing:.2em;text-transform:uppercase;color:#6f726d}
-
-.content-rail{position:relative;min-width:0;scroll-snap-type:inline proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:3px 0 10px;cursor:grab;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
-.content-rail::-webkit-scrollbar{display:none}
-.content-rail.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
-.content-rail:focus-visible{outline:1px solid var(--orange);outline-offset:6px}
-.content-rail__track{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(244px,20.5vw,330px);justify-content:start;gap:clamp(12px,1.1vw,18px)}
 .content-rail .folio-card{grid-column:auto;aspect-ratio:3/4;min-width:0;scroll-snap-align:start;--card-x:0deg;--card-y:0deg;transform:perspective(1000px) rotateX(var(--card-x)) rotateY(var(--card-y)) translateZ(0);transform-style:preserve-3d;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
-.content-rail .folio-card-art{inset:0 0 33%}
+.content-rail .folio-card-art{inset:0}
 .content-rail .folio-card:hover{border-color:rgba(255,121,10,.75);box-shadow:0 28px 70px rgba(0,0,0,.45)}
 .content-rail .folio-card:hover img{transform:scale(1.065);filter:saturate(1.08) contrast(1.04)}
 .content-rail .folio-card img{transition:transform 1.15s var(--ease),filter .7s var(--ease)}
 .content-rail .folio-card-copy{transform:translateZ(35px)}
-.content-rail.dragging .folio-card{pointer-events:none}
 
 .content-rail__nav{grid-column:2;display:flex;gap:10px;margin-top:18px}
 .content-rail__nav button{width:46px;height:46px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink);font-size:17px;cursor:pointer;transition:border-color .3s,color .3s,transform .3s,opacity .3s}
@@ -100,14 +93,12 @@
   .studio-row{grid-template-columns:minmax(0,1fr);gap:22px;padding-inline:clamp(18px,5vw,40px)}
   .studio-row__title{position:static}
   .studio-row__title p{max-width:52ch}
-  .content-rail__track{grid-auto-columns:clamp(200px,44vw,260px)}
+  .content-rail .folio-card{flex-basis:clamp(280px,58vw,380px)}
   .content-rail__nav{grid-column:1}
 }
 @media (max-width:700px){
   .content-index{gap:18px;justify-content:flex-start;padding:13px clamp(18px,5vw,40px)}
-  .content-rail__track{grid-auto-columns:64vw}
-  .content-rail .folio-card{aspect-ratio:.86;min-height:0}
-  .content-rail .folio-card-art{inset:0 0 30%}
+  .content-rail .folio-card{flex-basis:78vw;aspect-ratio:16/9;min-height:0}
   .content-rail__nav{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -122,6 +113,64 @@
 .content-rail .folio-card-subtitle{font-size:clamp(9px,.78vw,13px);letter-spacing:.09em;line-height:1.3}
 .content-rail .folio-card-category{margin-top:5px;font-size:clamp(7px,.62vw,10px);line-height:1.5;letter-spacing:.07em}
 
-/* Overflow is left to the shared [data-drag-rail] rule so the mouse never gets
-   a scroll box to latch the wheel onto; touch keeps a real one to swipe. */
-@media (pointer:coarse){.content-rail{overflow-x:auto;overflow-y:hidden}}
+
+
+
+/* Card sizing inside the shared marquee track (the track is flex, not grid). */
+.content-rail .folio-card{flex:0 0 clamp(300px,27vw,430px);aspect-ratio:16/9;min-width:0}
+
+/* Card chrome from paparazzientertainment.in's .media-card: the artwork fills
+   the card and the copy sits over their veil, instead of a black block bolted
+   underneath the picture. */
+.content-rail .folio-card{background:#111;border-color:rgba(255,255,255,.08)}
+.content-rail .folio-card-art:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.02) 26%,rgba(0,0,0,.28) 57%,rgba(0,0,0,.94) 100%);transition:opacity .5s}
+.content-rail .folio-card-copy{z-index:3;left:clamp(16px,1.8vw,26px);right:clamp(16px,1.8vw,26px);bottom:clamp(15px,1.8vw,25px);gap:6px}
+.content-rail .folio-card-copy strong{font-size:clamp(18px,1.7vw,28px);line-height:.92;letter-spacing:-.04em}
+.content-rail .folio-card-subtitle{font-size:clamp(9px,.72vw,11px);letter-spacing:.19em;color:#d4d1cb}
+.content-rail .folio-card-category{margin-top:2px;font-size:clamp(7px,.6vw,9px);line-height:1.45;letter-spacing:.14em;color:#a7a49e}
+
+/* Finding one project without scrolling the whole page. */
+.folio-find{max-width:1500px;margin:0 auto;padding:0 var(--page) clamp(18px,2.4vw,30px)}
+.folio-search{position:relative;display:flex;align-items:center;gap:14px;max-width:680px;padding:0 8px 0 22px;border:1px solid rgba(243,241,235,.14);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 40px -28px rgba(0,0,0,.9);transition:border-color .35s var(--ease),box-shadow .35s var(--ease),transform .35s var(--ease)}
+.folio-search:hover{border-color:rgba(243,241,235,.26)}
+.folio-search:focus-within{border-color:rgba(255,121,10,.85);transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 4px rgba(255,121,10,.12),0 24px 50px -28px rgba(255,121,10,.5)}
+.folio-search-icon{flex:0 0 auto;width:18px;height:18px;fill:none;stroke:#8b8e88;stroke-width:1.6;stroke-linecap:round;transition:stroke .3s}
+.folio-search:focus-within .folio-search-icon{stroke:var(--orange)}
+.folio-search input{flex:1;min-width:0;padding:17px 0;border:0;background:0 0;color:var(--ink);font:400 14.5px/1 Archivo,Arial,sans-serif;letter-spacing:.02em}
+.folio-search input::placeholder{color:#7d807b}
+.folio-search input:focus{outline:none}
+.folio-search input::-webkit-search-cancel-button{display:none}
+.folio-search-key{flex:0 0 auto;margin-right:4px;padding:6px 10px;border:1px solid rgba(243,241,235,.16);border-radius:7px;color:#8b8e88;font:500 10px/1 Archivo,Arial,sans-serif;letter-spacing:.1em;transition:opacity .3s}
+.folio-search:focus-within .folio-search-key{opacity:0}
+.folio-search-clear{flex:0 0 auto;width:30px;height:30px;margin-right:6px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:var(--muted);font-size:16px;line-height:1;cursor:pointer;transition:color .3s,background .3s}
+.folio-search-clear:hover{color:var(--ink);background:rgba(255,255,255,.12)}
+.folio-search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:90;margin:0;padding:6px;list-style:none;max-height:320px;overflow-y:auto;border:1px solid var(--line);border-radius:14px;background:rgba(10,12,10,.97);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.folio-search-results li{margin:0}
+.folio-search-results button{width:100%;display:flex;align-items:baseline;gap:10px;padding:11px 13px;border:0;border-radius:9px;background:0 0;color:var(--ink);text-align:left;font:400 14px/1.3 Archivo,Arial,sans-serif;cursor:pointer;transition:background .2s}
+.folio-search-results button:hover,.folio-search-results button.is-active{background:rgba(255,121,10,.16)}
+.folio-search-results em{font-style:normal;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.folio-search-empty{padding:13px;color:var(--muted);font-size:13px}
+/* the card the search sent you to, briefly ringed so it is findable */
+.folio-card.is-found{border-color:var(--orange);box-shadow:0 0 0 1px rgba(255,121,10,.5),0 24px 60px rgba(0,0,0,.5)}
+@media (max-width:700px){.folio-find{padding-inline:clamp(18px,5vw,40px)}.folio-search input{font-size:16px}}
+
+/* The right half of the intro was dead space. It now carries the shape of the
+   work — totals, then every discipline with its count as a jump link, so the
+   page can be navigated from the top instead of only by scrolling. */
+.folio-ledger{border-top:1px solid var(--line);padding-top:clamp(16px,1.8vw,22px)}
+.folio-ledger-figures{display:flex;gap:clamp(18px,2.4vw,34px);padding-bottom:clamp(14px,1.6vw,20px)}
+.folio-ledger-figures div{display:flex;flex-direction:column;gap:4px}
+.folio-ledger-figures strong{font-family:INUDisplay,Archivo,Arial,sans-serif;font-size:clamp(26px,2.6vw,40px);line-height:.9;letter-spacing:-.03em;font-weight:600}
+.folio-ledger-figures span{font-size:clamp(7px,.62vw,10px);letter-spacing:.2em;text-transform:uppercase;color:#6f726d}
+.folio-ledger-list{margin:0;padding:0;list-style:none}
+.folio-ledger-list li{border-top:1px solid var(--line)}
+.folio-ledger-list a{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:clamp(9px,.78vw,12px);letter-spacing:.14em;text-transform:uppercase;color:#9a9d97;transition:color .3s,padding-left .3s}
+.folio-ledger-list a:hover{color:var(--ink);padding-left:6px}
+.folio-ledger-list i{font-style:normal;color:var(--orange);opacity:.6}
+.folio-ledger-list span{flex:1;min-width:0}
+.folio-ledger-list b{font-weight:400;color:#6f726d;font-variant-numeric:tabular-nums}
+.folio-ledger-list a:hover b{color:var(--orange)}
+@media (max-width:1000px){
+  .folio-work-intro{grid-template-columns:minmax(0,1fr);gap:26px}
+  .folio-ledger-figures{gap:26px}
+}

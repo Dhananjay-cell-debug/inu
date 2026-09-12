@@ -40,35 +40,87 @@
   }));
  }
 
- /* Arrow buttons and keyboard paging for each rail; dragging is handled by
-    the shared atmosphere layer. */
+ /* A rail pauses under the cursor via CSS; keyboard users pause it too, and
+    tabbing into a card must not leave it sliding out from under them. */
  chapters.forEach(chapter=>{
   const rail=chapter.querySelector('.content-rail');
-  const previous=chapter.querySelector('[data-rail-prev]'),next=chapter.querySelector('[data-rail-next]');
   if(!rail)return;
-  const step=()=>{
-    const card=rail.querySelector('.folio-card');
-    const gap=parseFloat(getComputedStyle(rail.querySelector('.content-rail__track')).columnGap)||14;
-    return (card?card.getBoundingClientRect().width:260)+gap;
-  };
-  const sync=()=>{
-    if(!previous||!next)return;
-    const max=rail.scrollWidth-rail.clientWidth;
-    previous.disabled=rail.scrollLeft<2;
-    next.disabled=rail.scrollLeft>=max-2;
-  };
-  const move=direction=>rail.scrollBy({left:step()*direction,behavior:reduce.matches?'instant':'smooth'});
-  previous?.addEventListener('click',()=>move(-1));
-  next?.addEventListener('click',()=>move(1));
-  rail.addEventListener('keydown',event=>{
-    if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
-    event.preventDefault();move(event.key==='ArrowRight'?1:-1);
-  });
-  let frame=0;
-  rail.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(()=>{frame=0;sync();});},{passive:true});
-  addEventListener('resize',sync,{passive:true});
-  sync();
+  rail.addEventListener('focusin',()=>rail.classList.add('is-paused'));
+  rail.addEventListener('focusout',()=>rail.classList.remove('is-paused'));
  });
+
+ /* Find one project without hunting through six chapters. Selecting a result
+    jumps to its chapter, winds that rail to the card and rings it briefly. */
+ const box=document.querySelector('#project-search');
+ const results=document.querySelector('#project-search-results');
+ const clear=document.querySelector('.folio-search-clear');
+ if(box&&results){
+  const entries=[...document.querySelectorAll('.folio-card:not([data-marquee-clone])')].map(card=>{
+    const chapter=card.closest('[data-chapter]');
+    return {
+      card, chapter,
+      title:card.querySelector('strong')?.textContent||'',
+      subtitle:card.querySelector('.folio-card-subtitle')?.textContent||'',
+      category:card.querySelector('.folio-card-category')?.textContent||'',
+      chapterName:chapter?.querySelector('.studio-row__title h3')?.textContent.replace(/\s+/g,' ')||''
+    };
+  });
+  // A project sits in more than one chapter; offer it once.
+  const seen=new Set();
+  const unique=entries.filter(e=>{const key=e.title+e.subtitle;if(seen.has(key))return false;seen.add(key);return true;});
+  let active=-1,shown=[];
+
+  const close=()=>{results.hidden=true;box.setAttribute('aria-expanded','false');active=-1;};
+  const reveal=entry=>{
+    close();
+    const top=entry.chapter.getBoundingClientRect().top+scrollY-offset()-18;
+    scrollTo({top,behavior:reduce.matches?'instant':'smooth'});
+    entry.chapter.querySelector('.content-rail')?.jumpTo?.(entry.card);
+    document.querySelectorAll('.folio-card.is-found').forEach(c=>c.classList.remove('is-found'));
+    entry.card.classList.add('is-found');
+    setTimeout(()=>entry.card.classList.remove('is-found'),2600);
+  };
+  const render=()=>{
+    const query=box.value.trim().toLowerCase();
+    clear.hidden=!query;
+    if(!query){close();results.innerHTML='';return;}
+    shown=unique.filter(e=>`${e.title} ${e.subtitle} ${e.category} ${e.chapterName}`.toLowerCase().includes(query)).slice(0,8);
+    results.innerHTML=shown.length
+      ? shown.map((e,i)=>`<li role="option" aria-selected="false"><button type="button" data-result="${i}">${e.title}${e.subtitle?` <em>${e.subtitle}</em>`:''}<em>${e.chapterName}</em></button></li>`).join('')
+      : '<li class="folio-search-empty">No project matches that yet.</li>';
+    results.hidden=false;box.setAttribute('aria-expanded','true');active=-1;
+  };
+  const move=step=>{
+    const buttons=[...results.querySelectorAll('button')];
+    if(!buttons.length)return;
+    active=(active+step+buttons.length)%buttons.length;
+    buttons.forEach((b,i)=>b.classList.toggle('is-active',i===active));
+    buttons[active].scrollIntoView({block:'nearest'});
+  };
+  // '/' anywhere on the page jumps to the search, as the hint promises.
+  addEventListener('keydown',event=>{
+    if(event.key!=='/'||event.metaKey||event.ctrlKey||event.altKey)return;
+    const tag=(event.target.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||event.target.isContentEditable)return;
+    event.preventDefault();
+    box.focus();
+    box.scrollIntoView({block:'center',behavior:reduce.matches?'instant':'smooth'});
+  });
+  box.addEventListener('input',render);
+  box.addEventListener('focus',()=>{if(box.value.trim())render();});
+  box.addEventListener('keydown',event=>{
+    if(event.key==='ArrowDown'){event.preventDefault();move(1);}
+    else if(event.key==='ArrowUp'){event.preventDefault();move(-1);}
+    else if(event.key==='Enter'){event.preventDefault();if(shown[active===-1?0:active])reveal(shown[active===-1?0:active]);}
+    else if(event.key==='Escape'){box.value='';render();}
+  });
+  results.addEventListener('click',event=>{
+    const button=event.target.closest('[data-result]');
+    if(button)reveal(shown[Number(button.dataset.result)]);
+  });
+  clear.addEventListener('click',()=>{box.value='';render();box.focus();});
+  document.addEventListener('pointerdown',event=>{if(!event.target.closest('.folio-search'))close();});
+ }
 
  /* Pause finite scene animations when they are no longer visible. */
  const hero=document.querySelector('.folio-hero');
