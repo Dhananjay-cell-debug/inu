@@ -8,7 +8,9 @@ body:has(.end-reveal)>.site-shell{position:relative;z-index:1;background:var(--b
 .end-reveal__art{position:fixed;left:0;right:0;bottom:0;z-index:-1;height:min(85svh,calc(100vw * var(--end-aspect)));background:#070706;display:flex;align-items:end;justify-content:center;overflow:hidden}
 .end-reveal__art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .end-reveal:before{content:'';position:absolute;inset:0 0 auto;height:min(130px,25%);background:linear-gradient(#0009,transparent);z-index:1}
-/* A 16:9 plate is only ~0.56 x viewport-width tall, which on a phone is a
-   220px sliver nobody reads as a reveal. Taller, with only a mild cover crop. */
-@media(max-width:700px){.end-reveal,.end-reveal__art{height:clamp(235px,33svh,300px)}}
+/* On a phone the plate is shown whole: the box is exactly as tall as the
+   full-width artwork, so nothing is cropped off the sides and no empty
+   strip is left behind either. */
+@media(max-width:700px){.end-reveal,.end-reveal__art{height:calc(100vw * var(--end-aspect))}
+.end-reveal__art img{object-fit:fill}}
 @media(prefers-reduced-motion:reduce){.end-reveal__art{position:absolute;inset:0;height:100%;z-index:0}}

@@ -34,7 +34,7 @@ const fields={
  texture:image('texture','layer-image'),storyCollage:image('story-collage','layer-image','25vw'),filmstrip:image('filmstrip','layer-image','(max-width:700px) 43vw, 32vw'),storyHeading:lines(p.story.heading),storyDescription:esc(p.story.description),storyPrinciples:lines(p.story.principles),storyNote:lines(p.story.note),
  stats:p.story.stats.map(s=>`<div class="reveal"><strong>${esc(s.value)}</strong><span>${lines(s.label)}</span></div>`).join(''),
  clientHeading:lines(p.clients.heading),clientNote:lines(p.clients.note),clientMore:esc(p.clients.more),logos:p.clients.items.map(s=>`<div class="folio-logo reveal">${image('logo-'+s.id,'','(max-width:700px) 28vw, 15vw',false,s.name)}</div>`).join(''),
- closingRoom:image('closing-room','layer-image'),studio:image('studio','layer-image','(max-width:700px) 64vw, 43vw'),curtain:image('curtain','layer-image','20vw'),closingHeading:lines(p.closing.heading),closingDescription:esc(p.closing.description),closingButton:esc(p.closing.button),closingNote:lines(p.closing.note),contactHref:esc(shared.talk.href)
+ closingRoom:image('closing-room','layer-image'),studio:image('studio','layer-image','(max-width:700px) 64vw, 43vw'),closingHeading:lines(p.closing.heading),closingDescription:esc(p.closing.description),closingButton:esc(p.closing.button),closingNote:lines(p.closing.note),contactHref:esc(shared.talk.href)
 };
 const main=fs.readFileSync(path.join(src,'template.html'),'utf8').replace(/\{\{(\w+)\}\}/g,(_,key)=>{if(!(key in fields))throw Error(`Unresolved portfolio field ${key}`);return fields[key];});
 html=html.replace(/<main id="main">[\s\S]*?<\/main>/,main).replace('<body>','<body class="portfolio-page">');

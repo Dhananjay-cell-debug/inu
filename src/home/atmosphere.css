@@ -78,7 +78,7 @@
 
 /* --- Social discs, from paparazzi.krildigital.com ------------------------ */
 .socials{margin-left:auto;display:flex;gap:1.5rem;align-items:center}
-.socials a{--social-fill:#ff790a;--social-glow:255,121,10;position:relative;overflow:hidden;width:2.75rem;height:2.75rem;padding:.72rem;display:grid;place-items:center;color:rgba(243,241,235,.68);border:1px solid rgba(243,241,235,.16);background-color:rgba(255,255,255,.022);border-radius:50%;isolation:isolate;transition:color .28s ease,border-color .32s ease,transform .38s cubic-bezier(.22,.61,.36,1),box-shadow .38s ease}
+.socials a{--social-fill:#ff790a;--social-glow:255,121,10;position:relative;overflow:hidden;width:2.3rem;height:2.3rem;padding:.6rem;display:grid;place-items:center;color:rgba(243,241,235,.62);border:1px solid rgba(243,241,235,.11);background-color:transparent;border-radius:50%;isolation:isolate;transition:color .28s ease,border-color .32s ease,transform .38s cubic-bezier(.22,.61,.36,1),box-shadow .38s ease}
 .socials a[data-social=linkedin]{--social-fill:#0a66c2;--social-glow:10,102,194}
 .socials a[data-social=twitter]{--social-fill:#1d9bf0;--social-glow:29,155,240}
 .socials a[data-social=instagram]{--social-fill:linear-gradient(135deg,#833ab4 0%,#e1306c 48%,#f77737 100%);--social-glow:225,48,108}
@@ -86,7 +86,7 @@
 .socials a[data-social=youtube]{--social-fill:#f00;--social-glow:255,0,0}
 /* platform colour blooms from the centre of the disc on hover */
 .socials a:after{content:"";position:absolute;inset:0;z-index:0;border-radius:50%;background:var(--social-fill);opacity:0;transform:scale(.22);transition:transform .42s cubic-bezier(.19,1,.22,1),opacity .24s ease}
-.socials a svg{position:relative;z-index:1;width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .38s cubic-bezier(.19,1,.22,1)}
+.socials a svg{position:relative;z-index:1;width:17px;height:17px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .38s cubic-bezier(.19,1,.22,1)}
 .socials a:hover,.socials a:focus-visible{color:#fff;border-color:rgba(var(--social-glow),.9);transform:translateY(-4px) scale(1.04);box-shadow:0 0 0 1px rgba(var(--social-glow),.16),0 10px 28px -6px rgba(var(--social-glow),.62)}
 .socials a:hover:after,.socials a:focus-visible:after{opacity:1;transform:scale(1)}
 .socials a:hover svg,.socials a:focus-visible svg{transform:scale(1.08)}

@@ -1,27 +1,333 @@
 {
-  "brand": {"name":"INU", "suffix":"MEDIA", "title":"INU Media — Ideas into Impact", "description":"Full-service creative media for bolder brands. Strategy, content, design, digital, PR and technology. INU Media — brands, people, stories, beyond."},
-  "music":{"title":"Cinematic Action Trailer Background Music — 1 Minute Hero Entry Bgm","source":"","credit":"","volume":0.32},
-  "navigation":[{"label":"Home","href":"#home"},{"label":"About","href":"#about"},{"label":"Services","href":"/services"},{"label":"Portfolio","href":"/portfolio"}],
-  "talk":{"label":"Let’s talk","href":"/lets-talk"},
-  "hero":{"words":["Beauty","is","Inside"],"rail":["Ideas","People","Stories","Beyond"],"scrollLabel":"Scroll to discover"},
-  "belief":{"eyebrow":"Our belief","heading":"We believe","prefix":"in","accent":"design","description":"Ideas that go beyond ordinary. Restless minds redefining the beauty of digital experiences. Courage to create so brands live.","quote":"Design adds value faster than it adds cost."},
-  "clients":{"eyebrow":"Trusted by","label":"brands & creators","more":"And many more","items":[{"name":"Lodha","image":"logo-lodha.webp"},{"name":"Aerobott","image":"logo-aerobott.webp"},{"name":"HDFC Sky","image":"logo-hdfc.webp"},{"name":"Bombay Music Co.","image":"logo-bombay.webp"},{"name":"DLF","image":"logo-dlf.webp"},{"name":"Martin","image":"logo-martin.webp"}]},
-  "services":{"eyebrow":"What we do","heading":[{"text":"Full-service"},{"text":"creative media","accent":true},{"text":"for bolder brands"}],"description":"From strategy to screens, we help brands show up, stand out and stay ahead. A one-stop creative partner for everything your brand needs.","button":"Explore all services","items":[
-    {"title":"Strategy & consulting","lines":["Strategy","& consulting"],"tagline":"Ideas with direction.","image":"strategy","offerings":["Brand strategy & positioning","Audience insights","Campaign planning","Content strategy"]},
-    {"title":"Content & production","lines":["Content","& production"],"tagline":"Stories that move.","image":"production","offerings":["Branded films & video production","Photography","Video editing, VFX & CGI","Short-form & social content"]},
-    {"title":"Design & branding","lines":["Design","& branding"],"tagline":"Visuals that speak.","image":"design","offerings":["Brand identity","Graphic design","Motion design","Campaign creative"]},
-    {"title":"Digital & performance","lines":["Digital &","performance"],"tagline":"Growth that scales.","image":"digital","offerings":["Social media marketing","Google & Meta Ads","Performance campaigns","Lead generation"]},
-    {"title":"PR & ORM","lines":["PR & ORM"],"tagline":"Reputation that lasts.","image":"pr","offerings":["Film & entertainment PR","Media outreach","Influencer collaborations","Online reputation management"]},
-    {"title":"Web & tech solutions","lines":["Web & tech","solutions"],"tagline":"Digital experiences.","image":"web","offerings":["Website design & development","UI & UX design","Landing pages","Website maintenance"]}
-  ]},
-  "portfolio":{"eyebrow":"Featured work","heading":[{"text":"Real brands"},{"text":"Real ","inlineAccent":"results"}],"description":"A glimpse of the stories we’ve helped bring to life across industries, platforms and audiences.","button":"Explore our work","items":[
-    {"title":"Martin","category":"Movie marketing","image":"martin.webp"},
-    {"title":"Vrindavan Anthem","category":"Music campaign","image":"vrindavan.webp"},
-    {"title":"Lodha","category":"Brand campaign","image":"lodha.webp"},
-    {"title":"Maa Thi Toh Baat Thi","category":"Song promotion","image":"maa.webp"},
-    {"title":"Aerobott","category":"Tech branding","image":"aerobott.webp"}
-  ]},
-  "stats":[{"value":"15+","label":["Years of","combined experience"],"icon":"globe"},{"value":"50+","label":["Brands & clients"],"icon":"people"},{"value":"1000+","label":["Pieces of content","created"],"icon":"play"},{"value":"360°","label":["Full service","approach"],"icon":"growth"},{"value":"","label":["Same humans","bigger stories"],"icon":"infinity"}],
-  "contact":{"eyebrow":"Ready to turn your","heading":[{"text":"Ideas into"},{"text":"impact?","accent":true}],"description":"Let’s create, collaborate and build what’s next — together.","wallNote":["Same humans","Different","perspectives"]},
-  "footer":{"brand":"INU Media","words":["Brands","People","Stories","Beyond"],"note":["More than","just content"],"socials":[{"label":"INU Media on Instagram","href":"https://www.instagram.com/inumedia.agency/","icon":"instagram"},{"label":"Connect with INU Media’s founder on LinkedIn","href":"https://www.linkedin.com/in/sahil-kohli-0276a636/","icon":"linkedin"},{"label":"Explore our film and video work","href":"#portfolio","icon":"youtube"}]}
+ "brand": {
+  "name": "INU",
+  "suffix": "MEDIA",
+  "title": "INU Media — Ideas into Impact",
+  "description": "Full-service creative media for bolder brands. Strategy, content, design, digital, PR and technology. INU Media — brands, people, stories, beyond."
+ },
+ "music": {
+  "title": "Cinematic Action Trailer Background Music — 1 Minute Hero Entry Bgm",
+  "source": "",
+  "credit": "",
+  "volume": 0.32
+ },
+ "navigation": [
+  {
+   "label": "Home",
+   "href": "#home"
+  },
+  {
+   "label": "About",
+   "href": "#about"
+  },
+  {
+   "label": "Services",
+   "href": "/services"
+  },
+  {
+   "label": "Portfolio",
+   "href": "/portfolio"
+  }
+ ],
+ "talk": {
+  "label": "Let’s talk",
+  "href": "/lets-talk"
+ },
+ "hero": {
+  "words": [
+   "Beauty",
+   "is",
+   "Inside"
+  ],
+  "rail": [
+   "Ideas",
+   "People",
+   "Stories",
+   "Beyond"
+  ],
+  "scrollLabel": "Scroll to discover"
+ },
+ "belief": {
+  "eyebrow": "Our belief",
+  "heading": "We believe",
+  "prefix": "in",
+  "accent": "design",
+  "description": "Ideas that go beyond ordinary. Restless minds redefining the beauty of digital experiences. Courage to create so brands live.",
+  "quote": "Design adds value faster than it adds cost."
+ },
+ "clients": {
+  "eyebrow": "Trusted by",
+  "label": "brands & creators",
+  "more": "And many more",
+  "items": [
+   {
+    "name": "Lodha",
+    "image": "logo-lodha.webp",
+    "key": "logo-lodha"
+   },
+   {
+    "name": "Aerobott",
+    "image": "logo-aerobott.webp",
+    "key": "logo-aerobott"
+   },
+   {
+    "name": "HDFC Sky",
+    "image": "logo-hdfc.webp",
+    "key": "logo-hdfc"
+   },
+   {
+    "name": "Bombay Music Co.",
+    "image": "logo-bombay.webp",
+    "key": "logo-bombay"
+   },
+   {
+    "name": "DLF",
+    "image": "logo-dlf.webp",
+    "key": "logo-dlf"
+   },
+   {
+    "name": "Martin",
+    "image": "logo-martin.webp",
+    "key": "logo-martin"
+   }
+  ]
+ },
+ "services": {
+  "eyebrow": "What we do",
+  "heading": [
+   {
+    "text": "Full-service"
+   },
+   {
+    "text": "creative media",
+    "accent": true
+   },
+   {
+    "text": "for bolder brands"
+   }
+  ],
+  "description": "From strategy to screens, we help brands show up, stand out and stay ahead. A one-stop creative partner for everything your brand needs.",
+  "button": "Explore all services",
+  "items": [
+   {
+    "title": "Strategy & consulting",
+    "lines": [
+     "Strategy",
+     "& consulting"
+    ],
+    "tagline": "Ideas with direction.",
+    "image": "strategy",
+    "offerings": [
+     "Brand strategy & positioning",
+     "Audience insights",
+     "Campaign planning",
+     "Content strategy"
+    ]
+   },
+   {
+    "title": "Content & production",
+    "lines": [
+     "Content",
+     "& production"
+    ],
+    "tagline": "Stories that move.",
+    "image": "production",
+    "offerings": [
+     "Branded films & video production",
+     "Photography",
+     "Video editing, VFX & CGI",
+     "Short-form & social content"
+    ]
+   },
+   {
+    "title": "Design & branding",
+    "lines": [
+     "Design",
+     "& branding"
+    ],
+    "tagline": "Visuals that speak.",
+    "image": "design",
+    "offerings": [
+     "Brand identity",
+     "Graphic design",
+     "Motion design",
+     "Campaign creative"
+    ]
+   },
+   {
+    "title": "Digital & performance",
+    "lines": [
+     "Digital &",
+     "performance"
+    ],
+    "tagline": "Growth that scales.",
+    "image": "digital",
+    "offerings": [
+     "Social media marketing",
+     "Google & Meta Ads",
+     "Performance campaigns",
+     "Lead generation"
+    ]
+   },
+   {
+    "title": "PR & ORM",
+    "lines": [
+     "PR & ORM"
+    ],
+    "tagline": "Reputation that lasts.",
+    "image": "pr",
+    "offerings": [
+     "Film & entertainment PR",
+     "Media outreach",
+     "Influencer collaborations",
+     "Online reputation management"
+    ]
+   },
+   {
+    "title": "Web & tech solutions",
+    "lines": [
+     "Web & tech",
+     "solutions"
+    ],
+    "tagline": "Digital experiences.",
+    "image": "web",
+    "offerings": [
+     "Website design & development",
+     "UI & UX design",
+     "Landing pages",
+     "Website maintenance"
+    ]
+   }
+  ]
+ },
+ "portfolio": {
+  "eyebrow": "Featured work",
+  "heading": [
+   {
+    "text": "Real brands"
+   },
+   {
+    "text": "Real ",
+    "inlineAccent": "results"
+   }
+  ],
+  "description": "A glimpse of the stories we’ve helped bring to life across industries, platforms and audiences.",
+  "button": "Explore our work",
+  "items": [
+   {
+    "title": "Martin",
+    "category": "Movie marketing",
+    "image": "martin.webp"
+   },
+   {
+    "title": "Vrindavan Anthem",
+    "category": "Music campaign",
+    "image": "vrindavan.webp"
+   },
+   {
+    "title": "Lodha",
+    "category": "Brand campaign",
+    "image": "lodha.webp"
+   },
+   {
+    "title": "Maa Thi Toh Baat Thi",
+    "category": "Song promotion",
+    "image": "maa.webp"
+   },
+   {
+    "title": "Aerobott",
+    "category": "Tech branding",
+    "image": "aerobott.webp"
+   }
+  ]
+ },
+ "stats": [
+  {
+   "value": "15+",
+   "label": [
+    "Years of",
+    "combined experience"
+   ],
+   "icon": "globe"
+  },
+  {
+   "value": "50+",
+   "label": [
+    "Brands & clients"
+   ],
+   "icon": "people"
+  },
+  {
+   "value": "1000+",
+   "label": [
+    "Pieces of content",
+    "created"
+   ],
+   "icon": "play"
+  },
+  {
+   "value": "360°",
+   "label": [
+    "Full service",
+    "approach"
+   ],
+   "icon": "growth"
+  },
+  {
+   "value": "",
+   "label": [
+    "Same humans",
+    "bigger stories"
+   ],
+   "icon": "infinity"
+  }
+ ],
+ "contact": {
+  "eyebrow": "Ready to turn your",
+  "heading": [
+   {
+    "text": "Ideas into"
+   },
+   {
+    "text": "impact?",
+    "accent": true
+   }
+  ],
+  "description": "Let’s create, collaborate and build what’s next — together.",
+  "wallNote": [
+   "Same humans",
+   "Different",
+   "perspectives"
+  ]
+ },
+ "footer": {
+  "brand": "INU Media",
+  "words": [
+   "Brands",
+   "People",
+   "Stories",
+   "Beyond"
+  ],
+  "note": [
+   "More than",
+   "just content"
+  ],
+  "socials": [
+   {
+    "label": "INU Media on Instagram",
+    "href": "https://www.instagram.com/inumedia.agency/",
+    "icon": "instagram"
+   },
+   {
+    "label": "Connect with INU Media’s founder on LinkedIn",
+    "href": "https://www.linkedin.com/in/sahil-kohli-0276a636/",
+    "icon": "linkedin"
+   },
+   {
+    "label": "Explore our film and video work",
+    "href": "#portfolio",
+    "icon": "youtube"
+   }
+  ]
+ }
 }

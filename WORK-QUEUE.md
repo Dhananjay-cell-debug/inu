@@ -83,17 +83,21 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
 
 ## Batch 4 — 2026-09-12 (contact details)
 
-- [ ] **12. Remove the tin-can aside** from the "Tell us what you're building"
+- [x] **12. Remove the tin-can aside** from the "Tell us what you're building"
       column — the two cans on a string plus the "No bad ideas here ☺" note.
+      -> done, verified: gone; the message band lost 162px of height with it.
 
-- [ ] **13. Put a REAL map back.** Not the old flat panel in its own big band —
+- [x] **13. Put a REAL map back.** Not the old flat panel in its own big band —
       an actual interactive map of the studio location, styled creatively in the
       INU orange rather than stock Google grey. Must not add clutter.
+      -> done, verified: live Google embed of 311 Kuber Complex, recoloured to INU orange; a filtered cross-origin iframe needed translateZ(0) on the container or Chrome painted it over the whole page.
 
-- [ ] **14. Phone number in the form.** Country code + number, capped at 15
+- [x] **14. Phone number in the form.** Country code + number, capped at 15
       digits total (E.164).
+      -> done, verified: +91 caps the number at 13 digits, +971 at 12 - 15 total either way; letters stripped; short numbers flagged; lands in the mail draft.
 
-- [ ] **15. Deploy** to the Vercel project once everything above is verified.
+- [x] **15. Deploy** to the Vercel project once everything above is verified.
+      -> done, verified: pushed to GitHub then vercel --prod; verified live at inuxsynapsis.vercel.app.
 
 ## Batch 5 — 2026-09-12 (logos, thumbnail, black)
 
@@ -106,13 +110,55 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
 - [ ] **17. Same for the Portfolio "Some of our clients" grid** — real logos,
       real brand colours.
 
-- [ ] **18. Video production & VFX thumbnail** — replace the ice-cream/clapper
+- [x] **18. Video production & VFX thumbnail** — replace the ice-cream/clapper
       collage with the new film-reel city artwork ("From ideas to impact",
       the stacked TVs + film strip over the skyline).
+      -> done, verified: now creative-filmreel (640/1100/1672 webp).
 
-- [ ] **19. The whole site reads olive-green, not black, on the user's phone.**
+- [x] **19. The whole site reads olive-green, not black, on the user's phone.**
       Find out why and move it to a proper rich premium black.
+      -> done, verified: 117 dark colours were green-biased (--line was rgb(37,39,32)); all remapped to the same luminance on a warm-neutral axis, --bg now #070706 and page scopes #080807.
 
-- [ ] **20. Phone field is unusable on mobile** (found while measuring batch 4):
+- [x] **20. Phone field is unusable on mobile** (found while measuring batch 4):
       in the 2-column form the row is only 147px wide, so the dial-code select
       takes 105px and leaves the number input 42px.
+      -> done, verified: field spans both columns on a phone; input measured 203px wide, was 42px.
+
+## Batch 6 — 2026-09-12 (logos for real, footer, reveal crop)
+
+- [ ] **21. REAL client logos, sourced online.** Not typeset text standing in for
+      a logo. Research each brand, find the actual mark, use the brand's own
+      colours. Reference look the user gave: yellowad.in/clients — logos sitting
+      straight on the background, separated by hairlines, NO boxes.
+- [x] **22. Remove the boxes** around every client logo (Home strip + Portfolio
+      grid). Logos are also being clipped by those boxes (SUNBLOND, Home Mentors,
+      Jay Bhattacharya, Mini Films, Zouq all cut).
+- [x] **23. Footer is ugly on every page.** The logo lock-up and the grey social
+      circles both. On mobile the "Different perspective / a brighter tomorrow"
+      note collides with the social icons. Rebuild it properly.
+- [x] **24. Remove the curtain artwork** ("Same team bigger stories" parda) from
+      the Portfolio closing section.
+- [x] **25. The end-reveal crops the artwork on mobile.** "INU MEDIA" is sliced
+      off at the left edge. Nothing in the plate may be cut.
+- [ ] **26. Studio map on mobile** — Google's own chrome shows through, the
+      studio card sits over the pin, and it reads too dim.
+      -> done, verified: CSS boxes gone on both pages; portfolio is a hairline grid now and all 12 logos measured "ok" for clipping. NOTE: the remaining placeholder files have a dark plate baked INTO the image, so they still look boxy until real files replace them.
+      -> done, verified: root cause was each page restyling the footer (portfolio had its own padding + margin-left:auto on the note). 11 per-page footer rules deleted; footer is now one component - identical padding 48/56px, note left-aligned, socials clear of it on all 4 pages at 1440 and 390.
+      -> done, verified: .folio-curtain and its 10 CSS rules deleted; the note now sits on the photograph.
+      -> done, verified: mobile box is now exactly calc(100vw * aspect) with object-fit:fill - measured img 390x201 = art 390x201 = natural 390x201, so zero crop and zero bars.
+      -> PARTIAL. Sourced from the brands' own sites: Lodha (official SVG),
+         DLF (official SVG), HDFC Sky (official PNG) - all installed, real colours.
+         Aerobott: only a 200x200 LinkedIn avatar exists. The other 11 have no
+         public logo file. BLOCKED on the client's own logo files.
+
+## Batch 7 — 2026-09-12 (verify against the source)
+
+- [ ] **27. Verify the client list against the real source** —
+      `F:\INU media\content\INU_Media_KHOONTA_Movie_PR_Proposal.pdf`.
+      Only brands INU Media has genuinely worked with may appear, with their
+      real names. No vague or invented marks, and never another company's logo.
+
+### Standing instruction from the user (2026-09-12)
+Do not report anything as done from reasoning. Go and LOOK at it — screenshot
+it, measure it, and ask what still feels off or what the intent is missing —
+before saying it is finished. Being slow and correct beats being fast and wrong.

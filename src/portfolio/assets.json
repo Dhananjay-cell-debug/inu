@@ -292,12 +292,14 @@
   {
    "src": "portfolio-assets/logo-lodha-240.webp",
    "width": 240,
-   "height": 95
+   "height": 38,
+   "bytes": 2364
   },
   {
-   "src": "portfolio-assets/logo-lodha-261.webp",
-   "width": 261,
-   "height": 103
+   "src": "portfolio-assets/logo-lodha-480.webp",
+   "width": 480,
+   "height": 76,
+   "bytes": 4480
   }
  ],
  "logo-aerobott": [

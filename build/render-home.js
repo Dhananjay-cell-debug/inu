@@ -30,7 +30,12 @@ const render={
   heroRail:data.hero.rail.map(escape).join('<br>'), scrollLabel:escape(data.hero.scrollLabel),
   belief:`<p class="eyebrow">${escape(data.belief.eyebrow)}</p><h2>${escape(data.belief.heading)}<br>${escape(data.belief.prefix)} <em>${escape(data.belief.accent)}</em></h2><p class="belief-copy">${escape(data.belief.description)}</p><blockquote>“${escape(data.belief.quote)}”</blockquote>`,
   clientLabel:`${escape(data.clients.eyebrow)}<br><span>${escape(data.clients.label)}</span>`,
-  clientLogos:data.clients.items.map(c=>`<img src="home-assets/${escape(c.image)}" alt="${escape(c.name)}" width="90" height="40" loading="lazy">`).join(''),
+  clientLogos:(()=>{const one=data.clients.items.map(c=>{const v=assets[c.key];
+    const pick=v?(v[1]||v[0]):null;
+    const src=pick?pick.src:'home-assets/'+c.image;
+    const set=v?` srcset="${v.map(x=>`${x.src} ${x.width}w`).join(', ')}" sizes="(max-width:700px) 110px, 130px"`:'';
+    return `<span class="client-logo"><img src="${src}"${set} alt="${escape(c.name)}" loading="lazy" decoding="async"></span>`;}).join('');
+    return one+one;})(),
   clientMore:escape(data.clients.more),
   serviceEyebrow:escape(data.services.eyebrow),serviceHeading:heading(data.services.heading),serviceDescription:escape(data.services.description),serviceButton:escape(data.services.button),
   serviceCards:data.services.items.map((s,i)=>`<button class="service-card reveal" data-service="${i}" style="--stagger:${i%3}"><span class="card-number">0${i+1}</span><span class="service-art">${image('service-'+s.image,'','(max-width:700px) 82px, (max-width:1100px) 25vw, 16vw')}</span><span class="card-copy"><strong>${s.lines.map(escape).join('<br>')}</strong><span>${escape(s.tagline)}</span></span><span class="service-arrow" aria-hidden="true">↗</span></button>`).join(''),
