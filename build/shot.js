@@ -4,7 +4,7 @@
    once so every scroll-triggered reveal has fired. */
 const path = require('path');
 const fs = require('fs');
-const puppeteer = require(path.join('F:', 'INU media', 'plum-clone', 'node_modules', 'puppeteer'));
+const puppeteer = require('puppeteer');
 
 // Git Bash rewrites a bare "/about.html" into a Windows path, so take the
 // last segment and normalise it back to a site-root path.

@@ -1,0 +1,127 @@
+{
+ "brand": {
+  "title": "Let’s talk — INU Media",
+  "description": "A new brand, a bold campaign or a wild idea. Start a conversation with INU Media, a creative and media studio in Andheri West, Mumbai."
+ },
+ "intro": {
+  "eyebrow": "Get in touch",
+  "heading": [
+   "Tell us",
+   "what you’re",
+   "building"
+  ],
+  "description": "A new brand, a bold campaign or just a crazy idea — we’re always excited to hear what’s next. Fill in the form and let’s make it happen."
+ },
+ "contact": {
+  "email": "hello@inumedia.com",
+  "phones": [
+   {
+    "label": "+91 91291 20707",
+    "href": "tel:+919129120707"
+   },
+   {
+    "label": "+91 88501 05379",
+    "href": "tel:+918850105379"
+   }
+  ],
+  "address": [
+   "311 Kuber Complex",
+   "Andheri West",
+   "Mumbai, Maharashtra 400053"
+  ],
+  "mapQuery": "311 Kuber Complex, Andheri West, Mumbai 400053",
+  "instagram": "https://www.instagram.com/inumedia.agency/",
+  "linkedin": "https://www.linkedin.com/in/sahil-kohli-0276a636/",
+  "source": "INU_Media_KHOONTA_Movie_PR_Proposal.pdf, page 57"
+ },
+ "deliveryMode": "email-draft",
+ "projectTypes": [
+  "Brand strategy & design",
+  "Content & production",
+  "Film & music promotion",
+  "Web design & technology",
+  "Digital & performance",
+  "PR & influencer marketing",
+  "Something else"
+ ],
+ "faqs": [
+  {
+   "question": "What kind of brands do you work with?",
+   "answer": "We work with both B2B and B2C businesses — from real estate, finance and retail to fashion, hospitality, technology and entertainment. Tell us where you want to take your brand."
+  },
+  {
+   "question": "Do you handle end-to-end production?",
+   "answer": "We can bring strategy, creative direction, production and post-production together, including VFX and CGI. We’ll define the crew, deliverables and production scope around your brief."
+  },
+  {
+   "question": "Can you help with just a single service?",
+   "answer": "Absolutely. You can bring us in for a single identity, website, film, social campaign or PR brief. We’ll build the right scope for the work you need."
+  },
+  {
+   "question": "How long does a typical project take?",
+   "answer": "It depends on the deliverables, production needs and review rounds. Share your brief and target date, and we’ll work out a realistic schedule together before starting."
+  },
+  {
+   "question": "Do you work with international clients?",
+   "answer": "Yes. Our experience includes projects for businesses in India, the UAE and the USA. We can collaborate remotely and plan the work around your team’s time zone."
+  }
+ ],
+ "gallery": {
+  "eyebrow": "Different perspectives",
+  "heading": [
+   "Good people.",
+   "Wild ideas."
+  ],
+  "description": "A little of the world inside our heads. Pick a frame. Start a conversation."
+ },
+ "dialCodes": [
+  {
+   "code": "+91",
+   "label": "IN +91"
+  },
+  {
+   "code": "+971",
+   "label": "AE +971"
+  },
+  {
+   "code": "+44",
+   "label": "UK +44"
+  },
+  {
+   "code": "+1",
+   "label": "US/CA +1"
+  },
+  {
+   "code": "+61",
+   "label": "AU +61"
+  },
+  {
+   "code": "+65",
+   "label": "SG +65"
+  },
+  {
+   "code": "+49",
+   "label": "DE +49"
+  },
+  {
+   "code": "+33",
+   "label": "FR +33"
+  },
+  {
+   "code": "+81",
+   "label": "JP +81"
+  },
+  {
+   "code": "+86",
+   "label": "CN +86"
+  },
+  {
+   "code": "+27",
+   "label": "ZA +27"
+  },
+  {
+   "code": "+55",
+   "label": "BR +55"
+  }
+ ]
+}

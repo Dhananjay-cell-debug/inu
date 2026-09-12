@@ -35,8 +35,8 @@
 .fluid-orbit span:nth-child(3){inset:34%;border-style:dashed;animation:orbitSpin 13s linear infinite reverse}
 @keyframes orbitDrift{to{transform:translate3d(-5vw,6vh,0) scale(1.05)}}
 @keyframes orbitSpin{to{transform:rotate(360deg)}}
-/* The footer was solid #050704 and sealed the field off; let it read through. */
-.footer{background:linear-gradient(180deg,rgba(5,7,4,.82),rgba(5,7,4,.97))}
+/* The footer was solid #060605 and sealed the field off; let it read through. */
+.footer{background:linear-gradient(180deg,rgba(6,6,5,.82),rgba(6,6,5,.97))}
 
 /* --- Rails, lifted from paparazzientertainment.in ------------------------
    Their rails are `overflow:hidden` with the track marqueeing under a CSS
@@ -93,7 +93,7 @@
 .socials a:focus-visible{outline:2px solid rgba(var(--social-glow),.9);outline-offset:3px}
 
 /* --- Consent, ported from welcome-woods.vercel.app ----------------------- */
-.cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;opacity:0;visibility:hidden;transform:translateY(101%);transition:transform .65s var(--ease),opacity .4s,visibility .4s;background:rgba(6,7,6,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -18px 50px rgba(0,0,0,.55)}
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;opacity:0;visibility:hidden;transform:translateY(101%);transition:transform .65s var(--ease),opacity .4s,visibility .4s;background:rgba(7,7,6,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -18px 50px rgba(0,0,0,.55)}
 .cookie-bar.is-visible{opacity:1;visibility:visible;transform:none}
 .cookie-bar-inner{display:flex;align-items:center;gap:44px;width:calc(100% - 2 * var(--page));max-width:1400px;margin-inline:auto;padding:19px 0;position:relative}
 .cookie-bar p{margin:0;max-width:78ch;color:var(--muted);font-size:14px;line-height:1.7}
@@ -107,8 +107,8 @@
 .cookie-accept:hover{background:#ff9034;border-color:#ff9034}
 .cookie-dismiss{padding:9px;color:var(--muted);background:0 0;border:0;cursor:pointer;transition:color .3s;font-size:18px;line-height:1}
 .cookie-dismiss:hover{color:var(--ink)}
-.cookie-panel{width:min(580px,100vw - 36px);max-width:none;max-height:min(86dvh,780px);padding:0;overflow:hidden;border:1px solid var(--line);background:#0b0d0a;color:var(--ink);z-index:10000;box-shadow:0 40px 90px rgba(0,0,0,.66)}
-.cookie-panel::backdrop{background:rgba(4,5,4,.74)}
+.cookie-panel{width:min(580px,100vw - 36px);max-width:none;max-height:min(86dvh,780px);padding:0;overflow:hidden;border:1px solid var(--line);background:#0d0c0b;color:var(--ink);z-index:10000;box-shadow:0 40px 90px rgba(0,0,0,.66)}
+.cookie-panel::backdrop{background:rgba(5,5,4,.74)}
 .cookie-panel-inner{max-height:min(86dvh,780px);padding:34px 38px 30px;overflow-y:auto;overscroll-behavior:contain}
 .cookie-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
 .cookie-panel-head .eyebrow{margin-bottom:12px}

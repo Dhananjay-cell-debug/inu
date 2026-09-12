@@ -13,7 +13,7 @@ GitHub: https://github.com/Dhananjay-cell-debug/inu.git
 - `src/home/media/`: optimized, selected cinematic media.
 - `build/render-home.js`: creates standalone HTML/CSS/JS in `dist/`, and updates only the home page in the existing `site/` preview directory. Static text is rendered at build time; JS enhances it.
 
-The older `src/home/index.html`, `home.css`, `home.js`, `build/home.js`, and five-page builders are retained locally/history for reference and are not the current authoring path.
+The older alternate design files and builders have been removed to Recycle Bin. Use only the current source map in README.md.
 
 ## Commands
 
@@ -24,7 +24,7 @@ npm run check
 npm run dev
 ```
 
-The preview serves http://localhost:3200. A source edit needs another build and browser reload; this small static project has no HMR. Preprocessed assets are checked in, so a normal clone/build does not require Python, FFmpeg, or the original private workspace folders.
+The preview serves http://localhost:3300. A source edit needs another build and browser reload; this small static project has no HMR. Preprocessed assets are checked in, so a normal clone/build does not require Python, FFmpeg, or the original private workspace folders.
 
 ## Visual and motion behavior
 
@@ -50,4 +50,4 @@ The Let’s talk page is the second real page; see `LETS-TALK.md`. The home page
 navigation item, header button and closing button now link to `/lets-talk` instead of the old
 Instagram link and `#contact` anchor.
 
-Read `NEXT-ASTRA-PROMPT.md` before building another page.
+Read `README.md` and `../WORK-TRACKER.md` before building another page.

@@ -1,0 +1,396 @@
+{
+  "room": [
+    {
+      "src": "contact-assets/room-960.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 58086
+    },
+    {
+      "src": "contact-assets/room-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 146560
+    },
+    {
+      "src": "contact-assets/room-2560.webp",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 203680
+    },
+    {
+      "src": "contact-assets/room-3840.webp",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 321540
+    }
+  ],
+  "desk": [
+    {
+      "src": "contact-assets/desk-960.webp",
+      "width": 960,
+      "height": 105,
+      "bytes": 15030
+    },
+    {
+      "src": "contact-assets/desk-1920.webp",
+      "width": 1920,
+      "height": 210,
+      "bytes": 33562
+    },
+    {
+      "src": "contact-assets/desk-2560.webp",
+      "width": 2560,
+      "height": 280,
+      "bytes": 46924
+    }
+  ],
+  "listener": [
+    {
+      "src": "contact-assets/listener-600.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 100466
+    },
+    {
+      "src": "contact-assets/listener-1000.webp",
+      "width": 1000,
+      "height": 1333,
+      "bytes": 220210
+    },
+    {
+      "src": "contact-assets/listener-1600.webp",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 391218
+    }
+  ],
+  "speaker": [
+    {
+      "src": "contact-assets/speaker-400.webp",
+      "width": 400,
+      "height": 533,
+      "bytes": 32780
+    },
+    {
+      "src": "contact-assets/speaker-700.webp",
+      "width": 700,
+      "height": 933,
+      "bytes": 82714
+    },
+    {
+      "src": "contact-assets/speaker-1100.webp",
+      "width": 1100,
+      "height": 1467,
+      "bytes": 163072
+    }
+  ],
+  "device": [
+    {
+      "src": "contact-assets/device-400.webp",
+      "width": 400,
+      "height": 225,
+      "bytes": 15330
+    },
+    {
+      "src": "contact-assets/device-800.webp",
+      "width": 800,
+      "height": 450,
+      "bytes": 43738
+    }
+  ],
+  "end-home": [
+    {
+      "src": "contact-assets/end-home-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 85986
+    },
+    {
+      "src": "contact-assets/end-home-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 201208
+    },
+    {
+      "src": "contact-assets/end-home-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 354564
+    }
+  ],
+  "end-about": [
+    {
+      "src": "contact-assets/end-about-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 87440
+    },
+    {
+      "src": "contact-assets/end-about-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 206388
+    },
+    {
+      "src": "contact-assets/end-about-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 366778
+    }
+  ],
+  "end-services": [
+    {
+      "src": "contact-assets/end-services-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 50546
+    },
+    {
+      "src": "contact-assets/end-services-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 107698
+    },
+    {
+      "src": "contact-assets/end-services-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 188420
+    }
+  ],
+  "end-portfolio": [
+    {
+      "src": "contact-assets/end-portfolio-640.webp",
+      "width": 640,
+      "height": 330,
+      "bytes": 45352
+    },
+    {
+      "src": "contact-assets/end-portfolio-1100.webp",
+      "width": 1100,
+      "height": 567,
+      "bytes": 101690
+    },
+    {
+      "src": "contact-assets/end-portfolio-1747.webp",
+      "width": 1747,
+      "height": 900,
+      "bytes": 194858
+    }
+  ],
+  "end-contact": [
+    {
+      "src": "contact-assets/end-contact-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 40302
+    },
+    {
+      "src": "contact-assets/end-contact-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 92886
+    },
+    {
+      "src": "contact-assets/end-contact-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 168580
+    }
+  ],
+  "creative-headphones": [
+    {
+      "src": "contact-assets/creative-headphones-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 54604
+    },
+    {
+      "src": "contact-assets/creative-headphones-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 136418
+    },
+    {
+      "src": "contact-assets/creative-headphones-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 250056
+    }
+  ],
+  "creative-rabbit": [
+    {
+      "src": "contact-assets/creative-rabbit-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 85634
+    },
+    {
+      "src": "contact-assets/creative-rabbit-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 209152
+    },
+    {
+      "src": "contact-assets/creative-rabbit-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 383158
+    }
+  ],
+  "creative-cinema": [
+    {
+      "src": "contact-assets/creative-cinema-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 85588
+    },
+    {
+      "src": "contact-assets/creative-cinema-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 197068
+    },
+    {
+      "src": "contact-assets/creative-cinema-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 350564
+    }
+  ],
+  "creative-televisions": [
+    {
+      "src": "contact-assets/creative-televisions-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 76440
+    },
+    {
+      "src": "contact-assets/creative-televisions-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 182226
+    },
+    {
+      "src": "contact-assets/creative-televisions-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 342052
+    }
+  ],
+  "creative-portrait": [
+    {
+      "src": "contact-assets/creative-portrait-640.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 79000
+    },
+    {
+      "src": "contact-assets/creative-portrait-1100.webp",
+      "width": 1100,
+      "height": 619,
+      "bytes": 200870
+    },
+    {
+      "src": "contact-assets/creative-portrait-1672.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 389952
+    }
+  ],
+  "creative-sculpture": [
+    {
+      "src": "contact-assets/creative-sculpture-640.webp",
+      "width": 640,
+      "height": 213,
+      "bytes": 43814
+    },
+    {
+      "src": "contact-assets/creative-sculpture-1100.webp",
+      "width": 1100,
+      "height": 367,
+      "bytes": 109174
+    },
+    {
+      "src": "contact-assets/creative-sculpture-2172.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 318666
+    }
+  ],
+  "creative-rooftop": [
+    {
+      "src": "contact-assets/creative-rooftop-640.webp",
+      "width": 640,
+      "height": 213,
+      "bytes": 39904
+    },
+    {
+      "src": "contact-assets/creative-rooftop-1100.webp",
+      "width": 1100,
+      "height": 367,
+      "bytes": 92266
+    },
+    {
+      "src": "contact-assets/creative-rooftop-2172.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 238416
+    }
+  ],
+  "creative-culture": [
+    {
+      "src": "contact-assets/creative-culture-640.webp",
+      "width": 640,
+      "height": 228,
+      "bytes": 56620
+    },
+    {
+      "src": "contact-assets/creative-culture-1100.webp",
+      "width": 1100,
+      "height": 391,
+      "bytes": 150354
+    },
+    {
+      "src": "contact-assets/creative-culture-2103.webp",
+      "width": 2103,
+      "height": 748,
+      "bytes": 429218
+    }
+  ],
+  "_gallery": [
+    {
+      "key": "creative-headphones",
+      "alt": "A brighter feed. A braver world."
+    },
+    {
+      "key": "creative-rabbit",
+      "alt": "Good stories travel far."
+    },
+    {
+      "key": "creative-cinema",
+      "alt": "Good people. Greater ideas."
+    },
+    {
+      "key": "creative-televisions",
+      "alt": "Good content. Better people."
+    },
+    {
+      "key": "creative-portrait",
+      "alt": "Make brands famous."
+    },
+    {
+      "key": "creative-sculpture",
+      "alt": "Different humans. Different cultures."
+    },
+    {
+      "key": "creative-rooftop",
+      "alt": "Same city. Bigger stories."
+    },
+    {
+      "key": "creative-culture",
+      "alt": "Good people make great content."
+    }
+  ]
+}

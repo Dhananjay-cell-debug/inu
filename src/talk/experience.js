@@ -185,21 +185,31 @@
   const submitLabel=submit.querySelector('.cta-label');
   const idle=submitLabel.textContent;
   const emailPattern=/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+  // A field may hold more than one control (the phone row also carries a
+  // dial-code select), so the one marked data-control is the one that validates.
+  const controlOf=field=>field.querySelector('[data-control]')||field.querySelector('input,textarea,select');
+  const dialOf=()=>form.querySelector('#field-dial');
 
   for(const field of form.querySelectorAll('.field')){
-    const control=field.querySelector('input,textarea');
+    const control=controlOf(field);
     const sync=()=>field.classList.toggle('is-filled',control.value.trim()!=='');
     control.addEventListener('input',()=>{sync();if(field.classList.contains('is-invalid'))validate(field,true);});
     control.addEventListener('blur',()=>{sync();if(control.value.trim()!=='')validate(field,true);});
     sync();
   }
   function validate(field,quiet){
-    const control=field.querySelector('input,textarea');
+    const control=controlOf(field);
     const error=field.querySelector('.field-error');
     const value=control.value.trim();
     let message='';
     if(control.required&&!value)message=`${control.dataset.label} is required`;
     else if(control.type==='email'&&value&&!emailPattern.test(value))message='Enter a valid email address';
+    else if(control.type==='tel'&&value){
+      const digits=((dialOf()?.value||'')+value).replace(/\D/g,'');
+      if(/[^\d\s]/.test(value))message='Use digits only — pick the country code from the list';
+      else if(digits.length<8)message='That phone number looks too short';
+      else if(digits.length>15)message='At most 15 digits, including the country code';
+    }
     field.classList.toggle('is-invalid',Boolean(message));
     control.setAttribute('aria-invalid',message?'true':'false');
     error.textContent=message;
@@ -215,16 +225,27 @@
     const fields=[...form.querySelectorAll('.field')];
     let firstBad=null;
     for(const field of fields)if(!validate(field,true)&&!firstBad)firstBad=field;
-    if(firstBad){setStatus('Please check the highlighted fields.','bad');firstBad.querySelector('input,textarea').focus();return;}
+    if(firstBad){setStatus('Please check the highlighted fields.','bad');controlOf(firstBad).focus();return;}
 
+    const payload=Object.fromEntries(new FormData(form).entries());
+    if(content.deliveryMode==='email-draft'){
+      const subject=`INU Media — ${payload.projectType||'New project enquiry'}`;
+      const phone=payload.phone?`${payload.dialCode||''} ${payload.phone}`.trim():'—';
+      const body=`Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${phone}\nCompany / brand: ${payload.brand||'—'}\nProject type: ${payload.projectType||'Let’s discuss'}\n\n${payload.message}`;
+      const draft=document.createElement('a');
+      draft.href=`mailto:${content.fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      draft.textContent='Open email draft →';
+      status.className='form-status';status.replaceChildren(document.createTextNode('Your draft is ready. Open it in your email app, then send. '),draft);
+      draft.focus();return;
+    }
     submit.disabled=true;submitLabel.textContent=content.message.sending;
     setStatus('','');
-    const payload=Object.fromEntries(new FormData(form).entries());
     try{
       const response=await fetch(content.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       if(!response.ok)throw new Error(String(response.status));
       form.reset();
       fields.forEach(f=>f.classList.remove('is-filled','is-invalid'));
+      form.dispatchEvent(new Event('contact-reset'));
       setStatus(content.message.success,'good');
     }catch{
       const address=content.fallbackEmail;

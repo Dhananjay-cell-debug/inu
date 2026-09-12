@@ -29,7 +29,9 @@ module.exports = async (req, res) => {
 
   const name = clean(body.name, LIMITS.name);
   const email = clean(body.email, LIMITS.email);
-  const subject = clean(body.subject, LIMITS.subject) || 'New enquiry';
+  const brand = clean(body.brand, 150);
+  const projectType = clean(body.projectType, 150);
+  const subject = clean(body.subject, LIMITS.subject) || projectType || 'New enquiry';
   const message = clean(body.message, LIMITS.message);
 
   if (!name || !message || !isEmail(email)) return res.status(422).json({ error: 'Please check your details' });
@@ -39,8 +41,8 @@ module.exports = async (req, res) => {
   const from = process.env.CONTACT_FROM;
   if (!key || !to || !from) return res.status(503).json({ error: 'Mail delivery is not configured yet' });
 
-  const text = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}\n`;
-  const html = `<p><strong>Name</strong> ${escape(name)}<br><strong>Email</strong> ${escape(email)}<br><strong>Subject</strong> ${escape(subject)}</p><p style="white-space:pre-wrap">${escape(message)}</p>`;
+  const text = `Name: ${name}\nEmail: ${email}\nBrand: ${brand}\nProject type: ${projectType}\nSubject: ${subject}\n\n${message}\n`;
+  const html = `<p><strong>Name</strong> ${escape(name)}<br><strong>Email</strong> ${escape(email)}<br><strong>Brand</strong> ${escape(brand)}<br><strong>Project type</strong> ${escape(projectType)}<br><strong>Subject</strong> ${escape(subject)}</p><p style="white-space:pre-wrap">${escape(message)}</p>`;
 
   try {
     const response = await fetch('https://api.resend.com/emails', {

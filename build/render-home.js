@@ -40,7 +40,7 @@ const render={
   stats:data.stats.map(s=>`<div class="stat reveal ${s.icon==='infinity'?'infinity-stat':''}">${icon(s.icon)}<p>${s.value?`<strong>${escape(s.value)}</strong>`:''}<span>${s.label.map(escape).join('<br>')}</span></p></div>`).join(''),
   contactArt:image('sunset-room','sunset-room layer-image','100vw'),contactPerson:image('closing-person','closing-person layer-image','(max-width:700px) 50vw, 25vw'),
   contactEyebrow:escape(data.contact.eyebrow),contactHeading:heading(data.contact.heading),contactDescription:escape(data.contact.description),contactNote:data.contact.wallNote.map(escape).join('<br>'),
-  contactHref:escape(data.talk.href),footerBrand:escape(data.footer.brand),footerWords:data.footer.words.map(w=>`<span>${escape(w)}</span>`).join(''),footerNote:data.footer.note.map(escape).join('<br>'),
+  contactHref:escape(data.talk.href),footerBrand:escape(data.footer.brand),footerNote:data.footer.note.map(escape).join('<br>'),
   socials:data.footer.socials.map(s=>`<a href="${escape(s.href)}" data-social="${escape(s.icon)}" aria-label="${escape(s.label)}" ${s.href.startsWith('https')?'target="_blank" rel="noopener noreferrer"':''}>${icon(s.icon)}</a>`).join(''),
   musicCreditHref:escape(data.music.source),musicCredit:escape(data.music.credit),
   content:JSON.stringify(data).replace(/</g,'\\u003c')
