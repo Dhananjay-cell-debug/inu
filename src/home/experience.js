@@ -75,7 +75,7 @@
   let frame=0,mouseX=0,mouseY=0,currentX=0,currentY=0;
   let bounds=[],documentHeight=1,heroHeight=1;
   const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
-  function measure(){bounds=[...document.querySelectorAll('[data-scene]')].map(section=>({section,top:section.getBoundingClientRect().top+scrollY,height:section.offsetHeight,layers:[...section.querySelectorAll('.parallax')]}));documentHeight=Math.max(1,document.documentElement.scrollHeight-innerHeight);heroHeight=hero.offsetHeight;requestFrame();}
+  function measure(){bounds=[...document.querySelectorAll('[data-scene]')].map(section=>({section,top:section.getBoundingClientRect().top+scrollY,height:section.offsetHeight,layers:[...section.querySelectorAll('.parallax')]}));documentHeight=Math.max(1,document.documentElement.scrollHeight-innerHeight);heroHeight=hero?hero.offsetHeight:0;requestFrame();}
   function requestFrame(){if(!frame&&!document.hidden)frame=requestAnimationFrame(update);}
   function update(){
     frame=0;
@@ -85,14 +85,14 @@
     currentX+=(mouseX-currentX)*.045;currentY+=(mouseY-currentY)*.045;
     if(!reduce.matches){
       for(const b of bounds){if(y+innerHeight<b.top-150||y>b.top+b.height+150)continue;const distance=clamp(y-b.top,-innerHeight,b.height);for(const layer of b.layers){const depth=Number(layer.dataset.depth)||0;layer.style.setProperty('--py',`${(distance*depth*(small?.35:1)+currentY*depth*28).toFixed(2)}px`);layer.style.setProperty('--px',`${(currentX*depth*35).toFixed(2)}px`);}}
-      character.style.setProperty('--character-scale',(1+clamp(y/(heroHeight*.55),0,1)*.075).toFixed(4));
+      if(character)character.style.setProperty('--character-scale',(1+clamp(y/(heroHeight*.55),0,1)*.075).toFixed(4));
     }
     if(Math.abs(mouseX-currentX)>.003||Math.abs(mouseY-currentY)>.003)requestFrame();
   }
   addEventListener('scroll',requestFrame,{passive:true});
   addEventListener('resize',measure,{passive:true});
-  hero.addEventListener('pointermove',e=>{if(reduce.matches||!finePointer.matches)return;mouseX=e.clientX/innerWidth-.5;mouseY=e.clientY/innerHeight-.5;requestFrame();},{passive:true});
-  hero.addEventListener('pointerleave',()=>{mouseX=mouseY=0;requestFrame();});
+  hero?.addEventListener('pointermove',e=>{if(reduce.matches||!finePointer.matches)return;mouseX=e.clientX/innerWidth-.5;mouseY=e.clientY/innerHeight-.5;requestFrame();},{passive:true});
+  hero?.addEventListener('pointerleave',()=>{mouseX=mouseY=0;requestFrame();});
   document.fonts.ready.then(measure);addEventListener('load',measure,{once:true});measure();
 
   const flare=document.querySelector('.section-flare');
@@ -105,13 +105,13 @@
   if(!content.page)document.querySelectorAll('#home,#about,#services,#portfolio,#contact').forEach(el=>navObserver.observe(el));
 
   // Tiny abstract embers, capped at 24 fps and paused outside the hero.
-  const canvas=document.querySelector('.embers'),ctx=canvas.getContext('2d',{alpha:true});
+  const canvas=document.querySelector('.embers')||document.createElement('canvas'),ctx=canvas.getContext('2d',{alpha:true});
   let emberFrame=0,heroVisible=true,lastParticleTime=0,canvasW=1,canvasH=1;
   const particles=Array.from({length:content.page==='portfolio'?40:24},(_,i)=>({x:(Math.sin(i*23.1)+1)/2,y:(i*.137)%1,speed:.014+(i%4)*.004,radius:.5+(i%3)*.3,phase:i*1.7}));
   function sizeCanvas(){const r=canvas.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);canvasW=r.width;canvasH=r.height;canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
   function renderEmbers(now){emberFrame=0;if(!heroVisible||document.hidden||reduce.matches)return;emberFrame=requestAnimationFrame(renderEmbers);if(now-lastParticleTime<1000/24)return;const dt=Math.min((now-lastParticleTime)/1000,.05);lastParticleTime=now;ctx.clearRect(0,0,canvasW,canvasH);const count=content.page==='portfolio'?(innerWidth<700?20:40):(innerWidth<700?12:24);for(let i=0;i<count;i++){const p=particles[i];p.y=(p.y-p.speed*dt+1)%1;const opacity=Math.sin(p.y*Math.PI)*(.25+.25*Math.sin(now*.0005+p.phase));ctx.fillStyle=`rgba(255,${125+i%3*24},35,${Math.max(0,opacity)})`;ctx.shadowBlur=content.page==='portfolio'?6:0;ctx.shadowColor='#ff7519';ctx.beginPath();ctx.ellipse(canvasW*(.32+p.x*.38)+Math.sin(now*.0002+p.phase)*9,canvasH*(.12+p.y*.72),p.radius,p.radius*1.8,0,0,Math.PI*2);ctx.fill();}}
   function startEmbers(){if(!emberFrame&&!reduce.matches&&!document.hidden&&heroVisible)emberFrame=requestAnimationFrame(renderEmbers);}
-  new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;if(heroVisible)startEmbers();else{cancelAnimationFrame(emberFrame);emberFrame=0;}},{threshold:0}).observe(hero);
+  if(hero)new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;if(heroVisible)startEmbers();else{cancelAnimationFrame(emberFrame);emberFrame=0;}},{threshold:0}).observe(hero);
   sizeCanvas();addEventListener('resize',sizeCanvas,{passive:true});startEmbers();
 
   function mediaSource(video){if(video.src)return;video.src=video.canPlayType('video/webm; codecs="vp9"')?video.dataset.src:video.dataset.src.replace('.webm','.mp4');}

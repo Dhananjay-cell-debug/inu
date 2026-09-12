@@ -38,4 +38,27 @@
       if(digits!==phone.value)phone.value=digits;});
     dial.addEventListener('change',cap);cap();
   }
+
+  // A map you can actually move around in, without leaving the page. Wheel zoom
+  // is off so the page never loses the scroll; drag, pinch and the +/- do the work.
+  const mapHost=document.querySelector('[data-studio-map]');
+  if(mapHost&&window.L){
+    const lat=parseFloat(mapHost.dataset.lat),lng=parseFloat(mapHost.dataset.lng);
+    const zoom=parseInt(mapHost.dataset.zoom,10)||15;
+    const map=L.map(mapHost.querySelector('.studio-map__canvas'),{
+      center:[lat,lng],zoom,minZoom:12,maxZoom:18,
+      zoomControl:true,scrollWheelZoom:false,dragging:true,touchZoom:true,
+      doubleClickZoom:true,keyboard:true,attributionControl:true
+    });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:19,crossOrigin:true,
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+    }).addTo(map);
+    const pin=L.divIcon({className:'studio-pin',html:'<i></i><i></i>',iconSize:[16,16],iconAnchor:[8,8]});
+    L.marker([lat,lng],{icon:pin,keyboard:false,alt:'INU Media studio'}).addTo(map);
+    map.whenReady(()=>mapHost.classList.add('is-live'));
+    // The hint is only useful until they have moved it once.
+    map.on('movestart zoomstart',()=>mapHost.classList.add('is-touched'),{once:true});
+    new ResizeObserver(()=>map.invalidateSize()).observe(mapHost);
+  }
 })();

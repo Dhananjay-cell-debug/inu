@@ -21,7 +21,7 @@ const fields={
  closingArt:image('creative-rooftop','closing-art-img','100vw',false,''),introEyebrow:esc(data.intro.eyebrow),introDescription:esc(data.intro.description),email:esc(contact.email),address:contact.address.map(esc).join('<br>'),
  phoneLinks:contact.phones.map(p=>`<a href="${p.href}">${esc(p.label)}</a>`).join(''),instagram:contact.instagram,socials,
  mapUrl:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(contact.mapQuery),
- mapEmbed:'https://maps.google.com/maps?q='+encodeURIComponent(contact.mapQuery)+'&z=16&output=embed',
+ mapLat:String(contact.mapLat),mapLng:String(contact.mapLng),
  dialOptions:data.dialCodes.map(c=>`<option value="${esc(c.code)}">${esc(c.label)}</option>`).join(''),
  mailIcon:icon('mail'),phoneIcon:icon('phone'),pinIcon:icon('pin'),
  projectOptions:data.projectTypes.map(p=>`<option>${esc(p)}</option>`).join(''),
@@ -40,6 +40,8 @@ html=html.replace(/home\.js\?v=[a-f0-9]+/,'talk.js').replace(/media\/burn-entry.
 const css=fs.readFileSync(path.join(src,'contact.css'),'utf8');
 const js=fs.readFileSync(path.join(src,'experience.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'src/home/atmosphere.js'),'utf8')+'\n'+fs.readFileSync(path.join(src,'contact.js'),'utf8');
 const revision=crypto.createHash('sha256').update(html+css+js).digest('hex').slice(0,10);
+html=html.replace('<script src="vendor/lenis.min.js" defer></script>','<script src="vendor/lenis.min.js" defer></script><script src="vendor/leaflet.js" defer></script>')
+  .replace('</head>','<link rel="stylesheet" href="vendor/leaflet.css"></head>');
 html=html.replace('talk.js"',`talk.js?v=${revision}"`).replace('</head>',`<link rel="stylesheet" href="contact.css?v=${revision}"></head>`);
 for(const dir of ['dist','site']){
  const dest=path.join(root,dir);fs.writeFileSync(path.join(dest,'lets-talk.html'),html);fs.writeFileSync(path.join(dest,'contact.html'),html);fs.writeFileSync(path.join(dest,'contact.css'),css);fs.writeFileSync(path.join(dest,'talk.js'),js);

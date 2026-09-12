@@ -1,0 +1,65 @@
+<main id="main">
+  <section class="hero about-hero" aria-labelledby="about-hero-title" data-scene>
+    <div class="about-room parallax" data-depth="0.10">{{heroRoom}}</div>
+    <div class="about-hero-shade" aria-hidden="true"></div>
+    <div class="about-beam" aria-hidden="true"></div>
+    <div class="hero-aura about-aura" aria-hidden="true"></div>
+    <div class="about-spotlight parallax" data-depth="-0.03">{{spotlight}}</div>
+    <div class="about-chair parallax" data-depth="0.02"><div class="character-reveal">{{chair}}</div></div>
+    <div class="about-roadcase parallax" data-depth="-0.02">{{roadcase}}</div>
+    <canvas class="embers" aria-hidden="true"></canvas>
+    <div class="about-camera parallax" data-depth="-0.05">{{camera}}</div>
+
+    <div class="about-hero-copy">
+      <h1 id="about-hero-title" class="about-title">
+        <span class="about-wordmark"><span>{{heroWordmark}}</span><span class="about-wordmark-smoke" aria-hidden="true">{{heroWordmark}}</span></span>
+        <span class="about-suffix">{{heroSuffix}}</span>
+      </h1>
+      <p class="about-tagline">{{heroTagline}}</p>
+      <p class="about-subtitle">{{heroSubtitle}}</p>
+      <a class="about-play" href="{{playTarget}}"><span class="about-play-disc" aria-hidden="true"><i></i></span><span class="about-play-label">{{heroPlay}}</span></a>
+    </div>
+
+    <p class="hand hand--hero-left reveal">{{noteLeft}}</p>
+    <p class="hand hand--hero-right reveal">{{noteRight}}</p>
+    <div class="about-hero-floor" aria-hidden="true"></div>
+  </section>
+
+  <section class="about-story" id="our-story" aria-labelledby="about-story-title" data-scene>
+    <div class="about-story-copy">
+      <p class="eyebrow reveal">{{storyEyebrow}}</p>
+      <h2 id="about-story-title" class="reveal">{{storyHeading}}</h2>
+      <span class="orange-rule reveal" aria-hidden="true"></span>
+      <p class="about-prose reveal">{{storyBody}}</p>
+    </div>
+    <div class="about-plates">
+      <figure class="about-plate about-plate--set reveal">{{storyPhoto}}</figure>
+      <figure class="about-plate about-plate--strip reveal"><span class="about-tape" aria-hidden="true"></span>{{storyStrip}}</figure>
+    </div>
+    <p class="hand hand--story reveal">{{storyNote}}</p>
+    <ol class="about-chain reveal" aria-label="How the work is made">{{storyChain}}</ol>
+  </section>
+
+  <section class="about-founder" aria-labelledby="about-founder-title" data-scene>
+    <div class="about-founder-copy">
+      <p class="eyebrow reveal">{{founderEyebrow}}</p>
+      <h2 id="about-founder-title" class="reveal">{{founderName}}</h2>
+      <p class="about-founder-role reveal">{{founderRole}}</p>
+      <blockquote class="about-quote reveal">{{founderQuote}}</blockquote>
+    </div>
+    <figure class="about-plate about-plate--frame reveal">{{founderPortrait}}</figure>
+    <p class="hand hand--founder reveal">{{founderNote}}</p>
+  </section>
+
+  <section class="about-philosophy" id="contact" aria-labelledby="about-philosophy-title" data-scene>
+    <div class="about-clapper parallax" data-depth="-0.035">{{clapper}}</div>
+    <div class="about-philosophy-shade" aria-hidden="true"></div>
+    <div class="about-philosophy-copy">
+      <p class="eyebrow eyebrow--centred reveal">{{philosophyEyebrow}}</p>
+      <h2 id="about-philosophy-title" class="reveal">{{philosophyHeading}}</h2>
+      <span class="orange-rule orange-rule--centred reveal" aria-hidden="true"></span>
+      <p class="about-prose about-prose--centred reveal">{{philosophyBody}}</p>
+      <a class="about-cta reveal" href="{{contactHref}}"><span>{{philosophyCta}}</span><span class="about-cta-disc" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>

@@ -44,13 +44,14 @@
         <article class="direct-card reveal">{{pinIcon}}<h3>Our studio</h3><p>{{address}}</p><a class="text-link" href="{{mapUrl}}" target="_blank" rel="noopener noreferrer">Get directions →</a></article>
         <article class="direct-card reveal"><div class="direct-socials">{{socials}}</div><h3>Socials</h3><a href="{{instagram}}" target="_blank" rel="noopener noreferrer">@inumedia.agency</a><p class="subtle">Behind the scenes,<br>new work and more.</p></article>
       </div>
-      <a class="studio-map reveal" href="{{mapUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Open INU Media’s studio location in Google Maps">
-        <iframe class="studio-map__canvas" title="Map of the INU Media studio in Andheri West, Mumbai" src="{{mapEmbed}}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+      <div class="studio-map reveal" data-studio-map data-lat="{{mapLat}}" data-lng="{{mapLng}}" data-zoom="15">
+        <div class="studio-map__canvas" role="application" aria-label="Interactive map of the INU Media studio in Andheri West, Mumbai. Drag to explore."></div>
         <span class="studio-map__wash" aria-hidden="true"></span>
         <span class="studio-map__grid" aria-hidden="true"></span>
-        <span class="studio-map__pin" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="studio-map__card"><b>The studio</b><span>311 Kuber Complex, Andheri West</span><em>Open in Maps <span aria-hidden="true">↗</span></em></span>
-      </a>
+        <div class="studio-map__card"><b>The studio</b><span>311 Kuber Complex, Andheri West</span>
+          <a href="{{mapUrl}}" target="_blank" rel="noopener noreferrer">Open in Maps <span aria-hidden="true">↗</span></a></div>
+        <p class="studio-map__hint" aria-hidden="true">Drag to look around</p>
+      </div>
     </div>
   </section>
 

@@ -85,6 +85,9 @@ for(const destination of ['site','dist']){
  for(const name of usedFiles)fs.copyFileSync(path.join(src,'assets',name),path.join(dest,'home-assets',fingerprints.get(name)));
  fs.mkdirSync(path.join(dest,'vendor'),{recursive:true});
  for(const name of ['lenis.min.js','lenis.css'])fs.copyFileSync(path.join(root,'node_modules/lenis/dist',name),path.join(dest,'vendor',name));
+ for(const name of ['leaflet.js','leaflet.css'])fs.copyFileSync(path.join(root,'node_modules/leaflet/dist',name),path.join(dest,'vendor',name));
+ fs.mkdirSync(path.join(dest,'vendor/images'),{recursive:true});
+ for(const name of fs.readdirSync(path.join(root,'node_modules/leaflet/dist/images')))fs.copyFileSync(path.join(root,'node_modules/leaflet/dist/images',name),path.join(dest,'vendor/images',name));
  fs.cpSync(path.join(src,'media'),path.join(dest,'media'),{recursive:true});
 }
 console.log(`Built INU home: editable content + ${usedFiles.size} assets. Revision ${revision}.`);

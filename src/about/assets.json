@@ -1,0 +1,182 @@
+{
+ "hero-room": [
+  {
+   "src": "about-assets/hero-room-900.webp",
+   "width": 900,
+   "height": 1599,
+   "bytes": 129976
+  },
+  {
+   "src": "about-assets/hero-room-1500.webp",
+   "width": 1500,
+   "height": 2665,
+   "bytes": 273314
+  },
+  {
+   "src": "about-assets/hero-room-2161.webp",
+   "width": 2161,
+   "height": 3840,
+   "bytes": 445368
+  }
+ ],
+ "spotlight": [
+  {
+   "src": "about-assets/spotlight-520.webp",
+   "width": 520,
+   "height": 1056,
+   "bytes": 105068
+  },
+  {
+   "src": "about-assets/spotlight-900.webp",
+   "width": 900,
+   "height": 1827,
+   "bytes": 227652
+  },
+  {
+   "src": "about-assets/spotlight-1400.webp",
+   "width": 1400,
+   "height": 2842,
+   "bytes": 405736
+  }
+ ],
+ "chair": [
+  {
+   "src": "about-assets/chair-520.webp",
+   "width": 520,
+   "height": 702,
+   "bytes": 78804
+  },
+  {
+   "src": "about-assets/chair-900.webp",
+   "width": 900,
+   "height": 1216,
+   "bytes": 209096
+  },
+  {
+   "src": "about-assets/chair-1400.webp",
+   "width": 1400,
+   "height": 1891,
+   "bytes": 392898
+  }
+ ],
+ "roadcase": [
+  {
+   "src": "about-assets/roadcase-460.webp",
+   "width": 460,
+   "height": 494,
+   "bytes": 90078
+  },
+  {
+   "src": "about-assets/roadcase-800.webp",
+   "width": 800,
+   "height": 858,
+   "bytes": 275694
+  },
+  {
+   "src": "about-assets/roadcase-1200.webp",
+   "width": 1200,
+   "height": 1288,
+   "bytes": 506276
+  }
+ ],
+ "camera": [
+  {
+   "src": "about-assets/camera-560.webp",
+   "width": 560,
+   "height": 703,
+   "bytes": 106788
+  },
+  {
+   "src": "about-assets/camera-950.webp",
+   "width": 950,
+   "height": 1193,
+   "bytes": 254844
+  },
+  {
+   "src": "about-assets/camera-1450.webp",
+   "width": 1450,
+   "height": 1821,
+   "bytes": 453386
+  }
+ ],
+ "photo": [
+  {
+   "src": "about-assets/photo-560.webp",
+   "width": 560,
+   "height": 454,
+   "bytes": 65168
+  },
+  {
+   "src": "about-assets/photo-960.webp",
+   "width": 960,
+   "height": 779,
+   "bytes": 157968
+  },
+  {
+   "src": "about-assets/photo-1500.webp",
+   "width": 1500,
+   "height": 1217,
+   "bytes": 284960
+  }
+ ],
+ "filmframe": [
+  {
+   "src": "about-assets/filmframe-560.webp",
+   "width": 560,
+   "height": 625,
+   "bytes": 88760
+  },
+  {
+   "src": "about-assets/filmframe-960.webp",
+   "width": 960,
+   "height": 1072,
+   "bytes": 215698
+  },
+  {
+   "src": "about-assets/filmframe-1500.webp",
+   "width": 1500,
+   "height": 1675,
+   "bytes": 370124
+  }
+ ],
+ "filmstrip": [
+  {
+   "src": "about-assets/filmstrip-260.webp",
+   "width": 260,
+   "height": 443,
+   "bytes": 44566
+  },
+  {
+   "src": "about-assets/filmstrip-460.webp",
+   "width": 460,
+   "height": 785,
+   "bytes": 115466
+  },
+  {
+   "src": "about-assets/filmstrip-700.webp",
+   "width": 700,
+   "height": 1194,
+   "bytes": 191356
+  }
+ ],
+ "clapper": [
+  {
+   "src": "about-assets/clapper-620.webp",
+   "width": 620,
+   "height": 724,
+   "bytes": 155492
+  },
+  {
+   "src": "about-assets/clapper-1050.webp",
+   "width": 1050,
+   "height": 1226,
+   "bytes": 393546
+  },
+  {
+   "src": "about-assets/clapper-1600.webp",
+   "width": 1600,
+   "height": 1868,
+   "bytes": 669910
+  }
+ ]
+}

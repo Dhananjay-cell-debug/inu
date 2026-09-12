@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "title": "About — INU Media",
+    "description": "Not an agency. Not a production house. Somewhere in between. INU Media is a creative studio built around stories, images and ideas that refuse to feel manufactured."
+  },
+  "hero": {
+    "wordmark": "INU",
+    "suffix": "MEDIA",
+    "tagline": "Same people. Different stories.",
+    "subtitle": "A creative studio for a more human tomorrow.",
+    "play": "Watch our story",
+    "playTarget": "#our-story",
+    "noteLeft": ["Stories", "for a", "more", "human", "tomorrow."],
+    "noteRight": ["A", "little", "more", "human", "always."]
+  },
+  "story": {
+    "eyebrow": "About INU Media",
+    "heading": ["Not an agency.", "Not a production house.", "Somewhere in between."],
+    "body": "INU Media is a creative studio built around stories, images and ideas that refuse to feel manufactured. We work with brands, people and problems that actually excite us.",
+    "note": ["Real", "people", "messy", "ideas", "beautiful", "things."],
+    "photoAlt": "A quiet night on an INU Media set — one chair, one subject, a wall of lights.",
+    "stripAlt": "Two frames from an INU Media contact strip.",
+    "chain": ["Ideas", "People", "Camera", "Edit", "Real emotion"]
+  },
+  "founder": {
+    "eyebrow": "Founder",
+    "name": "Sahil Kohli",
+    "role": "Founder / Director / Professional overthinker",
+    "quote": "The idea was never to build another agency. It was to build a place where strange ideas could survive.",
+    "note": ["Same", "curiosity.", "Bigger", "camera."],
+    "portraitAlt": "Sahil Kohli, founder of INU Media, behind a film camera."
+  },
+  "philosophy": {
+    "eyebrow": "The INU philosophy",
+    "heading": ["Good work should", "make you feel something."],
+    "body": ["Braver stories. Kinder ideas. A slightly more human tomorrow.", "That’s enough of a reason for us."],
+    "cta": "Anyways, let’s make something."
+  },
+  "footerNote": ["INU Media", "For a more human tomorrow."]
+}
