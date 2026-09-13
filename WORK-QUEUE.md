@@ -420,3 +420,36 @@ Verified against **production**, not localhost: 28/28 browser checks pass.
 - 27 distinct portfolio images across 40 card slots.
 - No console errors, 404s or horizontal overflow on any of the five routes at
   1440 or 390.
+
+## Batch 7 — 2026-09-13 (pre-Sahil pass)
+
+- [x] **36. Hero: the lamp's tripod crossed in front of the chair.**
+      -> done: the scene's depth order was wrong. Lamp painted at z-index 1,
+         above the chair at 0, so its front leg cut across the seat. Order is
+         now camera 4 / road case 2 / chair 1 / lamp 0 — near to far. Verified
+         on the phone layout, where it was most obvious.
+
+- [x] **37. The six disciplines come off About entirely.** Removed from the
+      template, content, renderer, CSS and verifier.
+
+- [x] **38. The five moves are a drawn diagram, not paragraphs.**
+      -> done: they are frames on a strip of film now — one band punched with
+         sprocket holes along both edges, each frame carrying a drawn mark
+         (spark, three heads, a lens, a cut, a heartbeat), a numeral, the move
+         and one line. Stacks vertically on a phone. The studio's own medium
+         used as the diagram rather than five stacked paragraphs.
+
+- [x] **39. Let's-talk closing band was four voices in one frame.**
+      -> found in the sweep, not reported: the rooftop plate already carries
+         three pieces of its own typography (wall graffiti, hoodie lettering,
+         "Same city bigger stories"), and we had laid two more slogan blocks
+         plus the headline over it — the headline landing directly on the
+         hoodie text. Both slogan blocks removed (they were already hidden on
+         mobile, so someone had judged them once already) and the plate held
+         back to texture so the headline is the only thing speaking.
+
+### Known weak spot, blocked on assets
+The client logos — the marquee on Home and the grid on Portfolio — are still
+mixed quality and mostly text placeholders. Only Lodha, DLF and HDFC Sky have
+real files. This is the thing most likely to read as unfinished in front of
+Sahil, and it needs the clients' own logo files to fix.

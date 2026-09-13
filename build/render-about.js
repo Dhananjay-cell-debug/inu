@@ -24,6 +24,21 @@ const data={...shared,navigation,page:'about'};
    template having to know how many there are. */
 const prose=(lines,cls='about-prose')=>lines.map(line=>`<p class="${cls} reveal">${esc(line)}</p>`).join('');
 
+/* Five drawn marks, one per move. Deliberately rough - they are chalk on a
+   road case, not icons from a set. */
+const REEL=[
+ /* Ideas: a struck match / spark */
+ `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 30V14"/><path d="M24 10.5c2.6 2 4 3.9 4 6a4 4 0 0 1-8 0c0-2.1 1.4-4 4-6Z"/><path d="M17 36h14M19 41h10"/></svg>`,
+ /* People: three heads, none of them the same */
+ `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="14" cy="19" r="5"/><circle cx="25.5" cy="15" r="6"/><circle cx="36" cy="20" r="4.5"/><path d="M6 39c1.5-5 4.4-7.5 8-7.5s6.5 2.5 8 7.5"/><path d="M17.5 40c1.7-5.6 4.4-8.5 8-8.5s6.3 2.9 8 8.5"/></svg>`,
+ /* Camera: a lens, wide open */
+ `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="5.5"/><path d="M24 10v8M38 24h-8M24 38v-8M10 24h8"/></svg>`,
+ /* Edit: a cut through the strip */
+ `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 12h32v24H8z"/><path d="M8 18h6M8 30h6M34 18h6M34 30h6"/><path d="M31 8 17 40"/></svg>`,
+ /* Real emotion: it lands in the chest */
+ `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 38c-8-5.5-13-10.6-13-16a7 7 0 0 1 13-3.6A7 7 0 0 1 37 22c0 5.4-5 10.5-13 16Z"/><path d="M6 24h7l2.5-5 3 10 3-7"/></svg>`
+];
+
 const fields={
  heroRoom:image('hero-room','layer-image','100vw',true),
  spotlight:image('spotlight','layer-image','(max-width:700px) 28vw, 18vw',true),
@@ -38,11 +53,11 @@ const fields={
  storyPhoto:image('photo','','(max-width:700px) 78vw, 38vw',false,p.story.photoAlt),
  storyStrip:image('filmstrip','','(max-width:700px) 21vw, 10vw',false,p.story.stripAlt),
 
- craftEyebrow:esc(p.craft.eyebrow),craftHeading:blocks(p.craft.heading),craftBody:esc(p.craft.body),
- craftItems:p.craft.items.map((item,i)=>`<li class="reveal" style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><h3>${esc(item.title)}</h3><p>${esc(item.line)}</p><p class="about-index-tags">${item.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</p></li>`).join(''),
 
  processEyebrow:esc(p.process.eyebrow),processHeading:blocks(p.process.heading),processBody:esc(p.process.body),
- processSteps:p.process.steps.map((step,i)=>`<li style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><strong>${esc(step.name)}</strong><span>${esc(step.line)}</span></li>`).join(''),
+ /* Each move is a frame on the strip. The glyph is drawn, not written -- the
+    section was five paragraphs of prose and read as homework. */
+ processSteps:p.process.steps.map((step,i)=>`<li style="--i:${i}"><span class="reel-frame">${REEL[i]}</span><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><strong>${esc(step.name)}</strong><span class="reel-line">${esc(step.line)}</span></li>`).join(''),
 
  founderEyebrow:esc(p.founder.eyebrow),founderName:esc(p.founder.name),founderRole:esc(p.founder.role),
  founderQuote:`“${esc(p.founder.quote)}”`,founderNote:hand(p.founder.note),

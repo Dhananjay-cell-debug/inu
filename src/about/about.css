@@ -37,12 +37,15 @@
 .about-hero-shade{position:absolute;inset:0;z-index:-3;background:radial-gradient(96% 70% at 74% 12%,#ff95371c 0,transparent 58%),linear-gradient(90deg,#050403cc 0,#0504035e 26%,#0504031a 48%,#05040366 100%),linear-gradient(#0a0908d9 0,transparent 20%,transparent 62%,#070706 100%)}
 .about-aura{position:absolute;left:48%;top:10%;width:36%;height:60%;z-index:-2;background:radial-gradient(ellipse,#ff7a1422 0,#e54c000e 38%,transparent 68%)}
 
-.about-spotlight{position:absolute;left:72.5%;top:3%;width:17.5%;height:60%;z-index:1}
+/* Depth order of the scene, near to far: camera (4), road case (2), chair (1),
+   lamp (0). The lamp used to paint at 1, above the chair, so its tripod leg
+   crossed in front of the seat and the whole scene read wrong. */
+.about-spotlight{position:absolute;left:72.5%;top:3%;width:17.5%;height:60%;z-index:0}
 /* The lamp's own hot bulb, ticking like a practical rather than pulsing on a
    tidy loop, bridges the head to the beam already lit into the plate. */
 .about-spotlight:after{content:'';position:absolute;left:22%;top:8%;width:40%;aspect-ratio:1;border-radius:50%;background:radial-gradient(#ffd79c8c,#ff8a1e3d 38%,transparent 70%);filter:blur(9px);mix-blend-mode:screen;animation:about-lamp 9s ease-in-out infinite}
 @keyframes about-lamp{0%,100%{opacity:.72;scale:1}18%{opacity:1;scale:1.06}20%{opacity:.66;scale:1}57%{opacity:1;scale:1.04}}
-.about-chair{position:absolute;left:56.5%;bottom:17.5%;width:20.5%;height:55%;z-index:0}
+.about-chair{position:absolute;left:56.5%;bottom:17.5%;width:20.5%;height:55%;z-index:1}
 .about-chair .character-reveal{width:100%;height:100%;transform:scale(var(--character-scale,1));transform-origin:50% 88%}
 .about-roadcase{position:absolute;right:-6%;bottom:19%;width:19%;height:31%;z-index:2;filter:brightness(.88)}
 .about-camera{position:absolute;left:-5.5%;bottom:-1%;width:25.5%;height:60%;z-index:4;filter:blur(3px) saturate(.92) brightness(1.12)}
@@ -135,7 +138,7 @@
   box-shadow:0 0 0 5px #0b0a09,0 0 18px #ff7a12a6;
 }
 .about-band h2{margin:0}
-.about-story h2,.about-craft h2,.about-process h2{font-size:clamp(24px,2.92vw,47px)}
+.about-story h2,.about-process h2{font-size:clamp(24px,2.92vw,47px)}
 .about-page h2 span{display:block}
 .about-prose{font-family:INUSerif,Georgia,serif;font-size:clamp(13.5px,1.28vw,20px);line-height:1.68;color:var(--prose);max-width:38ch}
 .about-prose+.about-prose{margin-top:clamp(14px,1.2vw,20px)}
@@ -162,36 +165,37 @@
 .hand--founder span{margin-left:calc(var(--i)*.2em);rotate:calc(var(--i)*.5deg)}
 
 
-/* ---------- what we make ----------
-   An editorial index, not a grid of cards: hairlines only, so six disciplines
-   read as one list rather than six boxes. The heading stays pinned while the
-   list runs past it, which is what gives this stretch something to hold on to. */
-.about-craft .about-band-copy,.about-process .about-band-copy{grid-column:1/span 4;position:sticky;top:calc(var(--header-h,90px) + clamp(22px,2.4vw,44px))}
-.about-index{grid-column:6/span 7;margin:0;padding:0;list-style:none}
-.about-index li{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(14px,1.6vw,30px);padding:clamp(18px,1.9vw,30px) 0;border-top:1px solid var(--hair)}
-.about-index li:last-child{border-bottom:1px solid var(--hair)}
-.about-index i{font-style:normal;font-family:INUSerif,Georgia,serif;font-size:clamp(11px,.86vw,14px);letter-spacing:.13em;color:var(--orange);opacity:.72;padding-top:.45em;transition:opacity .35s}
-.about-index h3{grid-column:2;margin:0;font-family:INUSerif,Georgia,serif;font-weight:500;text-transform:uppercase;font-size:clamp(16px,1.66vw,26px);line-height:1.12;color:#f3efe6;transition:color .35s}
-.about-index li>p{grid-column:2;margin:clamp(7px,.7vw,11px) 0 0;font-size:clamp(12.5px,1vw,16px);line-height:1.58;color:var(--prose);max-width:44ch}
-.about-index-tags{grid-column:2;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:clamp(12px,1.1vw,18px);row-gap:6px;font-size:clamp(8px,.68vw,10px);letter-spacing:.2em;text-transform:uppercase;color:#8a857c}
-.about-index li>p.about-index-tags{margin-top:clamp(10px,1vw,15px);max-width:none}
-.about-index-tags span:not(:last-child):after{content:'\00b7';margin-left:clamp(12px,1.1vw,18px);color:var(--orange);opacity:.6}
-.about-index li:hover i{opacity:1}
-.about-index li:hover h3{color:#fff}
-.motion-ready .about-index li.reveal{opacity:0;transform:translateY(16px)}
-.motion-ready .about-index li.reveal.is-visible{opacity:1;transform:none;transition:opacity .55s var(--ease),transform .65s var(--ease);transition-delay:calc(var(--i)*70ms)}
-
 /* ---------- how it gets made ----------
-   The five moves hang off one thread, so this reads as a sequence rather than
-   five loose labels dropped in a row. */
-.about-chain{grid-column:6/span 7;margin:0;padding:0;list-style:none}
-.about-chain li{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(16px,1.7vw,30px);padding:0 0 clamp(26px,2.8vw,46px)}
-.about-chain li:last-child{padding-bottom:0}
-/* The thread itself, drawn between one numeral and the next. */
-.about-chain li:not(:last-child):after{content:'';position:absolute;left:calc(clamp(30px,2.6vw,42px)/2);top:clamp(30px,2.6vw,42px);bottom:clamp(10px,1vw,16px);width:1px;background:linear-gradient(#ff790a5c,#ffffff12)}
-.about-chain i{position:relative;z-index:1;font-style:normal;display:grid;place-items:center;width:clamp(30px,2.6vw,42px);aspect-ratio:1;border-radius:50%;border:1px solid #4b3a26;background:#0b0a09;font-family:INUSerif,Georgia,serif;font-size:clamp(10px,.8vw,13px);letter-spacing:.08em;color:var(--orange)}
-.about-chain strong{grid-column:2;display:block;font-family:INUHand,'Comic Sans MS',cursive;font-weight:400;text-transform:uppercase;font-size:clamp(13px,1.28vw,20px);letter-spacing:.15em;color:#f4f0e7;padding-top:.36em}
-.about-chain span{grid-column:2;display:block;margin-top:clamp(7px,.7vw,11px);font-size:clamp(12.5px,1vw,16px);line-height:1.58;color:var(--prose);max-width:46ch}
+   The five moves were five paragraphs stacked in a column, which read as
+   homework. They are frames on a strip of film now: one band, punched along
+   both edges, each frame carrying a drawn mark, a numeral and one line. The
+   studio's own medium, used as the diagram. */
+.about-process .about-band-copy{grid-column:1/span 5}
+.about-reel{
+  --hole:clamp(10px,1vw,15px);--gap-hole:clamp(13px,1.4vw,20px);
+  grid-column:1/-1;margin:0;padding:clamp(30px,3vw,46px) 0;list-style:none;position:relative;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  background:linear-gradient(#100d0b,#0c0a08);
+  border-block:1px solid #2c2521;
+}
+/* the sprocket holes, punched top and bottom */
+.about-reel:before,.about-reel:after{
+  content:'';position:absolute;left:0;right:0;height:clamp(9px,.9vw,13px);pointer-events:none;
+  background:repeating-linear-gradient(90deg,#070605 0 var(--hole),transparent var(--hole) calc(var(--hole) + var(--gap-hole)));
+}
+.about-reel:before{top:clamp(6px,.6vw,9px)}
+.about-reel:after{bottom:clamp(6px,.6vw,9px)}
+.about-reel li{position:relative;padding:0 clamp(14px,1.5vw,26px);min-width:0}
+.about-reel li+li{border-left:1px solid #241e1a}
+.about-reel .reel-frame{display:block;width:clamp(34px,3.2vw,50px);color:var(--orange)}
+.about-reel svg{width:100%;height:auto;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.about-reel i{display:block;margin-top:clamp(12px,1.2vw,18px);font-style:normal;font-family:INUSerif,Georgia,serif;font-size:clamp(10px,.8vw,13px);letter-spacing:.14em;color:var(--orange);opacity:.7}
+.about-reel strong{display:block;margin-top:clamp(5px,.5vw,8px);font-family:INUHand,'Comic Sans MS',cursive;font-weight:400;text-transform:uppercase;font-size:clamp(13px,1.22vw,19px);letter-spacing:.13em;color:#f4f0e7}
+.about-reel .reel-line{display:block;margin-top:clamp(8px,.8vw,13px);font-size:clamp(11.5px,.92vw,14.5px);line-height:1.55;color:var(--prose)}
+/* The frames fade up one after another, but only once the strip itself has
+   been revealed - and they must never be left hidden if that never happens. */
+.motion-ready .about-reel.reveal li{opacity:0;transform:translateY(14px)}
+.motion-ready .about-reel.reveal.is-visible li{opacity:1;transform:none;transition:opacity .5s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i)*90ms)}
 
 /* ---------- founder ---------- */
 .about-founder h2{font-size:clamp(32px,4.35vw,72px);margin-top:2px}
@@ -233,8 +237,7 @@
   /* Narrower screens give the copy a column more and the artwork one less. */
   .about-band-copy{grid-column:1/span 6}
   .about-plates{grid-column:8/span 5}
-  .about-craft .about-band-copy,.about-process .about-band-copy{grid-column:1/span 5}
-  .about-index,.about-chain{grid-column:7/span 6}
+  .about-process .about-band-copy{grid-column:1/span 5}
   .about-plate--frame{grid-column:8/span 5}
   .about-philosophy .about-band-copy{grid-column:1/span 7}
   .about-creed{grid-column:8/span 5}
@@ -270,19 +273,17 @@
   .about-band{display:block;padding:clamp(52px,13vw,72px) var(--page)}
   /* No gutter left to hang a spine in, so the bead has nothing to sit on. */
   .about-band-copy:before{display:none}
-  .about-story h2,.about-craft h2,.about-process h2{font-size:clamp(29px,8.4vw,38px)}
+  .about-story h2,.about-process h2{font-size:clamp(29px,8.4vw,38px)}
   .about-prose{font-size:14px;max-width:none}
   .about-plates{margin:clamp(30px,8vw,44px) 0 0;aspect-ratio:1.2}
   .about-plate--set{width:88%;left:0}
   .about-plate--strip{width:21%;right:0;bottom:-6%}
-  .about-craft .about-band-copy,.about-process .about-band-copy{position:static}
-  .about-index,.about-chain{margin-top:clamp(30px,8vw,42px)}
-  .about-index h3{font-size:19px}
-  .about-index-tags span:not(:last-child):after,.about-credits li:not(:last-child):after{content:none}
-  .about-index-tags,.about-credits{column-gap:16px}
-  .about-index li>p,.about-chain span,.about-creed p{font-size:13.5px;max-width:none}
-  .about-chain li:not(:last-child):after{left:15px;top:31px}
-  .about-chain i{width:31px}
+  .about-process .about-band-copy{position:static}
+  .about-reel{grid-template-columns:1fr;padding:clamp(22px,5vw,32px) 0}
+  .about-reel li{padding:clamp(18px,4.6vw,26px) clamp(16px,4.4vw,22px)}
+  .about-reel li+li{border-left:0;border-top:1px solid #241e1a}
+
+
   .about-founder h2{font-size:clamp(33px,9.6vw,44px)}
   .about-plate--frame{width:88%;margin:clamp(32px,8vw,44px) auto 0}
   .about-quote{font-size:15px;max-width:none}
@@ -292,7 +293,7 @@
 }
 @media(max-width:360px){
   .about-wordmark{font-size:70px}
-  .about-story h2,.about-craft h2,.about-process h2,.about-philosophy h2{font-size:27px}
+  .about-story h2,.about-process h2,.about-philosophy h2{font-size:27px}
   .about-founder h2{font-size:31px}
   .hand{font-size:12px}
 }
@@ -300,5 +301,8 @@
 @media(prefers-reduced-motion:reduce){
   .about-spotlight:after,.about-play-disc:before,.about-wordmark-smoke{animation:none}
   .about-plate{transition:none}
-  .about-craft .about-band-copy,.about-process .about-band-copy{position:static}
+  .about-process .about-band-copy{position:static}
+  .about-reel{grid-template-columns:1fr;padding:clamp(22px,5vw,32px) 0}
+  .about-reel li{padding:clamp(18px,4.6vw,26px) clamp(16px,4.4vw,22px)}
+  .about-reel li+li{border-left:0;border-top:1px solid #241e1a}
 }
