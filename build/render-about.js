@@ -37,8 +37,6 @@ const fields={
  storyEyebrow:esc(p.story.eyebrow),storyHeading:blocks(p.story.heading),storyBody:prose(p.story.body),
  storyPhoto:image('photo','','(max-width:700px) 78vw, 38vw',false,p.story.photoAlt),
  storyStrip:image('filmstrip','','(max-width:700px) 21vw, 10vw',false,p.story.stripAlt),
- storyNote:hand(p.story.note),
- storyFacts:p.story.facts.map((fact,i)=>`<div style="--i:${i}"><dt>${esc(fact.value)}</dt><dd>${fact.label.map(l=>`<span>${esc(l)}</span>`).join('')}</dd></div>`).join(''),
 
  craftEyebrow:esc(p.craft.eyebrow),craftHeading:blocks(p.craft.heading),craftBody:esc(p.craft.body),
  craftItems:p.craft.items.map((item,i)=>`<li class="reveal" style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><h3>${esc(item.title)}</h3><p>${esc(item.line)}</p><p class="about-index-tags">${item.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</p></li>`).join(''),
@@ -55,7 +53,6 @@ const fields={
  philosophyEyebrow:esc(p.philosophy.eyebrow),philosophyHeading:blocks(p.philosophy.heading),
  philosophyBody:blocks(p.philosophy.body),philosophyCta:esc(p.philosophy.cta),
  philosophyCreed:p.philosophy.creed.map((c,i)=>`<li class="reveal" style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><h3>${esc(c.title)}</h3><p>${esc(c.line)}</p></li>`).join(''),
- clapper:image('clapper','','(max-width:700px) 54vw, 30vw'),
  contactHref:esc(shared.talk.href)
 };
 const main=fs.readFileSync(path.join(src,'template.html'),'utf8').replace(/\{\{(\w+)\}\}/g,(_,key)=>{if(!(key in fields))throw Error(`Unresolved About field ${key}`);return fields[key];});

@@ -10,66 +10,111 @@
     "subtitle": "A creative studio for a more human tomorrow.",
     "play": "Watch our story",
     "playTarget": "#our-story",
-    "noteLeft": ["Stories", "for a", "more", "human", "tomorrow."],
-    "noteRight": ["A", "little", "more", "human", "always."]
+    "noteLeft": [
+      "Stories",
+      "for a",
+      "more",
+      "human",
+      "tomorrow."
+    ],
+    "noteRight": [
+      "A",
+      "little",
+      "more",
+      "human",
+      "always."
+    ]
   },
   "story": {
     "eyebrow": "About INU Media",
-    "heading": ["Not an agency.", "Not a production house.", "Somewhere in between."],
+    "heading": [
+      "Not an agency.",
+      "Not a production house.",
+      "Somewhere in between."
+    ],
     "body": [
       "INU Media is a creative studio in Andheri West, Mumbai. Writers, directors, designers, editors and media buyers, all on one floor, arguing about the same idea until it is either good or gone.",
       "We took the long way round on purpose. Most of what a brand needs is scattered across five vendors who never meet. We kept all of it in one room, so an idea does not lose its voice every time it changes hands."
-    ],
-    "note": ["Real", "people", "messy", "ideas", "beautiful", "things."],
-    "facts": [
-      { "value": "15+", "label": ["Years of", "combined work"] },
-      { "value": "50+", "label": ["Brands and", "clients"] },
-      { "value": "1000+", "label": ["Pieces of", "content made"] },
-      { "value": "06", "label": ["Disciplines,", "one room"] }
     ],
     "photoAlt": "A quiet night on an INU Media set — one chair, one subject, a wall of lights.",
     "stripAlt": "Two frames from an INU Media contact strip."
   },
   "craft": {
     "eyebrow": "What we make",
-    "heading": ["Six disciplines.", "One room."],
+    "heading": [
+      "Six disciplines.",
+      "One room."
+    ],
     "body": "Most studios do one of these properly and quietly subcontract the rest. Everything below is made by people who sit within shouting distance of each other.",
     "items": [
       {
         "title": "Brand & graphic design",
         "line": "The look a business gets recognised by, everywhere it lands.",
-        "tags": ["Identity", "Packaging", "Print", "Motion"]
+        "tags": [
+          "Identity",
+          "Packaging",
+          "Print",
+          "Motion"
+        ]
       },
       {
         "title": "Web design & tech",
         "line": "Sites and products that load fast and behave themselves on a bad connection.",
-        "tags": ["Websites", "Apps", "Commerce", "Systems"]
+        "tags": [
+          "Websites",
+          "Apps",
+          "Commerce",
+          "Systems"
+        ]
       },
       {
         "title": "Film, music & VFX",
         "line": "Films, music videos, and the invisible work that holds a frame together.",
-        "tags": ["Direction", "Edit", "VFX", "Sound"]
+        "tags": [
+          "Direction",
+          "Edit",
+          "VFX",
+          "Sound"
+        ]
       },
       {
         "title": "Performance & digital ads",
         "line": "Media bought and read properly, so spend turns into something you can point at.",
-        "tags": ["Meta", "Google", "Funnels", "Reporting"]
+        "tags": [
+          "Meta",
+          "Google",
+          "Funnels",
+          "Reporting"
+        ]
       },
       {
         "title": "Social media & content",
         "line": "The daily rhythm that keeps a brand in the room between campaigns.",
-        "tags": ["Strategy", "Shoots", "Editing", "Community"]
+        "tags": [
+          "Strategy",
+          "Shoots",
+          "Editing",
+          "Community"
+        ]
       },
       {
         "title": "PR & influencer",
         "line": "Getting the work talked about by people worth listening to.",
-        "tags": ["Press", "Talent", "Seeding", "Events"]
+        "tags": [
+          "Press",
+          "Talent",
+          "Seeding",
+          "Events"
+        ]
       }
     ]
   },
   "process": {
     "eyebrow": "How it gets made",
-    "heading": ["Five moves.", "No handovers."],
+    "heading": [
+      "Five moves.",
+      "No handovers."
+    ],
     "body": "The same five people who argue about the idea are the ones who deliver it. Nothing gets thrown over a wall and comes back a stranger.",
     "steps": [
       {
@@ -103,14 +148,26 @@
       "Most of the job is protecting the odd idea in the room — the one everybody likes and nobody wants to be responsible for.",
       "The rest is logistics, and pretending the logistics are not the hard part."
     ],
-    "credits": ["Direction", "Story", "The final cut"],
+    "credits": [
+      "Direction",
+      "Story",
+      "The final cut"
+    ],
     "signature": "Sahil, somewhere behind the monitor",
-    "note": ["Same", "curiosity.", "Bigger", "camera."],
+    "note": [
+      "Same",
+      "curiosity.",
+      "Bigger",
+      "camera."
+    ],
     "portraitAlt": "Sahil Kohli, founder of INU Media, on the rocks at sunset with his film camera."
   },
   "philosophy": {
     "eyebrow": "The INU philosophy",
-    "heading": ["Good work should", "make you feel something."],
+    "heading": [
+      "Good work should",
+      "make you feel something."
+    ],
     "creed": [
       {
         "title": "We don't pitch what we can't make.",
@@ -125,8 +182,14 @@
         "line": "If it stops working the day the media plan ends, we have not finished it."
       }
     ],
-    "body": ["Braver stories. Kinder ideas. A slightly more human tomorrow.", "That’s enough of a reason for us."],
+    "body": [
+      "Braver stories. Kinder ideas. A slightly more human tomorrow.",
+      "That’s enough of a reason for us."
+    ],
     "cta": "Anyways, let’s make something."
   },
-  "footerNote": ["INU Media", "For a more human tomorrow."]
+  "footerNote": [
+    "INU Media",
+    "For a more human tomorrow."
+  ]
 }

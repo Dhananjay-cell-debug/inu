@@ -365,3 +365,36 @@ intact hero); it went out with this deploy.
       -> done, verified: all six portfolio rails and the home rail measured at
          offset 0 with the first card flush to the rail's left edge.
          Say the word if you want the ambient drift back.
+
+## Batch 6 — 2026-09-13 (the About page is still not right)
+
+- [x] **31. Cut the filler from the story band.** The "REAL PEOPLE / MESSY IDEAS"
+      note and the 15+/50+/1000+/06 numbers row, plus the hairline partition
+      above them, were padding rather than content.
+      -> done: removed from template, content.json, renderer and CSS; the
+         verifier now asserts they stay out. The band is copy + one taped photo.
+
+- [x] **32. The founder band had a hole down its middle.** Copy hugged the left
+      edge and the portrait the right, with two empty columns between them.
+      -> done: copy is columns 1-6 and the portrait 7-12, so they meet. The
+         portrait is bigger and Sahil's face now carries the band.
+
+- [x] **33. Hovering a photo smeared a dark patch behind it.** Hover straightened
+      the frame AND swapped its drop-shadow, which re-rasterises a large
+      transparent plate and drags its silhouette across the page.
+      -> done, verified by hovering it: rotate and filter are untouched now,
+         only a 7px lift. (The lift needed its own rule - the reveal selector
+         carries four classes and was beating a bare :hover, so the old hover
+         had silently stopped lifting at all.)
+
+- [x] **34. The clapperboard and the orange wash in the closing band were ugly.**
+      -> done: the clapper image is gone from the template and the warm
+         radial at the foot of the flow is now neutral. The band is type only.
+
+- [ ] **35. The About hero does not feel composed.** The user circled the
+      director's chair area. Needs a real compositional pass, not a nudge.
+
+### The bigger note from the user (2026-09-13)
+Stop filling the site with content and information. They want craft - considered,
+playful, slightly clumsy creative ideas - without clutter. Anything added has to
+earn its place. Work like an artist, not a checklist.

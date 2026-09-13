@@ -40,8 +40,10 @@ assert.equal((html.match(/class="about-plate /g)||[]).length,3,'Three taped plat
 assert.equal((html.match(/<li style="--i:\d+">/g)||[]).length,5,'Five steps in the making chain');
 assert.equal((html.match(/<li class="reveal" style="--i:\d+"><i aria-hidden="true">0\d<\/i><h3>/g)||[]).length,
   page0.craft.items.length+page0.philosophy.creed.length,'Six disciplines and three creed lines');
-assert.equal((html.match(/<dt>/g)||[]).length,page0.story.facts.length,'The studio numbers are rendered');
-assert.equal((html.match(/class="hand hand--/g)||[]).length,4,'Four hand-written notes');
+// The numbers row, the story note and the clapper were cut as filler.
+assert(!html.includes('about-facts')&&!html.includes('hand--story')&&!html.includes('about-clapper'),
+  'the trimmed About furniture must stay out');
+assert.equal((html.match(/class="hand hand--/g)||[]).length,3,'Three hand-written notes: two in the hero, one on the founder');
 assert(/<h1[^>]*class="about-title"/.test(html),'One h1, and it is the wordmark');
 assert.equal((html.match(/<h1/g)||[]).length,1,'Exactly one h1');
 assert.equal((html.match(/<h2 id="about-/g)||[]).length,5,'Five h2 movements under it');

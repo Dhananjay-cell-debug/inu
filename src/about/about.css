@@ -27,7 +27,7 @@
 .motion-ready .hand.is-visible span,.motion-ready .hand.is-visible i{opacity:1;clip-path:inset(0 -4% 0 -4%)}
 
 /* ---------- hero ---------- */
-.about-hero{position:relative;height:clamp(640px,53.5vw,900px);background:#080706;isolation:isolate;overflow:hidden}
+.about-hero{position:relative;height:clamp(600px,49vw,830px);background:#080706;isolation:isolate;overflow:hidden}
 .about-room{position:absolute;inset:-5% -3% -2%;z-index:-4}
 /* The supplied plate already contains the real beam falling from the upper
    right onto the floor, so the lamp is placed on that beam rather than a CSS
@@ -42,9 +42,9 @@
    tidy loop, bridges the head to the beam already lit into the plate. */
 .about-spotlight:after{content:'';position:absolute;left:22%;top:8%;width:40%;aspect-ratio:1;border-radius:50%;background:radial-gradient(#ffd79c8c,#ff8a1e3d 38%,transparent 70%);filter:blur(9px);mix-blend-mode:screen;animation:about-lamp 9s ease-in-out infinite}
 @keyframes about-lamp{0%,100%{opacity:.72;scale:1}18%{opacity:1;scale:1.06}20%{opacity:.66;scale:1}57%{opacity:1;scale:1.04}}
-.about-chair{position:absolute;left:56.5%;bottom:5.5%;width:20.5%;height:55%;z-index:0}
+.about-chair{position:absolute;left:56.5%;bottom:17.5%;width:20.5%;height:55%;z-index:0}
 .about-chair .character-reveal{width:100%;height:100%;transform:scale(var(--character-scale,1));transform-origin:50% 88%}
-.about-roadcase{position:absolute;right:-6%;bottom:11%;width:19%;height:31%;z-index:2;filter:brightness(.88)}
+.about-roadcase{position:absolute;right:-6%;bottom:19%;width:19%;height:31%;z-index:2;filter:brightness(.88)}
 .about-camera{position:absolute;left:-5.5%;bottom:-1%;width:25.5%;height:60%;z-index:4;filter:blur(3px) saturate(.92) brightness(1.12)}
 .about-hero-floor{position:absolute;inset:auto 0 0;height:120px;z-index:5;background:linear-gradient(transparent,var(--bg));pointer-events:none}
 .about-hero .embers{z-index:3;opacity:.5}
@@ -103,8 +103,7 @@
     radial-gradient(78% 22% at 4% 4%,#16130f 0,transparent 66%),
     radial-gradient(64% 19% at 97% 24%,#1b1209 0,transparent 68%),
     radial-gradient(72% 20% at 3% 50%,#141110 0,transparent 68%),
-    radial-gradient(62% 18% at 99% 72%,#1c1208 0,transparent 68%),
-    radial-gradient(86% 24% at 22% 97%,#171009 0,transparent 70%),
+    radial-gradient(62% 18% at 99% 72%,#15110c 0,transparent 68%),
     #070706;
 }
 /* One continuous thread the whole page hangs from. */
@@ -126,6 +125,9 @@
 /* Every band opens on column one. That single rule is most of what stops the
    page feeling scattered. */
 .about-band-copy{position:relative;grid-column:1/span 5;min-width:0}
+/* The founder is a two-up: copy and portrait meet in the middle instead of
+   hugging opposite edges with a hole between them. */
+.about-founder .about-band-copy{grid-column:1/span 6}
 /* The bead where this band meets the spine. */
 .about-band-copy:before{
   content:'';position:absolute;left:calc(-1*var(--spine) - 3px);top:clamp(4px,.45vw,7px);
@@ -141,27 +143,24 @@
 
 /* ---------- story ---------- */
 .about-plates{grid-column:7/span 6;position:relative;aspect-ratio:1.13;margin-top:clamp(4px,1vw,18px)}
-.about-plate{margin:0;position:absolute;filter:drop-shadow(0 26px 44px #000000b0);transition:transform .7s var(--ease),filter .7s var(--ease),rotate .7s var(--ease)}
+.about-plate{margin:0;position:absolute;filter:drop-shadow(0 26px 44px #000000b0);transition:transform .7s var(--ease)}
 .about-plate img{width:100%;height:auto}
 .about-plate--set{left:0;top:0;width:88%;rotate:-1.4deg;z-index:2}
 .about-plate--strip{right:-1%;bottom:-13%;width:24%;rotate:7deg;z-index:3;filter:brightness(.95) drop-shadow(0 20px 34px #000000c0)}
 .about-plate--strip .about-tape{position:absolute;left:50%;top:-5%;width:58%;height:9%;translate:-50% 0;rotate:-8deg;background:linear-gradient(#e6dac285,#c9b99a70);box-shadow:0 2px 7px #0007;z-index:2}
-/* Prints on a wall: touching one straightens it and lifts it off the surface. */
-.about-plate:hover{rotate:0deg;transform:translateY(-6px) scale(1.015);filter:drop-shadow(0 34px 54px #000000c4)}
+/* Prints on a wall: touching one lifts it off the surface. Nothing else moves
+   - straightening the frame and swapping its drop-shadow on hover dragged a
+   dark silhouette of the transparent plate across the page behind it. */
+.about-plate:hover{transform:translateY(-7px)}
 .motion-ready .about-plate.reveal{transform:translate3d(0,32px,0) scale(.975)}
 .motion-ready .about-plate.reveal.is-visible{transform:translate3d(0,0,0) scale(1)}
+.motion-ready .about-plate.reveal.is-visible:hover{transform:translate3d(0,-7px,0) scale(1)}
 
 /* The notes sit inside the copy column now, on the same left edge as the
    prose, instead of floating in a gutter of their own. */
-.hand--story,.hand--founder{margin:clamp(26px,2.6vw,42px) 0 0;rotate:-3deg;color:#dfd9cf}
-.hand--story span,.hand--founder span{margin-left:calc(var(--i)*.2em);rotate:calc(var(--i)*.5deg)}
+.hand--founder{margin:clamp(26px,2.6vw,42px) 0 0;rotate:-3deg;color:#dfd9cf}
+.hand--founder span{margin-left:calc(var(--i)*.2em);rotate:calc(var(--i)*.5deg)}
 
-.about-facts{grid-column:1/-1;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,36px);border-top:1px solid var(--hair);padding-top:clamp(22px,2.4vw,38px)}
-.about-facts dt{font-family:INUSerif,Georgia,serif;font-size:clamp(28px,3.3vw,54px);line-height:1;color:#f4f0e7}
-.about-facts dd{margin:clamp(9px,.9vw,14px) 0 0;font-size:clamp(8.5px,.72vw,11px);letter-spacing:.19em;text-transform:uppercase;line-height:1.7;color:#8f8b83}
-.about-facts dd span{display:block}
-.motion-ready .about-facts.reveal>div{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i)*95ms)}
-.motion-ready .about-facts.reveal.is-visible>div{opacity:1;transform:none}
 
 /* ---------- what we make ----------
    An editorial index, not a grid of cards: hairlines only, so six disciplines
@@ -201,16 +200,12 @@
 .about-signature{margin:clamp(14px,1.4vw,22px) 0 0;font-family:INUHand,'Comic Sans MS',cursive;font-size:clamp(12px,1.12vw,17px);letter-spacing:.06em;color:var(--orange);rotate:-1.5deg}
 .about-credits{margin:clamp(18px,1.8vw,28px) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:clamp(12px,1.1vw,18px);row-gap:6px;font-size:clamp(8px,.68vw,10px);letter-spacing:.2em;text-transform:uppercase;color:#8a857c}
 .about-credits li:not(:last-child):after{content:'\00b7';margin-left:clamp(12px,1.1vw,18px);color:var(--orange);opacity:.6}
-.about-plate--frame{grid-column:8/span 5;position:relative;width:100%;rotate:1.1deg;margin-top:clamp(6px,1.2vw,22px)}
+.about-plate--frame{grid-column:7/span 6;position:relative;width:100%;rotate:1.1deg;margin-top:clamp(6px,1.2vw,22px)}
 
 /* ---------- philosophy ---------- */
-.about-philosophy{isolation:isolate;overflow:hidden;padding-bottom:clamp(78px,8vw,142px)}
+.about-philosophy{isolation:isolate;overflow:hidden;padding-bottom:clamp(56px,5.4vw,96px)}
 .about-philosophy .about-band-copy{grid-column:1/span 6}
 .about-philosophy h2{font-size:clamp(26px,3.3vw,52px)}
-/* Texture in the one empty corner, and nothing more: it used to sit bright
-   enough behind the closing lines to fight them for contrast. */
-.about-clapper{position:absolute;left:-5%;bottom:-15%;width:23%;z-index:-2;filter:blur(3.2px) brightness(.44) saturate(.9)}
-.about-clapper img{width:100%;height:auto}
 .about-creed{grid-column:7/span 6;margin:0;padding:0;list-style:none}
 .about-creed li{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(12px,1.4vw,24px);padding:clamp(18px,1.9vw,30px) 0;border-top:1px solid var(--hair)}
 .about-creed li:last-child{border-bottom:1px solid var(--hair)}
@@ -243,7 +238,6 @@
   .about-plate--frame{grid-column:8/span 5}
   .about-philosophy .about-band-copy{grid-column:1/span 7}
   .about-creed{grid-column:8/span 5}
-  .about-clapper{width:32%;left:-9%}
 }
 
 /* ---------- phone: one column, and the spine steps aside ---------- */
@@ -281,7 +275,6 @@
   .about-plates{margin:clamp(30px,8vw,44px) 0 0;aspect-ratio:1.2}
   .about-plate--set{width:88%;left:0}
   .about-plate--strip{width:21%;right:0;bottom:-6%}
-  .about-facts{margin-top:clamp(32px,8vw,44px);grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,6vw,30px)}
   .about-craft .about-band-copy,.about-process .about-band-copy{position:static}
   .about-index,.about-chain{margin-top:clamp(30px,8vw,42px)}
   .about-index h3{font-size:19px}
@@ -295,7 +288,6 @@
   .about-quote{font-size:15px;max-width:none}
   .about-philosophy h2{font-size:clamp(30px,8.6vw,40px)}
   .about-creed{margin-top:clamp(30px,8vw,42px)}
-  .about-clapper{width:62%;left:-21%;bottom:-4%;filter:blur(1.8px) brightness(.7)}
   .about-cta{font-size:16px;gap:14px;margin-top:30px}
 }
 @media(max-width:360px){
