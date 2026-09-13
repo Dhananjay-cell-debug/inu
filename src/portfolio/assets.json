@@ -139,153 +139,180 @@
   {
    "src": "portfolio-assets/project-maarrich-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 12120
   },
   {
    "src": "portfolio-assets/project-maarrich-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 36662
   },
   {
    "src": "portfolio-assets/project-maarrich-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 94726
   }
  ],
  "project-lavaste": [
   {
    "src": "portfolio-assets/project-lavaste-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 30022
   },
   {
    "src": "portfolio-assets/project-lavaste-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 76214
   },
   {
    "src": "portfolio-assets/project-lavaste-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 150890
   }
  ],
  "project-jay": [
   {
    "src": "portfolio-assets/project-jay-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 10462
   },
   {
    "src": "portfolio-assets/project-jay-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 32484
   },
   {
    "src": "portfolio-assets/project-jay-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 77586
   }
  ],
  "project-lodha": [
   {
    "src": "portfolio-assets/project-lodha-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 22692
   },
   {
    "src": "portfolio-assets/project-lodha-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 67058
   },
   {
    "src": "portfolio-assets/project-lodha-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 113534
   }
  ],
  "project-aerobott": [
   {
    "src": "portfolio-assets/project-aerobott-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 13558
   },
   {
    "src": "portfolio-assets/project-aerobott-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 40782
   },
   {
    "src": "portfolio-assets/project-aerobott-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 98438
   }
  ],
  "project-bliss": [
   {
    "src": "portfolio-assets/project-bliss-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 21010
   },
   {
    "src": "portfolio-assets/project-bliss-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 53952
   },
   {
    "src": "portfolio-assets/project-bliss-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 123640
   }
  ],
  "project-zouq": [
   {
    "src": "portfolio-assets/project-zouq-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 45076
   },
   {
    "src": "portfolio-assets/project-zouq-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 124884
   },
   {
    "src": "portfolio-assets/project-zouq-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 251708
   }
  ],
  "project-dom": [
   {
    "src": "portfolio-assets/project-dom-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 11046
   },
   {
    "src": "portfolio-assets/project-dom-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 42020
   },
   {
    "src": "portfolio-assets/project-dom-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 104148
   }
  ],
  "project-mini": [
   {
    "src": "portfolio-assets/project-mini-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 12028
   },
   {
    "src": "portfolio-assets/project-mini-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 41644
   },
   {
    "src": "portfolio-assets/project-mini-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 98072
   }
  ],
  "logo-lodha": [
@@ -450,306 +477,360 @@
   {
    "src": "portfolio-assets/project-vrindavan-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 21018
   },
   {
    "src": "portfolio-assets/project-vrindavan-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 59064
   },
   {
    "src": "portfolio-assets/project-vrindavan-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 134456
   }
  ],
  "project-maa-thi": [
   {
    "src": "portfolio-assets/project-maa-thi-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 4208
   },
   {
    "src": "portfolio-assets/project-maa-thi-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 18244
   },
   {
    "src": "portfolio-assets/project-maa-thi-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 69536
   }
  ],
  "project-martin": [
   {
    "src": "portfolio-assets/project-martin-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 17608
   },
   {
    "src": "portfolio-assets/project-martin-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 46824
   },
   {
    "src": "portfolio-assets/project-martin-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 108398
   }
  ],
  "project-online-247": [
   {
    "src": "portfolio-assets/project-online-247-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 14802
   },
   {
    "src": "portfolio-assets/project-online-247-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 44918
   },
   {
    "src": "portfolio-assets/project-online-247-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 100106
   }
  ],
  "project-onyx": [
   {
    "src": "portfolio-assets/project-onyx-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 13978
   },
   {
    "src": "portfolio-assets/project-onyx-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 42684
   },
   {
    "src": "portfolio-assets/project-onyx-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 98102
   }
  ],
  "project-sunblond": [
   {
    "src": "portfolio-assets/project-sunblond-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 19892
   },
   {
    "src": "portfolio-assets/project-sunblond-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 58992
   },
   {
    "src": "portfolio-assets/project-sunblond-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 124820
   }
  ],
  "project-home-mentors": [
   {
    "src": "portfolio-assets/project-home-mentors-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 40486
   },
   {
    "src": "portfolio-assets/project-home-mentors-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 114466
   },
   {
    "src": "portfolio-assets/project-home-mentors-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 224600
   }
  ],
  "project-hdfc-sky": [
   {
    "src": "portfolio-assets/project-hdfc-sky-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 8934
   },
   {
    "src": "portfolio-assets/project-hdfc-sky-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 26282
   },
   {
    "src": "portfolio-assets/project-hdfc-sky-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 75086
   }
  ],
  "project-capswise": [
   {
    "src": "portfolio-assets/project-capswise-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 14568
   },
   {
    "src": "portfolio-assets/project-capswise-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 36312
   },
   {
    "src": "portfolio-assets/project-capswise-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 95632
   }
  ],
  "project-chemist-king": [
   {
    "src": "portfolio-assets/project-chemist-king-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 29364
   },
   {
    "src": "portfolio-assets/project-chemist-king-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 83030
   },
   {
    "src": "portfolio-assets/project-chemist-king-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 170910
   }
  ],
  "project-sonali-jain": [
   {
    "src": "portfolio-assets/project-sonali-jain-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 12032
   },
   {
    "src": "portfolio-assets/project-sonali-jain-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 40420
   },
   {
    "src": "portfolio-assets/project-sonali-jain-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 79630
   }
  ],
  "project-hexagon": [
   {
    "src": "portfolio-assets/project-hexagon-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 23482
   },
   {
    "src": "portfolio-assets/project-hexagon-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 61962
   },
   {
    "src": "portfolio-assets/project-hexagon-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 136616
   }
  ],
  "project-shaz": [
   {
    "src": "portfolio-assets/project-shaz-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 24452
   },
   {
    "src": "portfolio-assets/project-shaz-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 58686
   },
   {
    "src": "portfolio-assets/project-shaz-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 118226
   }
  ],
  "project-khoonta": [
   {
    "src": "portfolio-assets/project-khoonta-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 38252
   },
   {
    "src": "portfolio-assets/project-khoonta-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 98390
   },
   {
    "src": "portfolio-assets/project-khoonta-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 176172
   }
  ],
  "project-namish-taneja": [
   {
    "src": "portfolio-assets/project-namish-taneja-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 11374
   },
   {
    "src": "portfolio-assets/project-namish-taneja-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 31780
   },
   {
    "src": "portfolio-assets/project-namish-taneja-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 81214
   }
  ],
  "project-ditas": [
   {
    "src": "portfolio-assets/project-ditas-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 14798
   },
   {
    "src": "portfolio-assets/project-ditas-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 43858
   },
   {
    "src": "portfolio-assets/project-ditas-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 99374
   }
  ],
  "project-rosa": [
   {
    "src": "portfolio-assets/project-rosa-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 19198
   },
   {
    "src": "portfolio-assets/project-rosa-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 62446
   },
   {
    "src": "portfolio-assets/project-rosa-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 137270
   }
  ],
  "project-manerva": [
   {
    "src": "portfolio-assets/project-manerva-480.webp",
    "width": 480,
-   "height": 270
+   "height": 270,
+   "bytes": 12804
   },
   {
    "src": "portfolio-assets/project-manerva-800.webp",
    "width": 800,
-   "height": 450
+   "height": 450,
+   "bytes": 33114
   },
   {
    "src": "portfolio-assets/project-manerva-1200.webp",
    "width": 1200,
-   "height": 675
+   "height": 675,
+   "bytes": 88330
   }
  ]
 }

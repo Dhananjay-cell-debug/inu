@@ -11,9 +11,10 @@ const art=new Set(data.portfolio.items.map(p=>p.art));
 assert.equal(art.size,content.projects.length,`${content.projects.length-art.size} projects share artwork`);
 const cards=(html.match(/class="folio-card reveal lightning"/g)||[]).length;
 assert.equal((html.match(/class="folio-logo reveal"/g)||[]).length,12);
-// Chapters are linked twice on purpose: the sticky index and the ledger panel.
-const indexNav=html.match(/<nav class="content-index"[\s\S]*?<\/nav>/)[0];
-assert.equal((indexNav.match(/data-chapter-link=/g)||[]).length,content.chapters.length);
+// The sticky chapter band was removed; the ledger panel is now the only index.
+assert(!html.includes('content-index'),'the sticky chapter band is back');
+const ledger=html.match(/<ul class="folio-ledger-list">[\s\S]*?<\/ul>/)[0];
+assert.equal((ledger.match(/data-chapter-link=/g)||[]).length,content.chapters.length);
 for(const chapter of content.chapters)assert(html.includes(`data-chapter-link="${chapter.id}"`),`${chapter.id} is not linked`);
 assert(html.includes('id="project-search"'),'the project search is missing');
 assert.equal((html.match(/class="studio-row content-chapter"/g)||[]).length,content.chapters.length);

@@ -18,7 +18,10 @@
     "about-media": "python build/prepare-about-media.py"
   },
   "dependencies": {
-    "leaflet": "^1.9.4",
-    "lenis": "1.3.26"
+    "lenis": "1.3.26",
+    "maplibre-gl": "^6.9.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.10.0"
   }
 }

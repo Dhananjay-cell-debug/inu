@@ -24,7 +24,6 @@ const fields={
   const count=p.projects.filter(s=>s.tags.some(t=>c.tags.includes(t))).length;
   return `<li><a href="#chapter-${esc(c.id)}" data-chapter-link="${esc(c.id)}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><span>${esc(c.short||c.label)}</span><b>${count}</b></a></li>`;
  }).join(''),
- chapterIndex:p.chapters.map((c,i)=>`<a href="#chapter-${esc(c.id)}" data-chapter-link="${esc(c.id)}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i>${esc(c.short||c.label)}</a>`).join(''),
  chapters:p.chapters.map((c,i)=>{
   const members=p.projects.filter(s=>s.tags.some(t=>c.tags.includes(t)));
   if(!members.length)throw Error(`Chapter ${c.id} has no projects`);

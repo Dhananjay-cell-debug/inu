@@ -280,5 +280,105 @@
    "height": 188,
    "bytes": 25024
   }
+ ],
+ "work-martin": [
+  {
+   "src": "home-assets/work-martin-320.webp",
+   "width": 320,
+   "height": 213,
+   "bytes": 22646
+  },
+  {
+   "src": "home-assets/work-martin-640.webp",
+   "width": 640,
+   "height": 427,
+   "bytes": 68258
+  },
+  {
+   "src": "home-assets/work-martin-960.webp",
+   "width": 960,
+   "height": 640,
+   "bytes": 126898
+  }
+ ],
+ "work-vrindavan": [
+  {
+   "src": "home-assets/work-vrindavan-320.webp",
+   "width": 320,
+   "height": 213,
+   "bytes": 19016
+  },
+  {
+   "src": "home-assets/work-vrindavan-640.webp",
+   "width": 640,
+   "height": 427,
+   "bytes": 60074
+  },
+  {
+   "src": "home-assets/work-vrindavan-960.webp",
+   "width": 960,
+   "height": 640,
+   "bytes": 114056
+  }
+ ],
+ "work-lodha": [
+  {
+   "src": "home-assets/work-lodha-320.webp",
+   "width": 320,
+   "height": 213,
+   "bytes": 27962
+  },
+  {
+   "src": "home-assets/work-lodha-640.webp",
+   "width": 640,
+   "height": 427,
+   "bytes": 87800
+  },
+  {
+   "src": "home-assets/work-lodha-960.webp",
+   "width": 960,
+   "height": 640,
+   "bytes": 168366
+  }
+ ],
+ "work-maa": [
+  {
+   "src": "home-assets/work-maa-320.webp",
+   "width": 320,
+   "height": 213,
+   "bytes": 27840
+  },
+  {
+   "src": "home-assets/work-maa-640.webp",
+   "width": 640,
+   "height": 427,
+   "bytes": 85546
+  },
+  {
+   "src": "home-assets/work-maa-960.webp",
+   "width": 960,
+   "height": 640,
+   "bytes": 156466
+  }
+ ],
+ "work-aerobott": [
+  {
+   "src": "home-assets/work-aerobott-320.webp",
+   "width": 320,
+   "height": 213,
+   "bytes": 25138
+  },
+  {
+   "src": "home-assets/work-aerobott-640.webp",
+   "width": 640,
+   "height": 427,
+   "bytes": 79044
+  },
+  {
+   "src": "home-assets/work-aerobott-960.webp",
+   "width": 960,
+   "height": 640,
+   "bytes": 150500
+  }
  ]
 }

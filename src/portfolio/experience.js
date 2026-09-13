@@ -5,19 +5,18 @@
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  document.documentElement.classList.add('portfolio-enhanced');
 
- /* Both sticky bars stack under the fixed header, so their real heights drive
-    the offsets rather than guessed constants. */
- const header=document.querySelector('.header'),bar=document.querySelector('.content-index');
+ /* The fixed header is the only thing an anchor has to clear now that the
+    sticky chapter band is gone, so its real height drives the offsets. */
+ const header=document.querySelector('.header');
  const measure=()=>{
    const root=document.documentElement.style;
    if(header)root.setProperty('--header-h',`${Math.round(header.offsetHeight)}px`);
-   if(bar)root.setProperty('--index-h',`${Math.round(bar.offsetHeight)}px`);
  };
  measure();addEventListener('resize',measure,{passive:true});
- const offset=()=>(header?.offsetHeight||0)+(bar?.offsetHeight||0);
+ const offset=()=>header?.offsetHeight||0;
 
- /* The index follows whichever chapter the reader is actually inside: the
-    last one whose top has passed just under the sticky bars. */
+ /* The ledger index follows whichever chapter the reader is actually inside:
+    the last one whose top has passed just under the header. */
  if(index.length&&chapters.length){
   const mark=id=>index.forEach(link=>link.classList.toggle('is-active',link.dataset.chapterLink===id));
   let frame=0;
@@ -31,7 +30,7 @@
   addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync);},{passive:true});
   addEventListener('resize',sync,{passive:true});
   sync();
-  // Anchor jumps have to clear both sticky bars, which Lenis is not managing here.
+  // Anchor jumps have to clear the fixed header, which Lenis is not managing here.
   index.forEach(link=>link.addEventListener('click',event=>{
     const target=document.querySelector(link.getAttribute('href'));
     if(!target)return;

@@ -18,7 +18,9 @@ assert(json.navigation.some(n=>n.current),'The current page must be marked in th
 assert.equal((html.match(/class="field(?: field-message)?"/g)||[]).length,5,'Five visible enquiry fields');
 assert.equal((html.match(/class="direct-card reveal"/g)||[]).length,4,'Four direct contact cards');
 assert.equal((html.match(/class="faq-item reveal"/g)||[]).length,5,'Five accessible native FAQs');
-assert.equal((html.match(/class="creative-frame"/g)||[]).length,8,'Eight selected creative images');
+/* The "Good people. Wild ideas." gallery was deliberately removed from this
+   page; the assertion now guards it staying removed. */
+assert(!html.includes('creative-frame'),'The creative gallery must stay off the contact page');
 assert(html.includes('conversation-wire')&&html.includes('scene-listener')&&html.includes('scene-speaker'),'Layered hero with anchored connection');
 assert(html.includes('311 Kuber Complex')&&!html.includes('Singapore'),'Use verified address');
 assert(html.includes('name="brand"')&&html.includes('name="company"'),'Brand field must not collide with spam honeypot');

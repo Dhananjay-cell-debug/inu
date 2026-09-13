@@ -134,33 +134,66 @@
   burn.addEventListener('ended',endBurn);burn.addEventListener('error',endBurn);
   const startAtmosphere=()=>{if(reduce.matches||navigator.connection?.saveData)return;mediaSource(grain);grain.muted=true;grain.play().catch(()=>{});};
 
-  /* ---------- sound, carried across pages by preference only ---------- */
-  const remember=value=>{try{sessionStorage.setItem('inu-sound',value?'on':'off');}catch{}};
-  const remembered=()=>{try{return sessionStorage.getItem('inu-sound')==='on';}catch{return false;}};
+  /* ---------- soundtrack ----------------------------------------------------
+     Carried across pages by preference *and* playhead, so the score reads as
+     one unbroken take rather than restarting at every navigation. */
+  const SOUND_KEY='inu-sound',HEAD_KEY='inu-sound-head',STAMP_KEY='inu-sound-stamp';
+  const store=(k,v)=>{try{sessionStorage.setItem(k,v);}catch{}};
+  const recall=k=>{try{return sessionStorage.getItem(k);}catch{return null;}};
+  const remember=value=>store(SOUND_KEY,value?'on':'off');
+  const remembered=()=>recall(SOUND_KEY)==='on';
+  function saveHead(){if(soundEnabled&&soundtrack.duration)
+    {store(HEAD_KEY,String(soundtrack.currentTime));store(STAMP_KEY,String(Date.now()));}}
+  function restoreHead(){
+    const head=parseFloat(recall(HEAD_KEY)),stamp=parseFloat(recall(STAMP_KEY));
+    if(!isFinite(head))return;
+    const gap=isFinite(stamp)?clamp((Date.now()-stamp)/1000,0,6):0;
+    const seek=()=>{const d=soundtrack.duration;if(d)soundtrack.currentTime=(head+gap)%d;};
+    if(soundtrack.readyState>0)seek();else soundtrack.addEventListener('loadedmetadata',seek,{once:true});
+  }
+  soundtrack.addEventListener('timeupdate',saveHead);
+  addEventListener('pagehide',saveHead);
+
+  let resumeArmed=false;
+  function armResume(){
+    if(resumeArmed)return;resumeArmed=true;
+    const gestures=['pointerdown','keydown','touchstart'];
+    const go=e=>{
+      gestures.forEach(t=>removeEventListener(t,go,true));resumeArmed=false;
+      if(e.target?.closest?.('#sound-toggle'))return;
+      setSound(true,true);
+    };
+    gestures.forEach(t=>addEventListener(t,go,{capture:true,passive:true}));
+  }
+  function paintSound(on){
+    soundButton.setAttribute('aria-pressed',String(on));
+    soundButton.setAttribute('aria-label',on?'Mute cinematic soundtrack':'Enable cinematic soundtrack');
+    soundLabel.textContent=on?'Sound on':'Sound off';
+  }
   function fadeVolume(target,complete){
     clearInterval(volumeTimer);
     const start=soundtrack.volume,started=performance.now();
     volumeTimer=setInterval(()=>{const t=clamp((performance.now()-started)/650,0,1);soundtrack.volume=start+(target-start)*t;if(t===1){clearInterval(volumeTimer);complete?.();}},35);
   }
-  async function setSound(enabled,silentFail=false){
+  async function setSound(enabled,carried=false){
     if(audioPending)return;
     if(!enabled){
-      soundEnabled=false;remember(false);
-      soundButton.setAttribute('aria-pressed','false');soundButton.setAttribute('aria-label','Enable cinematic soundtrack');
-      soundLabel.textContent='Sound off';fadeVolume(0,()=>soundtrack.pause());burnSound.pause();return;
+      soundEnabled=false;remember(false);paintSound(false);
+      fadeVolume(0,()=>soundtrack.pause());burnSound.pause();return;
     }
-    audioPending=true;if(!silentFail)soundLabel.textContent='Loading';
+    audioPending=true;if(!carried)soundLabel.textContent='Loading';
     try{
       if(!soundtrack.src)soundtrack.src=soundtrack.dataset.src;
+      if(carried)restoreHead();
       soundtrack.volume=0;await soundtrack.play();
-      soundEnabled=true;remember(true);
-      soundButton.setAttribute('aria-pressed','true');soundButton.setAttribute('aria-label','Mute cinematic soundtrack');
-      soundLabel.textContent='Sound on';fadeVolume(content.music?.volume||.32);
-      if(!silentFail)playBurn(true);
+      soundEnabled=true;remember(true);paintSound(true);
+      fadeVolume(content.music?.volume||.32);
+      if(!carried)playBurn(true);
       soundStatus.textContent='Cinematic soundtrack enabled.';
     }catch{
-      soundEnabled=false;soundLabel.textContent='Sound off';
-      if(!silentFail)soundStatus.textContent='Audio could not start. Tap Sound off to try again.';
+      soundEnabled=false;
+      if(carried){soundEnabled=true;paintSound(true);armResume();}
+      else{paintSound(false);soundStatus.textContent='Audio could not start. Tap Sound off to try again.';}
     }finally{audioPending=false;}
   }
   soundButton.addEventListener('click',()=>setSound(!soundEnabled));
@@ -168,8 +201,9 @@
   else addEventListener('load',()=>{startAtmosphere();playBurn();if(remembered())setSound(true,true);},{once:true});
 
   document.addEventListener('visibilitychange',()=>{
-    if(document.hidden){grain.pause();burn.pause();burnSound.pause();soundtrack.pause();cancelAnimationFrame(emberFrame);emberFrame=0;cancelAnimationFrame(frame);frame=0;}
-    else{startAtmosphere();startEmbers();requestFrame();if(soundEnabled)soundtrack.play().catch(()=>setSound(false));}
+    /* Visuals park on a hidden tab; the soundtrack does not. */
+    if(document.hidden){grain.pause();burn.pause();cancelAnimationFrame(emberFrame);emberFrame=0;cancelAnimationFrame(frame);frame=0;saveHead();}
+    else{startAtmosphere();startEmbers();requestFrame();if(soundEnabled&&soundtrack.paused)soundtrack.play().catch(()=>{});}
   });
   reduce.addEventListener('change',()=>{
     configureScrolling();

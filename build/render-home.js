@@ -41,7 +41,16 @@ const render={
   serviceCards:data.services.items.map((s,i)=>`<button class="service-card reveal" data-service="${i}" style="--stagger:${i%3}"><span class="card-number">0${i+1}</span><span class="service-art">${image('service-'+s.image,'','(max-width:700px) 82px, (max-width:1100px) 25vw, 16vw')}</span><span class="card-copy"><strong>${s.lines.map(escape).join('<br>')}</strong><span>${escape(s.tagline)}</span></span><span class="service-arrow" aria-hidden="true">↗</span></button>`).join(''),
   portfolioEyebrow:escape(data.portfolio.eyebrow),portfolioHeading:heading(data.portfolio.heading),portfolioDescription:escape(data.portfolio.description),portfolioButton:escape(data.portfolio.button),
   portfolioArt:image('film-scene','film-art layer-image','100vw'),
-  workCards:data.portfolio.items.map((p,i)=>`<button class="work-card" data-work="${i}"><span class="work-image"><img src="home-assets/${escape(p.image)}" width="158" height="107" loading="lazy" alt="${escape(p.title)}"><span class="view-project" aria-hidden="true">View project ↗</span></span><span class="work-caption"><strong>${escape(p.title)}</strong><span>${escape(p.category)}${arrow}</span></span></button>`).join(''),
+  /* The card art is responsive now: the old single 158x107 file was being
+     painted into a 288px card, i.e. upscaled four times on a retina screen. */
+  /* The card art is responsive now: one 158x107 file was being painted into a
+     288px card, i.e. upscaled roughly four times on a retina screen, which is
+     what made these read as blurry. */
+  workCards:data.portfolio.items.map((p,i)=>{
+    const art=assets['work-'+p.image.replace(/\.webp$/,'')];
+    const chosen=art[1]||art[0];
+    return `<button class="work-card" data-work="${i}"><span class="work-image"><img src="${chosen.src}" srcset="${art.map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="(max-width:700px) 62vw, (max-width:1100px) 30vw, 20vw" width="${chosen.width}" height="${chosen.height}" loading="lazy" decoding="async" alt="${escape(p.title)}"><span class="view-project" aria-hidden="true">View project ↗</span></span><span class="work-caption"><strong>${escape(p.title)}</strong><span>${escape(p.category)}${arrow}</span></span></button>`;
+  }).join(''),
   stats:data.stats.map(s=>`<div class="stat reveal ${s.icon==='infinity'?'infinity-stat':''}">${icon(s.icon)}<p>${s.value?`<strong>${escape(s.value)}</strong>`:''}<span>${s.label.map(escape).join('<br>')}</span></p></div>`).join(''),
   contactArt:image('sunset-room','sunset-room layer-image','100vw'),contactPerson:image('closing-person','closing-person layer-image','(max-width:700px) 50vw, 25vw'),
   contactEyebrow:escape(data.contact.eyebrow),contactHeading:heading(data.contact.heading),contactDescription:escape(data.contact.description),contactNote:data.contact.wallNote.map(escape).join('<br>'),
@@ -56,7 +65,6 @@ let html=fs.readFileSync(path.join(src,'template.html'),'utf8').replace(/\{\{(\w
 });
 const usedFiles=new Set();
 for(const match of html.matchAll(/home-assets\/([\w.-]+)/g)) usedFiles.add(match[1]);
-for(const p of data.portfolio.items)usedFiles.add(p.image);
 let css=fs.readFileSync(path.join(src,'cinematic.css'),'utf8')+'\n'+fs.readFileSync(path.join(src,'responsive.css'),'utf8')+'\n'+fs.readFileSync(path.join(src,'atmosphere.css'),'utf8');
 for(const match of css.matchAll(/home-assets\/([\w.-]+)/g))usedFiles.add(match[1]);
 for(const name of usedFiles)if(!fs.existsSync(path.join(src,'assets',name)))throw new Error(`Missing image or font ${name}`);
@@ -85,9 +93,12 @@ for(const destination of ['site','dist']){
  for(const name of usedFiles)fs.copyFileSync(path.join(src,'assets',name),path.join(dest,'home-assets',fingerprints.get(name)));
  fs.mkdirSync(path.join(dest,'vendor'),{recursive:true});
  for(const name of ['lenis.min.js','lenis.css'])fs.copyFileSync(path.join(root,'node_modules/lenis/dist',name),path.join(dest,'vendor',name));
- for(const name of ['leaflet.js','leaflet.css'])fs.copyFileSync(path.join(root,'node_modules/leaflet/dist',name),path.join(dest,'vendor',name));
- fs.mkdirSync(path.join(dest,'vendor/images'),{recursive:true});
- for(const name of fs.readdirSync(path.join(root,'node_modules/leaflet/dist/images')))fs.copyFileSync(path.join(root,'node_modules/leaflet/dist/images',name),path.join(dest,'vendor/images',name));
+ /* MapLibre ships as ESM in three sibling files; the main module resolves the
+    shared chunk and the worker relative to itself, so all three have to land in
+    the same folder. Only /lets-talk imports it, and only when the map is about
+    to come on screen. */
+ for(const name of ['maplibre-gl.mjs','maplibre-gl-shared.mjs','maplibre-gl-worker.mjs','maplibre-gl.css'])
+   fs.copyFileSync(path.join(root,'node_modules/maplibre-gl/dist',name),path.join(dest,'vendor',name));
  fs.cpSync(path.join(src,'media'),path.join(dest,'media'),{recursive:true});
 }
 console.log(`Built INU home: editable content + ${usedFiles.size} assets. Revision ${revision}.`);

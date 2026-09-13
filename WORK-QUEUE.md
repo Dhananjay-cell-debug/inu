@@ -126,7 +126,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
 
 ## Batch 6 — 2026-09-12 (logos for real, footer, reveal crop)
 
-- [ ] **21. REAL client logos, sourced online.** Not typeset text standing in for
+- [x] **21. REAL client logos, sourced online.** Not typeset text standing in for
       a logo. Research each brand, find the actual mark, use the brand's own
       colours. Reference look the user gave: yellowad.in/clients — logos sitting
       straight on the background, separated by hairlines, NO boxes.
@@ -140,8 +140,11 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
       the Portfolio closing section.
 - [x] **25. The end-reveal crops the artwork on mobile.** "INU MEDIA" is sliced
       off at the left edge. Nothing in the plate may be cut.
-- [ ] **26. Studio map on mobile** — Google's own chrome shows through, the
+- [x] **26. Studio map on mobile** — Google's own chrome shows through, the
       studio card sits over the pin, and it reads too dim.
+      -> superseded on 2026-09-13: there is no Google embed any more. The map
+         is MapLibre + OpenFreeMap vector tiles with our own style, so none of
+         Google's chrome exists to show through. See Batch 5 item 16.
       -> done, verified: CSS boxes gone on both pages; portfolio is a hairline grid now and all 12 logos measured "ok" for clipping. NOTE: the remaining placeholder files have a dark plate baked INTO the image, so they still look boxy until real files replace them.
       -> done, verified: root cause was each page restyling the footer (portfolio had its own padding + margin-left:auto on the note). 11 per-page footer rules deleted; footer is now one component - identical padding 48/56px, note left-aligned, socials clear of it on all 4 pages at 1440 and 390.
       -> done, verified: .folio-curtain and its 10 CSS rules deleted; the note now sits on the photograph.
@@ -153,7 +156,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done+verified
 
 ## Batch 7 — 2026-09-12 (verify against the source)
 
-- [ ] **27. Verify the client list against the real source** —
+- [x] **27. Verify the client list against the real source** —
       `F:\INU media\content\INU_Media_KHOONTA_Movie_PR_Proposal.pdf`.
       Only brands INU Media has genuinely worked with may appear, with their
       real names. No vague or invented marks, and never another company's logo.
@@ -232,3 +235,133 @@ intact hero); it went out with this deploy.
 - [ ] **30. `Watch our story` has no film.** The control is drawn exactly as the
       comp draws it and currently scrolls to the story band. Give it a real
       film, or a dialog, when one exists.
+
+---
+
+## Batch 5 — 2026-09-13 (map, audio, about, thumbnails)
+
+- [x] **16. Let's-talk map: too dark in the centre + blurry labels.**
+      Not a flat recolour — make it genuinely beautiful. Roads differentiated
+      by class in different tones, crisp retina-sharp labels, lit centre with
+      the studio pin as the brightest point. No generic grey-with-a-filter.
+
+- [x] **17. Audio must persist across navigation.**
+      Once SOUND ON, the music keeps playing across every page change (home →
+      services → about → …) and across Chrome tab switches. It only stops when
+      the user presses SOUND OFF. Currently it dies on every navigation.
+
+- [x] **18. /about — full redesign pass.**
+      Not a PPT of slides: one continuous, elegant, scroll-held page.
+      Fix alignment everywhere (it reads scattered). Wild + artistic +
+      restrained, never cluttered.
+
+- [x] **19. /about content is vague — rewrite it.**
+      Real creative-production-house substance. Add/remove sections as the page
+      needs. No filler lines.
+      -> done: rewritten end to end and two new movements added. Studio copy now
+         says where they are and how they are organised; a numbers row (15+ /
+         50+ / 1000+ / 06) matching the home page; a six-discipline index that
+         mirrors the portfolio chapters; a five-move process with a line each;
+         the founder in his own voice; and three real working principles
+         replacing the two thin lines in the closing band. Nothing asserted
+         that is not already verifiable elsewhere on the site - any real dates
+         or biography still need to come from Sahil.
+
+- [x] **20. Founder frame: use Sahil's supplied photo.**
+      `chatgpt inu design/INU_Media_6_Pages_4K/about/sahil bhai.png` goes inside
+      the existing taped film frame.
+      -> done, verified: build/compose-founder-frame.py perspective-maps the
+         portrait onto the frame's window quad (the frame hangs a few degrees
+         off square), keeps the handwritten "Good Films, Better Stories" whole,
+         drops the sprocket strip printed into the source, and lifts the
+         frame's own dust and scratches back over the top so it ages with the
+         plate. Rebuilt at 560/960/1500.
+
+- [x] **21. Founder section feels scattered** - give it a narrative spine so the
+      scroll holds together.
+      -> done: the block now reads name -> role -> quote -> two paragraphs in
+         his own voice -> a handwritten sign-off -> what he actually does, all
+         on the one column line, with the portrait flush to the right gutter.
+
+- [x] **22. About closing band ("Good work should make you feel something")**
+      is thin - it needs real content, and the tag/label rows across the page
+      are drifting and need to be disciplined.
+      -> done: the closing band carries three working principles with a line
+         each. Tag rows were putting their separator at the START of a wrapped
+         line, which is what made them drift; the dot now hangs off the end of
+         the preceding tag and is dropped entirely on a phone.
+
+- [x] **23. Home featured-work thumbnails** replaced with images from
+      `chatgpt inu design/creative images for inu media`.
+      -> done, verified: five of the INU collages, matched by subject to each
+         card (film/ads for Martin, headphones for Vrindavan, skyline for Lodha,
+         pop portrait for Maa Thi, screen wall for Aerobott), cropped to the
+         card's 3:2 and shipped at 320/640/960. The old files were 158x107 being
+         painted into a 288px card - upscaled roughly four times on a retina
+         screen, which is most of why they read as "stupid". NOTE: these carry
+         INU's own branding, so they read as INU posters rather than client
+         work; they are a stopgap until Sahil's drive arrives.
+
+- [x] **24. Mobile (and desktop) rails over-scroll** — the drag rail keeps going
+      left past the last card leaving blank space. It must stop exactly at the
+      last thumbnail on both breakpoints.
+
+- [x] **25. Portfolio: remove the sticky chapter band** (the
+      `01 BRAND & DESIGN / 02 WEB & TECH / …` strip under the search field).
+      -> done, verified: removed from template, renderer, CSS and JS; the
+         numbered ledger panel top-right remains the chapter index. Build
+         verifier now asserts the band cannot come back.
+
+- [x] **26. Replace every irrelevant portfolio/section thumbnail.**
+      Source beautiful, niche-correct, freely usable creatives (brand, web, PR,
+      film, social), convert to WebP locally, ship them sharp and light.
+      Sahil's real project drive replaces these later.
+      -> done, verified: all 27 re-sourced and regraded.
+         Before: three film projects shared ONE photo of a RED camera, six
+         projects were blank in-house placeholders, and the rest were literal
+         mismatches - dollar bills for a finance brand, a picnic drink for
+         pharma, flowers for a hospitality site, a coffee cup for an advisory.
+         After: 27 distinct images (hash-checked), all CC0 1.0 public domain,
+         each from a concrete query tied to what the project actually is.
+         Every one then goes through a single cinematic grade - S-curve, warm
+         duotone blended over the original colour, vignette, fixed-seed grain -
+         so twenty-seven unrelated photographs read as one body of work instead
+         of a folder of stock. Provenance in licenses/portfolio-art.json.
+
+- [x] **27. Let's-talk end reveal crops the seated figure's face.**
+      The pink-wall plate is cropped so the man sitting on top of the wall is
+      cut off at the shins/waist — his face never appears. Shift the framing
+      down (or re-fit the plate) so his face is in shot.
+      -> done, verified at 1478x730: the contact plate is now hung from the top
+         (--end-focus) instead of centred, the top scrim went from 130px at 60%
+         to 76px at 45%, and the fixed header steps aside while the reveal owns
+         the screen (end-reveal.js). His face is fully in shot; the other four
+         reveals are unchanged and still fill edge to edge.
+
+
+## Found while verifying Batch 5 — 2026-09-13
+
+- [x] **28. The consent bar sat on top of the SOUND toggle.** On a first visit
+      the cookie bar's dismiss button overlapped the sound pill, so the first
+      press of "Sound on" hit the cookie bar instead. `--cookie-offset` was
+      already being published by the consent layer but nothing consumed it.
+      -> done, verified: `.sound-toggle` now sits at
+         `calc(22px + var(--cookie-offset))` (15px on a phone) and slides back
+         down when the bar is dismissed. Measured no overlap on all five routes
+         at both 1440 and 390, where all ten previously overlapped.
+
+- [x] **29. The preview server stalled all audio and video.**
+      `server.js` advertised `Accept-Ranges: bytes` and then ignored `Range`,
+      answering 200 with a chunked body. Chrome's media loader sat at
+      readyState 0 forever, so nothing on the site would play locally.
+      -> done, verified: proper 206 responses with `Content-Range` and a real
+         `Content-Length`; `.mjs` added to the MIME table for MapLibre.
+         Production was unaffected - Vercel serves ranges correctly.
+
+- [x] **30. Rails no longer drift.** They used to creep sideways on their own,
+      so by the time you scrolled to a row its first thumbnail was already half
+      cut off - the misalignment the user kept pointing at. Every rail now
+      rests at its first card and only moves when dragged.
+      -> done, verified: all six portfolio rails and the home rail measured at
+         offset 0 with the first card flush to the rail's left edge.
+         Say the word if you want the ambient drift back.

@@ -20,6 +20,10 @@ const shared=JSON.parse(html.match(/<script type="application\/json" id="site-co
 const navigation=[{label:'Home',href:'/'},{label:'About',href:'/about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
 const data={...shared,navigation,page:'about'};
 
+/* Prose arrives as an array of paragraphs so the copy can breathe without the
+   template having to know how many there are. */
+const prose=(lines,cls='about-prose')=>lines.map(line=>`<p class="${cls} reveal">${esc(line)}</p>`).join('');
+
 const fields={
  heroRoom:image('hero-room','layer-image','100vw',true),
  spotlight:image('spotlight','layer-image','(max-width:700px) 28vw, 18vw',true),
@@ -30,18 +34,27 @@ const fields={
  heroSubtitle:esc(p.hero.subtitle),heroPlay:esc(p.hero.play),playTarget:esc(p.hero.playTarget),
  noteLeft:hand(p.hero.noteLeft),noteRight:hand(p.hero.noteRight),
 
- storyEyebrow:esc(p.story.eyebrow),storyHeading:blocks(p.story.heading),storyBody:esc(p.story.body),
+ storyEyebrow:esc(p.story.eyebrow),storyHeading:blocks(p.story.heading),storyBody:prose(p.story.body),
  storyPhoto:image('photo','','(max-width:700px) 78vw, 38vw',false,p.story.photoAlt),
  storyStrip:image('filmstrip','','(max-width:700px) 21vw, 10vw',false,p.story.stripAlt),
  storyNote:hand(p.story.note),
- storyChain:p.story.chain.map((step,i)=>`<li style="--i:${i}">${esc(step)}</li>`).join(''),
+ storyFacts:p.story.facts.map((fact,i)=>`<div style="--i:${i}"><dt>${esc(fact.value)}</dt><dd>${fact.label.map(l=>`<span>${esc(l)}</span>`).join('')}</dd></div>`).join(''),
+
+ craftEyebrow:esc(p.craft.eyebrow),craftHeading:blocks(p.craft.heading),craftBody:esc(p.craft.body),
+ craftItems:p.craft.items.map((item,i)=>`<li class="reveal" style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><h3>${esc(item.title)}</h3><p>${esc(item.line)}</p><p class="about-index-tags">${item.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</p></li>`).join(''),
+
+ processEyebrow:esc(p.process.eyebrow),processHeading:blocks(p.process.heading),processBody:esc(p.process.body),
+ processSteps:p.process.steps.map((step,i)=>`<li style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><strong>${esc(step.name)}</strong><span>${esc(step.line)}</span></li>`).join(''),
 
  founderEyebrow:esc(p.founder.eyebrow),founderName:esc(p.founder.name),founderRole:esc(p.founder.role),
  founderQuote:`“${esc(p.founder.quote)}”`,founderNote:hand(p.founder.note),
+ founderBody:prose(p.founder.body),founderSignature:esc(p.founder.signature),
+ founderCredits:p.founder.credits.map(c=>`<li>${esc(c)}</li>`).join(''),
  founderPortrait:image('filmframe','','(max-width:700px) 78vw, 40vw',false,p.founder.portraitAlt),
 
  philosophyEyebrow:esc(p.philosophy.eyebrow),philosophyHeading:blocks(p.philosophy.heading),
  philosophyBody:blocks(p.philosophy.body),philosophyCta:esc(p.philosophy.cta),
+ philosophyCreed:p.philosophy.creed.map((c,i)=>`<li class="reveal" style="--i:${i}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><h3>${esc(c.title)}</h3><p>${esc(c.line)}</p></li>`).join(''),
  clapper:image('clapper','','(max-width:700px) 54vw, 30vw'),
  contactHref:esc(shared.talk.href)
 };

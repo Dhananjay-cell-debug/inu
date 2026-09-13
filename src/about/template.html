@@ -24,41 +24,69 @@
     <div class="about-hero-floor" aria-hidden="true"></div>
   </section>
 
-  <section class="about-story fluid-section" id="our-story" aria-labelledby="about-story-title" data-scene>
-    <div class="about-story-copy">
-      <p class="eyebrow reveal">{{storyEyebrow}}</p>
-      <h2 id="about-story-title" class="reveal">{{storyHeading}}</h2>
-      <span class="orange-rule reveal" aria-hidden="true"></span>
-      <p class="about-prose reveal">{{storyBody}}</p>
-    </div>
-    <div class="about-plates">
-      <figure class="about-plate about-plate--set reveal">{{storyPhoto}}</figure>
-      <figure class="about-plate about-plate--strip reveal"><span class="about-tape" aria-hidden="true"></span>{{storyStrip}}</figure>
-    </div>
-    <p class="hand hand--story reveal">{{storyNote}}</p>
-    <ol class="about-chain reveal" aria-label="How the work is made">{{storyChain}}</ol>
-  </section>
+  <!-- One continuous movement from here down. The flow wrapper owns the single
+       page-wide wash and the hairline spine that every eyebrow hangs off, so the
+       sections read as one scroll rather than five stacked slides. -->
+  <div class="about-flow fluid-section">
+    <section class="about-band about-story" id="our-story" aria-labelledby="about-story-title" data-scene>
+      <div class="about-band-copy">
+        <p class="eyebrow reveal">{{storyEyebrow}}</p>
+        <h2 id="about-story-title" class="reveal">{{storyHeading}}</h2>
+        <span class="orange-rule reveal" aria-hidden="true"></span>
+        {{storyBody}}
+        <p class="hand hand--story reveal">{{storyNote}}</p>
+      </div>
+      <div class="about-plates">
+        <figure class="about-plate about-plate--set reveal">{{storyPhoto}}</figure>
+        <figure class="about-plate about-plate--strip reveal"><span class="about-tape" aria-hidden="true"></span>{{storyStrip}}</figure>
+      </div>
+      <dl class="about-facts reveal" aria-label="The studio in numbers">{{storyFacts}}</dl>
+    </section>
 
-  <section class="about-founder fluid-section" aria-labelledby="about-founder-title" data-scene>
-    <div class="about-founder-copy">
-      <p class="eyebrow reveal">{{founderEyebrow}}</p>
-      <h2 id="about-founder-title" class="reveal">{{founderName}}</h2>
-      <p class="about-founder-role reveal">{{founderRole}}</p>
-      <blockquote class="about-quote reveal">{{founderQuote}}</blockquote>
-    </div>
-    <figure class="about-plate about-plate--frame reveal">{{founderPortrait}}</figure>
-    <p class="hand hand--founder reveal">{{founderNote}}</p>
-  </section>
+    <section class="about-band about-craft" id="what-we-make" aria-labelledby="about-craft-title" data-scene>
+      <div class="about-band-copy">
+        <p class="eyebrow reveal">{{craftEyebrow}}</p>
+        <h2 id="about-craft-title" class="reveal">{{craftHeading}}</h2>
+        <span class="orange-rule reveal" aria-hidden="true"></span>
+        <p class="about-prose reveal">{{craftBody}}</p>
+      </div>
+      <ol class="about-index" aria-label="The six disciplines">{{craftItems}}</ol>
+    </section>
 
-  <section class="about-philosophy" id="contact" aria-labelledby="about-philosophy-title" data-scene>
-    <div class="about-clapper parallax" data-depth="-0.035">{{clapper}}</div>
-    <div class="about-philosophy-shade" aria-hidden="true"></div>
-    <div class="about-philosophy-copy">
-      <p class="eyebrow eyebrow--centred reveal">{{philosophyEyebrow}}</p>
-      <h2 id="about-philosophy-title" class="reveal">{{philosophyHeading}}</h2>
-      <span class="orange-rule orange-rule--centred reveal" aria-hidden="true"></span>
-      <p class="about-prose about-prose--centred reveal">{{philosophyBody}}</p>
-      <a class="about-cta reveal" href="{{contactHref}}"><span>{{philosophyCta}}</span><span class="about-cta-disc" aria-hidden="true">→</span></a>
-    </div>
-  </section>
+    <section class="about-band about-process" id="how-it-works" aria-labelledby="about-process-title" data-scene>
+      <div class="about-band-copy">
+        <p class="eyebrow reveal">{{processEyebrow}}</p>
+        <h2 id="about-process-title" class="reveal">{{processHeading}}</h2>
+        <span class="orange-rule reveal" aria-hidden="true"></span>
+        <p class="about-prose reveal">{{processBody}}</p>
+      </div>
+      <ol class="about-chain" aria-label="How the work is made">{{processSteps}}</ol>
+    </section>
+
+    <section class="about-band about-founder" id="founder" aria-labelledby="about-founder-title" data-scene>
+      <div class="about-band-copy">
+        <p class="eyebrow reveal">{{founderEyebrow}}</p>
+        <h2 id="about-founder-title" class="reveal">{{founderName}}</h2>
+        <p class="about-founder-role reveal">{{founderRole}}</p>
+        <blockquote class="about-quote reveal">{{founderQuote}}</blockquote>
+        {{founderBody}}
+        <p class="about-signature reveal">{{founderSignature}}</p>
+        <ul class="about-credits reveal" aria-label="What the founder actually does">{{founderCredits}}</ul>
+        <p class="hand hand--founder reveal">{{founderNote}}</p>
+      </div>
+      <figure class="about-plate about-plate--frame reveal">{{founderPortrait}}</figure>
+    </section>
+
+    <section class="about-band about-philosophy" id="contact" aria-labelledby="about-philosophy-title" data-scene>
+      <div class="about-clapper parallax" data-depth="-0.035">{{clapper}}</div>
+      <div class="about-band-copy">
+        <p class="eyebrow reveal">{{philosophyEyebrow}}</p>
+        <h2 id="about-philosophy-title" class="reveal">{{philosophyHeading}}</h2>
+        <span class="orange-rule reveal" aria-hidden="true"></span>
+        <p class="about-prose reveal">{{philosophyBody}}</p>
+        <a class="about-cta reveal" href="{{contactHref}}"><span>{{philosophyCta}}</span><span class="about-cta-disc" aria-hidden="true">→</span></a>
+      </div>
+      <ol class="about-creed" aria-label="How we work">{{philosophyCreed}}</ol>
+    </section>
+  </div>
 </main>

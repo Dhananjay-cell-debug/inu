@@ -34,99 +34,84 @@
   }
 
   /* --- Rails ------------------------------------------------------------
-     Their marquee (paparazzientertainment.in) keeps the rail out of the
-     browser's scroll machinery, which is what stops a thumbnail trapping the
-     wheel. The CSS animation alone cannot be grabbed though — dragging fought
-     the keyframes and the row appeared to seize — so the same movement is
-     driven from one rAF loop instead. Auto-advance and the drag write to the
-     same offset, so a grab simply takes over and the rail carries on from
-     wherever it is let go. */
+     A rail is a bounded row, not an endless marquee: it rests flush with its
+     first card and stops dead on the last one, so there is never a strip of
+     empty page trailing the work and never a first thumbnail already half cut
+     off by the time you scroll to it. It stays out of the browser's scroll
+     machinery (that is what stops a thumbnail trapping the wheel) and is driven
+     from one rAF loop that goes quiet as soon as nothing is moving. */
   const rails = [...document.querySelectorAll('.content-rail')];
   // ?rails=off / ?rails=static isolate this layer when the page is misbehaving.
   const railMode = new URLSearchParams(location.search).get('rails');
-  const setupRail = (rail, index) => {
+  const setupRail = rail => {
     // Re-entrant on every resize: it must never attach a second set of
     // listeners or start a second rAF loop, or the loops multiply until the
     // main thread is spending all its time painting the same rail.
     if (rail.relayout) { rail.relayout(); return; }
     const track = rail.querySelector('.content-rail__track');
     if (!track) return;
+    // Earlier builds cloned the set to fake an infinite loop. Bounded rails do
+    // not need the clones, and leaving them would double the travel.
     track.querySelectorAll('[data-marquee-clone]').forEach(clone => clone.remove());
-    const originals = [...track.children];
-    if (!originals.length) return;
+    const cards = [...track.children];
+    if (!cards.length) return;
 
     const gapOf = () => parseFloat(getComputedStyle(track).columnGap || '0') || 0;
-    const measureSet = () => originals.reduce((total, item) => total + item.getBoundingClientRect().width, 0) + gapOf() * originals.length;
-    let gap = gapOf();
-    let setWidth = measureSet();
-    if (!setWidth) return;
-
-    // Enough copies to cover the rail plus one set, worked out arithmetically.
-    // Measuring track.scrollWidth inside a grow loop forces a synchronous
-    // layout on an ever-larger flex track once per iteration, per rail — with
-    // six chapters that alone locked the renderer up.
-    const fill = () => {
-      track.querySelectorAll('[data-marquee-clone]').forEach(clone => clone.remove());
-      const copies = Math.min(3, Math.max(1, Math.ceil(rail.clientWidth / setWidth)));
-      const batch = document.createDocumentFragment();
-      for (let copy = 0; copy < copies; copy += 1) {
-        originals.forEach(item => {
-          const clone = item.cloneNode(true);
-          clone.setAttribute('data-marquee-clone', 'true');
-          clone.setAttribute('aria-hidden', 'true');
-          clone.querySelectorAll('a,button').forEach(el => el.setAttribute('tabindex', '-1'));
-          clone.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; img.decoding = 'async'; });
-          batch.appendChild(clone);
-        });
-      }
-      track.appendChild(batch);
+    // offsetWidth, not getBoundingClientRect: the cards carry a 3D tilt and a
+    // hover scale, and a transformed rect would quietly inflate the travel and
+    // let the row run past its own last thumbnail.
+    const measureTravel = () => {
+      const gap = gapOf();
+      const content = cards.reduce((total, card) => total + card.offsetWidth, 0) + gap * (cards.length - 1);
+      return Math.max(0, Math.round(content - rail.clientWidth));
     };
-    fill();
+    let travel = measureTravel();
 
     track.style.animation = 'none';
-    let speed = setWidth / Number(rail.dataset.speed || 50);     // px per second
-    let offset = (index * 140) % setWidth;
-    let hovering = false, dragging = false, held = false;
+    let offset = 0;
+    let dragging = false, held = false;
     let startX = 0, startOffset = 0, lastMoveX = 0, velocity = 0, lastTime = performance.now();
 
-    const wrap = value => ((value % setWidth) + setWidth) % setWidth;
-    const paint = () => { track.style.transform = `translate3d(${-offset}px,0,0)`; };
+    const clamp = value => Math.min(Math.max(value, 0), travel);
+    /* The edge fade only masks a side that actually has more work behind it,
+       so a rail sitting at either end shows its end card whole. */
+    const paint = () => {
+      track.style.transform = `translate3d(${-offset}px,0,0)`;
+      rail.classList.toggle('at-start', offset <= 1);
+      rail.classList.toggle('at-end', offset >= travel - 1);
+    };
 
     let onScreen = false, frame = 0;
     const step = (now) => {
       frame = 0;
       if (!onScreen || document.hidden || railMode === 'static') return;
-      frame = requestAnimationFrame(step);
       const dt = Math.min(50, now - lastTime) / 1000;
       lastTime = now;
-      if (!dragging) {
-        if (Math.abs(velocity) > 4) {            // let a flick run out
-          offset = wrap(offset - velocity * dt);
-          velocity *= 0.94;
-        } else if (!hovering && !rail.classList.contains('is-paused') && !reduceMotion) {
-          offset = wrap(offset + speed * dt);
-        }
+      if (!dragging && Math.abs(velocity) > 4) {   // let a flick run out
+        const next = clamp(offset - velocity * dt);
+        // Hitting an end kills the momentum rather than grinding against it.
+        if (next === offset) velocity = 0; else velocity *= 0.94;
+        offset = next;
         paint();
       }
+      // Nothing left to settle: let the loop go quiet until the next grab.
+      if (dragging || Math.abs(velocity) > 4) frame = requestAnimationFrame(step);
     };
+    const run = () => { if (!frame) { lastTime = performance.now(); frame = requestAnimationFrame(step); } };
     paint();
     // Six rails animating at once means six very wide composited layers, which
     // is enough to lock the renderer. Only the rail you can see is running.
     new IntersectionObserver(entries => {
       onScreen = entries[0].isIntersecting;
-      lastTime = performance.now();
-      if (onScreen && !frame) frame = requestAnimationFrame(step);
+      if (onScreen) run();
     }, { rootMargin: '120px 0px' }).observe(rail);
-    rail.addEventListener('pointerdown', () => { if (!frame) frame = requestAnimationFrame(step); });
-
-    rail.addEventListener('pointerenter', () => { hovering = true; });
-    rail.addEventListener('pointerleave', () => { hovering = false; });
 
     rail.addEventListener('pointerdown', event => {
       if (event.button !== 0 && event.pointerType === 'mouse') return;
       held = true; dragging = false; velocity = 0;
       startX = event.clientX; startOffset = offset; lastMoveX = event.clientX;
       rail.setPointerCapture?.(event.pointerId);
+      run();
     });
     rail.addEventListener('pointermove', event => {
       if (!held) return;
@@ -135,7 +120,7 @@
       if (!dragging && Math.abs(dx) > 6) { dragging = true; rail.classList.add('is-dragging'); }
       if (!dragging) return;
       event.preventDefault();
-      offset = wrap(startOffset - dx);
+      offset = clamp(startOffset - dx);
       velocity = (event.clientX - lastMoveX) * 30;
       lastMoveX = event.clientX;
       paint();
@@ -143,6 +128,7 @@
     const release = () => {
       if (!held) return;
       held = false;
+      run();
       // A real drag swallows the click so a card does not navigate.
       if (dragging) setTimeout(() => { dragging = false; rail.classList.remove('is-dragging'); }, 0);
     };
@@ -153,21 +139,18 @@
     rail.addEventListener('dragstart', event => event.preventDefault());
 
     rail.relayout = () => {
-      gap = gapOf();
-      const next = measureSet();
-      if (!next) return;
-      setWidth = next;
-      speed = setWidth / Number(rail.dataset.speed || 50);
-      offset = wrap(offset);
-      fill();
+      travel = measureTravel();
+      offset = clamp(offset);
       paint();
+      run();
     };
 
     rail.jumpTo = card => {                      // used by the project search
-      const home = originals.indexOf(card);
+      const home = cards.indexOf(card);
       if (home < 0) return;
-      const before = originals.slice(0, home).reduce((total, item) => total + item.getBoundingClientRect().width + gap, 0);
-      offset = wrap(before - 24);
+      const gap = gapOf();
+      const before = cards.slice(0, home).reduce((total, item) => total + item.offsetWidth + gap, 0);
+      offset = clamp(before - 24);
       velocity = 0;
       paint();
     };

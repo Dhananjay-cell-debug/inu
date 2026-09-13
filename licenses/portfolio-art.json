@@ -1,21 +1,21 @@
 {
  "maarrich": {
   "project": "maarrich",
-  "title": "Camera Red",
-  "creator": "Jakob Owens",
+  "title": "Vintage camera, location unknown, 02/24/2017",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/6113719/vintage-camera-location-unknown-02242017",
+  "provider": "rawpixel",
+  "graded": true
  },
  "lavaste": {
   "project": "lavaste",
-  "title": "Camera Red",
-  "creator": "Jakob Owens",
+  "title": "Theatre projectors (1931-1940) Ken Niven",
+  "creator": "museumofnewzealand",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/9912550/theatre-projectors-1931-1940-ken-niven-and-gordon-burt-ltd",
+  "provider": "rawpixel",
+  "graded": true
  },
  "jay": {
   "project": "jay",
@@ -24,33 +24,34 @@
   "license": "cc0 1.0",
   "source": "https://stocksnap.io/photo/recording-studio-1KWAKXJW1J",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "vrindavan": {
   "project": "vrindavan",
-  "title": "INU plate \u2014 Film, Music & VFX",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Music festival",
+  "creator": null,
+  "license": "cc0 1.0",
+  "source": "https://www.rawpixel.com/image/6039233/music-festival-free-public-domain-cc0-photo",
+  "provider": "rawpixel",
+  "graded": true
  },
  "maa-thi": {
   "project": "maa-thi",
-  "title": "Camera Canon",
-  "creator": "Seth Doyle",
+  "title": "Microphone stage greyscale",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/camera-canon-RDCINEP3BL",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3286021/free-photo-image-microphone-concert-music",
+  "provider": "rawpixel",
+  "graded": true
  },
  "martin": {
   "project": "martin",
-  "title": "Camera Red",
-  "creator": "Jakob Owens",
+  "title": "Oak Ridge High School Auditorium",
+  "creator": "usdoe",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/8733492/oak-ridge-high-school-auditorium-1940s",
+  "provider": "rawpixel",
+  "graded": true
  },
  "online-247": {
   "project": "online-247",
@@ -59,119 +60,124 @@
   "license": "cc0 1.0",
   "source": "https://stocksnap.io/photo/camera-video-FH0ORSRVWZ",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "onyx": {
   "project": "onyx",
-  "title": "Abstract Glowing",
-  "creator": "Travis Soule",
+  "title": "Solar Panels",
+  "creator": "Matt Bango",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/abstract-glowing-8GKTJXHWF4",
+  "source": "https://stocksnap.io/photo/solar-panels-VZK8YEAJDO",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "dom": {
   "project": "dom",
-  "title": "INU plate \u2014 Brand & Graphic Design",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Camera Red",
+  "creator": "Jakob Owens",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/camera-red-L2PLJB8DUR",
+  "provider": "stocksnap",
+  "graded": true
  },
  "lodha": {
   "project": "lodha",
-  "title": "INU plate \u2014 Performance & Digital Ads",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Free high rise building downtown",
+  "creator": null,
+  "license": "cc0 1.0",
+  "source": "https://www.rawpixel.com/image/5915833/photo-image-public-domain-free-city",
+  "provider": "rawpixel",
+  "graded": true
  },
  "sunblond": {
   "project": "sunblond",
-  "title": "INU plate \u2014 Performance & Digital Ads",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Security Billboard Oak Ridge",
+  "creator": "usdoe",
+  "license": "cc0 1.0",
+  "source": "https://www.rawpixel.com/image/8734549/security-billboard-oak-ridge",
+  "provider": "rawpixel",
+  "graded": true
  },
  "home-mentors": {
   "project": "home-mentors",
-  "title": "INU plate \u2014 Web Design & Tech",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Building Windows",
+  "creator": "The Building Envelope",
+  "license": "cc0 1.0",
+  "source": "https://stocksnap.io/photo/building-windows-D2YCHVPHGY",
+  "provider": "stocksnap",
+  "graded": true
  },
  "hdfc-sky": {
   "project": "hdfc-sky",
-  "title": "Mobile Phone",
-  "creator": "Copper and Wild",
+  "title": "Free stock market graphs screen",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/mobile-phone-FB0FUDL6ZW",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/5916235/photo-image-public-domain-office-free",
+  "provider": "rawpixel",
+  "graded": true
  },
  "capswise": {
   "project": "capswise",
-  "title": "Money Currency",
-  "creator": "Shopify",
+  "title": "Euro coins, money & banking",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/money-currency-UFZCNZBNFM",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/6034805/photo-image-background-public-domain-money",
+  "provider": "rawpixel",
+  "graded": true
  },
  "aerobott": {
   "project": "aerobott",
-  "title": "Notebook Pen",
-  "creator": "STIL",
+  "title": "drone flying sea capturing cloudy",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/notebook-pen-SY6W6335J3",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3302551/free-photo-image-aircraft-airplane-cc0",
+  "provider": "rawpixel",
+  "graded": true
  },
  "zouq": {
   "project": "zouq",
-  "title": "INU plate \u2014 Brand & Graphic Design",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Free different spices market photo",
+  "creator": null,
+  "license": "cc0 1.0",
+  "source": "https://www.rawpixel.com/image/5913795/image-public-domain-green-food",
+  "provider": "rawpixel",
+  "graded": true
  },
  "bliss": {
   "project": "bliss",
-  "title": "Colors Colours",
-  "creator": "Markus Spiske",
+  "title": "Bob's Barber Shop, 4348 South",
+  "creator": "libraryofcongress",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/colors-colours-P3GRWHODKN",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3799660/photo-image-business-vintage-retro",
+  "provider": "rawpixel",
+  "graded": true
  },
  "chemist-king": {
   "project": "chemist-king",
-  "title": "Food Fruits",
-  "creator": "Kristina Paukshtite",
+  "title": "interior old pharmacy recreated museum",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/food-fruits-SFJPODPJY4",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/14019041/photo-image-person-pharmacy-public-domain",
+  "provider": "rawpixel",
+  "graded": true
  },
  "sonali-jain": {
   "project": "sonali-jain",
-  "title": "Dressshirts Fashion",
-  "creator": "Patryk Dziejma",
+  "title": "Colorful t-shirts hangers clothing store",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/dressshirts-fashion-TS7R6391UQ",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3337280/free-photo-image-t-shirt-clothes-hanger-shirt-shirts",
+  "provider": "rawpixel",
+  "graded": true
  },
  "hexagon": {
   "project": "hexagon",
-  "title": "Sketch Design",
-  "creator": "Jakub Kapusnak",
+  "title": "city skyline night seen docks",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/sketch-design-3VJLANA7FD",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3302581/free-photo-image-architecture-asphalt-banister",
+  "provider": "rawpixel",
+  "graded": true
  },
  "mini": {
   "project": "mini",
@@ -180,59 +186,60 @@
   "license": "cc0 1.0",
   "source": "https://stocksnap.io/photo/camera-tripod-LAYS8FQZWO",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "shaz": {
   "project": "shaz",
-  "title": "Person Smartphone",
-  "creator": "Matt Bango",
+  "title": "Vintage Car",
+  "creator": "Clem Onojeghuo",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/person-smartphone-FXRFRU7UJX",
+  "source": "https://stocksnap.io/photo/vintage-car-Z5XGRXYDH9",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "khoonta": {
   "project": "khoonta",
-  "title": "Office Work",
-  "creator": "Markus Spiske",
+  "title": "Free newspaper stacks image",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/office-work-C6NQJB3RXD",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/5903674/photo-image-paper-public-domain-black",
+  "provider": "rawpixel",
+  "graded": true
  },
  "namish-taneja": {
   "project": "namish-taneja",
-  "title": "Microphone Music",
-  "creator": "Studio 7042",
+  "title": "Blackandwhite Microphone",
+  "creator": "Torsten Dettlaff",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/microphone-music-8DG6GF0NSI",
+  "source": "https://stocksnap.io/photo/blackandwhite-microphone-J2XH20PLE9",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "ditas": {
   "project": "ditas",
-  "title": "Laptop Desk",
-  "creator": "Kelly Ishmael",
+  "title": "Restaurant Table",
+  "creator": "Clem Onojeghuo",
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/laptop-desk-5ZWVFTADET",
+  "source": "https://stocksnap.io/photo/restaurant-table-1SNFBQWYRM",
   "provider": "stocksnap",
-  "stock": true
+  "graded": true
  },
  "rosa": {
   "project": "rosa",
-  "title": "INU plate \u2014 Web Design & Tech",
-  "creator": "INU Media",
-  "license": "in-house",
-  "source": "build/make-placeholder-art.py",
-  "placeholder": true
+  "title": "Building under construction",
+  "creator": "thegetty",
+  "license": "cc0 1.0",
+  "source": "https://www.rawpixel.com/image/14316503/building-under-construction",
+  "provider": "rawpixel",
+  "graded": true
  },
  "manerva": {
   "project": "manerva",
-  "title": "Santas Marionettes",
-  "creator": "Skitter Photo",
+  "title": "Macro view lights party Gettysburg",
+  "creator": null,
   "license": "cc0 1.0",
-  "source": "https://stocksnap.io/photo/santas-marionettes-A8B11C7989",
-  "provider": "stocksnap",
-  "stock": true
+  "source": "https://www.rawpixel.com/image/3283799/free-photo-image-string-lights-party-blurred",
+  "provider": "rawpixel",
+  "graded": true
  }
 }

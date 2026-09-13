@@ -1,3 +1,5 @@
+@property --fade-l{syntax:'<length>';inherits:false;initial-value:26px}
+@property --fade-r{syntax:'<length>';inherits:false;initial-value:26px}
 /* ==========================================================================
    Atmosphere layer.
 
@@ -45,7 +47,11 @@
    Hover (or focus) pauses the track. Touch and reduced-motion fall back to
    their scrolling variant further down. --rail-distance/--rail-duration are
    measured in atmosphere.js by their own cloning routine. */
-.content-rail{--rail-gap:clamp(12px,1.1vw,18px);position:relative;min-width:0;overflow:hidden;padding:3px 0 10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.content-rail{--rail-gap:clamp(12px,1.1vw,18px);--fade-l:26px;--fade-r:26px;position:relative;min-width:0;overflow:hidden;padding:3px 0 10px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--fade-l),#000 calc(100% - var(--fade-r)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--fade-l),#000 calc(100% - var(--fade-r)),transparent 100%);transition:--fade-l .4s linear,--fade-r .4s linear}
+/* A bounded rail only veils the side that still has work behind it, so the
+   first and last thumbnail are never clipped by a decorative fade. */
+.content-rail.at-start{--fade-l:0px}
+.content-rail.at-end{--fade-r:0px}
 .content-rail:before,.content-rail:after{content:"";position:absolute;top:0;bottom:0;width:1px;z-index:5;pointer-events:none;background:linear-gradient(transparent,rgba(255,121,10,.75),transparent);opacity:.5}
 .content-rail:before{left:0}
 .content-rail:after{right:0}

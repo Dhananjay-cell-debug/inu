@@ -16,7 +16,14 @@ function image(key,cls='',sizes='100vw',priority=false,alt=''){
 const icon=name=>`<svg aria-hidden="true"><use href="#icon-${name}"></use></svg>`;
 const socials=shared.footer.socials.filter(s=>s.icon!=='youtube').map(s=>`<a href="${esc(s.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(s.label)}">${icon(s.icon)}</a>`).join('');
 const contact=data.contact;
+/* MapLibre is imported lazily by contact.js when the map nears the viewport,
+   so only its stylesheet goes in the head. The map's own style sheet is
+   fingerprinted like every other asset. */
+const mapStyle=fs.readFileSync(path.join(src,'map-style.json'),'utf8');
+const mapStyleHash=crypto.createHash('sha256').update(mapStyle).digest('hex').slice(0,10);
+
 const fields={
+ mapStyle:`/map-style.${mapStyleHash}.json`,
  room:image('room','scene-room','100vw',true),listener:image('listener','','(max-width:700px) 55vw, 38vw',true),speaker:image('speaker','','(max-width:700px) 44vw, 27vw',true),desk:image('desk','scene-desk','100vw',true),
  closingArt:image('creative-rooftop','closing-art-img','100vw',false,''),introEyebrow:esc(data.intro.eyebrow),introDescription:esc(data.intro.description),email:esc(contact.email),address:contact.address.map(esc).join('<br>'),
  phoneLinks:contact.phones.map(p=>`<a href="${p.href}">${esc(p.label)}</a>`).join(''),instagram:contact.instagram,socials,
@@ -40,11 +47,11 @@ html=html.replace(/home\.js\?v=[a-f0-9]+/,'talk.js').replace(/media\/burn-entry.
 const css=fs.readFileSync(path.join(src,'contact.css'),'utf8');
 const js=fs.readFileSync(path.join(src,'experience.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'src/home/atmosphere.js'),'utf8')+'\n'+fs.readFileSync(path.join(src,'contact.js'),'utf8');
 const revision=crypto.createHash('sha256').update(html+css+js).digest('hex').slice(0,10);
-html=html.replace('<script src="vendor/lenis.min.js" defer></script>','<script src="vendor/lenis.min.js" defer></script><script src="vendor/leaflet.js" defer></script>')
-  .replace('</head>','<link rel="stylesheet" href="vendor/leaflet.css"></head>');
+html=html.replace('</head>','<link rel="stylesheet" href="vendor/maplibre-gl.css"></head>');
 html=html.replace('talk.js"',`talk.js?v=${revision}"`).replace('</head>',`<link rel="stylesheet" href="contact.css?v=${revision}"></head>`);
 for(const dir of ['dist','site']){
  const dest=path.join(root,dir);fs.writeFileSync(path.join(dest,'lets-talk.html'),html);fs.writeFileSync(path.join(dest,'contact.html'),html);fs.writeFileSync(path.join(dest,'contact.css'),css);fs.writeFileSync(path.join(dest,'talk.js'),js);
+ fs.writeFileSync(path.join(dest,`map-style.${mapStyleHash}.json`),mapStyle);
  fs.mkdirSync(path.join(dest,'contact-assets'),{recursive:true});for(const [name,hashed] of fingerprints)fs.copyFileSync(path.join(root,'src/contact-assets',name),path.join(dest,'contact-assets',hashed));
 }
 console.log(`Built contact: cinematic layers, 5 FAQs, single-flow layout. Revision ${revision}.`);

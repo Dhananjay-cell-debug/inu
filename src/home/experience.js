@@ -127,16 +127,80 @@
   const startAtmosphere=()=>{if(reduce.matches||navigator.connection?.saveData)return;mediaSource(grain);grain.muted=true;grain.play().catch(()=>{});};
   if(document.readyState==='complete'){startAtmosphere();playBurn();}else addEventListener('load',()=>{startAtmosphere();playBurn();},{once:true});
 
+  /* ---------- soundtrack ----------------------------------------------------
+     One continuous score across the whole visit. Every page is its own
+     document, so the <audio> element is destroyed on each navigation; we carry
+     the preference AND the playhead across in sessionStorage, advance the head
+     by however long the next document took to boot, and resume there. The
+     result reads as one unbroken track rather than a stop/start.
+     If the browser declines to autoplay, the button keeps the user's stated
+     intent and the score starts on their very next gesture. */
+  const SOUND_KEY='inu-sound',HEAD_KEY='inu-sound-head',STAMP_KEY='inu-sound-stamp';
+  const store=(k,v)=>{try{sessionStorage.setItem(k,v);}catch{}};
+  const recall=k=>{try{return sessionStorage.getItem(k);}catch{return null;}};
+  const remember=on=>store(SOUND_KEY,on?'on':'off');
+  const remembered=()=>recall(SOUND_KEY)==='on';
+  function saveHead(){if(soundEnabled&&soundtrack.duration)
+    {store(HEAD_KEY,String(soundtrack.currentTime));store(STAMP_KEY,String(Date.now()));}}
+  function restoreHead(){
+    const head=parseFloat(recall(HEAD_KEY)),stamp=parseFloat(recall(STAMP_KEY));
+    if(!isFinite(head))return;
+    /* Cap the catch-up so a long detour does not skip half the track. */
+    const gap=isFinite(stamp)?clamp((Date.now()-stamp)/1000,0,6):0;
+    const seek=()=>{const d=soundtrack.duration;if(d)soundtrack.currentTime=(head+gap)%d;};
+    if(soundtrack.readyState>0)seek();else soundtrack.addEventListener('loadedmetadata',seek,{once:true});
+  }
+  soundtrack.addEventListener('timeupdate',saveHead);
+  addEventListener('pagehide',saveHead);
+
+  let resumeArmed=false;
+  function armResume(){
+    if(resumeArmed)return;resumeArmed=true;
+    const gestures=['pointerdown','keydown','touchstart'];
+    const go=e=>{
+      gestures.forEach(t=>removeEventListener(t,go,true));resumeArmed=false;
+      /* A press on the toggle itself is the user changing their mind — let the
+         click handler own it instead of racing it. */
+      if(e.target?.closest?.('#sound-toggle'))return;
+      setSound(true,true);
+    };
+    gestures.forEach(t=>addEventListener(t,go,{capture:true,passive:true}));
+  }
+  function paintSound(on){
+    soundButton.setAttribute('aria-pressed',String(on));
+    soundButton.setAttribute('aria-label',on?'Mute cinematic soundtrack':'Enable cinematic soundtrack');
+    soundLabel.textContent=on?'Sound on':'Sound off';
+  }
   function fadeVolume(target,complete){clearInterval(volumeTimer);const start=soundtrack.volume,started=performance.now();volumeTimer=setInterval(()=>{const t=clamp((performance.now()-started)/650,0,1);soundtrack.volume=start+(target-start)*t;if(t===1){clearInterval(volumeTimer);complete?.();}},35);}
-  async function setSound(enabled){
+  async function setSound(enabled,carried=false){
     if(audioPending)return;
-    if(!enabled){soundEnabled=false;soundButton.setAttribute('aria-pressed','false');soundButton.setAttribute('aria-label','Enable cinematic soundtrack');soundLabel.textContent='Sound off';fadeVolume(0,()=>soundtrack.pause());burnSound.pause();return;}
-    audioPending=true;soundLabel.textContent='Loading';
-    try{if(!soundtrack.src)soundtrack.src=soundtrack.dataset.src;soundtrack.volume=0;await soundtrack.play();soundEnabled=true;soundButton.setAttribute('aria-pressed','true');soundButton.setAttribute('aria-label','Mute cinematic soundtrack');soundLabel.textContent='Sound on';fadeVolume(content.music.volume||.3);playBurn(true);soundStatus.textContent='Cinematic soundtrack enabled.';}
-    catch{soundEnabled=false;soundLabel.textContent='Sound off';soundStatus.textContent='Audio could not start. Tap Sound off to try again.';}
+    if(!enabled){soundEnabled=false;remember(false);paintSound(false);fadeVolume(0,()=>soundtrack.pause());burnSound.pause();return;}
+    audioPending=true;if(!carried)soundLabel.textContent='Loading';
+    try{
+      if(!soundtrack.src)soundtrack.src=soundtrack.dataset.src;
+      if(carried)restoreHead();
+      soundtrack.volume=0;await soundtrack.play();
+      soundEnabled=true;remember(true);paintSound(true);
+      fadeVolume(content.music.volume||.3);
+      if(!carried)playBurn(true);
+      soundStatus.textContent='Cinematic soundtrack enabled.';
+    }
+    catch{
+      soundEnabled=false;
+      /* Intent survives a blocked autoplay: the button still reads Sound on,
+         and the score joins in on the next press or key. */
+      if(carried){soundEnabled=true;paintSound(true);armResume();}
+      else{paintSound(false);soundStatus.textContent='Audio could not start. Tap Sound off to try again.';}
+    }
     finally{audioPending=false;}
   }
   soundButton.addEventListener('click',()=>setSound(!soundEnabled));
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){grain.pause();burn.pause();burnSound.pause();soundtrack.pause();cancelAnimationFrame(emberFrame);emberFrame=0;cancelAnimationFrame(frame);frame=0;}else{startAtmosphere();startEmbers();requestFrame();if(soundEnabled)soundtrack.play().catch(()=>setSound(false));}});
+  if(remembered())setSound(true,true);
+  /* A hidden tab parks the *visuals* only. The soundtrack keeps running: the
+     user asked for it to stop on their command and on nothing else. */
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){grain.pause();burn.pause();cancelAnimationFrame(emberFrame);emberFrame=0;cancelAnimationFrame(frame);frame=0;saveHead();}
+    else{startAtmosphere();startEmbers();requestFrame();if(soundEnabled&&soundtrack.paused)soundtrack.play().catch(()=>{});}
+  });
   reduce.addEventListener('change',()=>{configureScrolling();if(reduce.matches){document.documentElement.classList.remove('motion-ready');grain.pause();endBurn();cancelAnimationFrame(emberFrame);emberFrame=0;document.querySelectorAll('.parallax').forEach(e=>{e.style.removeProperty('--px');e.style.removeProperty('--py');});}else{startAtmosphere();startEmbers();}requestFrame();});
 })();

@@ -39,26 +39,73 @@
     dial.addEventListener('change',cap);cap();
   }
 
-  // A map you can actually move around in, without leaving the page. Wheel zoom
-  // is off so the page never loses the scroll; drag, pinch and the +/- do the work.
+  /* ---------- the studio map -----------------------------------------------
+     This used to be raster tiles with one long CSS filter dropped over them,
+     which is a grey map wearing a costume: every road the same colour, the
+     middle crushed to black by brightness(.5), and 256px labels upscaled into
+     mush on any retina screen.
+
+     It is vector tiles now (OpenFreeMap / OpenMapTiles, no key), drawn through
+     our own style in map-style.json. Road class becomes heat -- motorways run
+     at the studio's orange, each step down the hierarchy cools and narrows --
+     and the labels are SDF text, so they stay sharp at any pixel density and
+     at any zoom.
+
+     MapLibre is a few hundred kilobytes, so it is not loaded until the map is
+     actually about to come on screen. Wheel zoom stays off so the page never
+     loses the scroll; drag, pinch and the +/- do the work. */
   const mapHost=document.querySelector('[data-studio-map]');
-  if(mapHost&&window.L){
+  if(mapHost){
     const lat=parseFloat(mapHost.dataset.lat),lng=parseFloat(mapHost.dataset.lng);
-    const zoom=parseInt(mapHost.dataset.zoom,10)||15;
-    const map=L.map(mapHost.querySelector('.studio-map__canvas'),{
-      center:[lat,lng],zoom,minZoom:12,maxZoom:18,
-      zoomControl:true,scrollWheelZoom:false,dragging:true,touchZoom:true,
-      doubleClickZoom:true,keyboard:true,attributionControl:true
-    });
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
-      maxZoom:19,crossOrigin:true,
-      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-    }).addTo(map);
-    const pin=L.divIcon({className:'studio-pin',html:'<i></i><i></i>',iconSize:[16,16],iconAnchor:[8,8]});
-    L.marker([lat,lng],{icon:pin,keyboard:false,alt:'INU Media studio'}).addTo(map);
-    map.whenReady(()=>mapHost.classList.add('is-live'));
-    // The hint is only useful until they have moved it once.
-    map.on('movestart zoomstart',()=>mapHost.classList.add('is-touched'),{once:true});
-    new ResizeObserver(()=>map.invalidateSize()).observe(mapHost);
+    const zoom=parseFloat(mapHost.dataset.zoom)||15;
+    let started=false;
+
+    const start=async()=>{
+      if(started)return;started=true;
+      try{
+        const {Map:MLMap,Marker,NavigationControl}=await import('/vendor/maplibre-gl.mjs');
+        const map=new MLMap({
+          container:mapHost.querySelector('.studio-map__canvas'),
+          style:mapHost.dataset.style,
+          center:[lng,lat],zoom,minZoom:11,maxZoom:18,
+          scrollZoom:false,attributionControl:{compact:false},
+          dragRotate:false,pitchWithRotate:false,touchZoomRotate:true,
+          fadeDuration:180
+        });
+        map.touchZoomRotate.disableRotation();
+        map.addControl(new NavigationControl({showCompass:false}),'top-left');
+
+        const dot=document.createElement('span');
+        dot.className='studio-pin';
+        dot.innerHTML='<i></i><i></i>';
+        new Marker({element:dot}).setLngLat([lng,lat]).addTo(map);
+
+        /* The warm lamp is anchored to the studio, not to the middle of the
+           box, so panning carries the light with the pin instead of leaving a
+           bright hole in the centre of the frame. */
+        const lamp=()=>{
+          const point=map.project([lng,lat]);
+          mapHost.style.setProperty('--lamp-x',`${Math.round(point.x)}px`);
+          mapHost.style.setProperty('--lamp-y',`${Math.round(point.y)}px`);
+        };
+        map.on('move',lamp);map.on('resize',lamp);
+        map.on('load',()=>{lamp();mapHost.classList.add('is-live');});
+        // The hint is only useful until they have moved it once.
+        map.on('movestart',()=>mapHost.classList.add('is-touched'));
+        map.on('error',e=>{if(!mapHost.classList.contains('is-live'))mapHost.classList.add('is-flat');console.warn('studio map',e&&e.error);});
+      }catch(error){
+        // No WebGL, or the tiles are unreachable: the address card and the
+        // Open-in-Maps link underneath still do the job.
+        mapHost.classList.add('is-flat');
+        console.warn('studio map unavailable',error);
+      }
+    };
+
+    if('IntersectionObserver' in window){
+      const watch=new IntersectionObserver(entries=>{
+        if(entries[0].isIntersecting){watch.disconnect();start();}
+      },{rootMargin:'300px 0px'});
+      watch.observe(mapHost);
+    }else start();
   }
 })();
