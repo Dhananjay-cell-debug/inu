@@ -391,10 +391,32 @@ intact hero); it went out with this deploy.
       -> done: the clapper image is gone from the template and the warm
          radial at the foot of the flow is now neutral. The band is type only.
 
-- [ ] **35. The About hero does not feel composed.** The user circled the
-      director's chair area. Needs a real compositional pass, not a nudge.
+- [x] **35. The About hero: the director's chair was floating.**
+      -> done, verified live: the chair's feet sat at y=728 while the plate's
+         lit floor runs out around y=660, so it stood in the fade-to-black
+         rather than on the ground. Chair raised to 17.5%, road case to 19% so
+         the two share one ground line, and the empty band underneath trimmed
+         (hero 770 -> 677px). Mobile composes the hero separately and is
+         untouched. No redesign - only the alignment that was wrong.
 
 ### The bigger note from the user (2026-09-13)
 Stop filling the site with content and information. They want craft - considered,
 playful, slightly clumsy creative ideas - without clutter. Anything added has to
 earn its place. Work like an artist, not a checklist.
+
+
+## Deployed — 2026-09-13
+
+Pushed to GitHub (`884689e..7763d4b`) then `vercel --prod`.
+Live: https://inuxsynapsis.vercel.app
+
+Verified against **production**, not localhost: 28/28 browser checks pass.
+- Soundtrack runs unbroken 2.0 -> 4.8 -> 7.5 -> 9.9 -> 13.1 -> 15.2s across six
+  navigations; a hidden tab keeps playing; SOUND OFF stops it and it stays off.
+- Map is live on vector tiles with its attribution shown, no Leaflet.
+- Every About band opens at x=78 and the right-hand blocks all end at 1362.
+- Six disciplines, five moves, three principles; the numbers row stays removed.
+- Home rail and all six portfolio rails rest at their first card, zero clones.
+- 27 distinct portfolio images across 40 card slots.
+- No console errors, 404s or horizontal overflow on any of the five routes at
+  1440 or 390.
