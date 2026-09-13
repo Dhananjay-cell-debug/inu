@@ -159,7 +159,7 @@
 
 /* --- The supplied INU lockup, in place of the typeset wordmark ----------- */
 .wordmark.has-logo{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1}
-.wordmark-logo{width:clamp(84px,7vw,104px);height:auto;display:block}
+.wordmark-logo{width:clamp(72px,5.9vw,88px);height:auto;display:block}
 .wordmark.has-logo span{margin-top:6px}
 .footer-logo{width:clamp(74px,6vw,86px);height:auto;display:block}
 .footer-brand>a{display:inline-block}
