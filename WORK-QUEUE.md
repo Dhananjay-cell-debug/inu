@@ -489,9 +489,14 @@ remembers them; every one goes in this list the moment it is said.
       page** (Home "Trusted by" marquee, Portfolio client logos, any other).
       -> done, verified: measured the strips moving left while hovered and with
          reduced motion on (Home −33px/1.5s; Portfolio grid is now a marquee).
-- [ ] **44. inumedia.vercel.app** is an alias still pointing at a 27-day-old
+- [x] **44. inumedia.vercel.app** is an alias still pointing at a 27-day-old
       deployment. After deploy, point it at the new production build.
-- [ ] **45. Deploy** (push GitHub, then Vercel) and re-verify on the live URL.
+      -> done: inumedia.vercel.app now aliases the 29 Sep production deployment.
+- [x] **45. Deploy** (push GitHub, then Vercel) and re-verify on the live URL.
+      -> done: b24e0e1 pushed, then vercel --prod. Live: all 8 service pages at
+         1440 + 390 load with 4 offerings, 4 work cards, no errors, no 404s, no
+         sideways overflow; logo strips measured moving left on live Home and
+         Portfolio. WordPress work is local (inu-media.local) as before.
 
 Coordination note: another Claude session (Site Editor QA) and a non-Claude
 agent are also editing the WordPress plugin. New WordPress work goes in new
