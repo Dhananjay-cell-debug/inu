@@ -9,7 +9,8 @@ const puppeteer = require('puppeteer');
 // Git Bash rewrites a bare "/about.html" into a Windows path, so take the
 // last segment and normalise it back to a site-root path.
 const raw = process.argv[2] || 'index.html';
-const page_ = '/' + raw.replace(/\\/g, '/').split('/').filter(Boolean).pop().replace(/^index\.html$/, 'index.html');
+// A nested route is passed without its leading slash: services/web-tech.
+const page_ = /^[a-z0-9-]+\/[a-z0-9-]+$/i.test(raw) ? '/' + raw : '/' + raw.replace(/\\/g, '/').split('/').filter(Boolean).pop().replace(/^index\.html$/, 'index.html');
 const width = parseInt(process.argv[3] || '1440', 10);
 const tag = process.argv[4] || 'shot';
 const height = parseInt(process.argv[5] || '900', 10);
@@ -29,6 +30,10 @@ fs.mkdirSync(OUT, { recursive: true });
   page.on('pageerror', (e) => errors.push('PAGEERROR: ' + e.message));
   page.on('requestfailed', (r) => errors.push('404/FAIL: ' + r.url()));
 
+  // Answer the cookie banner up front so it does not cover the bottom of every slice.
+  if (!process.env.SHOW_CONSENT) await page.evaluateOnNewDocument(() => {
+    try { localStorage.setItem('inu-consent', JSON.stringify({ version: 1, at: Date.now(), choices: { essential: true } })); } catch (e) {}
+  });
   const url = 'http://localhost:3200' + page_;
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
 

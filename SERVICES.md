@@ -13,6 +13,20 @@ Route: `/services` on the existing INU Synapsis site.
 
 Existing home and Let's talk navigation links point to the real services page. The home “Explore all services” link now opens this page. Other home content and styling are preserved.
 
+## One list, many pages (29 Sep 2026)
+
+`src/services/content.json` items carry a summary, a line per offering, the
+portfolio tags they relate to (`work`) and `home` (shown in Home's "What we
+do"). Portfolio projects carry `home` for Home's "Featured work".
+
+`build/catalog.js` owns every piece of markup that draws a service or a
+project, as templates. Home, /services, /portfolio and each
+`/services/<slug>` page (`build/render-service-pages.js`, runs last, style in
+`src/services/detail.css`) all use them. The build also writes
+`dist/catalog.json` - the lists, the templates and the page shell - which
+WordPress (plugin `inu-media-catalog`) renders the client's edited lists with.
+Lists are wrapped in `<!--catalog:name-->` markers so WordPress can swap them.
+
 ## Phone layout
 
 Two service columns, with image, title and a full-card touch target. JS opens the shared accessible detail dialog with the description and four offerings; Escape, backdrop and close button dismiss it and restore focus. Without JS, descriptions and lists remain inline. Desktop shows the complete service information in four columns; tablets use three columns. There is no card carousel or horizontal body navigation.

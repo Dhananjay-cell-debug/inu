@@ -10,7 +10,8 @@ assert.equal(data.portfolio.items.length,content.projects.length);
 const art=new Set(data.portfolio.items.map(p=>p.art));
 assert.equal(art.size,content.projects.length,`${content.projects.length-art.size} projects share artwork`);
 const cards=(html.match(/class="folio-card reveal lightning"/g)||[]).length;
-assert.equal((html.match(/class="folio-logo reveal"/g)||[]).length,12);
+// Twelve logos, twice over: the second copy (hidden from screen readers) closes the marquee loop.
+assert.equal((html.match(/class="folio-logo"/g)||[]).length,24);assert.equal((html.match(/class="folio-logo" aria-hidden="true"/g)||[]).length,12);
 // The sticky chapter band was removed; the ledger panel is now the only index.
 assert(!html.includes('content-index'),'the sticky chapter band is back');
 const ledger=html.match(/<ul class="folio-ledger-list">[\s\S]*?<\/ul>/)[0];

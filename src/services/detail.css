@@ -1,0 +1,115 @@
+/* /services/<slug> - one service, told as a chapter. Loaded after services.css,
+   so the shell, closing scene and edge curve are shared with /services. */
+.service-detail .sd-hero{position:relative;height:auto;min-height:0;max-height:none;padding:clamp(72px,6.3vw,92px) 0 0;overflow:visible;background:var(--bg);isolation:isolate}
+/* The artwork carries its own lettering, so nothing is laid over it: it is a
+   clean plate, and the title is set beneath it. */
+.sd-hero-art{position:relative;height:clamp(360px,34vw,620px);overflow:hidden}
+.sd-hero-plate{position:absolute;inset:-4% 0;z-index:-4}
+.sd-hero-plate img{width:100%;height:100%;object-fit:cover;object-position:center}
+.sd-hero-shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(0deg,var(--bg) 0%,#07070680 7%,transparent 18%)}
+.sd-hero-copy{position:relative;z-index:6;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:clamp(24px,4vw,72px);padding:clamp(26px,2.6vw,40px) var(--page) 0}
+.sd-crumbs{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:clamp(14px,1.4vw,22px)}
+.sd-crumbs a{color:#c9c7c0;text-decoration:none;transition:color .3s}.sd-crumbs a:hover{color:var(--orange)}
+.sd-crumbs>span:first-of-type{color:#5d5a55}.sd-crumbs [aria-current]{color:var(--orange)}
+.sd-hero h1{font-family:INUDisplay,Impact,sans-serif;font-size:clamp(60px,7.2vw,132px);line-height:.88;font-weight:600;text-transform:uppercase;letter-spacing:-.015em;text-wrap:balance}
+.sd-hero h1 em{display:inline-block;font-family:INUBrush,cursive;color:var(--orange);font-size:1.08em;font-style:normal;font-weight:400;letter-spacing:-.04em;text-transform:none;transform:rotate(-5deg) skewX(-6deg);margin-left:.04em;line-height:.9}
+.sd-hero-aside{display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding-bottom:.4em;max-width:330px}
+.sd-index{display:flex;align-items:flex-end;gap:10px;line-height:.8;margin:0}
+.sd-index b{font-family:INUDisplay,Impact,sans-serif;font-weight:600;font-size:clamp(64px,6vw,108px);color:transparent;-webkit-text-stroke:1px #f3f1eb66;letter-spacing:-.02em}
+.sd-index span{font-size:11px;letter-spacing:.3em;color:#8d8a84;padding-bottom:.7em}
+.sd-tagline{text-align:right;font-size:clamp(11px,.9vw,13px);line-height:1.7;letter-spacing:.16em;text-transform:uppercase;color:#d9d6ce}
+
+/* The service in a paragraph, and the two numbers that matter. */
+.sd-intro{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px);align-items:start;padding:clamp(56px,6vw,104px) var(--page) clamp(40px,4.4vw,76px)}
+.sd-intro>.eyebrow{grid-column:1/4;color:var(--orange);padding-top:.7em}
+.sd-summary{grid-column:4/10;font-size:clamp(20px,1.95vw,30px);line-height:1.42;font-weight:300;letter-spacing:-.005em;color:#ebe8e1;text-wrap:pretty}
+.sd-facts{grid-column:10/13;padding-top:.35em}
+.sd-facts dl{margin:0 0 26px;border-top:1px solid var(--line)}
+.sd-facts dl>div{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.sd-facts dt{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#8f8c86}
+.sd-facts dd{margin:0;font-family:INUDisplay,Impact,sans-serif;font-size:clamp(30px,2.6vw,42px);line-height:.9;font-weight:600}
+
+/* What's included: an index, not a grid of boxes. */
+.sd-included{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,32px);padding:clamp(24px,3vw,48px) var(--page) clamp(64px,7vw,120px)}
+.sd-included-head{grid-column:1/4;align-self:start;position:sticky;top:120px}
+.sd-included-head .eyebrow{color:var(--orange)}
+.sd-included h2{font-family:INUDisplay,Impact,sans-serif;font-weight:600;font-size:clamp(40px,4vw,68px);line-height:.92;text-transform:uppercase;letter-spacing:-.01em}
+.sd-included h2 em{font-family:INUBrush,cursive;font-style:normal;font-weight:400;text-transform:none;color:var(--orange);display:inline-block;transform:rotate(-5deg);font-size:1.1em;margin-left:.04em}
+.sd-list{grid-column:4/13;list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.sd-row{position:relative;display:grid;grid-template-columns:clamp(44px,5vw,80px) minmax(0,1fr) minmax(0,1.15fr);column-gap:clamp(16px,2.2vw,36px);align-items:baseline;padding:clamp(22px,2.3vw,34px) 0;border-bottom:1px solid var(--line)}
+.sd-row:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.sd-row-num{font-size:11px;letter-spacing:.24em;color:var(--orange)}
+.sd-row h3{font-size:clamp(17px,1.55vw,24px);font-weight:500;line-height:1.2;text-transform:uppercase;letter-spacing:.01em;transition:transform .5s var(--ease)}
+.sd-row p{font-size:clamp(13px,1.02vw,15.5px);line-height:1.62;color:var(--muted)}
+@media(hover:hover){.sd-row:hover:after{transform:scaleX(1)}.sd-row:hover h3{transform:translateX(6px)}}
+
+/* Selected work, pulled from the portfolio. */
+.sd-work{position:relative;padding:clamp(56px,6vw,100px) var(--page);border-top:1px solid #16140f}
+.sd-work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(26px,2.8vw,44px)}
+.sd-work-head .eyebrow{color:var(--orange)}
+.sd-work h2{font-family:INUDisplay,Impact,sans-serif;font-weight:600;font-size:clamp(40px,4vw,68px);line-height:.92;text-transform:uppercase}
+.sd-work h2 em{font-family:INUBrush,cursive;font-style:normal;font-weight:400;text-transform:none;color:var(--orange);display:inline-block;transform:rotate(-4deg);font-size:1.05em}
+.sd-more{display:inline-flex;gap:12px;align-items:center;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9d6cf;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #3a3530;transition:color .3s,border-color .3s;white-space:nowrap}
+.sd-more span{color:var(--orange);letter-spacing:0;transition:transform .35s var(--ease)}
+.sd-more:hover{color:#fff;border-color:var(--orange)}.sd-more:hover span{transform:translateX(4px)}
+.sd-work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.5vw,24px)}
+.sd-work-card{display:flex;flex-direction:column;gap:6px;color:inherit;text-decoration:none;min-width:0}
+.sd-work-art{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:2px;margin-bottom:12px;background:#111}
+.sd-work-art img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s}
+.sd-work-card strong{font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.02em}
+.sd-work-card>span:last-child{font-size:12px;line-height:1.5;color:#8f8c86}
+.sd-work-card:hover img,.sd-work-card:focus-visible img{transform:scale(1.05);filter:brightness(1.08)}
+
+/* Next service - the page ends by opening the next one. */
+.sd-next{padding:clamp(20px,2vw,32px) var(--page) clamp(64px,7vw,110px)}
+.sd-next-link{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;column-gap:clamp(18px,2.4vw,40px);padding:clamp(26px,2.8vw,42px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.sd-next-label{grid-column:1/-1;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:#8f8c86;margin-bottom:12px}
+.sd-next-label b{color:var(--orange);font-weight:400;margin-left:8px}
+.sd-next-link strong{font-family:INUDisplay,Impact,sans-serif;font-weight:600;font-size:clamp(38px,5.4vw,92px);line-height:.9;text-transform:uppercase;letter-spacing:-.01em;transition:color .4s}
+.sd-next-art{width:clamp(150px,16vw,260px);aspect-ratio:16/9;overflow:hidden;border-radius:2px;clip-path:inset(0 100% 0 0);transition:clip-path .8s var(--ease)}
+.sd-next-art img{width:100%;height:100%;object-fit:cover}
+.sd-next-arrow{font-size:clamp(28px,3vw,46px);color:var(--orange);transition:transform .5s var(--ease)}
+.sd-next-link:hover strong,.sd-next-link:focus-visible strong{color:var(--orange)}
+.sd-next-link:hover .sd-next-art,.sd-next-link:focus-visible .sd-next-art{clip-path:inset(0 0 0 0)}
+.sd-next-link:hover .sd-next-arrow{transform:translateX(8px)}
+.sd-all{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px}
+.sd-all a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8f8c86;text-decoration:none;transition:color .3s}
+.sd-all a:hover{color:#f3f1eb}.sd-all a[aria-current]{color:var(--orange)}
+
+@media(max-width:1100px) and (min-width:701px){
+ .sd-intro>.eyebrow{grid-column:1/-1;margin-bottom:18px}
+ .sd-summary{grid-column:1/9}.sd-facts{grid-column:9/13}
+ .sd-included-head{grid-column:1/-1;position:static;margin-bottom:28px}.sd-list{grid-column:1/-1}
+ .sd-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ .service-detail .sd-hero{padding-top:68px}.sd-hero-art{height:clamp(260px,72vw,380px)}
+ .sd-hero-copy{grid-template-columns:1fr;row-gap:22px;padding:24px 20px 0}
+ .sd-hero-aside{align-items:flex-start;flex-direction:row-reverse;justify-content:space-between;max-width:none;width:100%;gap:18px}
+ .sd-tagline{text-align:left}
+ .sd-crumbs{font-size:10px;letter-spacing:.26em}
+ .sd-hero h1{font-size:clamp(46px,13.4vw,64px)}
+ .sd-tagline{font-size:11px;letter-spacing:.13em;max-width:290px}
+ .sd-index b{font-size:52px}.sd-index span{font-size:9px}
+ .sd-intro,.sd-included{display:block;padding-inline:20px}
+ .sd-intro{padding-top:44px;padding-bottom:30px}
+ .sd-intro>.eyebrow{margin-bottom:14px}
+ .sd-summary{font-size:19px;line-height:1.5}
+ .sd-facts{margin-top:28px}
+ .sd-included-head{position:static;margin-bottom:22px}
+ .sd-included h2{font-size:42px}
+ .sd-row{grid-template-columns:36px minmax(0,1fr);row-gap:8px;padding:20px 0}
+ .sd-row p{grid-column:2}
+ .sd-row h3{font-size:16px}
+ .sd-work{padding:48px 0}
+ .sd-work-head{padding:0 20px;flex-direction:column;align-items:flex-start}
+ .sd-work h2{font-size:40px}
+ .sd-work-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;gap:14px;padding:0 20px 8px;scrollbar-width:none}
+ .sd-work-grid::-webkit-scrollbar{display:none}
+ .sd-work-card{flex:0 0 72vw;scroll-snap-align:start}
+ .sd-next{padding:12px 20px 56px}
+ .sd-next-link{grid-template-columns:minmax(0,1fr) auto}
+ .sd-next-art{display:none}
+ .sd-next-link strong{font-size:clamp(34px,10.5vw,48px)}
+ .sd-all{gap:10px 20px}
+}

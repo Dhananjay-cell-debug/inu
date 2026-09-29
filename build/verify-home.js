@@ -18,7 +18,7 @@ for(const m of fileCss.matchAll(/url\(['"]?([^)'" ]+)/g))required.add(m[1]);
 for(const file of required)assert(fs.existsSync(path.join(root,file)),`Missing asset: ${file}`);
 for(const route of routes){const page=route==='/'?'index.html':route.replace(/^\//,'')+'.html';assert(fs.existsSync(path.join(root,page)),`Broken route ${route} (expected ${page})`);}
 const json=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);
-for(const work of json.portfolio.items)assert(fs.existsSync(path.join(root,'home-assets',work.image)),`Missing dialog image ${work.image}`);
+for(const work of json.portfolio.items)assert(fs.existsSync(path.join(root,work.art)),`Missing dialog image ${work.art}`);
 assert.equal((html.match(/class="service-card reveal"/g)||[]).length,json.services.items.length);
 assert.equal((html.match(/class="work-card"/g)||[]).length,json.portfolio.items.length);
 assert.equal(json.navigation.length+1,5,'Navigation must have four links and Let’s talk');

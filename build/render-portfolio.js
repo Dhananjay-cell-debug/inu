@@ -13,26 +13,18 @@ const image=(key,cls='',sizes='100vw',priority=false,alt='')=>{
 let html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
 const shared=JSON.parse(html.match(/<script type="application\/json" id="site-content">([\s\S]*?)<\/script>/)[1]);
 const navigation=[{label:'Home',href:'/'},{label:'About',href:'/about'},{label:'Services',href:'/services'},{label:'Portfolio',href:'/portfolio'}];
-const data={...shared,page:'portfolio',navigation,portfolio:{eyebrow:'Our work',items:p.projects.map(s=>({...s,art:assets['project-'+s.id].at(-1).src}))}};
+const catalog=require('./catalog'),lists=catalog.resolve(),folio=catalog.folio(lists.projects,lists.chapters,lists.brands,shared.talk.href);
+const data={...shared,page:'portfolio',navigation,portfolio:{eyebrow:'Our work',items:lists.projects.map(({image,homeImage,homeArt,home,...s})=>({...s,art:image.src}))}};
 const fields={
  heroRoom:image('hero-room','layer-image','100vw',true),workstation:image('workstation','layer-image','(max-width:700px) 106vw, 76vw',true),director:image('director','hero-person layer-image','(max-width:700px) 64vw, 39vw',true),
  heroEyebrow:esc(p.hero.eyebrow),heroHeading:p.hero.heading.map(s=>`<span>${esc(s)}</span>`).join(''),heroAccent:esc(p.hero.accent),heroDescription:esc(p.hero.description),heroWall:lines(p.hero.wallWords),heroPrinciples:lines(p.hero.principles),chairNote:lines(p.hero.chairWords),
  workEyebrow:esc(p.work.eyebrow),workHeading:p.work.heading.map(s=>`<span>${esc(s)}</span>`).join(''),workAccent:esc(p.work.accent),workDescription:esc(p.work.description),
- ledgerFigures:[[String(p.projects.length),'projects'],[String(p.chapters.length),'disciplines'],[p.story.stats[0].value,'brands']]
-  .map(([value,label])=>`<div><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join(''),
- ledgerList:p.chapters.map((c,i)=>{
-  const count=p.projects.filter(s=>s.tags.some(t=>c.tags.includes(t))).length;
-  return `<li><a href="#chapter-${esc(c.id)}" data-chapter-link="${esc(c.id)}"><i aria-hidden="true">${String(i+1).padStart(2,'0')}</i><span>${esc(c.short||c.label)}</span><b>${count}</b></a></li>`;
- }).join(''),
- chapters:p.chapters.map((c,i)=>{
-  const members=p.projects.filter(s=>s.tags.some(t=>c.tags.includes(t)));
-  if(!members.length)throw Error(`Chapter ${c.id} has no projects`);
-  const cards=members.map((s,n)=>`<a class="folio-card reveal lightning" data-tilt href="${esc(shared.talk.href)}" data-work="${p.projects.indexOf(s)}" data-tags="${s.tags.join(' ')}" style="--stagger:${n%3};--art-position:${s.position||'50% 50%'}" aria-label="View ${esc(s.title)} project"><span class="folio-card-art">${image('project-'+s.id,'','(max-width:700px) 66vw, (max-width:1000px) 38vw, 26vw')}</span><span class="folio-card-copy"><strong>${esc(s.title)}</strong>${s.subtitle?`<span class="folio-card-subtitle">${esc(s.subtitle)}</span>`:''}<span class="folio-card-category">${esc(s.category)}</span></span><span class="folio-card-arrow" aria-hidden="true">↗</span></a>`).join('');
-  return `<div class="studio-row content-chapter" id="chapter-${esc(c.id)}" data-chapter="${esc(c.id)}"><div class="studio-row__title reveal"><span>${String(i+1).padStart(2,'0')} / WORK</span><h3>${c.title.map(esc).join('<br>')}</h3><p>${esc(c.description)}</p><b>${esc(c.meta)}</b><em class="studio-row__count">${members.length} ${members.length===1?'project':'projects'}</em></div><div class="content-rail" data-speed="${44+i*4}" role="group" aria-label="${esc(c.label)} projects"><div class="content-rail__track">${cards}</div></div></div>`;
- }).join(''),
+ ledgerFigures:folio.figures,
+ ledgerList:folio.ledger,
+ chapters:folio.chapters,
  texture:image('texture','layer-image'),storyCollage:image('story-collage','layer-image','25vw'),filmstrip:image('filmstrip','layer-image','(max-width:700px) 43vw, 32vw'),storyHeading:lines(p.story.heading),storyDescription:esc(p.story.description),storyPrinciples:lines(p.story.principles),storyNote:lines(p.story.note),
  stats:p.story.stats.map(s=>`<div class="reveal"><strong>${esc(s.value)}</strong><span>${lines(s.label)}</span></div>`).join(''),
- clientHeading:lines(p.clients.heading),clientNote:lines(p.clients.note),clientMore:esc(p.clients.more),logos:p.clients.items.map(s=>`<div class="folio-logo reveal">${image('logo-'+s.id,'','(max-width:700px) 28vw, 15vw',false,s.name)}</div>`).join(''),
+ clientHeading:lines(p.clients.heading),clientNote:lines(p.clients.note),clientMore:esc(p.clients.more),logos:[0,1].map(copy=>p.clients.items.map(s=>`<div class="folio-logo"${copy?' aria-hidden="true"':''}>${image('logo-'+s.id,'','(max-width:700px) 28vw, 15vw',false,copy?'':s.name)}</div>`).join('')).join(''),
  closingRoom:image('closing-room','layer-image'),studio:image('studio','layer-image','(max-width:700px) 64vw, 43vw'),closingHeading:lines(p.closing.heading),closingDescription:esc(p.closing.description),closingButton:esc(p.closing.button),closingNote:lines(p.closing.note),contactHref:esc(shared.talk.href)
 };
 const main=fs.readFileSync(path.join(src,'template.html'),'utf8').replace(/\{\{(\w+)\}\}/g,(_,key)=>{if(!(key in fields))throw Error(`Unresolved portfolio field ${key}`);return fields[key];});

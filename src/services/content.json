@@ -1,18 +1,344 @@
 {
-  "brand": {"title":"Services — INU Media | Ideas into Impact","description":"A full suite of creative and digital services: marketing, design, video, performance, social media, PR, web and strategy. Ideas into impact, with INU Media."},
-  "hero":{"eyebrow":"Services","heading":"Ideas","secondLine":"into","accent":"Impact","description":"A 360° creative & digital agency built to grow brands.","principles":["Strategy","Creativity","Execution","Results"],"wallWords":["Brands","Stories","People","Impact"]},
-  "services":{"eyebrow":"What we offer","heading":"A full suite","prefix":"of","accent":"services","description":"From strategy to execution, we help brands show up sharper, louder and better — across every platform. Here’s how we make it happen.","items":[
-    {"id":"digital-marketing","title":"Digital marketing","image":"digital","tagline":"Strategy-driven marketing to grow your brand online.","offerings":["Social Media Marketing","Performance Marketing","SEO / SEM","Online Reputation Management"]},
-    {"id":"design-creative","title":"Design & creative","image":"design","tagline":"Designs that don’t just look good, but make an impact.","offerings":["Graphic Design","Brand Identity","Creatives & A+ Content","Print Design"]},
-    {"id":"video-production","title":"Video production & VFX","image":"video","tagline":"From ideas to scroll-stopping visuals.","offerings":["Video Ads","VFX & CGI","Brand Films","Reels & Short Content"]},
-    {"id":"performance-marketing","title":"Performance marketing","image":"performance","tagline":"Data-backed campaigns for real business results.","offerings":["Paid Ads (Meta, Google, YouTube)","Campaign Strategy","Lead Generation","Conversion Optimization"]},
-    {"id":"social-media","title":"Social media management","image":"social","tagline":"Complete handling of your brand’s social presence.","offerings":["Content Planning","Post Creation & Scheduling","Community Management","Influencer Collaboration"]},
-    {"id":"pr-branding","title":"PR & branding","image":"pr","tagline":"Building credibility and long-term value.","offerings":["Media Outreach","Brand Positioning","Celebrity & Influencer PR","Event Promotion"]},
-    {"id":"web-tech","title":"Web & tech solutions","image":"web","tagline":"Digital experiences that convert.","offerings":["Website Design & Development","Landing Pages","UI/UX Design","Web Maintenance"]},
-    {"id":"strategy-consulting","title":"Strategy & consulting","image":"strategy","tagline":"The roadmap behind every successful brand.","offerings":["Brand Strategy","Content Strategy","Market Research","360° Campaign Planning"]}
-  ]},
-  "approach":{"eyebrow":"Our approach","heading":["More than","services,"],"prefix":"a","accent":"partnership.","circles":["Brand","Ideas","People"],"note":["Real","growth","happens","here"],"description":"We don’t just deliver services, we become an extension of your team — working together to turn ideas into measurable impact."},
-  "process":{"eyebrow":"Our process","heading":["Simple.","Collaborative."],"accent":"Effective.","steps":[{"title":"Discover","description":"Understand your brand & goals"},{"title":"Strategize","description":"Build a tailored plan"},{"title":"Create","description":"Bring ideas to life"},{"title":"Execute","description":"Launch with precision"},{"title":"Grow","description":"Measure, optimize & scale"}]},
-  "closing":{"eyebrow":["Ready to build","something great?"],"heading":"Let’s create","accent":"Together.","button":"Get in touch","wallNote":["Different","perspective","a brighter","tomorrow"]},
-  "footerNote":["Different perspective","a brighter tomorrow"]
+ "brand": {
+  "title": "Services — INU Media | Ideas into Impact",
+  "description": "A full suite of creative and digital services: marketing, design, video, performance, social media, PR, web and strategy. Ideas into impact, with INU Media."
+ },
+ "hero": {
+  "eyebrow": "Services",
+  "heading": "Ideas",
+  "secondLine": "into",
+  "accent": "Impact",
+  "description": "A 360° creative & digital agency built to grow brands.",
+  "principles": [
+   "Strategy",
+   "Creativity",
+   "Execution",
+   "Results"
+  ],
+  "wallWords": [
+   "Brands",
+   "Stories",
+   "People",
+   "Impact"
+  ]
+ },
+ "services": {
+  "eyebrow": "What we offer",
+  "heading": "A full suite",
+  "prefix": "of",
+  "accent": "services",
+  "description": "From strategy to execution, we help brands show up sharper, louder and better — across every platform. Here’s how we make it happen.",
+  "items": [
+   {
+    "id": "digital-marketing",
+    "title": "Digital marketing",
+    "image": "digital",
+    "tagline": "Strategy-driven marketing to grow your brand online.",
+    "summary": "One plan for everywhere your audience scrolls, searches and talks. We connect social, search, paid and reputation so every channel pushes the same story forward, and every rupee can be traced back to what it did.",
+    "offerings": [
+     {
+      "name": "Social Media Marketing",
+      "line": "Platform-native content and campaigns built around how your audience actually uses each feed."
+     },
+     {
+      "name": "Performance Marketing",
+      "line": "Paid campaigns planned around a number, optimised every week and reported plainly."
+     },
+     {
+      "name": "SEO / SEM",
+      "line": "Search visibility that compounds: technical fixes, content that ranks and ads that catch intent."
+     },
+     {
+      "name": "Online Reputation Management",
+      "line": "Reviews, mentions and search results watched, answered and shaped before they shape you."
+     }
+    ],
+    "work": [
+     "social",
+     "performance"
+    ],
+    "home": true,
+    "homeArt": "digital"
+   },
+   {
+    "id": "design-creative",
+    "title": "Design & creative",
+    "image": "design",
+    "tagline": "Designs that don’t just look good, but make an impact.",
+    "summary": "Identity, packaging, print and the everyday creative that carries a brand. We build visual systems that stay recognisable from a hoarding down to a story frame, then hand them over so your team can keep them sharp.",
+    "offerings": [
+     {
+      "name": "Graphic Design",
+      "line": "Campaign, social and print layouts with one consistent hand behind them."
+     },
+     {
+      "name": "Brand Identity",
+      "line": "Logo, type, colour and voice, assembled into a system with rules people can follow."
+     },
+     {
+      "name": "Creatives & A+ Content",
+      "line": "Marketplace listings and A+ pages designed to answer questions and close the sale."
+     },
+     {
+      "name": "Print Design",
+      "line": "Packaging, brochures, outdoor and on-ground collateral, prepared properly for press."
+     }
+    ],
+    "work": [
+     "brand"
+    ],
+    "home": true,
+    "homeArt": "design"
+   },
+   {
+    "id": "video-production",
+    "title": "Video production & VFX",
+    "image": "video",
+    "tagline": "From ideas to scroll-stopping visuals.",
+    "summary": "Script to screen under one roof. We write, shoot, cut and finish, with VFX and CGI done in house, so a film keeps its idea intact from the first storyboard frame to the last export.",
+    "offerings": [
+     {
+      "name": "Video Ads",
+      "line": "Short, hook-first ads cut for each platform’s length, ratio and sound-off viewing."
+     },
+     {
+      "name": "VFX & CGI",
+      "line": "Compositing, 3D and product visualisation finished by our own post team."
+     },
+     {
+      "name": "Brand Films",
+      "line": "Longer stories about who you are, directed to be watched to the end."
+     },
+     {
+      "name": "Reels & Short Content",
+      "line": "A steady stream of vertical content, shot in batches and edited for the feed."
+     }
+    ],
+    "work": [
+     "film"
+    ],
+    "home": true,
+    "homeArt": "production"
+   },
+   {
+    "id": "performance-marketing",
+    "title": "Performance marketing",
+    "image": "performance",
+    "tagline": "Data-backed campaigns for real business results.",
+    "summary": "Campaigns built backwards from the result you need: leads, sales or installs. We plan the funnel, make the creative and landing pages to match, and keep adjusting until the cost per result is one worth reporting.",
+    "offerings": [
+     {
+      "name": "Paid Ads (Meta, Google, YouTube)",
+      "line": "Account structure, audiences and creative testing on the platforms that matter to you."
+     },
+     {
+      "name": "Campaign Strategy",
+      "line": "Budgets, stages and targets agreed before a rupee is spent."
+     },
+     {
+      "name": "Lead Generation",
+      "line": "Forms, landing pages and follow-ups that bring in enquiries your sales team wants."
+     },
+     {
+      "name": "Conversion Optimization",
+      "line": "Pages and journeys tested and refined, so more of the traffic you pay for converts."
+     }
+    ],
+    "work": [
+     "performance"
+    ],
+    "home": false
+   },
+   {
+    "id": "social-media",
+    "title": "Social media management",
+    "image": "social",
+    "tagline": "Complete handling of your brand’s social presence.",
+    "summary": "Strategy before posting. We audit where you stand, define who you are talking to, plan the calendar and run the channels day to day: content, replies, creators and all.",
+    "offerings": [
+     {
+      "name": "Content Planning",
+      "line": "Monthly calendars built on pillars, moments and what your audience responds to."
+     },
+     {
+      "name": "Post Creation & Scheduling",
+      "line": "Design, copy and edits produced in batches and published on time."
+     },
+     {
+      "name": "Community Management",
+      "line": "Comments and DMs answered in your voice, with problems flagged early."
+     },
+     {
+      "name": "Influencer Collaboration",
+      "line": "Creators matched to the brief, briefed properly and tracked to results."
+     }
+    ],
+    "work": [
+     "social"
+    ],
+    "home": false
+   },
+   {
+    "id": "pr-branding",
+    "title": "PR & branding",
+    "image": "pr",
+    "tagline": "Building credibility and long-term value.",
+    "summary": "Coverage and positioning that make people take a brand seriously. We shape the story, take it to the press and creators who matter, and keep your name in the right rooms, from film releases to product launches.",
+    "offerings": [
+     {
+      "name": "Media Outreach",
+      "line": "Releases and pitches placed with the publications and journalists that fit the story."
+     },
+     {
+      "name": "Brand Positioning",
+      "line": "A clear point of view on who you are for, and why that matters."
+     },
+     {
+      "name": "Celebrity & Influencer PR",
+      "line": "A pan-India network of personalities and creators for launches and campaigns."
+     },
+     {
+      "name": "Event Promotion",
+      "line": "Buzz before, coverage during and content after every event."
+     }
+    ],
+    "work": [
+     "pr"
+    ],
+    "home": true,
+    "homeArt": "pr"
+   },
+   {
+    "id": "web-tech",
+    "title": "Web & tech solutions",
+    "image": "web",
+    "tagline": "Digital experiences that convert.",
+    "summary": "Websites designed to look sharp and built to perform. From a single landing page to a multi-page store, we handle design, development, speed and SEO, and stay on to keep it running.",
+    "offerings": [
+     {
+      "name": "Website Design & Development",
+      "line": "Custom sites designed around your brand, fast, responsive and easy to update."
+     },
+     {
+      "name": "Landing Pages",
+      "line": "Focused single pages for campaigns, launches and lead capture."
+     },
+     {
+      "name": "UI/UX Design",
+      "line": "Journeys, wireframes and interfaces tested for clarity before anything is built."
+     },
+     {
+      "name": "Web Maintenance",
+      "line": "Updates, backups, security and small changes, handled without the wait."
+     }
+    ],
+    "work": [
+     "web"
+    ],
+    "home": true,
+    "homeArt": "web"
+   },
+   {
+    "id": "strategy-consulting",
+    "title": "Strategy & consulting",
+    "image": "strategy",
+    "tagline": "The roadmap behind every successful brand.",
+    "summary": "The thinking before the making. We study your market, your audience and your competitors, then turn it into a plan the whole team, and every partner, can work from.",
+    "offerings": [
+     {
+      "name": "Brand Strategy",
+      "line": "Positioning, architecture and messaging that give every decision a reference point."
+     },
+     {
+      "name": "Content Strategy",
+      "line": "What to say, where, how often and why, mapped to the business goal."
+     },
+     {
+      "name": "Market Research",
+      "line": "Audience, category and competitor insight gathered before we commit to an idea."
+     },
+     {
+      "name": "360° Campaign Planning",
+      "line": "One campaign idea carried across film, social, performance, PR and on-ground."
+     }
+    ],
+    "work": [
+     "brand",
+     "performance"
+    ],
+    "home": true,
+    "homeArt": "strategy"
+   }
+  ]
+ },
+ "approach": {
+  "eyebrow": "Our approach",
+  "heading": [
+   "More than",
+   "services,"
+  ],
+  "prefix": "a",
+  "accent": "partnership.",
+  "circles": [
+   "Brand",
+   "Ideas",
+   "People"
+  ],
+  "note": [
+   "Real",
+   "growth",
+   "happens",
+   "here"
+  ],
+  "description": "We don’t just deliver services, we become an extension of your team — working together to turn ideas into measurable impact."
+ },
+ "process": {
+  "eyebrow": "Our process",
+  "heading": [
+   "Simple.",
+   "Collaborative."
+  ],
+  "accent": "Effective.",
+  "steps": [
+   {
+    "title": "Discover",
+    "description": "Understand your brand & goals"
+   },
+   {
+    "title": "Strategize",
+    "description": "Build a tailored plan"
+   },
+   {
+    "title": "Create",
+    "description": "Bring ideas to life"
+   },
+   {
+    "title": "Execute",
+    "description": "Launch with precision"
+   },
+   {
+    "title": "Grow",
+    "description": "Measure, optimize & scale"
+   }
+  ]
+ },
+ "closing": {
+  "eyebrow": [
+   "Ready to build",
+   "something great?"
+  ],
+  "heading": "Let’s create",
+  "accent": "Together.",
+  "button": "Get in touch",
+  "wallNote": [
+   "Different",
+   "perspective",
+   "a brighter",
+   "tomorrow"
+  ]
+ },
+ "footerNote": [
+  "Different perspective",
+  "a brighter tomorrow"
+ ]
 }

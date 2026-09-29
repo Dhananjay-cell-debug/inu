@@ -17,3 +17,7 @@
 }
 
 @media(max-width:360px){.belief{margin-inline:19px}.belief h2{font-size:31px}.belief-copy{font-size:11.5px}.contact h2{font-size:47px}.contact-copy{width:76%}}
+
+/* The logo strip runs continuously, right to left, whatever the motion
+   setting (client request, 29 Sep 2026). A slow drift with no flashing. */
+@media(prefers-reduced-motion:reduce){.clients .client-logos{animation:logo-drift 42s linear infinite!important;width:max-content}}

@@ -4,6 +4,12 @@ const crypto = require('crypto');
 const root = path.join(__dirname, '..');
 const src = path.join(root, 'src/home');
 const data = JSON.parse(fs.readFileSync(path.join(src, 'content.json'), 'utf8'));
+/* Home's "What we do" and "Featured work" come from the one services list and
+   the one portfolio list (build/catalog.js) - the lists the client edits. */
+const catalog = require('./catalog');
+const lists = catalog.resolve({homeHashed:false});
+data.services.items = lists.services.filter(s=>s.home).map(s=>({id:s.id,title:s.title,tagline:s.tagline,offerings:s.offerings.map(o=>o.name),href:'/services/'+s.id}));
+data.portfolio.items = catalog.homeWorkItems(lists.projects).map(p=>({title:p.title,category:catalog.firstPart(p.category),art:p.homeImage.src}));
 const assets = JSON.parse(fs.readFileSync(path.join(src, 'assets.json'), 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const image = (key, cls='', sizes='100vw', priority=false) => {
@@ -38,7 +44,7 @@ const render={
     return one+one;})(),
   clientMore:escape(data.clients.more),
   serviceEyebrow:escape(data.services.eyebrow),serviceHeading:heading(data.services.heading),serviceDescription:escape(data.services.description),serviceButton:escape(data.services.button),
-  serviceCards:data.services.items.map((s,i)=>`<button class="service-card reveal" data-service="${i}" style="--stagger:${i%3}"><span class="card-number">0${i+1}</span><span class="service-art">${image('service-'+s.image,'','(max-width:700px) 82px, (max-width:1100px) 25vw, 16vw')}</span><span class="card-copy"><strong>${s.lines.map(escape).join('<br>')}</strong><span>${escape(s.tagline)}</span></span><span class="service-arrow" aria-hidden="true">↗</span></button>`).join(''),
+  serviceCards:catalog.homeServices(lists.services),
   portfolioEyebrow:escape(data.portfolio.eyebrow),portfolioHeading:heading(data.portfolio.heading),portfolioDescription:escape(data.portfolio.description),portfolioButton:escape(data.portfolio.button),
   portfolioArt:image('film-scene','film-art layer-image','100vw'),
   /* The card art is responsive now: the old single 158x107 file was being
@@ -46,11 +52,7 @@ const render={
   /* The card art is responsive now: one 158x107 file was being painted into a
      288px card, i.e. upscaled roughly four times on a retina screen, which is
      what made these read as blurry. */
-  workCards:data.portfolio.items.map((p,i)=>{
-    const art=assets['work-'+p.image.replace(/\.webp$/,'')];
-    const chosen=art[1]||art[0];
-    return `<button class="work-card" data-work="${i}"><span class="work-image"><img src="${chosen.src}" srcset="${art.map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="(max-width:700px) 62vw, (max-width:1100px) 30vw, 20vw" width="${chosen.width}" height="${chosen.height}" loading="lazy" decoding="async" alt="${escape(p.title)}"><span class="view-project" aria-hidden="true">View project ↗</span></span><span class="work-caption"><strong>${escape(p.title)}</strong><span>${escape(p.category)}${arrow}</span></span></button>`;
-  }).join(''),
+  workCards:catalog.homeWork(lists.projects),
   stats:data.stats.map(s=>`<div class="stat reveal ${s.icon==='infinity'?'infinity-stat':''}">${icon(s.icon)}<p>${s.value?`<strong>${escape(s.value)}</strong>`:''}<span>${s.label.map(escape).join('<br>')}</span></p></div>`).join(''),
   contactArt:image('sunset-room','sunset-room layer-image','100vw'),contactPerson:image('closing-person','closing-person layer-image','(max-width:700px) 50vw, 25vw'),
   contactEyebrow:escape(data.contact.eyebrow),contactHeading:heading(data.contact.heading),contactDescription:escape(data.contact.description),contactNote:data.contact.wallNote.map(escape).join('<br>'),

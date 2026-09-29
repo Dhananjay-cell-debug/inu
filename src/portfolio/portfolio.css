@@ -166,3 +166,14 @@
   .folio-ledger-figures{gap:26px}
 }
 .footer{background:#060606}
+
+/* Client logos run as one continuous strip, right to left, like Home's.
+   Two copies of the list sit in the track; moving it by half loops seamlessly. */
+.folio-logo-rail{overflow:hidden;border-top:1px solid #221f1c;border-bottom:1px solid #221f1c;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.folio-logo-track{display:flex;width:max-content;animation:folio-logos 90s linear infinite;will-change:transform}
+.folio-logo-track .folio-logo{flex:none;width:clamp(150px,15vw,240px);aspect-ratio:2.25;border:0;border-right:1px solid #221f1c;padding:18px 26px}
+@keyframes folio-logos{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media(max-width:700px){.folio-logo-track{animation-duration:60s}.folio-logo-track .folio-logo{width:128px;padding:12px 16px}}
+/* Kept moving even with reduced motion on: the client asked for the logos to
+   run continuously everywhere. It is a slow, even drift with no flashing. */
+@media(prefers-reduced-motion:reduce){.folio-logo-track.folio-logo-track{animation:folio-logos 90s linear infinite!important}}

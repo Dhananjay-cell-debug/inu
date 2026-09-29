@@ -453,3 +453,47 @@ The client logos — the marquee on Home and the grid on Portfolio — are still
 mixed quality and mostly text placeholders. Only Lodha, DLF and HDFC Sky have
 real files. This is the thing most likely to read as unfinished in front of
 Sahil, and it needs the clients' own logo files to fix.
+
+## Batch 8 — 2026-09-29 (client-editable services & portfolio)
+
+User's words (Hinglish, paraphrased): drop the "INU Media sections" admin /
+Site Editor — the client only needs to add and update **Services** and
+**Portfolio** from time to time, and Home's services + portfolio must follow.
+Every individual service view "feels like no effort was put in" — on the
+website and on local WordPress. Tasks arrive one at a time as the user
+remembers them; every one goes in this list the moment it is said.
+
+- [x] **40. One services list and one portfolio list drive every page.**
+      `src/services/content.json` items gain a summary, a line per offering,
+      the portfolio chapters they relate to and a "show on home" flag;
+      portfolio projects gain "featured on home". Home's "What we do" and
+      "Featured work" render from those lists, not from separate copies.
+- [x] **41. A real page per service — `/services/<slug>`** replacing the thin
+      popup (screenshot: WEB & TECH SOLUTIONS modal). Artwork hero, intro,
+      numbered offerings with a line each, real related work from the
+      portfolio, next-service link, closing CTA. Services cards and Home cards
+      link to it. Desktop + phone verified by screenshot.
+      -> done, verified: 8 pages, artwork shown as a clean plate (its own
+         lettering never covered), title beneath, numbered offerings, related
+         portfolio work, next service, closing scene. 1440 + 390 screenshots.
+- [x] **42. WordPress: Services and Portfolio screens for the client.** Add /
+      edit / reorder / delete, upload image, "show on home". Saved items appear
+      on Home, /services, /services/<slug> and /portfolio on inu-media.local.
+      Remove the INU Media overview ("The site"), Site Editor and Saved
+      sessions from the client's menu.
+      -> done, verified: plugin `inu-media-catalog` (separate from the Site Editor
+         plugin). Drove the real admin in a headless browser: edit, add (own page
+         + Home + /services), reorder, Home toggle, add featured project, remove -
+         21/21 checks. Lists reset to the originals afterwards.
+- [x] **43. Every logo carousel scrolls right → left, continuously, on every
+      page** (Home "Trusted by" marquee, Portfolio client logos, any other).
+      -> done, verified: measured the strips moving left while hovered and with
+         reduced motion on (Home −33px/1.5s; Portfolio grid is now a marquee).
+- [ ] **44. inumedia.vercel.app** is an alias still pointing at a 27-day-old
+      deployment. After deploy, point it at the new production build.
+- [ ] **45. Deploy** (push GitHub, then Vercel) and re-verify on the live URL.
+
+Coordination note: another Claude session (Site Editor QA) and a non-Claude
+agent are also editing the WordPress plugin. New WordPress work goes in new
+files (`includes/catalog*.php`, `assets/catalog.*`); check mtimes before
+touching shared files.
